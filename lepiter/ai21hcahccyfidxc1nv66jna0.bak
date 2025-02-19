@@ -100,14 +100,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-18T14:21:54.935+01:00"
+						"dateAndTimeString" : "2025-02-19T12:41:13.792+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "OIbpQszqDQCxZUvEDlxisQ=="
 				},
-				"code" : "number := values size.\rparentNew := BlElement new\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\t\r\t\t\t\t\tpaint: Color black;\r\t\t\t\t\twidth: 3;\r\t\t\t\t\tbuild);\r\t\t\tlayout: BlLinearLayout horizontal.\rparentNew constraints horizontal exact: 500.\rparentNew constraints vertical exact: 500.\r\t\t\t\rbarElements := OrderedCollection new.\r1 to: number do: [: n| \r\tchild := BlElement new\r\t\t\tbackground: (Color white alpha: 0.2);\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\tpaint: (Color blue alpha: 0.5);\r\t\t\t\t\twidth: 1;\r\t\t\t\t\tbuild);\r\t\t\t\r\t\t\tlayout: BlFrameLayout new;\r\t\t\tconstraintsDo: [ :c | \r\t\t    c vertical exact: (4*100)*(values at:n).\r\t\t    \r\t\t\tc horizontal matchParent\r\t\t\t].\r\t\t\t\r\tbarElements add: child.].\r\rparentNew addChildren: barElements.\r\r^ parentNew"
+				"code" : "number := values size.\rparentNew := BlElement new\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\t\r\t\t\t\t\tpaint: Color black;\r\t\t\t\t\twidth: 3;\r\t\t\t\t\tbuild);\r\t\t\tlayout: BlLinearLayout horizontal.\rparentNew constraints horizontal exact: 500.\rparentNew constraints vertical exact: 500.\r\t\t\t\rbarElements := OrderedCollection new.\r1 to: number do: [: n| \r\tchild := BlElement new\r\t\t\tbackground: (Color white alpha: 0.2);\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\tpaint: (Color blue alpha: 0.5);\r\t\t\t\t\twidth: 1;\r\t\t\t\t\tbuild);\r\t\t\t\r\t\t\t\r\t\t\t\r\t\t\tlayout: BlFrameLayout new;\r\t\t\tconstraintsDo: [ :c | \r\t\t    c vertical exact: (4*100)*(values at:n).\r\t\t    \r\t\t\tc horizontal matchParent\r\t\t\t].\r\t\t\t\r\tbarElements add: child.].\r\rparentNew addChildren: barElements.\rparentNew transform\r\t\trotateBy: 180;\r\t\tapply.\r\r^ parentNew"
 			},
 			{
 				"__type" : "textSnippet",
@@ -208,7 +208,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-18T14:22:31.429+01:00"
+						"dateAndTimeString" : "2025-02-18T14:22:46.217+01:00"
 					}
 				},
 				"uid" : {
@@ -218,7 +218,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Have labes on the axis"
+				"string" : "Have labels on the axis"
 			},
 			{
 				"__type" : "textSnippet",
@@ -245,7 +245,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-18T14:22:39.8+01:00"
+						"dateAndTimeString" : "2025-02-18T14:22:40.617+01:00"
 					}
 				},
 				"uid" : {
@@ -255,7 +255,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "have tags on the axis"
 			}
 		]
 	},
@@ -278,12 +278,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-02-18T14:21:32.687+01:00"
+			"dateAndTimeString" : "2025-02-18T14:23:02.561+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Page 1"
+		"title" : "Demo for Bar Plot"
 	},
 	"uid" : {
 		"__type" : "uuid",
