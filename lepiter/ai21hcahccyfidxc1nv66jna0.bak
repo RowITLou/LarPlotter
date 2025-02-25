@@ -191,7 +191,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-25T09:08:33.106+01:00"
+						"dateAndTimeString" : "2025-02-25T10:42:46.507+01:00"
 					}
 				},
 				"editEmail" : {
@@ -202,14 +202,150 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-25T09:09:55.784+01:00"
+						"dateAndTimeString" : "2025-02-25T15:39:59.397+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "UEAts1TrDQCEkF5CBtRQTQ=="
+					"uidString" : "+E0lBFbrDQCQsYbeDGXnYw=="
 				},
-				"code" : "aContainer := BlElement new\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal exact: 800.\r\t\t\tc vertical exact: 800 ];\r\t\tborder: (BlBorder paint: Color veryLightGray width: 1).\raContainer addChild: parentNew. \raContainer forceLayout."
+				"code" : ""
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T14:20:13.526+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T15:45:36.432+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "cMXODVnrDQChyKrLA7evGA=="
+				},
+				"code" : "\"Added the labels for the ticks for the x axis\"\r1 to: number do: [: n| \rlabel := BlElement new\r\t\tlayout: BlLinearLayout horizontal;\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent ];\r\t\tbackground: (Color gray alpha: 0.3);\r\t\tpadding: (BlInsets all: 1).\r\rlabelap := BrTextLabelAptitude new labelDo: [ :aLabelElement | \r\t\taLabelElement constraintsDo: [ :c |\r\t\t\tc frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter. ] ].\r   labelap text: n. \r   label aptitude: labelap.\r   label relocate:((100 +(500/number * n)) -  5) @ (550 +10).\r  \" aContainer addChild:  (labelTick at: n).\"\r  aContainer addChild: label.\r\t\t\t].\r\r^aContainer"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T14:20:17.562+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T18:15:58.489+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2I0MDlnrDQChzMEtA7evGA=="
+				},
+				"code" : "\"Added the labels for the ticks for the x axis\"\r1 to: number do: [: n| \rlabel := BlElement new\r\t\tlayout: BlLinearLayout horizontal;\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent ];\r\t\tbackground: (Color gray alpha: 0.3);\r\t\tpadding: (BlInsets all: 1).\r\rlabelAp := BrTextLabelAptitude new labelDo: [ :aLabelElement | \r\t\taLabelElement constraintsDo: [ :c |\r\t\t\tc frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter. ] ].\r   labelAp text: n. \r   label aptitude: labelAp.\r   label relocate:(100-20) @(50 + (((500/number) * (n - 1)))-7).\r  \" aContainer addChild:  (labelTick at: n).\"\r  aContainer addChild: label.\r\t\t\t].\r\r^aContainer"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T10:29:53.792+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T20:14:37.177+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AJwW1lXrDQCNrc4lDGXnYw=="
+				},
+				"code" : "labelAxisX := BlElement new\r\t\tlayout: BlLinearLayout horizontal;\r\t\tsize: 500 @ 50;\r\t\t\r\t\tconstraintsDo: [ :c |\r\t\t    c frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter];\r\t\t\t\"c horizontal fitContent.\r\t\t\tc vertical fitContent ];\"\r\t\tbackground: (Color gray alpha: 0.3);\r\t\tpadding: (BlInsets all: 1).\r\r\raptAxisX := BrTextLabelAptitude new text: 'Name of Axis X';\r        labelDo: [ :aLabelElement | \r\t\taLabelElement constraintsDo: [ :c |\r\t\t\tc frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter. ] ];\r\t\t\tpadding: (BlInsets all: 0);\r\t\t\tmargin: (BlInsets\r\t\t\t\t\ttop: 10\r\t\t\t\t\tleft: 10\r\t\t\t\t\tbottom: 10\r\t\t\t\t\tright: 10).\r\t\t\r   \r   labelAxisX aptitude: aptAxisX.\r   labelAxisX relocate:100 @ 600.\r  \" aContainer addChild:  (labelTick at: n).\"\r  aContainer addChild: labelAxisX.\r  aContainer forceLayout.\r  ^aContainer"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T10:30:58.757+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T14:43:14.233+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "iOX12VXrDQCOCzxyDGXnYw=="
+				},
+				"code" : ""
 			},
 			{
 				"__type" : "textSnippet",
