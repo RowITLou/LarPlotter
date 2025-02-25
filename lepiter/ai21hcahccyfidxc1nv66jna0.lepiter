@@ -100,14 +100,116 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-19T12:41:34.828+01:00"
+						"dateAndTimeString" : "2025-02-25T09:48:07.045+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "OIbpQszqDQCxZUvEDlxisQ=="
 				},
-				"code" : "number := values size.\rparentNew := BlElement new\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\t\r\t\t\t\t\tpaint: Color black;\r\t\t\t\t\twidth: 3;\r\t\t\t\t\tbuild);\r\t\t\tlayout: BlLinearLayout horizontal.\rparentNew constraints horizontal exact: 500.\rparentNew constraints vertical exact: 500.\r\t\t\t\rbarElements := OrderedCollection new.\r1 to: number do: [: n| \r\tchild := BlElement new\r\t\t\tbackground: (Color white alpha: 0.2);\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\tpaint: (Color blue alpha: 0.5);\r\t\t\t\t\twidth: 1;\r\t\t\t\t\tbuild);\r\t\t\t\r\t\t\tlayout: BlFrameLayout new;\r\t\t\tconstraintsDo: [ :c | \r\t\t    c vertical exact: (4*100)*(values at:n).\r\t\t    \r\t\t\tc horizontal matchParent\r\t\t\t].\r\t\t\t\r\tbarElements add: child.].\r\rparentNew addChildren: barElements.\rparentNew transform\r\t\trotateBy: 180;\r\t\tapply.\r\r^ parentNew"
+				"code" : "number := values size.\rparentNew := BlElement new\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\t\r\t\t\t\t\tpaint: Color black;\r\t\t\t\t\twidth: 3;\r\t\t\t\t\tbuild);\r\t\t\tlayout: BlLinearLayout horizontal.\rparentNew constraints horizontal exact: 500.\rparentNew constraints vertical exact: 500.\rparentNew relocate: 100@50.\r\t\t\t\rbarElements := OrderedCollection new.\r1 to: number do: [: n| \r\tchild := BlElement new\r\t\t\tbackground: (Color white alpha: 0.2);\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\tpaint: (Color blue alpha: 0.5);\r\t\t\t\t\twidth: 1;\r\t\t\t\t\tbuild);\r\t\t\t\r\t\t\tlayout: BlFrameLayout new;\r\t\t\tconstraintsDo: [ :c | \r\t\t    c vertical exact: (4*100)*(values at:n).\r\t\t    \r\t\t\tc horizontal matchParent\r\t\t\t].\r\t\t\t\r\tbarElements add: child.].\r\rparentNew addChildren: barElements.\rparentNew transform\r\t\trotateBy: 180;\r\t\tapply.\r\raContainer := BlElement new\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal exact: 800.\r\t\t\tc vertical exact: 800 ];\r\t\tborder: (BlBorder paint: Color veryLightGray width: 1).\raContainer addChild: parentNew. \r\r\raContainer forceLayout."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T09:47:47.668+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T10:16:34.04+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "IASFP1XrDQCIU7b9BtRQTQ=="
+				},
+				"code" : "1 to: number do: [: n| \r\ttickX := BlElement new\r\t\tsize: 3@10;\r\t\trelocate: (100 + (500/number * n))-1@550 -1;\r\t\tborder: (BlBorder paint: Color black width: 1).\r\t\t\t\r\taContainer addChild: tickX.].\r^aContainer"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T09:48:33.795+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T10:16:45.486+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "OJ1EQlXrDQCImPEPBtRQTQ=="
+				},
+				"code" : "1 to: number do: [: n| \r\ttickY := BlElement new\r\t\tsize: 10@3;\r\t\trelocate: 100-8 @(50 + ((500/number) * (n - 1)))+1;\r\t\tborder: (BlBorder paint: Color black width: 1).\r\t\t\t\r\taContainer addChild: tickY.].\r^aContainer"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T10:17:11.522+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-25T10:17:11.522+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wCOnqFXrDQCMhZ7PBtRQTQ=="
+				},
+				"code" : ""
 			},
 			{
 				"__type" : "textSnippet",
@@ -245,7 +347,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-18T14:22:40.617+01:00"
+						"dateAndTimeString" : "2025-02-25T10:12:12.288+01:00"
 					}
 				},
 				"uid" : {
@@ -255,7 +357,41 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "have tags on the axis"
+				"string" : "have tags on the axis, done!"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-24T20:48:53.327+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-02-24T20:48:54.857+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "yIjvXUrrDQCCbJfdBtRQTQ=="
+				},
+				"code" : "aContainer := BlElement new\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal exact: 400.\r\t\t\tc vertical exact: 400 ];\r\t\tborder: (BlBorder paint: Color veryLightGray width: 1).\r\t\t\r\taChildA := BlElement new\r\t\tsize: 300@300;\r\t\trelocate: 0@0;\r\t\tbackground: (Color paleBlue);\r\t\tborder: (BlBorder paint: Color blue width: 1).\r\t\t\r\taChildB := BlExampleElementThatWantsCompositionLayer new\r\t\tsize: 300@300;\r\t\trelocate: 50@50;\r\t\tbackground: (Color paleRed);\r\t\tborder: (BlBorder paint: Color red width: 1).\r\t\r\taChildC := BlElement new\r\t\tsize: 300@300;\r\t\trelocate: 100@100;\r\t\tbackground: (Color paleGreen);\r\t\tborder: (BlBorder paint: Color green width: 1).\r\r\taContainer addChildren:  { aChildA . aChildB . aChildC }.\r\taContainer forceLayout.\r\t\r\t^ aContainer"
 			}
 		]
 	},
