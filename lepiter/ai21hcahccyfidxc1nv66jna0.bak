@@ -304,14 +304,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-25T20:14:37.177+01:00"
+						"dateAndTimeString" : "2025-02-25T20:15:25.337+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "AJwW1lXrDQCNrc4lDGXnYw=="
 				},
-				"code" : "labelAxisX := BlElement new\r\t\tlayout: BlLinearLayout horizontal;\r\t\tsize: 500 @ 50;\r\t\t\r\t\tconstraintsDo: [ :c |\r\t\t    c frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter];\r\t\t\t\"c horizontal fitContent.\r\t\t\tc vertical fitContent ];\"\r\t\tbackground: (Color gray alpha: 0.3);\r\t\tpadding: (BlInsets all: 1).\r\r\raptAxisX := BrTextLabelAptitude new text: 'Name of Axis X';\r        labelDo: [ :aLabelElement | \r\t\taLabelElement constraintsDo: [ :c |\r\t\t\tc frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter. ] ];\r\t\t\tpadding: (BlInsets all: 0);\r\t\t\tmargin: (BlInsets\r\t\t\t\t\ttop: 10\r\t\t\t\t\tleft: 10\r\t\t\t\t\tbottom: 10\r\t\t\t\t\tright: 10).\r\t\t\r   \r   labelAxisX aptitude: aptAxisX.\r   labelAxisX relocate:100 @ 600.\r  \" aContainer addChild:  (labelTick at: n).\"\r  aContainer addChild: labelAxisX.\r  aContainer forceLayout.\r  ^aContainer"
+				"code" : "labelAxisX := BlElement new\r\t\tlayout: BlLinearLayout horizontal;\r\t\tsize: 500 @ 50;\r\t\t\r\t\tconstraintsDo: [ :c |\r\t\t    c frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter];\r\t\t\t\"c horizontal fitContent.\r\t\t\tc vertical fitContent ];\"\r\t\tbackground: (Color gray alpha: 0.3);\r\t\tpadding: (BlInsets all: 1).\r\r\raptAxisX := BrTextLabelAptitude new text: 'Name of Axis X';\r        labelDo: [ :aLabelElement | \r\t\taLabelElement constraintsDo: [ :c |\r\t\t\tc frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter. ] ];\r\t\t\tpadding: (BlInsets all: 10).\r\t\t\r   \r   labelAxisX aptitude: aptAxisX.\r   labelAxisX relocate:100 @ 600.\r  \" aContainer addChild:  (labelTick at: n).\"\r  aContainer addChild: labelAxisX.\r  aContainer forceLayout.\r  ^aContainer"
 			},
 			{
 				"__type" : "pharoSnippet",
