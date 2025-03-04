@@ -42,6 +42,43 @@
 				"string" : "Some values"
 			},
 			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-04T09:12:37.932+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-04T09:12:56.854+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4J+okuHrDQCM7OcfCTgMGA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{gtPackage:name=LarPlotter}}"
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -66,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-18T14:21:38.855+01:00"
+						"dateAndTimeString" : "2025-03-04T09:12:31.929+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "YA70QczqDQCxXBp4DlxisQ=="
 				},
-				"code" : "extent := 150@100.\rvalues := #(0.2 0.4 0.6 0.8 1.0 0.9 0.7 0.5 0.3 0.1).\r"
+				"code" : "\rvalues := #(0.2 0.4 0.6 0.8 1.0 0.9 0.7 0.5 0.3 0.1).\r"
 			},
 			{
 				"__type" : "textSnippet",
@@ -537,6 +574,77 @@
 					"uidString" : "AJwW1lXrDQCNrc4lDGXnYw=="
 				},
 				"code" : "labelAxisX := BlElement new\r\t\tlayout: BlLinearLayout horizontal;\r\t\tsize: 500 @ 50;\r\t\t\r\t\tconstraintsDo: [ :c |\r\t\t    c frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter];\r\t\t\t\"c horizontal fitContent.\r\t\t\tc vertical fitContent ];\"\r\t\tbackground: (Color gray alpha: 0.3);\r\t\tpadding: (BlInsets all: 1).\r\r\raptAxisX := BrTextLabelAptitude new text: 'Name of Axis X';\r        labelDo: [ :aLabelElement | \r\t\taLabelElement constraintsDo: [ :c |\r\t\t\tc frame vertical alignCenter.\r\t\t\tc frame horizontal alignCenter. ] ].\r\t\t\r   labelAxisX aptitude: aptAxisX.\r   labelAxisX relocate:100 @ 600.\r  \" aContainer addChild:  (labelTick at: n).\"\r  aContainer addChild: labelAxisX.\r  aContainer forceLayout.\r  ^aContainer"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-04T11:52:18.1+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-04T11:52:18.1+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "gFOuzePrDQC8w8pFAR8YJg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-04T10:47:30.981+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-04T10:55:40.754+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "uKD95eLrDQClOYo8CNMfWw=="
+				},
+				"code" : "labelAxisXTest := BlTextElement new\r\t\t\r\t\ttext: 'Name of Axis' asRopedText ;\r\t\tbackground: (Color gray alpha: 0.3);\rconstraintsDo: [ :c |\r\t\t\tc ignoreByLayout.\r\t\t\tc ignored vertical alignCenter.\r\t\t\tc ignored horizontal alignCenter ].\r \r  labelAxisX addChild: labelAxisXTest.\r  aContainer forceLayout.\r  ^aContainer\r\t\t\t"
 			},
 			{
 				"__type" : "textSnippet",

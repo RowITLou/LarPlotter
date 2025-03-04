@@ -1,7 +1,7 @@
 Class {
 	#name : #LarPlotterHomeSection,
 	#superclass : #GtHomeMultiCardSection,
-	#category : #LarPlotter
+	#category : #'LarPlotter-HomeSection'
 }
 
 { #category : #initialization }
