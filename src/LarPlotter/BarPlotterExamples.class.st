@@ -65,62 +65,117 @@ parentNew relocate: self relocateX @ self relocateY.
 ]
 
 { #category : #'as yet unclassified' }
+BarPlotterExamples >> graphTwithLabels [
+<gtExample>
+| number tickY containerTick aContainer containerTickX tickX |
+
+aContainer := self graphTwithTicks.
+number:= self values size.
+	
+1 to: number do: [: n| 
+containerTick := BlElement new
+		"border: (BlBorder paint: Color black width: 1);"
+		size:  10@(self sizeGraph/ number);
+		relocate: self relocateX-25 @ (self relocateX+((self sizeGraph/number)*(n-1))-((self sizeGraph/number)/2)).
+
+tickY := BlTextElement new
+	
+	text: n asRopedText;
+	"border: (BlBorder paint: Color black width: 1);"
+	constraintsDo: [ :c |
+		c ignoreByLayout.
+		c ignored vertical alignCenter.
+		c ignored horizontal alignCenter ].
+		
+containerTick addChild: tickY.
+aContainer addChild: containerTick.].
+	"aContainer forceLayout."
+	
+1 to: number do: [: n| 
+containerTickX := BlElement new
+		"border: (BlBorder paint: Color black width: 1);"
+		size:  (self sizeGraph/ number)@10;
+		relocate: (self relocateX+((self sizeGraph/number)*(n-1))+((self sizeGraph/number)/2))@(self relocateY +self sizeGraph+15).
+
+tickX := BlTextElement new
+	text: n asRopedText;
+	"border: (BlBorder paint: Color black width: 1);"
+	constraintsDo: [ :c |
+		c ignoreByLayout.
+		c ignored vertical alignCenter.
+		c ignored horizontal alignCenter ].
+		
+containerTickX addChild: tickX.
+aContainer addChild: containerTickX.].
+	"aContainer forceLayout."
+^aContainer
+]
+
+{ #category : #'as yet unclassified' }
+BarPlotterExamples >> graphTwithTicks [
+<gtExample>
+| number tickY containerTick aContainer containerTickX tickX |
+aContainer := self graphWithAxisLabel.
+number:= self values size.
+	
+1 to: number do: [: n| 
+containerTick := BlElement new
+		"border: (BlBorder paint: Color black width: 1);"
+		size:  10@(self sizeGraph/ number);
+		relocate: self relocateX-10 @ (self relocateX+((self sizeGraph/number)*(n-1))-((self sizeGraph/number)/2)).
+
+tickY := BlElement new
+	size: 10@3;
+	border: (BlBorder paint: Color black width: 1);
+	constraintsDo: [ :c |
+		c ignoreByLayout.
+		c ignored vertical alignCenter.
+		c ignored horizontal alignCenter ].
+		
+containerTick addChild: tickY.
+aContainer addChild: containerTick.].
+	"aContainer forceLayout."
+	
+1 to: number do: [: n| 
+containerTickX := BlElement new
+		"border: (BlBorder paint: Color black width: 1);"
+		size:  (self sizeGraph/ number)@10;
+		relocate: (self relocateX+((self sizeGraph/number)*(n-1))+((self sizeGraph/number)/2))@(self relocateY +self sizeGraph).
+
+tickX := BlElement new
+	size: 3@10;
+	border: (BlBorder paint: Color black width: 1);
+	constraintsDo: [ :c |
+		c ignoreByLayout.
+		c ignored vertical alignCenter.
+		c ignored horizontal alignCenter ].
+		
+containerTickX addChild: tickX.
+aContainer addChild: containerTickX.].
+	"aContainer forceLayout."
+^aContainer
+]
+
+{ #category : #'as yet unclassified' }
 BarPlotterExamples >> graphWithAxisLabel [
 <gtExample>
-| labelAxisX labelAxisXTest aContainer labelAxisY labelAxisYTest |
-	labelAxisX := BlElement new
-		layout: BlLinearLayout horizontal;
-		size: 500 @ 50;
-		
-		constraintsDo: [ :c |
-		    c frame vertical alignCenter.
-			c frame horizontal alignCenter];
-		background: (Color gray alpha: 0.3);
-		padding: (BlInsets all: 1).
-		
-labelAxisXTest := BlTextElement new
-		
-		text: 'Name of Axis x' asRopedText ;
-		background: (Color gray alpha: 0.3);
-constraintsDo: [ :c |
-			c ignoreByLayout.
-			c ignored vertical alignCenter.
-			c ignored horizontal alignCenter ].
-labelAxisY := BlElement new
-		layout: BlLinearLayout horizontal;
-		size: self sizeGraph @ self sizeLabel;
-		
-		constraintsDo: [ :c |
-		    c frame vertical alignCenter.
-			c frame horizontal alignCenter];
-		background: (Color gray alpha: 0.3);
-		padding: (BlInsets all: 1).
-		
-labelAxisYTest := BlTextElement new
-		
-		text: 'Name of Axis Y' asRopedText ;
-		background: (Color gray alpha: 0.3);
-constraintsDo: [ :c |
-			c ignoreByLayout.
-			c ignored vertical alignCenter.
-			c ignored horizontal alignCenter ].
+| labelAxisX aContainer labelAxisY |
+	labelAxisX := self labelAxisX.
+	
+labelAxisY := self labelAxisY.
 			
 			
 aContainer := self graphWithBars.
- labelAxisX addChild: labelAxisXTest.
+ 
  aContainer addChild: labelAxisX.
   aContainer forceLayout.
-   labelAxisY relocate: (self relocateX)/2@ self relocateY.
-  labelAxisY transform
-  	topLeftOrigin
-		rotateBy: 90;
-		apply.
+  
   
   labelAxisX relocate:self relocateX @ (self relocateY + self sizeGraph + 50).
- labelAxisY addChild: labelAxisYTest.
+ 
  aContainer addChild: labelAxisY.
   aContainer forceLayout.
-  ^aContainer
+ ^aContainer
 		
 ]
 
@@ -147,6 +202,63 @@ child layout: BlFrameLayout new;
 container := self containerElement.
 container addChild: graphElement.
 ^container
+]
+
+{ #category : #'as yet unclassified' }
+BarPlotterExamples >> labelAxisX [
+<gtExample>
+| labelAxisX labelAxisXTest |
+	labelAxisX := BlElement new
+		layout: BlLinearLayout horizontal;
+		size: self sizeGraph @ self sizeLabel;
+		
+		constraintsDo: [ :c |
+		    c frame vertical alignCenter.
+			c frame horizontal alignCenter];
+		background: (Color gray alpha: 0.3);
+		padding: (BlInsets all: 1).
+		
+labelAxisXTest := BlTextElement new
+		
+		text: 'Name of Axis x' asRopedText ;
+		background: (Color gray alpha: 0.3);
+constraintsDo: [ :c |
+			c ignoreByLayout.
+			c ignored vertical alignCenter.
+			c ignored horizontal alignCenter ].
+labelAxisX addChild: labelAxisXTest.
+^labelAxisX
+]
+
+{ #category : #'as yet unclassified' }
+BarPlotterExamples >> labelAxisY [
+<gtExample>
+| labelAxisY labelAxisYTest |
+	labelAxisY := BlElement new
+		layout: BlLinearLayout horizontal;
+		size: self sizeGraph @ self sizeLabel;
+		
+		constraintsDo: [ :c |
+		    c frame vertical alignCenter.
+			c frame horizontal alignCenter];
+		background: (Color gray alpha: 0.3);
+		padding: (BlInsets all: 1).
+		
+labelAxisYTest := BlTextElement new
+		
+		text: 'Name of Axis Y' asRopedText ;
+		background: (Color gray alpha: 0.3);
+constraintsDo: [ :c |
+			c ignoreByLayout.
+			c ignored vertical alignCenter.
+			c ignored horizontal alignCenter ].
+labelAxisY relocate: (self relocateX)/2@ self relocateY.
+  labelAxisY transform
+  	topLeftOrigin
+		rotateBy: 90;
+		apply.
+labelAxisY addChild: labelAxisYTest.
+^labelAxisY
 ]
 
 { #category : #'as yet unclassified' }
@@ -177,6 +289,33 @@ BarPlotterExamples >> sizeGraph [
 { #category : #'as yet unclassified' }
 BarPlotterExamples >> sizeLabel [
 ^50
+]
+
+{ #category : #'as yet unclassified' }
+BarPlotterExamples >> totalGraph [
+<gtExample>
+| container titel titelContainer |
+	container := self graphTwithLabels.
+titelContainer := BlElement new
+		layout: BlLinearLayout horizontal;
+		size: self sizeGraph @ 50;
+		relocate: self relocateX @ 0;
+		constraintsDo: [ :c |
+		    c frame vertical alignCenter.
+			c frame horizontal alignCenter];
+		
+		background: (Color gray alpha: 0.3);
+		padding: (BlInsets all: 1).
+
+titel := BlTextElement new
+		
+		text: 'Titel of graph' asRopedText ;
+		background: (Color gray alpha: 0.3).
+
+titelContainer addChild: titel.
+container addChild: titelContainer. 
+^container
+ 
 ]
 
 { #category : #'as yet unclassified' }
