@@ -59,7 +59,7 @@ self values size with: self sizeGraph with: self relocate.
 { #category : #'as yet unclassified' }
 BarPlotterExamples >> graphTotal [
 <gtExample>
-| labelAxisX graph labelAxisY ticksX ticksY labelsX labelsY |
+| labelAxisX graph labelAxisY ticksX ticksY labelsX labelsY titel|
 graph := self containerWithGraphAndBars. 
 
 "Labels for the axis"
@@ -73,6 +73,7 @@ ticksX:= BarPlotter new ticksAxisX: self values size with: self sizeGraph with: 
 ticksY:= BarPlotter new ticksAxisY: self values size with: self sizeGraph with: self relocate.
 1 to: self values size do: [:n| graph addChild: (ticksX at: n).
 				graph addChild: (ticksY at: n)].
+				
 "labels for the ticks on both axis"
 labelsX := BarPlotter new labelTicksX: 
 self values size with: self sizeGraph with: self relocate.
@@ -80,6 +81,21 @@ labelsY := BarPlotter new labelTicksY:
 self values size with: self sizeGraph with: self relocate.
 1 to: self values size do: [:n| graph addChild: (labelsX at: n).
 				graph addChild: (labelsY at: n)].
+				
+"titel of the graph"
+titel := BarPlotter new titelGraph: self sizeGraph with: self sizeLabel with: self relocate. 
+graph addChild: titel. 
+				
+^graph
+]
+
+{ #category : #'as yet unclassified' }
+BarPlotterExamples >> graphWithTitel [
+<gtExample>
+| graph titel |
+	graph := self containerWithGraphAndBars. 
+titel := BarPlotter new titelGraph: self sizeGraph with: self sizeLabel with: self relocate. 
+graph addChild: titel. 
 ^graph
 ]
 

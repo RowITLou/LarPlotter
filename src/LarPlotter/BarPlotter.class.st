@@ -216,3 +216,28 @@ collection add: containerTick.].
 ^collection
 
 ]
+
+{ #category : #'as yet unclassified' }
+BarPlotter >> titelGraph: sizeGraph with: sizeLabel with: relocate [
+| titel titelText |
+	titel := BlElement new
+		layout: BlLinearLayout horizontal;
+		size:  sizeGraph @  sizeLabel;
+		
+		constraintsDo: [ :c |
+		    c frame vertical alignCenter.
+			c frame horizontal alignCenter];
+		background: (Color gray alpha: 0.3);
+		padding: (BlInsets all: 1).
+titelText := BlTextElement new
+		
+		text: 'Name of Graph' asRopedText ;
+		background: (Color gray alpha: 0.3);
+constraintsDo: [ :c |
+			c ignoreByLayout.
+			c ignored vertical alignCenter.
+			c ignored horizontal alignCenter ].
+titel addChild: titelText. 
+titel relocate: relocate@0. 
+^titel
+]
