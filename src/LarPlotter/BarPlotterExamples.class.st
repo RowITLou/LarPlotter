@@ -1,284 +1,91 @@
 Class {
 	#name : #BarPlotterExamples,
-	#superclass : #BarPlotter,
+	#superclass : #Object,
 	#category : #'LarPlotter-Examples'
 }
 
 { #category : #'as yet unclassified' }
-BarPlotterExamples >> containerElement [
+BarPlotterExamples >> containerWithGraphAndBars [
 <gtExample>
-| aContainer |
-	aContainer := BlElement new
-		constraintsDo: [ :c |
-			c horizontal exact: self sizeContainer.
-			c vertical exact: self sizeContainer ];
-		border: (BlBorder paint: Color veryLightGray width: 1).
-^aContainer
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> createBars [
-| child |
-	child := BlElement new
-			background: (Color white alpha: 0.2);
-			border: (BlBorder builder
-					paint: (Color blue alpha: 0.5);
-					width: 1;
-					build).
-			
-^child
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> createBars: height [
-| child |
-	child := BlElement new
-			background: (Color white alpha: 0.2);
-			border: (BlBorder builder
-					paint: (Color blue alpha: 0.5);
-					width: 1;
-					build);
-			layout: BlFrameLayout new;
-			constraintsDo: [ :c | 
-		    c vertical exact: (4*100)*(height).
-		    
-			c horizontal matchParent
-			].
-^child
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> graphElement [
-<gtExample>
-| parentNew |
-	parentNew := BlElement new
-			border: (BlBorder builder
-					
-					paint: Color black;
-					width: 3;
-					build);
-			layout: BlLinearLayout horizontal.
-parentNew constraints horizontal exact: self sizeGraph.
-parentNew constraints vertical exact: self sizeGraph.
-parentNew relocate: self relocateX @ self relocateY.
-^parentNew
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> graphTwithLabels [
-<gtExample>
-| number tickY containerTick aContainer containerTickX tickX |
-
-aContainer := self graphTwithTicks.
-number:= self values size.
-	
-1 to: number do: [: n| 
-containerTick := BlElement new
-		"border: (BlBorder paint: Color black width: 1);"
-		size:  10@(self sizeGraph/ number);
-		relocate: self relocateX-25 @ (self relocateX+((self sizeGraph/number)*(n-1))-((self sizeGraph/number)/2)).
-
-tickY := BlTextElement new
-	
-	text: n asRopedText;
-	"border: (BlBorder paint: Color black width: 1);"
-	constraintsDo: [ :c |
-		c ignoreByLayout.
-		c ignored vertical alignCenter.
-		c ignored horizontal alignCenter ].
-		
-containerTick addChild: tickY.
-aContainer addChild: containerTick.].
-	"aContainer forceLayout."
-	
-1 to: number do: [: n| 
-containerTickX := BlElement new
-		"border: (BlBorder paint: Color black width: 1);"
-		size:  (self sizeGraph/ number)@10;
-		relocate: (self relocateX+((self sizeGraph/number)*(n-1))+((self sizeGraph/number)/2))@(self relocateY +self sizeGraph+15).
-
-tickX := BlTextElement new
-	text: n asRopedText;
-	"border: (BlBorder paint: Color black width: 1);"
-	constraintsDo: [ :c |
-		c ignoreByLayout.
-		c ignored vertical alignCenter.
-		c ignored horizontal alignCenter ].
-		
-containerTickX addChild: tickX.
-aContainer addChild: containerTickX.].
-	"aContainer forceLayout."
-^aContainer
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> graphTwithTicks [
-<gtExample>
-| number tickY containerTick aContainer containerTickX tickX |
-aContainer := self graphWithAxisLabel.
-number:= self values size.
-	
-1 to: number do: [: n| 
-containerTick := BlElement new
-		"border: (BlBorder paint: Color black width: 1);"
-		size:  10@(self sizeGraph/ number);
-		relocate: self relocateX-10 @ (self relocateX+((self sizeGraph/number)*(n-1))-((self sizeGraph/number)/2)).
-
-tickY := BlElement new
-	size: 10@3;
-	border: (BlBorder paint: Color black width: 1);
-	constraintsDo: [ :c |
-		c ignoreByLayout.
-		c ignored vertical alignCenter.
-		c ignored horizontal alignCenter ].
-		
-containerTick addChild: tickY.
-aContainer addChild: containerTick.].
-	"aContainer forceLayout."
-	
-1 to: number do: [: n| 
-containerTickX := BlElement new
-		"border: (BlBorder paint: Color black width: 1);"
-		size:  (self sizeGraph/ number)@10;
-		relocate: (self relocateX+((self sizeGraph/number)*(n-1))+((self sizeGraph/number)/2))@(self relocateY +self sizeGraph).
-
-tickX := BlElement new
-	size: 3@10;
-	border: (BlBorder paint: Color black width: 1);
-	constraintsDo: [ :c |
-		c ignoreByLayout.
-		c ignored vertical alignCenter.
-		c ignored horizontal alignCenter ].
-		
-containerTickX addChild: tickX.
-aContainer addChild: containerTickX.].
-	"aContainer forceLayout."
-^aContainer
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> graphWithAxisLabel [
-<gtExample>
-| labelAxisX aContainer labelAxisY |
-	labelAxisX := self labelAxisX.
-	
-labelAxisY := self labelAxisY.
-			
-			
-aContainer := self graphWithBars.
- 
- aContainer addChild: labelAxisX.
-  aContainer forceLayout.
-  
-  
-  labelAxisX relocate:self relocateX @ (self relocateY + self sizeGraph + 50).
- 
- aContainer addChild: labelAxisY.
-  aContainer forceLayout.
- ^aContainer
-		
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> graphWithBars [
-<gtExample>
-| graphElement number child container |
-graphElement:= self graphElement.
-number := self values size.
-
-1 to: number do: [: n| 
-child := self createBars.
-child layout: BlFrameLayout new;
-			constraintsDo: [ :c | 
-		    c vertical exact: (4*100)*(self values at: n).
-		    
-			c horizontal matchParent
-			].
-			
-	graphElement addChild: child.].
-	graphElement transform
-		rotateBy: self rotation;
-		apply.
-container := self containerElement.
-container addChild: graphElement.
+| graph container |
+container := BarPlotter new containerElement: 700.
+	graph:= BarPlotter new barsInGraph: self values with: self sizeGraph with: self relocate.
+	container addChild: graph.
 ^container
 ]
 
 { #category : #'as yet unclassified' }
-BarPlotterExamples >> labelAxisX [
+BarPlotterExamples >> graphAndLabels [
 <gtExample>
-| labelAxisX labelAxisXTest |
-	labelAxisX := BlElement new
-		layout: BlLinearLayout horizontal;
-		size: self sizeGraph @ self sizeLabel;
-		
-		constraintsDo: [ :c |
-		    c frame vertical alignCenter.
-			c frame horizontal alignCenter];
-		background: (Color gray alpha: 0.3);
-		padding: (BlInsets all: 1).
-		
-labelAxisXTest := BlTextElement new
-		
-		text: 'Name of Axis x' asRopedText ;
-		background: (Color gray alpha: 0.3);
-constraintsDo: [ :c |
-			c ignoreByLayout.
-			c ignored vertical alignCenter.
-			c ignored horizontal alignCenter ].
-labelAxisX addChild: labelAxisXTest.
-^labelAxisX
+| graph labelAxisX labelAxisY |
+graph:= self containerWithGraphAndBars.
+labelAxisX := BarPlotter new labelAxisX: self sizeGraph with: self sizeLabel with: self relocate.
+
+graph addChild: labelAxisX.
+labelAxisY := BarPlotter new labelAxisY: self sizeGraph with: self sizeLabel with: self relocate.
+graph addChild: labelAxisY.
+
+
+^graph
 ]
 
 { #category : #'as yet unclassified' }
-BarPlotterExamples >> labelAxisY [
+BarPlotterExamples >> graphAndTicks [
 <gtExample>
-| labelAxisY labelAxisYTest |
-	labelAxisY := BlElement new
-		layout: BlLinearLayout horizontal;
-		size: self sizeGraph @ self sizeLabel;
-		
-		constraintsDo: [ :c |
-		    c frame vertical alignCenter.
-			c frame horizontal alignCenter];
-		background: (Color gray alpha: 0.3);
-		padding: (BlInsets all: 1).
-		
-labelAxisYTest := BlTextElement new
-		
-		text: 'Name of Axis Y' asRopedText ;
-		background: (Color gray alpha: 0.3);
-constraintsDo: [ :c |
-			c ignoreByLayout.
-			c ignored vertical alignCenter.
-			c ignored horizontal alignCenter ].
-labelAxisY relocate: (self relocateX)/2@ self relocateY.
-  labelAxisY transform
-  	topLeftOrigin
-		rotateBy: 90;
-		apply.
-labelAxisY addChild: labelAxisYTest.
-^labelAxisY
+| graph ticksX ticksY |
+	graph:= self containerWithGraphAndBars.
+ticksX:= BarPlotter new ticksAxisX: self values size with: self sizeGraph with: self relocate.
+ticksY:= BarPlotter new ticksAxisY: self values size with: self sizeGraph with: self relocate.
+1 to: self values size do: [:n| graph addChild: (ticksX at: n).
+				graph addChild: (ticksY at: n)].
+^graph
+
 ]
 
 { #category : #'as yet unclassified' }
-BarPlotterExamples >> relocateX [
+BarPlotterExamples >> graphAndTicksLabel [
+<gtExample>
+| labelsX graph labelsY |
+	graph := self graphAndTicks.
+labelsX := BarPlotter new labelTicksX: 
+self values size with: self sizeGraph with: self relocate.
+labelsY := BarPlotter new labelTicksY: 
+self values size with: self sizeGraph with: self relocate.
+1 to: self values size do: [:n| graph addChild: (labelsX at: n).
+				graph addChild: (labelsY at: n)].
+^graph
+]
+
+{ #category : #'as yet unclassified' }
+BarPlotterExamples >> graphTotal [
+<gtExample>
+| labelAxisX graph labelAxisY ticksX ticksY labelsX labelsY |
+graph := self containerWithGraphAndBars. 
+
+"Labels for the axis"
+labelAxisX := BarPlotter new labelAxisX: self sizeGraph with: self sizeLabel with: self relocate.
+graph addChild: labelAxisX.
+labelAxisY := BarPlotter new labelAxisY: self sizeGraph with: self sizeLabel with: self relocate.
+graph addChild: labelAxisY.
+
+"ticks on both axis"
+ticksX:= BarPlotter new ticksAxisX: self values size with: self sizeGraph with: self relocate.
+ticksY:= BarPlotter new ticksAxisY: self values size with: self sizeGraph with: self relocate.
+1 to: self values size do: [:n| graph addChild: (ticksX at: n).
+				graph addChild: (ticksY at: n)].
+"labels for the ticks on both axis"
+labelsX := BarPlotter new labelTicksX: 
+self values size with: self sizeGraph with: self relocate.
+labelsY := BarPlotter new labelTicksY: 
+self values size with: self sizeGraph with: self relocate.
+1 to: self values size do: [:n| graph addChild: (labelsX at: n).
+				graph addChild: (labelsY at: n)].
+^graph
+]
+
+{ #category : #'as yet unclassified' }
+BarPlotterExamples >> relocate [
 ^100
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> relocateY [
-^100
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> rotation [
-^180
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> sizeContainer [
-^800
 ]
 
 { #category : #'as yet unclassified' }
@@ -289,33 +96,6 @@ BarPlotterExamples >> sizeGraph [
 { #category : #'as yet unclassified' }
 BarPlotterExamples >> sizeLabel [
 ^50
-]
-
-{ #category : #'as yet unclassified' }
-BarPlotterExamples >> totalGraph [
-<gtExample>
-| container titel titelContainer |
-	container := self graphTwithLabels.
-titelContainer := BlElement new
-		layout: BlLinearLayout horizontal;
-		size: self sizeGraph @ 50;
-		relocate: self relocateX @ 0;
-		constraintsDo: [ :c |
-		    c frame vertical alignCenter.
-			c frame horizontal alignCenter];
-		
-		background: (Color gray alpha: 0.3);
-		padding: (BlInsets all: 1).
-
-titel := BlTextElement new
-		
-		text: 'Titel of graph' asRopedText ;
-		background: (Color gray alpha: 0.3).
-
-titelContainer addChild: titel.
-container addChild: titelContainer. 
-^container
- 
 ]
 
 { #category : #'as yet unclassified' }
