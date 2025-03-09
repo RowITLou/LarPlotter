@@ -136,7 +136,8 @@ containerTickX := BlElement new
 
 tickX := BlTextElement new
 	text: n asRopedText;
-	"border: (BlBorder paint: Color black width: 1);"
+	size: 30@30;
+	border: (BlBorder paint: Color black width: 1);
 	constraintsDo: [ :c |
 		c ignoreByLayout.
 		c ignored vertical alignCenter.

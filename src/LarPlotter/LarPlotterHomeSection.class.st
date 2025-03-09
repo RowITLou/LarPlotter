@@ -13,7 +13,7 @@ LarPlotterHomeSection >> tocCard [
 		description: 'Masters Thesis';
 		priority: 10;
 		pageName: 'TOC Plotter';
-		databaseName: 'RowITLou\LarPlotter\lepiter';
+		databaseName: 'LarPlotterLepiter';
 		assertInvariant;
 		yourself
 ]
