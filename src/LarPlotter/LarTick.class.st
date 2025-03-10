@@ -20,6 +20,13 @@ tickElementY create: self sizeWidth with: self sizeLength.
 ]
 
 { #category : #'as yet unclassified' }
+LarTick >> initialize: sizeWidth with: sizeLength [
+self sizeWidth: sizeWidth. 
+self sizeLength: sizeLength. 
+self asElement.
+]
+
+{ #category : #'as yet unclassified' }
 LarTick >> resize: widthX with: lengthX [
 self sizeWidth: widthX. 
 self sizeLength: lengthX.

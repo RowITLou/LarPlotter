@@ -14,6 +14,18 @@ label:= LarTickLabelElement new create: labelText
 ]
 
 { #category : #'as yet unclassified' }
+LarTickLabel >> initialize: text [
+self labelText: text.
+self asElement.
+]
+
+{ #category : #'as yet unclassified' }
+LarTickLabel >> labelText: textLabel [
+labelText:= textLabel.
+^labelText
+]
+
+{ #category : #'as yet unclassified' }
 LarTickLabel >> setBackground: color [
 label background: color
 ]
@@ -26,4 +38,11 @@ label border: (BlBorder paint: color).
 { #category : #'as yet unclassified' }
 LarTickLabel >> setFontSize: number [
 label defaultFontSize: number
+]
+
+{ #category : #'as yet unclassified' }
+LarTickLabel >> setText: textlabel [
+label text: textlabel.
+labelText:= textlabel.
+^labelText
 ]

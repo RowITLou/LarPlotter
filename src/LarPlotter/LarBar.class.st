@@ -15,6 +15,13 @@ barElement:= LarBarElement new create: height with: width
 ]
 
 { #category : #'as yet unclassified' }
+LarBar >> initialize: sizeWidth with: sizeHeight [
+self sizeWidth: sizeWidth. 
+self sizeHeight: sizeHeight. 
+self asElement.
+]
+
+{ #category : #'as yet unclassified' }
 LarBar >> resize: sizeWidth with: sizeHeight [
 self sizeWidth: sizeWidth. 
 self sizeHeight: sizeHeight.

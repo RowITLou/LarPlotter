@@ -15,6 +15,13 @@ containerElement:= LarContainerElement new create: height with: width
 ]
 
 { #category : #'as yet unclassified' }
+LarContainer >> initialize: sizeWidth with: sizeHeight [
+self sizeWidth: sizeWidth. 
+self sizeHeight: sizeHeight. 
+self asElement.
+]
+
+{ #category : #'as yet unclassified' }
 LarContainer >> resize: widthX with: lengthX [
 self sizeWidth: widthX. 
 self sizeHeight: lengthX.

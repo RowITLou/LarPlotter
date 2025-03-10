@@ -811,7 +811,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-09T22:43:01.973+01:00"
+						"dateAndTimeString" : "2025-03-09T22:59:26.062+01:00"
 					}
 				},
 				"uid" : {
@@ -821,7 +821,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Labels of Axis {{gtClass:name=Lar}}"
+				"string" : "Labels of Axis {{gtClass:name=LarLabelAxis}} {{gtClass:name=LarLabelAxisElement}} Done"
 			},
 			{
 				"__type" : "textSnippet",
@@ -997,7 +997,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-08T12:51:46.266+01:00"
+						"dateAndTimeString" : "2025-03-09T22:59:53.926+01:00"
 					}
 				},
 				"uid" : {
@@ -1007,7 +1007,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Titel"
+				"string" : "Titel {{gtClass:name=LarTitel}} {{gtClass:name=LarTitelElement}}"
 			},
 			{
 				"__type" : "textSnippet",
