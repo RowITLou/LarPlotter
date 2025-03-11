@@ -11,19 +11,34 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-LarTick >> asElement [
+LarTick >> asElementX [
 tickElementX:= LarTickXElement new. 
 tickElementX create: self sizeWidth with: self sizeLength. 
+^tickElementX
+]
+
+{ #category : #'as yet unclassified' }
+LarTick >> asElementY [
 tickElementY:= LarTickYElement new. 
 tickElementY create: self sizeWidth with: self sizeLength. 
+^tickElementY
+]
 
+{ #category : #'as yet unclassified' }
+LarTick >> createX [
+^self asElementX
+]
+
+{ #category : #'as yet unclassified' }
+LarTick >> createY [
+^self asElementY
 ]
 
 { #category : #'as yet unclassified' }
 LarTick >> initialize: sizeWidth with: sizeLength [
 self sizeWidth: sizeWidth. 
 self sizeLength: sizeLength. 
-self asElement.
+^self
 ]
 
 { #category : #'as yet unclassified' }

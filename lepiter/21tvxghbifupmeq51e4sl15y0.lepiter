@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-08T13:00:10.117+01:00"
+						"dateAndTimeString" : "2025-03-11T09:17:42.274+01:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,44 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "In the Page [[Overview of Elements of the Bar Graph]] I defined all elements and wrote down all the things they should be able to do. For every element there is a model class and an Element class. "
+				"string" : "In the Page [[Overview of Elements of the Bar Graph]] I defined all elements and wrote down all the things they should be able to do. For every element there is a model class and an Element class. All the new classes are tagged in the page. Please only consider the classes beginning with Lar. the other classes are for me to experiment. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-11T14:21:59.035+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-11T14:23:54.099+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "eDTgtXLsDQCzSfZOB1+lOQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The Plotter for the bargraph can be found here {{gtClass:name=LarPlotterBar}} and the examples here {{gtClass:name=LarPlotterBarExamples}} "
 			},
 			{
 				"__type" : "textSnippet",

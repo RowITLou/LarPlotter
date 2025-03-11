@@ -1,7 +1,7 @@
 Class {
 	#name : #BarPlotter,
 	#superclass : #Object,
-	#category : #'LarPlotter-Plots'
+	#category : #'LarPlotter-Other'
 }
 
 { #category : #'as yet unclassified' }

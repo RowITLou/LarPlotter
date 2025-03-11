@@ -14,7 +14,7 @@ LarContainerElement >> create: height with: width [
 					paint: Color black;
 					width: 3;
 					build);
-			background: BlBackground paint: Color white;
+			background: (BlBackground paint: Color white);
 			layout: BlLinearLayout horizontal.
 ^container
 ]
