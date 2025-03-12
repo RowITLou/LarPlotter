@@ -1,6 +1,6 @@
 Class {
 	#name : #LarPlotterBar,
-	#superclass : #Object,
+	#superclass : #BlElement,
 	#instVars : [
 		'amountTicksX',
 		'amountTicksY',
@@ -20,52 +20,51 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars: values [
-<return: #LarPlotterBar>
 | bar |
-1 to: (values size) do: [:n|
-bar:= self createBars: ((values at: n)*100*4).
-graphElement addChild: bar].
+	1 to: (values size) do: [:n|
+bar:= LarBar new initialize: ((values at: n)*100*4) with: (widthG/(values size)).
+graphElement addChild: bar
+].
 
 graphElement transform
 		rotateBy: 180;
 		apply.
-^base
+graphElement forceLayout.
+		
+^graphElement
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addTicks [
-<return: #LarPlotterBar>
 |  tickX tickXcontainer tickY tickYcontainer |
 	1 to: (self amountTicksX - 1) do: [: n| 
 tickX := (self ticks: 3 with: 10) asElementX. 
-tickXcontainer := BlElement new
-		size:  ( widthG/ self amountTicksX)@ 12;
-		"border: (BlBorder builder
+tickXcontainer := LarContainer new initialize:( widthG/ self amountTicksX) with: 12.
+		
+tickXcontainer relocate: (posX + ((n-1)*(widthG/self amountTicksX)) + ((widthG/self amountTicksX)/2)) @ (posY + heightG);
+border: (BlBorder builder
 					
-					paint: Color black;
+					paint: Color white;
 					width: 1;
-					build);"
-		relocate: (posX + ((n-1)*(widthG/self amountTicksX)) + ((widthG/self amountTicksX)/2)) @ (posY + heightG).
+					build).
 		
 tickXcontainer addChild: tickX.
-base addChild: tickXcontainer. ].
+self addChild: tickXcontainer. ].
 
 2 to: (self amountTicksY ) do: [: n| 
 tickY := (self ticks: 3 with: 10) asElementY.
-tickYcontainer := BlElement new
-"border: (BlBorder builder
+tickYcontainer := LarContainer new initialize:12 with: ( widthG/ self amountTicksX).
+	tickYcontainer relocate: (posY-12)@(posX +((n-1)*(widthG/self amountTicksX)) - ((heightG/self amountTicksX)/2));
+	border: (BlBorder builder
 					
-					paint: Color black;
+					paint: Color white;
 					width: 1;
-					build);"
-		size:  12 @ ( widthG/ self amountTicksX);
-		relocate: (posY-12)@(posX +((n-1)*(widthG/self amountTicksX)) - ((heightG/self amountTicksX)/2)).
+					build).
 		
-		
-base addChild: tickYcontainer.
+self addChild: tickYcontainer.
 tickYcontainer addChild: tickY.
 ].
-^base
+^self
 ]
 
 { #category : #'as yet unclassified' }
@@ -117,22 +116,44 @@ LarPlotterBar >> createBars: height [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> graphOutline: width with: height [
-<return: #LarPlotterBar>
-
 | labelContainerX labelContainerY |
 widthG := width.
 heightG := height.
-base:= self baseElement.
-graphElement := LarContainer new initialize: width with: height. 
-graphElement relocate: posX @ posY. 
-base addChild: graphElement. 
-labelContainerX := self labelcontainer: width with: self labelHeight. 
+super initialize. 
+self 
+border: (BlBorder builder
+					
+					paint: Color white;
+					width: 1;
+					build);
+			background: (Color transparent);
+			constraintsDo: [ :c |
+			c horizontal exact:  800.
+			c vertical exact:  800 ];
+			background: (BlBackground paint: Color white).
+
+graphElement := LarContainer new initialize: width with: height.
+self addChild: graphElement. 
+graphElement relocate: posX @ posY.
+
+labelContainerX := LarContainer new initialize: width with: self labelHeight. 
+labelContainerX border: (BlBorder builder
+					
+					paint: Color white;
+					width: 1;
+					build).
 labelAxisX := self labelAxis.
-labelContainerY := self labelcontainer:  width with: self labelHeight. 
+labelContainerY := LarContainer new initialize:  width with: self labelHeight. 
+labelContainerY border: (BlBorder builder
+					
+					paint: Color transparent;
+					width: 1;
+					build).
 labelAxisY := self labelAxis.  
 
 labelContainerX addChild: labelAxisX. 
-base addChild: labelContainerX.
+
+self addChild: labelContainerX.
 
 labelContainerX relocate: posX @(posY + height + margine).
 labelContainerY relocate: (posX-margine - self labelHeight)@ (posY + height).
@@ -144,7 +165,9 @@ labelContainerY transform
 		rotateBy: 270;
 		apply.
 
-base addChild: labelContainerY.
+self addChild: labelContainerY.
+labelContainerX forceLayout.
+labelContainerY forceLayout.
 ^self
 
 ]

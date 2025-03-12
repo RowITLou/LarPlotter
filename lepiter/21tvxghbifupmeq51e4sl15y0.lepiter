@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-08T12:58:19.189+01:00"
+						"dateAndTimeString" : "2025-03-12T10:04:19.088+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The last week I spent creating classes for all element for all element in the Graph and redid the Plotter and the Plotter Examples. "
+				"string" : "The last week I spent creating classes for all element for all element in the Graph and redid the Plotter and the Plotter Examples. I have found that it is best if I have a Plotter class and a Plotter Element class. Until now everything is in the Plotter class. I will seperate the different components a clean up everything until next week. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -103,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-11T14:23:54.099+01:00"
+						"dateAndTimeString" : "2025-03-12T10:05:38.836+01:00"
 					}
 				},
 				"uid" : {
@@ -113,7 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The Plotter for the bargraph can be found here {{gtClass:name=LarPlotterBar}} and the examples here {{gtClass:name=LarPlotterBarExamples}} "
+				"string" : "The Plotter for the bargraph can be found here {{gtClass:name=LarPlotterBar}} and the examples here {{gtClass:name=LarPlotterBarExamples}} I only had the time for the examples to see if every thing works as I have imagined. in the "
 			},
 			{
 				"__type" : "textSnippet",
@@ -129,7 +129,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-08T13:00:11.864+01:00"
+						"dateAndTimeString" : "2025-03-12T10:04:46.683+01:00"
 					}
 				},
 				"editEmail" : {
@@ -140,7 +140,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-08T13:01:24.714+01:00"
+						"dateAndTimeString" : "2025-03-12T10:04:46.683+01:00"
 					}
 				},
 				"uid" : {
@@ -150,7 +150,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "If there are other methods I could implement that I did not think of for any element you can add these at the bottom of this report. "
+				"string" : ""
 			},
 			{
 				"__type" : "textSnippet",
@@ -177,7 +177,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-08T13:02:23.435+01:00"
+						"dateAndTimeString" : "2025-03-12T10:07:30.546+01:00"
 					}
 				},
 				"uid" : {
@@ -187,7 +187,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The coming week I will be continung by implementing Scatter Graphs and Line Graphs. "
+				"string" : "The coming week I will be continung by implementing Scatter Graphs and Line Graphs and clean up everything I did not have time to do during the last iteration. "
 			},
 			{
 				"__type" : "textSnippet",

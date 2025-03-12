@@ -11,14 +11,14 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarContainer >> asElement [
-^containerElement:= LarContainerElement new create: height with: width 
+^LarContainerElement new create: height with: width 
 ]
 
 { #category : #'as yet unclassified' }
 LarContainer >> initialize: sizeWidth with: sizeHeight [
 self sizeWidth: sizeWidth. 
 self sizeHeight: sizeHeight. 
-^self asElement.
+^(self asElement).
 ]
 
 { #category : #'as yet unclassified' }

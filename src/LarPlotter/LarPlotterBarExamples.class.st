@@ -24,6 +24,12 @@ LarPlotterBarExamples >> basic [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> oneBar [
+<gtExample>
+^LarBar new initialize: 400
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> test [
 <gtExample>
 ^(LarTick new initialize: 3 with: 10) asElementY.

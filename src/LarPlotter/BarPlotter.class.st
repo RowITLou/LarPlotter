@@ -1,6 +1,6 @@
 Class {
 	#name : #BarPlotter,
-	#superclass : #Object,
+	#superclass : #BlElement,
 	#category : #'LarPlotter-Other'
 }
 

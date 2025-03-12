@@ -11,14 +11,22 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarBar >> asElement [
-barElement:= LarBarElement new create: height with: width 
+^LarBarElement new create: height with: width
 ]
 
 { #category : #'as yet unclassified' }
-LarBar >> initialize: sizeWidth with: sizeHeight [
-self sizeWidth: sizeWidth. 
+LarBar >> initialize: sizeHeight [
+
 self sizeHeight: sizeHeight. 
-self asElement.
+^self asElement.
+]
+
+{ #category : #'as yet unclassified' }
+LarBar >> initialize: sizeHeight with: sizeWidth [
+
+self sizeHeight: sizeHeight. 
+self sizeWidth: sizeWidth. 
+^self asElement.
 ]
 
 { #category : #'as yet unclassified' }

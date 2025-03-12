@@ -10,8 +10,8 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarLabelAxis >> asElement [
-LabelElement:= LarTickLabelElement new create: text. 
-^LabelElement
+^LarLabelAxisElement new create: text. 
+
 ]
 
 { #category : #'as yet unclassified' }
