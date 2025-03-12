@@ -12,21 +12,60 @@ Class {
 		'labelAxisY',
 		'base',
 		'heightG',
-		'widthG'
+		'widthG',
+		'graphElement'
 	],
 	#category : #'LarPlotter-Plotter'
 }
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addTicks [
-| tick |
-	1 to: self amountTicksX do: [: n| 
-tick := self ticks: 3 with: 10.
-tick createX. 
+LarPlotterBar >> addBars: values [
+<return: #LarPlotterBar>
+| bar |
+1 to: (values size) do: [:n|
+bar:= self createBars: ((values at: n)*100*4).
+graphElement addChild: bar].
 
-"add to base, relocate"
-
+graphElement transform
+		rotateBy: 180;
+		apply.
+^base
 ]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addTicks [
+<return: #LarPlotterBar>
+|  tickX tickXcontainer tickY tickYcontainer |
+	1 to: (self amountTicksX - 1) do: [: n| 
+tickX := (self ticks: 3 with: 10) asElementX. 
+tickXcontainer := BlElement new
+		size:  ( widthG/ self amountTicksX)@ 12;
+		"border: (BlBorder builder
+					
+					paint: Color black;
+					width: 1;
+					build);"
+		relocate: (posX + ((n-1)*(widthG/self amountTicksX)) + ((widthG/self amountTicksX)/2)) @ (posY + heightG).
+		
+tickXcontainer addChild: tickX.
+base addChild: tickXcontainer. ].
+
+2 to: (self amountTicksY ) do: [: n| 
+tickY := (self ticks: 3 with: 10) asElementY.
+tickYcontainer := BlElement new
+"border: (BlBorder builder
+					
+					paint: Color black;
+					width: 1;
+					build);"
+		size:  12 @ ( widthG/ self amountTicksX);
+		relocate: (posY-12)@(posX +((n-1)*(widthG/self amountTicksX)) - ((heightG/self amountTicksX)/2)).
+		
+		
+base addChild: tickYcontainer.
+tickYcontainer addChild: tickY.
+].
+^base
 ]
 
 { #category : #'as yet unclassified' }
@@ -58,9 +97,29 @@ LarPlotterBar >> baseElement [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> graphOutline: width with: height [
+LarPlotterBar >> createBars: height [
+| child |
 
-| graphElement labelContainerX labelContainerY |
+	child := BlElement new
+			background: (Color white alpha: 0.2);
+			border: (BlBorder builder
+					paint: (Color blue alpha: 0.5);
+					width: 1;
+					build);
+	layout: BlFrameLayout new;
+			constraintsDo: [ :c | 
+		    c vertical exact: (height).
+		    
+			c horizontal matchParent
+			].
+^child
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> graphOutline: width with: height [
+<return: #LarPlotterBar>
+
+| labelContainerX labelContainerY |
 widthG := width.
 heightG := height.
 base:= self baseElement.
@@ -75,7 +134,6 @@ labelAxisY := self labelAxis.
 labelContainerX addChild: labelAxisX. 
 base addChild: labelContainerX.
 
-
 labelContainerX relocate: posX @(posY + height + margine).
 labelContainerY relocate: (posX-margine - self labelHeight)@ (posY + height).
 
@@ -87,7 +145,8 @@ labelContainerY transform
 		apply.
 
 base addChild: labelContainerY.
-^base
+^self
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -160,4 +219,5 @@ margine := number
 { #category : #'as yet unclassified' }
 LarPlotterBar >> ticks: sizeWidth with: sizeLength [
 ^LarTick new initialize: sizeWidth with: sizeLength.
+	
 ]

@@ -11,11 +11,16 @@ Class {
 { #category : #'as yet unclassified' }
 LarTickYElement >> create: sizeWidth with: sizeLength [
 | tickX |
+<return: #LarTickElement>
+super initialize. 
     width:= sizeWidth.
     length:= sizeLength.
-	tickX := BlElement new
+	^self
 	size: length@ width;
 	border: (BlBorder paint: Color black width: 1);
-	background: (BlBackground paint: Color black).
-^tickX
+	background: (BlBackground paint: Color black);
+	constraintsDo: [ :c |
+		c ignoreByLayout.
+		c ignored vertical alignCenter.
+		c ignored horizontal alignCenter ]; yourself.
 ]
