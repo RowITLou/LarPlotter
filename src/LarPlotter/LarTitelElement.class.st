@@ -1,13 +1,13 @@
 Class {
 	#name : #LarTitelElement,
-	#superclass : #BlElement,
+	#superclass : #BlTextElement,
 	#category : #'LarPlotter-Element'
 }
 
 { #category : #'as yet unclassified' }
 LarTitelElement >> create: labelText [
-|  label |
-	label := BlTextElement new
+super initialize.
+^self
 	defaultFontSize: 30;
 	
 	text: labelText asRopedText;
@@ -17,5 +17,5 @@ LarTitelElement >> create: labelText [
 		c ignoreByLayout.
 		c ignored vertical alignCenter.
 		c ignored horizontal alignCenter ].
- ^label
+
 ]

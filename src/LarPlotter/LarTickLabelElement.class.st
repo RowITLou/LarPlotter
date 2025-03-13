@@ -1,6 +1,6 @@
 Class {
 	#name : #LarTickLabelElement,
-	#superclass : #Object,
+	#superclass : #BlTextElement,
 	#instVars : [
 		'textLabel'
 	],
@@ -10,7 +10,8 @@ Class {
 { #category : #'as yet unclassified' }
 LarTickLabelElement >> create: labelText [
 |  label |
-	label := BlTextElement new
+super initialize.
+^self
 	defaultFontSize: 30;
 	
 	text: labelText asRopedText;
@@ -20,5 +21,5 @@ LarTickLabelElement >> create: labelText [
 		c ignoreByLayout.
 		c ignored vertical alignCenter.
 		c ignored horizontal alignCenter ].
- ^label
+
 ]

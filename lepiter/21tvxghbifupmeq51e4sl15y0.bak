@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-12T10:04:19.088+01:00"
+						"dateAndTimeString" : "2025-03-12T22:51:23.281+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The last week I spent creating classes for all element for all element in the Graph and redid the Plotter and the Plotter Examples. I have found that it is best if I have a Plotter class and a Plotter Element class. Until now everything is in the Plotter class. I will seperate the different components a clean up everything until next week. "
+				"string" : "The last week I spent creating classes for all element for all element in the Graph and redid the Plotter and the Plotter Examples. I have found that it is best if I have a Plotter class and a Plotter Element class. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -103,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-12T10:05:38.836+01:00"
+						"dateAndTimeString" : "2025-03-13T05:46:40.413+01:00"
 					}
 				},
 				"uid" : {
@@ -113,7 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The Plotter for the bargraph can be found here {{gtClass:name=LarPlotterBar}} and the examples here {{gtClass:name=LarPlotterBarExamples}} I only had the time for the examples to see if every thing works as I have imagined. in the "
+				"string" : "The Plotter for the bargraph can be found here {{gtClass:name=LarPlotterBar}} , {{gtClass:name=LarPlotterBarElement}} and the examples here {{gtClass:name=LarPlotterBarExamples}} I only had the time for the examples to see if every thing works as I have imagined. Which means I can create a grpah. I did not have time to test all the other methods of the different elements. This will be my goal for the coming iteration.  I will also be cleaning up the {{gtClass:name=LarPlo}}"
 			},
 			{
 				"__type" : "textSnippet",
@@ -177,7 +177,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-12T10:06:17.362+01:00"
+						"dateAndTimeString" : "2025-03-12T10:07:30.546+01:00"
 					}
 				},
 				"uid" : {

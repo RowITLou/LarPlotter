@@ -5,45 +5,56 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> bars [
+LarPlotterBarExamples >> addAxisLabel [
 <gtExample>
-^(self ticks) addBars: self values.
+| plotter |
+	plotter:= LarPlotterBar new initialize: 500 with: 500.
+	plotter addAxisLabel: 'AxisX' with: 'AxisY'. 
+	^plotter graph
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> basic [
+LarPlotterBarExamples >> addBars [
 <gtExample>
-| plot |
-	plot:= LarPlotterBar new initialize: 500 with: 500. 
-	^plot
-	
-	"relocate
-	labe height
-	margine
-	text label"
+|plotter|
+plotter:= LarPlotterBar new initialize: 500 with: 500.
+plotter addBars: self values.
+^plotter graph
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> oneBar [
+LarPlotterBarExamples >> addTitel [
 <gtExample>
-^LarBar new initialize: 400
+|plotter|
+plotter:= LarPlotterBar new initialize: 500 with: 500.
+plotter titel: 'This is a title'. 
+^plotter graph
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> test [
+LarPlotterBarExamples >> graphWithTickLabels [
 <gtExample>
-^(LarTick new initialize: 3 with: 10) asElementY.
+|plotter|
+plotter:= LarPlotterBar new initialize: 500 with: 500.
+plotter addTicksLabel: 8 with: 8. 
+^plotter graph
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> ticks [
+LarPlotterBarExamples >> graphWithTicks [
 <gtExample>
-	^ (self basic) addTicks. 
-	
-	"amount of ticks
-	size of ticks
-	"
- 
+|plotter|
+plotter:= LarPlotterBar new initialize: 500 with: 500.
+plotter addTicks: 8 with: 8. 
+^plotter graph
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> newGraph [
+<gtExample>
+|plotter|
+	plotter:= LarPlotterBar new initialize: 500 with: 500. 
+	^plotter graph
 ]
 
 { #category : #'as yet unclassified' }

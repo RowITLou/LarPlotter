@@ -10,13 +10,13 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarTitel >> asElement [
-titelElement:= LarTickLabelElement new create: text
+^titelElement:= LarTickLabelElement new create: text
 ]
 
 { #category : #'as yet unclassified' }
 LarTitel >> initialize: textTitle [
 self text: textTitle.
-self asElement.
+^self asElement.
 ]
 
 { #category : #'as yet unclassified' }
