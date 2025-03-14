@@ -103,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-13T05:46:40.413+01:00"
+						"dateAndTimeString" : "2025-03-13T05:47:03.512+01:00"
 					}
 				},
 				"uid" : {
@@ -113,7 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The Plotter for the bargraph can be found here {{gtClass:name=LarPlotterBar}} , {{gtClass:name=LarPlotterBarElement}} and the examples here {{gtClass:name=LarPlotterBarExamples}} I only had the time for the examples to see if every thing works as I have imagined. Which means I can create a grpah. I did not have time to test all the other methods of the different elements. This will be my goal for the coming iteration.  I will also be cleaning up the {{gtClass:name=LarPlo}}"
+				"string" : "The Plotter for the bargraph can be found here {{gtClass:name=LarPlotterBar}} , {{gtClass:name=LarPlotterBarElement}} and the examples here {{gtClass:name=LarPlotterBarExamples}} I only had the time for the examples to see if every thing works as I have imagined. Which means I can create a grpah. I did not have time to test all the other methods of the different elements. This will be my goal for the coming iteration.  I will also be cleaning up the {{gtClass:name=LarPlotterBar}}. there are a lot of mehtods I dont need anymore. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -225,6 +225,118 @@
 					"__type" : "textStyle"
 				},
 				"string" : "Notes from Oscar: "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-03-14T10:26:13.883322+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-03-14T10:26:13.883322+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "wW1IxKvsDQC4IfyZA19XCQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "• Please add brief class comments to each class explaining their intent and usage. At least one sentence will do for many classes, but some will need more explanation and examples."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-03-14T10:26:07.965742+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-03-14T10:26:24.380222+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "ayPuw6vsDQC4ChJzA19XCQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "• I see you have started to make some examples. I suggest you start with the examples and use them as a starting point for development (think of TDD). Maybe read this [blog post](https://www.oscar.nierstrasz.org/posts/2024-04-25-EDD)\n• Instead of focusing on examples for the elements, I suggest you work on examples for the model instances. Then you can add views which will generate and leverage the elements. The model instances should be the interesting ones that you want to reason about. The views (elements) you will then get for free."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-14T10:26:11.834448+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-03-14T10:26:11.834448+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "6yopxKvsDQC4FUlBA19XCQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "OK, I had a quick look. I see you are making some progress. A few comments:"
 			}
 		]
 	},
