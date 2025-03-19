@@ -15,18 +15,11 @@ LarBar >> asElement [
 ]
 
 { #category : #'as yet unclassified' }
-LarBar >> initialize: sizeHeight [
-
-self sizeHeight: sizeHeight. 
-^self asElement.
-]
-
-{ #category : #'as yet unclassified' }
 LarBar >> initialize: sizeHeight with: sizeWidth [
 
 self sizeHeight: sizeHeight. 
 self sizeWidth: sizeWidth. 
-^self asElement.
+^self.
 ]
 
 { #category : #'as yet unclassified' }

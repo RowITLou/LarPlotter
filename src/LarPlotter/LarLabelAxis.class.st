@@ -17,7 +17,7 @@ LarLabelAxis >> asElement [
 { #category : #'as yet unclassified' }
 LarLabelAxis >> initialize: textAxis [
 self text: textAxis.
-^self asElement.
+^self .
 ]
 
 { #category : #'as yet unclassified' }
@@ -45,5 +45,4 @@ text:= textAxis.
 { #category : #'as yet unclassified' }
 LarLabelAxis >> text: textAxis [
 text:= textAxis.
-^text
 ]

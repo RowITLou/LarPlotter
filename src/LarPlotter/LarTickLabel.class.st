@@ -16,7 +16,7 @@ LarTickLabel >> asElement [
 { #category : #'as yet unclassified' }
 LarTickLabel >> initialize: text [
 self labelText: text.
-^self asElement.
+^self.
 ]
 
 { #category : #'as yet unclassified' }

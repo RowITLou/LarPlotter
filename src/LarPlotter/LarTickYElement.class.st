@@ -10,7 +10,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarTickYElement >> create: sizeWidth with: sizeLength [
-<return: #LarTickElement>
+"<return: #LarTickElement>"
 super initialize. 
     width:= sizeWidth.
     length:= sizeLength.

@@ -10,18 +10,32 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarTitel >> asElement [
-^titelElement:= LarTickLabelElement new create: text
+^titelElement:= LarTitelElement new create: text
+]
+
+{ #category : #'as yet unclassified' }
+LarTitel >> gtLiveFor: aView [
+	<gtView>
+	^aView explicit
+		title: 'Live';
+		priority: 10;
+		stencil: [  self titelElement   ];
+		actionUpdateButton.
+		"updateWhen: LePageTitleChanged in: self page announcer.
+		
+	column ifNotNil: [column announcer announce: KBNameUpdate new]."
+	"^view"
 ]
 
 { #category : #'as yet unclassified' }
 LarTitel >> initialize: textTitle [
 self text: textTitle.
-^self asElement.
+^self.
 ]
 
 { #category : #'as yet unclassified' }
 LarTitel >> setBackground: color [
-titelElement background: color
+titelElement background: (color)
 ]
 
 { #category : #'as yet unclassified' }
@@ -36,13 +50,17 @@ titelElement defaultFontSize: number
 
 { #category : #'as yet unclassified' }
 LarTitel >> setText: textTitle [
-titelElement text: textTitle.
+titelElement text: textTitle asRopedText.
 text:= textTitle.
-^text
 ]
 
 { #category : #'as yet unclassified' }
 LarTitel >> text: textTitle [
 text:= textTitle.
 ^text
+]
+
+{ #category : #'as yet unclassified' }
+LarTitel >> titelElement [
+^titelElement
 ]

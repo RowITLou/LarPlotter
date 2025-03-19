@@ -18,7 +18,7 @@ LarContainer >> asElement [
 LarContainer >> initialize: sizeWidth with: sizeHeight [
 self sizeWidth: sizeWidth. 
 self sizeHeight: sizeHeight. 
-^(self asElement).
+^self
 ]
 
 { #category : #'as yet unclassified' }

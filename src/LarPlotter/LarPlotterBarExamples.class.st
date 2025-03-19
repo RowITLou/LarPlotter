@@ -8,53 +8,76 @@ Class {
 LarPlotterBarExamples >> addAxisLabel [
 <gtExample>
 | plotter |
-	plotter:= LarPlotterBar new initialize: 500 with: 500.
-	plotter addAxisLabel: 'AxisX' with: 'AxisY'. 
-	^plotter graph
+	"plotter:= LarPlotterBar new initialize: 500 with: 500."
+	^self newGraph addAxisLabel: 'AxisX' with: 'AxisY'. 
+	
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> addBars [
 <gtExample>
 |plotter|
-plotter:= LarPlotterBar new initialize: 500 with: 500.
-plotter addBars: self values.
-^plotter graph
+"plotter:= LarPlotterBar new initialize: 500 with: 500."
+^self newGraph addBars: self values.
+
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> addTitel [
 <gtExample>
-|plotter|
-plotter:= LarPlotterBar new initialize: 500 with: 500.
-plotter titel: 'This is a title'. 
-^plotter graph
+
+^self newGraph titel: 'This is a title'. 
+
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> changeBackgroundTitle [
+<gtExample>
+| plotter |
+	plotter:= self changeTitle. 
+(plotter title) setBackground: (Color  blue). 
+^plotter 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> changeFontTitle [
+<gtExample>
+| plotter |
+	plotter := self addTitel .
+	plotter title  setFontSize: 50.
+	^plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> changeTitle [
+<gtExample>
+| plotter |
+	plotter := (self changeFontTitle) .
+	plotter title setText: 'NewTitle'. 
+	^plotter
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> graphWithTickLabels [
 <gtExample>
-|plotter|
-plotter:= LarPlotterBar new initialize: 500 with: 500.
-plotter addTicksLabel: 8 with: 8. 
-^plotter graph
+
+^self newGraph addTicksLabel: 8 with: 8. 
+
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> graphWithTicks [
 <gtExample>
-|plotter|
-plotter:= LarPlotterBar new initialize: 500 with: 500.
-plotter addTicks: 8 with: 8. 
-^plotter graph
+^self newGraph addTicks: 8 with: 8. 
+
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> newGraph [
 <gtExample>
-|plotter|
-	plotter:= LarPlotterBar new initialize: 500 with: 500. 
-	^plotter graph
+
+^ LarPlotterBar new initialize: 500 with: 500. 
+	
 ]
 
 { #category : #'as yet unclassified' }

@@ -9,7 +9,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarTickLabelElement >> create: labelText [
-|  label |
+
 super initialize.
 ^self
 	defaultFontSize: 30;

@@ -10,18 +10,19 @@ Class {
 		'labelAxisX',
 		'labelAxisY',
 		'heightLabel',
-		'margin'
+		'margin',
+		'title'
 	],
 	#category : #'LarPlotter-Plotter'
 }
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addAxisLabel: textX with: textY [
+LarPlotterBarElement >> addAxisLabel: elementX with: elementY [
 | labelContainerX labelContainerY |
 	labelContainerX := self createContainer: widthGraph with: heightLabel.
 	labelContainerY := self createContainer: widthGraph with: heightLabel.
-	labelAxisX := LarLabelAxis new initialize: textX. 
-	labelAxisY := LarLabelAxis new initialize: textY. 
+	labelAxisX := elementX.
+	labelAxisY := elementY.
 	labelContainerX addChild: labelAxisX.
 	labelContainerY addChild: labelAxisY.
     labelContainerX relocate: posX @(posY + heightGraph + margin).
@@ -36,69 +37,95 @@ LarPlotterBarElement >> addAxisLabel: textX with: textY [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addBars: values [
+LarPlotterBarElement >> addBars: valuesSize with: n with: element [
 | bar |
-	1 to: (values size) do: [:n|
-bar:= LarBar new initialize: ((values at: n)*100*4) with: (widthGraph/(values size)).
-bar relocate: ("posX +" (widthGraph/(values size)*((values size)-n ))) @ "posY" 0.
+"	1 to: (values size) do: [:n|"
+bar:= element.
+bar relocate: ("posX +" (widthGraph/(valuesSize)*((valuesSize)-n ))) @ "posY" 0.
 graphElement addChild: bar. 
-graphElement forceLayout.].
+graphElement forceLayout.
 
-graphElement transform
+"graphElement transform
 		rotateBy: 180;
-		apply.
+		apply."
 "graphElement forceLayout."
 		
 ^self
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicks: amountTickX with: amountTickY [
+LarPlotterBarElement >> addTicks: amountTickX with: element with: n [
 
-| tickX tickXcontainer tickYContainer tickY |
-	1 to: (amountTickX - 1) do: [: n| 
-tickX := (LarTick new initialize: 3 with: 10) asElementX.
+| tickX tickXcontainer |
+"	1 to: (amountTickX - 1) do: [: n| "
+tickX := element.
 tickXcontainer := (self createContainer:( widthGraph/  amountTickX) with: 12).
 tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ amountTickX)) + ((widthGraph/ amountTickX)/2)) @ (posY + heightGraph).
 
 self addChild: tickXcontainer. 
-tickXcontainer addChild: tickX.].
+tickXcontainer addChild: tickX.
 
-2 to: ( amountTickY ) do: [: n| 
-tickY := (LarTick new initialize: 3 with: 10) asElementY.
-tickYContainer := self createContainer: 12 with: ( widthGraph/  amountTickY).
-tickYContainer relocate: (posY-12)@(posX +((n-1)*(widthGraph/ amountTickX)) - ((heightGraph/ amountTickX)/2)).
-self addChild: tickYContainer.
-tickYContainer addChild: tickY.
-].
 ^self 
-
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksLabel: amountTickX with: amountTickY [
-| tickXLabel tickXcontainer tickYLabel tickYcontainer |
-	1 to: (amountTickX - 1) do: [: n| 
-tickXLabel := LarTickLabel new initialize: n.
+LarPlotterBarElement >> addTicksLabelX: elementX with: amountTickX with: n [
+
+| tickXLabel tickXcontainer |
+	"1 to: (amountTickX - 1) do: [: n| "
+tickXLabel := elementX.
  tickXcontainer:=self createContainer: ( widthGraph/ amountTickX) with: 20.
  tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ amountTickX)) + ((widthGraph/ amountTickX)/2)) @ (posY + heightGraph + 17).
  tickXcontainer addChild: tickXLabel.
-self addChild: tickXcontainer. ].
+self addChild: tickXcontainer.
 
-2 to: ( amountTickY ) do: [: n| 
-tickYLabel := LarTickLabel new initialize: ( amountTickY) - (n-1). 
-tickYcontainer := self createContainer:20 with: ( widthGraph/  amountTickY).
-	tickYcontainer relocate: (posY-29)@(posX +((n-1)*(widthGraph/ amountTickY)) - ((heightGraph/ amountTickY)/2)).
-	self addChild: tickYcontainer.
-tickYcontainer addChild: tickYLabel.
-].
 ^self
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTitle: text [
+LarPlotterBarElement >> addTicksLabelY: elementY with: amountTickY with: n [
+| tickYLabel tickYcontainer |
+	"2 to: ( amountTickY ) do: [: n| "
+tickYLabel := elementY. 
+tickYcontainer := self createContainer:20 with: ( widthGraph/  amountTickY).
+	tickYcontainer relocate: (posY-29)@(posX +((n-1)*(widthGraph/ amountTickY)) - ((heightGraph/ amountTickY)/2)).
+	self addChild: tickYcontainer.
+tickYcontainer addChild: tickYLabel.
+^self
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addTicksX: amountTickX with: element with: n [
+
+| tickX tickXcontainer |
+"	1 to: (amountTickX - 1) do: [: n| "
+tickX := element.
+tickXcontainer := (self createContainer:( widthGraph/  amountTickX) with: 12).
+tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ amountTickX)) + ((widthGraph/ amountTickX)/2)) @ (posY + heightGraph).
+
+self addChild: tickXcontainer. 
+tickXcontainer addChild: tickX.
+
+^self 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addTicksY: amountTickY with: element with: n [
+| tickY tickYContainer |
+	"2 to: ( amountTickY ) do: [: n| "
+tickY := element.
+tickYContainer := self createContainer: 12 with: ( widthGraph/  amountTickY).
+tickYContainer relocate: (posY-12)@(posX +((n-1)*(widthGraph/ amountTickY)) - ((heightGraph/ amountTickY)/2)).
+self addChild: tickYContainer.
+tickYContainer addChild: tickY.
+^self
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addTitle: text with: element [
 | titel titelContainer |
-	titel:= LarTitel new initialize: text asRopedText. 
+	titel:= element.
+	self title: text. 
 	titelContainer := self createContainer: widthGraph with: heightLabel. 
 	titelContainer relocate: posX@ 0. 
 	titelContainer addChild: titel.
@@ -112,7 +139,7 @@ widthGraph := width.
 heightGraph := height.
 heightLabel:= 50 .
 margin := 20.
-graphElement := LarContainer new initialize: width with: height.
+graphElement := (LarContainer new initialize: width with: height) asElement.
 posX :=100.
 posY := 100.
 graphElement relocate: 100@100.
@@ -137,7 +164,7 @@ border: (BlBorder builder
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> createContainer: width with: height [
 | container |
-	container := LarContainer new initialize:  width with: height. 
+	container := (LarContainer new initialize:  width with: height) asElement. 
 container border: (BlBorder builder
 					
 					paint: Color transparent;
@@ -155,4 +182,21 @@ LarPlotterBarElement >> graphElement [
 LarPlotterBarElement >> position: x with: y [
 posX := x.
 posY := y
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> rotation: value [
+graphElement transform
+		rotateBy: value;
+		apply.
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> title [
+^title
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> title: text [
+title:= text
 ]
