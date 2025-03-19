@@ -1,3 +1,6 @@
+"
+is the model class for the labes of the ticks
+"
 Class {
 	#name : #LarTickLabel,
 	#superclass : #Object,

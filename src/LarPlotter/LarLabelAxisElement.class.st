@@ -1,3 +1,6 @@
+"
+This class creates the elements for the axis labels
+"
 Class {
 	#name : #LarLabelAxisElement,
 	#superclass : #BlTextElement,

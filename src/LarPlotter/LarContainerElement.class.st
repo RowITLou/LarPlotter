@@ -1,3 +1,6 @@
+"
+creates the containerelement
+"
 Class {
 	#name : #LarContainerElement,
 	#superclass : #BlElement,

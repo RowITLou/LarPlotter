@@ -1,3 +1,6 @@
+"
+This class creates the element for a title of a graph
+"
 Class {
 	#name : #LarTitelElement,
 	#superclass : #BlTextElement,

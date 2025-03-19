@@ -1,3 +1,6 @@
+"
+Here are some examples what you could do with the plotter
+"
 Class {
 	#name : #LarPlotterBarExamples,
 	#superclass : #Object,

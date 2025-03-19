@@ -1,3 +1,6 @@
+"
+This is the model class for the title of a graph
+"
 Class {
 	#name : #LarTitel,
 	#superclass : #Object,

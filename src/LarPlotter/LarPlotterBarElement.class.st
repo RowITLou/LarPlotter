@@ -134,15 +134,22 @@ LarPlotterBarElement >> addTitle: text with: element [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarElement >> changePosition: positionX with: positionY [
+graphElement relocate: positionX @ positionY. 
+posX := positionX. 
+posY := positionY. 
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarElement >> create: width with: height [
 widthGraph := width.
 heightGraph := height.
 heightLabel:= 50 .
 margin := 20.
 graphElement := (LarContainer new initialize: width with: height) asElement.
-posX :=100.
+"posX :=100.
 posY := 100.
-graphElement relocate: 100@100.
+graphElement relocate: 100@100."
 super initialize. 
 ^self 
 border: (BlBorder builder

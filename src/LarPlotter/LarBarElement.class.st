@@ -1,3 +1,6 @@
+"
+This creates the elements for bars in a bargraph
+"
 Class {
 	#name : #LarBarElement,
 	#superclass : #BlElement,

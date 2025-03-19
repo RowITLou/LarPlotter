@@ -1,3 +1,6 @@
+"
+creates the element for each tick label
+"
 Class {
 	#name : #LarTickLabelElement,
 	#superclass : #BlTextElement,

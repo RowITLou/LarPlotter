@@ -1,3 +1,6 @@
+"
+creates elements for ticks on the y axis
+"
 Class {
 	#name : #LarTickYElement,
 	#superclass : #BlElement,

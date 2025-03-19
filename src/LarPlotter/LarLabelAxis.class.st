@@ -1,3 +1,6 @@
+"
+This is the model class for the Axis labels
+"
 Class {
 	#name : #LarLabelAxis,
 	#superclass : #Object,

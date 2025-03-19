@@ -1,3 +1,6 @@
+"
+This is the model class for the bars in a bargraph 
+"
 Class {
 	#name : #LarBar,
 	#superclass : #Object,

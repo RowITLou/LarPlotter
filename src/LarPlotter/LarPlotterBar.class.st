@@ -132,14 +132,15 @@ LarPlotterBar >> initialize: sizeWidth with: sizeHeight [
 "These are default values and can be changes if wished."
 posX := 100.
 posY := 100. 
-amountTicksX:= 8. 
-amountTicksY := 8. 
+"amountTicksX:= 8. 
+amountTicksY := 8. "
 labelHeight := 50.
-margine := 40.
+margine := 20.
 heightG:= sizeHeight. 
 widthG := sizeWidth.
 
 graph := LarPlotterBarElement new create: sizeWidth with: sizeHeight.
+graph changePosition: posX with: posY. 
 self barsDefinition. 
 
 ]

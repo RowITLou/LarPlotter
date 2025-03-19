@@ -1,3 +1,6 @@
+"
+This model class helps containing and relocating textelements and ticks.
+"
 Class {
 	#name : #LarContainer,
 	#superclass : #Object,

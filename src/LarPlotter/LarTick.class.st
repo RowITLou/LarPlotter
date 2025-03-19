@@ -1,3 +1,6 @@
+"
+Is the model class for the ticks in a graph
+"
 Class {
 	#name : #LarTick,
 	#superclass : #Object,
