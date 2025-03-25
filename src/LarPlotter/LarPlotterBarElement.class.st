@@ -75,7 +75,7 @@ LarPlotterBarElement >> addTicksLabelX: elementX with: amountTickX with: n [
 	"1 to: (amountTickX - 1) do: [: n| "
 tickXLabel := elementX.
  tickXcontainer:=self createContainer: ( widthGraph/ amountTickX) with: 20.
- tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ amountTickX)) + ((widthGraph/ amountTickX)/2)) @ (posY + heightGraph + 17).
+ tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ amountTickX)) "+" "((widthGraph/ amountTickX)/2)") @ (posY + heightGraph + 10).
  tickXcontainer addChild: tickXLabel.
 self addChild: tickXcontainer.
 

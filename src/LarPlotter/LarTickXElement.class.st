@@ -1,5 +1,5 @@
 "
-creates the element for ticks on the x axis
+This class creates the element for ticks on the x axis for a graph
 "
 Class {
 	#name : #LarTickXElement,

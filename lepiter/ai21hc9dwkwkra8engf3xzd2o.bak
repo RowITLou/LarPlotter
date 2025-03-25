@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-03-24T22:00:31.056855+01:00"
+									"dateAndTimeString" : "2025-03-24T22:01:19.841449+01:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Demo 2]]"
+							"string" : "[[Demo: Create a simple bar chart in Plotter]]"
 						}
 					]
 				},

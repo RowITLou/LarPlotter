@@ -1,5 +1,5 @@
 "
-creates elements for ticks on the y axis
+This class creates elements for ticks on the y axis
 "
 Class {
 	#name : #LarTickYElement,

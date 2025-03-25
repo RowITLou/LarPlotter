@@ -18,43 +18,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-24T22:00:32.974556+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-24T22:00:32.974556+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "EXvFoX7tDQCiKwTVA5+hhQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2025-03-24T22:01:02.048943+01:00"
 					}
 				},
@@ -66,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-24T22:01:05.940448+01:00"
+						"dateAndTimeString" : "2025-03-24T22:01:29.372358+01:00"
 					}
 				},
 				"uid" : {
@@ -76,44 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "(LePage named: '')"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-24T22:00:49.227444+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-24T22:00:49.227444+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "0Hq9on7tDQCiVYsiA5+hhQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "As a first exercise we want to see how to do a [simple bar chart](https://vega.github.io/vega-lite/examples/bar.html) in Plotter. Then perhaps again in the lower-level Bloc."
+				"string" : "We want to see how to do a [simple bar chart](https://vega.github.io/vega-lite/examples/bar.html) in Plotter. Then perhaps again in the lower-level Bloc."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -168,7 +94,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-03-24T22:00:49.229675+01:00"
+									"dateAndTimeString" : "2025-03-25T10:55:16.137+01:00"
 								}
 							},
 							"editEmail" : {
@@ -179,17 +105,17 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-03-24T22:00:49.229675+01:00"
+									"dateAndTimeString" : "2025-03-25T10:55:16.137+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "e4O9on7tDQCiWJ6pA5+hhQ=="
+								"uidString" : "WDhidIntDQCXFiIjDSJxrg=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "First let's see how it can be done with [[Plotter]] "
+							"string" : ""
 						},
 						{
 							"__type" : "textSnippet",
@@ -353,12 +279,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-03-24T22:00:32.943839+01:00"
+			"dateAndTimeString" : "2025-03-24T22:01:19.833116+01:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Demo 2"
+		"title" : "Demo: Create a simple bar chart in Plotter"
 	},
 	"uid" : {
 		"__type" : "uuid",

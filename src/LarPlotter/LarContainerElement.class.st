@@ -1,5 +1,5 @@
 "
-creates the containerelement
+This class creates the container element
 "
 Class {
 	#name : #LarContainerElement,

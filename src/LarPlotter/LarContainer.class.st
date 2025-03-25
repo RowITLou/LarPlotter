@@ -1,5 +1,5 @@
 "
-This model class helps containing and relocating textelements and ticks.
+This model class is a model container class for graphs. It helps containing and relocating textelements and ticks in the graph. These elements are created automatically when initializing ticks or labels. The relocation will also be done when initializing the element. the user still can change the relocation, size and padding of the container. All changes of the graph must be made with the plotter itself. 
 "
 Class {
 	#name : #LarContainer,
