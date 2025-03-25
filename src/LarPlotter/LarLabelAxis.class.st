@@ -1,5 +1,8 @@
 "
-This is the model class for the Axis labels
+This is the model class for the Axis labels. When creating a graph we can add titles to the axis of the graph. 
+{{gtMethod:name=LarPlotterBar>>addAxisLabel:with:}} 
+See the example {{gtMethod:name=LarPlotterBarExamples>>addAxisLabel}}
+
 "
 Class {
 	#name : #LarLabelAxis,

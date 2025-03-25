@@ -87,14 +87,14 @@ tickLabelsY add: tick.
 LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 | tick |
 self tickLablesInitialize.
-	1 to: (amountTicksX - 1) do: [: n| 
+	1 to: (amountTicksX ) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
 graph addTicksLabelX: tick asElement with: amountTicksX with: n.
 tickLabelsX add: tick. 
 ].
 
 2 to: ( amountTicksY ) do: [: n| 
-tick:= LarTickLabel new initialize: (valuesY at: (( amountTicksY) - (n))). 
+tick:= LarTickLabel new initialize: (valuesY at: (( amountTicksY) - (n-1))). 
 graph addTicksLabelY: tick asElement with: amountTicksY with: n.
 tickLabelsY add: tick.
 ].
@@ -116,6 +116,11 @@ LarPlotterBar >> amountTicksX [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> amountTicksY [
 ^amountTicksY
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> bars [
+^bars
 ]
 
 { #category : #'as yet unclassified' }
@@ -206,6 +211,16 @@ margine := number
 LarPlotterBar >> tickInitialize [
 ticksX:= OrderedCollection new. 
 ticksY := OrderedCollection new.
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> tickLabelsX [
+^tickLabelsX
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> tickLabelsY [
+^tickLabelsY
 ]
 
 { #category : #'as yet unclassified' }

@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-25T11:02:11.91+01:00"
+						"dateAndTimeString" : "2025-03-25T15:55:14.957+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "sKkRjYntDQCXZmQfDSJxrg=="
 				},
-				"code" : "barChartSpec := '{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"description\": \"A simple bar chart with embedded data.\",\n  \"data\": {\n    \"values\": [\n      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\n      {\"a\": \"D\", \"b\": 91}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\n      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}\n    ]\n  },\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\n    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\n  }\n}'.\rdict := STONJSON fromString: barChartSpec.\rdata := ((dict at: 'data') at: 'values') collect: #values."
+				"code" : "barChartSpec := '{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"description\": \"A simple bar chart with embedded data.\",\n  \"data\": {\n    \"values\": [\n      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\n      {\"a\": \"D\", \"b\": 91}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\n      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}\n    ]\n  },\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\n    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\n  }\n}'.\rdict := STONJSON fromString: barChartSpec.\rdata := ((dict at: 'data') at: 'values') collect: #values.\rtypeGraph := (dict at: 'mark').\raxisX := (((dict at: 'encoding') at: 'x') at: 'field').\raxisy := (((dict at: 'encoding') at: 'y') at: 'field')."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -171,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-25T14:45:31.307+01:00"
+						"dateAndTimeString" : "2025-03-25T15:56:03.855+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "OMlilIntDQCXjk/4DSJxrg=="
 				},
-				"code" : "graph := LarPlotterBar new initialize: 300 with: 300. \rgraph titel: 'This is a title'. \rgraph addBars: (data collect: [ :each | each last ]).\rgraph addAxisLabel: 'AxisX' with: 'AxisY'. \rgraph addTicks: 0 with: (data size). \rgraph addTicksLabel: (data collect: [:each | each first])."
+				"code" : "typeGraph = 'bar'\rifTrue:[\rgraph := LarPlotterBar new initialize: 300 with: 300. \rgraph titel: 'This is a title'. \rgraph addBars: (data collect: [ :each | each last ]).\rgraph addAxisLabel: axisX with: axisy. \rgraph addTicks: 0 with: (data size). \rgraph addTicksLabel: (data collect: [:each | each first]).]"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -205,14 +205,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-25T14:58:36.192+01:00"
+						"dateAndTimeString" : "2025-03-25T18:14:05.227+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "cFp604ztDQC1tHtIC8IOqw=="
 				},
-				"code" : "graph1 := LarPlotterBar new initialize: 300 with: 300. \rgraph1 titel: 'This is a title'. \rgraph1 addBars: (data collect: [ :each | each last ]).\rgraph1 addAxisLabel: 'AxisX' with: 'AxisY'. \rgraph1 addTicks: 0 with: (data size). \rvaluesY:= #(1, 2, 3, 4, 5, 6, 7, 8, 9).\rgraph1 addTicksLabel: (data collect: [:each | each first]) with: valuesY."
+				"code" : "typeGraph = 'bar'\rifTrue:[\rgraph1 := LarPlotterBar new initialize: 300 with: 300. \rgraph1 titel: 'This is a title'. \rgraph1 addBars: (data collect: [ :each | each last ]).\rgraph1 addAxisLabel: axisX with: axisy. \rgraph1 addTicks: 0 with: (data size +1). \rvaluesY:= #(10 20 30 40 50 60 70 80 90 100).\rgraph1 addTicksLabel: (data collect: [:each | each first]) with: valuesY.]"
 			}
 		]
 	},

@@ -1,5 +1,6 @@
 "
 Is the model class for the ticks in a graph. When we add ticks to the graph via the plotter, the ticks will directly be initialized. See {{gtMethod:name=LarPlotterBar >>addTicks:with: }} The wished amount of ticks must be given. If we want to change something about the ticks, they have to be adressed via the Plotter class. {{gtMethod:name=LarPlotterBar >>ticksX }} and {{gtMethod:name=LarPlotterBar >>ticksY }}. 
+Look at the following example {{gtMethod:name=LarPlotterBarExamples>>graphWithTicks}}. 
 "
 Class {
 	#name : #LarTick,

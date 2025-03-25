@@ -1,5 +1,5 @@
 "
-creates the element for each tick label
+This class creates the label element for each tick in a graph
 "
 Class {
 	#name : #LarTickLabelElement,

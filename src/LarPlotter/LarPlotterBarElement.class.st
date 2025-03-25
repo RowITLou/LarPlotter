@@ -1,3 +1,6 @@
+"
+This class is responsible to plot the entire graph
+"
 Class {
 	#name : #LarPlotterBarElement,
 	#superclass : #BlElement,

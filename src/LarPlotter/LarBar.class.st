@@ -1,5 +1,5 @@
 "
-This is the model class for the bars in a bargraph 
+This is the model class for the bars in a bargraph. When creating a graph the method {{gtMethod:name=LarPlotterBar>>addBars:}} can be called. By adding the values we want to be represented the bars get created automatically in the order the values are in the orderedCollection. see the example here {{gtMethod:name=LarPlotterBarExamples>>addBars}}. 
 "
 Class {
 	#name : #LarBar,

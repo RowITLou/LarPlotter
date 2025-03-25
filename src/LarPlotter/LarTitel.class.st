@@ -1,5 +1,5 @@
 "
-This is the model class for the title of a graph
+This is the model class for the title of a graph. By using the following method a title can be added and changed for a graph {{gtMethod:name=LarPlotterBar>>titel:}}.   
 "
 Class {
 	#name : #LarTitel,
