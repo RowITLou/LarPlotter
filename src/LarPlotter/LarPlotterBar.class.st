@@ -20,10 +20,20 @@ Class {
 		'tickLabelsX',
 		'tickLabelsY',
 		'ticksX',
-		'ticksY'
+		'ticksY',
+		'spec',
+		'dict'
 	],
 	#category : #'LarPlotter-Plotter'
 }
+
+{ #category : #accessing }
+LarPlotterBar class >> withSpec: aSpec [
+	 ^ self new
+	 	spec: aSpec;
+	 	initializeBarGraphFromSpec;
+	 	yourself
+]
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addAxisLabel: textX with: textY [
@@ -177,6 +187,23 @@ self barsDefinition.
 
 ]
 
+{ #category : #accessing }
+LarPlotterBar >> initializeBarGraphFromSpec [
+
+	| data axisX axisy |
+	dict := STONJSON fromString: self spec.
+	self initialize: 300 with: 300.
+	data := ((dict at: 'data') at: 'values') collect: #values.
+	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
+	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
+
+	self titel: 'This is a title'.
+	self addBars: (data collect: [ :each | each last ]).
+	self addAxisLabel: axisX with: axisy.
+	self addTicks: 0 with: data size.
+	self addTicksLabel: (data collect: [ :each | each first ])
+]
+
 { #category : #'as yet unclassified' }
 LarPlotterBar >> labelHeight [
 ^labelHeight
@@ -211,6 +238,16 @@ LarPlotterBar >> margine [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> margine: number [
 margine := number
+]
+
+{ #category : #accessing }
+LarPlotterBar >> spec [
+	^ spec
+]
+
+{ #category : #accessing }
+LarPlotterBar >> spec: anObject [
+	spec := anObject
 ]
 
 { #category : #'as yet unclassified' }

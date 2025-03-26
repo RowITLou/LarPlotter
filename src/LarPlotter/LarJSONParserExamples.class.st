@@ -5,10 +5,9 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-LarJSONParserExamples >> parseBarChart [
+LarJSONParserExamples >> barChartSpec [
 <gtExample>
-| barChartSpec parser |
-	barChartSpec := '{
+	^ '{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A simple bar chart with embedded data.",
   "data": {
@@ -23,6 +22,14 @@ LarJSONParserExamples >> parseBarChart [
     "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
     "y": {"field": "b", "type": "quantitative"}
   }
-}'.
-^LarJSONParser new parse: barChartSpec. 
+}'
+]
+
+{ #category : #'as yet unclassified' }
+LarJSONParserExamples >> parseBarChart [
+	<gtExample>
+	| barChart |
+	barChart := LarJSONParser new parse: self barChartSpec.
+	"self assert: barChart data ... equals: "
+	^ barChart
 ]
