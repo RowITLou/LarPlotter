@@ -49,14 +49,19 @@ graph rotation: 180.
 LarPlotterBar >> addTicks: tickXAmount with: tickYAmount [
 | tickX tickY |
 self tickInitialize.
+ticksX removeAll. 
+ticksY removeAll. 
 amountTicksY := tickYAmount.
-	1 to: (tickXAmount - 1) do: [: n| 
+amountTicksX := tickXAmount.
+amountTicksX = 0
+  ifFalse:[
+	1 to: (tickXAmount) do: [: n| 
 tickX := (LarTick new initialize: 3 with: 10). 
 graph addTicksX: tickXAmount with: tickX asElementX with: n.
 ticksX add: tickX.
-].
+].].
 
-2 to: ( tickYAmount ) do: [: n| 
+1 to: ( tickYAmount ) do: [: n| 
 tickY := (LarTick new initialize: 3 with: 10).
 graph addTicksY: tickYAmount with: tickY asElementY with: n.
 ticksY add: tickX.
@@ -68,13 +73,13 @@ ticksY add: tickX.
 LarPlotterBar >> addTicksLabel: valuesX [
 | tick |
 self tickLablesInitialize.
-	1 to: (amountTicksX ) do: [: n| 
+	1 to: (amountTicksX) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
 graph addTicksLabelX: tick asElement with: amountTicksX with: n.
 tickLabelsX add: tick. 
 ].
 
-2 to: ( amountTicksY ) do: [: n| 
+1 to: ( amountTicksY ) do: [: n| 
 tick:= LarTickLabel new initialize: (( amountTicksY) - (n-1)). 
 graph addTicksLabelY: tick asElement with: amountTicksY with: n.
 tickLabelsY add: tick.
@@ -106,6 +111,7 @@ tickLabelsY add: tick.
 LarPlotterBar >> amountTicks: numberX with: numberY [
 amountTicksX:=numberX.
 amountTicksY := numberY.
+self addTicks: numberX with: numberY
 ]
 
 { #category : #'as yet unclassified' }

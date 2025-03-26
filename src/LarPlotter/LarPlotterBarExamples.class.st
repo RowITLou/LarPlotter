@@ -34,6 +34,12 @@ LarPlotterBarExamples >> addTitel [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> changeAmountTicks [
+<gtExample>
+^self graphWithTicks amountTicks: 10 with: 10.
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> changeBackgroundTitle [
 <gtExample>
 | plotter |
@@ -64,7 +70,7 @@ LarPlotterBarExamples >> changeTitle [
 LarPlotterBarExamples >> graphWithTickLabels [
 <gtExample>
 
-^self newGraph addTicksLabel: 8 with: 8. 
+^self graphWithTicks addTicksLabel: (self labels). 
 
 ]
 
@@ -76,6 +82,11 @@ LarPlotterBarExamples >> graphWithTicks [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> labels [
+^ #(#A #B  #C #D #E #F #G #H #I #J #K)
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> newGraph [
 <gtExample>
 
@@ -84,7 +95,20 @@ LarPlotterBarExamples >> newGraph [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> playWithBars [
+<gtExample>
+| graph |
+	graph := self addBars .
+	graph bars do: [:bar | 
+    (bar barElement)
+    background: Color blue;
+    border: (BlBorder paint: Color yellow width: 5)].
+    ^graph
+	
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> values [
-^#(0.2 0.4 0.6 0.8 1.0 0.9 0.7 0.5 0.3 0.1).
+^ #(20 40 60 80 10 90 70 50 30 10).
 
 ]

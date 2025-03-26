@@ -14,7 +14,13 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarBar >> asElement [
-^LarBarElement new create: height with: width
+barElement := LarBarElement new create: height with: width.
+^barElement
+]
+
+{ #category : #'as yet unclassified' }
+LarBar >> barElement [
+^barElement
 ]
 
 { #category : #'as yet unclassified' }

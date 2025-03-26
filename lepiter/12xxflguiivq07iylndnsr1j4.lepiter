@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-25T22:04:22.591+01:00"
+						"dateAndTimeString" : "2025-03-26T09:11:12.494+01:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Additionally I added more detailed comment comments for each class in the LarPlotter package.  {{gtPackage:name=LarPlotter}}. "
+				"string" : "Additionally I added more detailed comment comments for each class in the LarPlotter package.  {{gtPackage:name=LarPlotter}} (except those with the tag \"other\". Those are not used anymore. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -140,7 +140,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-25T23:15:13.127+01:00"
+						"dateAndTimeString" : "2025-03-26T09:41:07.869+01:00"
 					}
 				},
 				"uid" : {
@@ -150,7 +150,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "For next week I want to implement line charts and get the graph a bit cleaner. Alos I want to implement a description for a graph"
+				"string" : "For next week I want to implement line charts and get the graph a bit cleaner. Also I want to implement a description for a graph and the ability to differentiate between quantitative and nominal.  "
 			}
 		]
 	},

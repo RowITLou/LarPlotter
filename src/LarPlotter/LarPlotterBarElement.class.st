@@ -90,8 +90,8 @@ LarPlotterBarElement >> addTicksLabelY: elementY with: amountTickY with: n [
 | tickYLabel tickYcontainer |
 	"2 to: ( amountTickY ) do: [: n| "
 tickYLabel := elementY. 
-tickYcontainer := self createContainer:20 with: ( widthGraph/  amountTickY).
-	tickYcontainer relocate: (posY-29)@(posX +((n-1)*(widthGraph/ amountTickY)) - ((heightGraph/ amountTickY)/2)).
+tickYcontainer := self createContainer:20 with: ( widthGraph/  (amountTickY+1)).
+	tickYcontainer relocate: (posY-29)@(posX +((n)*(widthGraph/ (amountTickY+1))) - ((heightGraph/ (amountTickY+1))/2)).
 	self addChild: tickYcontainer.
 tickYcontainer addChild: tickYLabel.
 ^self
@@ -103,8 +103,8 @@ LarPlotterBarElement >> addTicksX: amountTickX with: element with: n [
 | tickX tickXcontainer |
 "	1 to: (amountTickX - 1) do: [: n| "
 tickX := element.
-tickXcontainer := (self createContainer:( widthGraph/  amountTickX) with: 12).
-tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ amountTickX)) + ((widthGraph/ amountTickX)/2)) @ (posY + heightGraph).
+tickXcontainer := (self createContainer:( widthGraph/  (amountTickX+1)) with: 12).
+tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ (amountTickX+1))) + ((widthGraph/ (amountTickX+1))/2)) @ (posY + heightGraph).
 
 self addChild: tickXcontainer. 
 tickXcontainer addChild: tickX.
@@ -117,8 +117,8 @@ LarPlotterBarElement >> addTicksY: amountTickY with: element with: n [
 | tickY tickYContainer |
 	"2 to: ( amountTickY ) do: [: n| "
 tickY := element.
-tickYContainer := self createContainer: 12 with: ( widthGraph/  amountTickY).
-tickYContainer relocate: (posY-12)@(posX +((n-1)*(widthGraph/ amountTickY)) - ((heightGraph/ amountTickY)/2)).
+tickYContainer := self createContainer: 12 with: ( widthGraph/  (amountTickY+1)).
+tickYContainer relocate: (posX-12)@(posY +((n)*(heightGraph/ (amountTickY+1))) - ((heightGraph/ (amountTickY+1))/2)).
 self addChild: tickYContainer.
 tickYContainer addChild: tickY.
 ^self
