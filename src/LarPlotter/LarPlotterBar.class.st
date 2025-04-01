@@ -182,7 +182,7 @@ heightG:= sizeHeight.
 widthG := sizeWidth.
 
 graph := LarPlotterBarElement new create: sizeWidth with: sizeHeight.
-graph changePosition: posX with: posY. 
+"graph changePosition: posX with: posY. "
 self barsDefinition. 
 
 ]

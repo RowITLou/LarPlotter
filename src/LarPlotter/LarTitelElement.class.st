@@ -15,10 +15,13 @@ super initialize.
 	
 	text: labelText asRopedText;
 	background: Color white;
-	border: (BlBorder paint: Color white width: 1);
+	border: (BlBorder paint: Color black width: 1);
+	
+			margin: (BlInsets all: 20);
+			padding: (BlInsets all: 5);
 	constraintsDo: [ :c |
-		c ignoreByLayout.
-		c ignored vertical alignCenter.
-		c ignored horizontal alignCenter ].
-
+		c horizontal fitContent.
+		c vertical fitContent.
+		c grid vertical alignCenter.
+		c grid horizontal alignCenter ]; yourself 
 ]

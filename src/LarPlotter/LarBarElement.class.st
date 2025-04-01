@@ -22,7 +22,7 @@ super initialize.
 				paint: (Color blue alpha: 0.5);
 				width: 1;
 				build);
-				layout: BlFrameLayout new;
+				"layout: BlFrameLayout new;"
 		constraintsDo: [ :c | 
 		 c vertical exact: (sizeHight).
 		    
@@ -41,7 +41,7 @@ super initialize.
 				paint: (Color blue alpha: 0.5);
 				width: 1;
 				build);
-				layout: BlFrameLayout new;
+				"layout: BlFrameLayout new;"
 		constraintsDo: [ :c | 
 		 c vertical exact: (sizeHight).
 		    

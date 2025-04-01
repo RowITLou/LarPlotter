@@ -18,6 +18,11 @@ LarContainer >> asElement [
 ]
 
 { #category : #'as yet unclassified' }
+LarContainer >> asElementVertical [
+^LarContainerElement new createVertical: height with: width 
+]
+
+{ #category : #'as yet unclassified' }
 LarContainer >> initialize: sizeWidth with: sizeHeight [
 self sizeWidth: sizeWidth. 
 self sizeHeight: sizeHeight. 

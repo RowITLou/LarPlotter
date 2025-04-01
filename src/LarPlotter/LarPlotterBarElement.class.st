@@ -14,7 +14,8 @@ Class {
 		'labelAxisY',
 		'heightLabel',
 		'margin',
-		'title'
+		'title',
+		'container'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -44,7 +45,7 @@ LarPlotterBarElement >> addBars: valuesSize with: n with: element [
 | bar |
 "	1 to: (values size) do: [:n|"
 bar:= element.
-bar relocate: ("posX +" (widthGraph/(valuesSize)*((valuesSize)-n ))) @ "posY" 0.
+"bar relocate: (posX + (widthGraph/(valuesSize)*((valuesSize)-n ))) @ posY 0."
 graphElement addChild: bar. 
 graphElement forceLayout.
 
@@ -129,10 +130,19 @@ LarPlotterBarElement >> addTitle: text with: element [
 | titel titelContainer |
 	titel:= element.
 	self title: text. 
-	titelContainer := self createContainer: widthGraph with: heightLabel. 
-	titelContainer relocate: posX@ 0. 
-	titelContainer addChild: titel.
-	self addChild: titelContainer.
+	"titelContainer := self createContainer: widthGraph with: heightLabel. 
+
+	titelContainer addChild: titel."
+	"self addChild: titelContainer.
+	titelContainer constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical fitContent ].
+	titelContainer relocate: posX@ 0. "
+	"titel relocate: posX@ 0. "
+	
+	container addChildFirst: titel.
+	
+	
 	^self
 ]
 
@@ -150,10 +160,12 @@ heightGraph := height.
 heightLabel:= 50 .
 margin := 20.
 graphElement := (LarContainer new initialize: width with: height) asElement.
+container := (LarContainer new initialize: width with: height) asElementVertical.
 "posX :=100.
 posY := 100.
 graphElement relocate: 100@100."
 super initialize. 
+container addChild: graphElement.
 ^self 
 border: (BlBorder builder
 					
@@ -165,8 +177,8 @@ border: (BlBorder builder
 			c horizontal exact:  800.
 			c vertical exact:  800 ];
 			background: (BlBackground paint: Color white);
-			 addChild: graphElement; yourself. 
-
+			addChild: container;
+			 "addChild: graphElement;" yourself. 
 
 
 ]
@@ -180,6 +192,10 @@ container border: (BlBorder builder
 					paint: Color transparent;
 					width: 1;
 					build).
+					"constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical fitContent ]."
+					
 ^container
 ]
 

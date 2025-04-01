@@ -1,0 +1,110 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-01T14:30:37.886+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-01T14:43:25.557+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MHrkcBjuDQC7+HWPDKP+6Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{gtClass:name=LarContainerElement}}"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-01T14:30:42.34+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-01T16:01:59.928+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "uGwocRjuDQC7+/XdDKP+6Q=="
+				},
+				"code" : "container := BlElement new\rborder: (BlBorder builder dashed; paint: Color red; width: 3; build);\r\t\tlayout: BlGridLayout horizontal;\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent].\r\t\tcontainer layout cellSpacing: 20.\r\t\t\rgraph := BlElement new\rsize: 100@100;\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\tpaint: Color black;\r\t\t\t\t\twidth: 3;\r\t\t\t\t\tbuild);\r\t\t\t\"constraintsDo: [ :c |\r\t\t\tc horizontal exact:  width.\r\t\t\tc vertical exact:  height ];\"\r\t\t\tbackground: (BlBackground paint: Color white);\r\t\t\t\"layout: BlLinearLayout horizontal;\" yourself.\r\t\t\t\r\t\t\t\rgraph_too := BlElement new\rsize: 100@100;\r\t\t\tborder: (BlBorder builder\r\t\t\t\t\tpaint: Color black;\r\t\t\t\t\twidth: 3;\r\t\t\t\t\tbuild);\r\t\t\t\"constraintsDo: [ :c |\r\t\t\tc horizontal exact:  width.\r\t\t\tc vertical exact:  height ];\"\r\t\t\tbackground: (BlBackground paint: Color white);\r\t\t\t\"layout: BlLinearLayout horizontal;\" yourself.\r\t\t\t\r\t\t\t\rcontainer addChild: graph.\rcontainer addChild: graph_too.\r\r\r\rtitle := LarTitel new initialize: 'The title'. \r\rcontainer_next := BlElement new\rborder: (BlBorder builder dashed; paint: Color red; width: 3; build);\r\t\tlayout: BlGridLayout vertical;\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent].\r\t\t\t\rcontainer_small := BlElement new\rborder: (BlBorder builder dashed; paint: Color red; width: 3; build);\r\t\tlayout: BlGridLayout horizontal;\r\t\tconstraintsDo: [ :c |\r\t\t\tc horizontal matchParent.\r\t\t\tc vertical matchParent].\r\t\tcontainer layout cellSpacing: 20.\r\t\t\t\r\t\tcontainer_next layout cellSpacing: 20.\r container_next addChild: title asElement.\r\r container_next addChild: container. \r container_next forceLayout.\r^container_next"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-04-01T14:30:37.839+02:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-04-01T14:30:37.839+02:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Dynamic Plotter"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "98c2e370-18ee-0d00-bbf7-04ca0ca3fee9"
+	}
+}

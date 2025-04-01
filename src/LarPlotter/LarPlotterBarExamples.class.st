@@ -29,7 +29,7 @@ LarPlotterBarExamples >> addBars [
 LarPlotterBarExamples >> addTitel [
 <gtExample>
 
-^self newGraph titel: 'This is a title'. 
+^self addBars titel: 'This is a title'. 
 
 ]
 
