@@ -12,7 +12,7 @@ LarPlotterBarExamples >> addAxisLabel [
 <gtExample>
 | plotter |
 	"plotter:= LarPlotterBar new initialize: 500 with: 500."
-	^self newGraph addAxisLabel: 'AxisX' with: 'AxisY'. 
+	^self addTitel addAxisLabel: 'AxisX' with: 'AxisY'. 
 	
 ]
 
@@ -70,7 +70,7 @@ LarPlotterBarExamples >> changeTitle [
 LarPlotterBarExamples >> graphWithTickLabels [
 <gtExample>
 
-^self graphWithTicks addTicksLabel: (self labels). 
+^self addAxisLabel addTicksLabel: (self labels). 
 
 ]
 

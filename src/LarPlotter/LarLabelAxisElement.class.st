@@ -19,10 +19,12 @@ super initialize.
 		text: aText asRopedText ;
 		background: (Color white alpha: 0.3);
 		border: (BlBorder paint: Color transparent width: 1);
-		padding: (BlInsets all: 3);
+		
+			margin: (BlInsets all: 20);
+			padding: (BlInsets all: 5);
         constraintsDo: [ :c |
-			c ignoreByLayout.
-			c ignored vertical alignCenter.
-			c ignored horizontal alignCenter ]; yourself.
-
+		c horizontal fitContent.
+		c vertical fitContent.
+		c grid vertical alignCenter.
+		c grid horizontal alignCenter ]; yourself 
 ]

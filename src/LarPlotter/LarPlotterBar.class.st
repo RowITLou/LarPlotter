@@ -89,11 +89,11 @@ graph addTicksLabelX: tick asElement with: amountTicksX with: n.
 tickLabelsX add: tick. 
 ].
 
-1 to: ( amountTicksY ) do: [: n| 
+"1 to: ( amountTicksY ) do: [: n| 
 tick:= LarTickLabel new initialize: (( amountTicksY) - (n-1)). 
 graph addTicksLabelY: tick asElement with: amountTicksY with: n.
 tickLabelsY add: tick.
-].
+]."
 "graph addTicksLabel: amountX with: amountY."
 
 ]
