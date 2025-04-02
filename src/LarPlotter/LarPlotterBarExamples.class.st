@@ -75,6 +75,14 @@ LarPlotterBarExamples >> graphWithTickLabels [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> graphWithTickLabelsY [
+<gtExample>
+
+^self addAxisLabel addTicksLabel: (self labels) with: self values. 
+
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> graphWithTicks [
 <gtExample>
 ^self newGraph addTicks: 8 with: 8. 

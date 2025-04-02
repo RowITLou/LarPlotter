@@ -102,15 +102,15 @@ tickLabelsY add: tick.
 LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 | tick |
 self tickLablesInitialize.
-	1 to: (amountTicksX ) do: [: n| 
+	1 to: (valuesX size ) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
 graph addTicksLabelX: tick asElement with: amountTicksX with: n.
 tickLabelsX add: tick. 
 ].
 
-2 to: ( amountTicksY ) do: [: n| 
-tick:= LarTickLabel new initialize: (valuesY at: (( amountTicksY) - (n-1))). 
-graph addTicksLabelY: tick asElement with: amountTicksY with: n.
+1 to: ( valuesY size ) do: [: n| 
+tick:= LarTickLabel new initialize: (valuesY at: (( valuesY size) - (n-1))). 
+graph addTicksLabelY: tick asElement with: valuesY size with: n.
 tickLabelsY add: tick.
 ].
 "graph addTicksLabel: amountX with: amountY."

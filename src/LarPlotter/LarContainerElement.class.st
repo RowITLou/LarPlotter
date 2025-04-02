@@ -15,7 +15,7 @@ super initialize.
 	"size: width@height;"
 			border: (BlBorder builder
 					
-					paint: Color black;
+					paint: Color white;
 					width: 1;
 					build);
 			"constraintsDo: [ :c |
@@ -27,7 +27,8 @@ super initialize.
 			c horizontal fitContent.
 			c vertical fitContent].
 			self layout cellSpacing: 3.
-			
+			"self layout columnCount: 2.
+			"
 			"layout: BlLinearLayout horizontal;"^self yourself.
 
 ]
@@ -40,7 +41,7 @@ super initialize.
 	"size: width@height;"
 			border: (BlBorder builder
 					
-					paint: Color black;
+					paint: Color white;
 					width: 1;
 					build);
 			"constraintsDo: [ :c |
@@ -52,6 +53,7 @@ super initialize.
 			c horizontal fitContent.
 			c vertical fitContent].
 			self layout cellSpacing: 3.
+			"self layout columnCount: 4."
 			
 			"layout: BlLinearLayout horizontal;"^self yourself.
 ]

@@ -16,7 +16,9 @@ Class {
 		'margin',
 		'title',
 		'container',
-		'labelsContainer'
+		'labelsContainer',
+		'containerTickAndLabel',
+		'labelsYContainer'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -40,7 +42,13 @@ LarPlotterBarElement >> addAxisLabel: elementX with: elementY [
   	topLeftOrigin
 		rotateBy: 270;
 		apply.
+	containerTickAndLabel addChildFirst: labelAxisY. 
     container addChild: labelAxisX.
+    "labelAxisY transform
+  	topLeftOrigin
+		rotateBy: 270;
+		apply."
+   " containerTickAndLabel addChildFirst: labelAxisY. "
     "self addChild: labelContainerX."
 ^self
 ]
@@ -99,12 +107,17 @@ labelsContainer addChild: tickXcontainer.
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: elementY with: amountTickY with: n [
 | tickYLabel tickYcontainer |
+
 	"2 to: ( amountTickY ) do: [: n| "
 tickYLabel := elementY. 
-tickYcontainer := self createContainer:20 with: ( widthGraph/  (amountTickY+1)).
-	tickYcontainer relocate: (posY-29)@(posX +((n)*(widthGraph/ (amountTickY+1))) - ((heightGraph/ (amountTickY+1))/2)).
-	self addChild: tickYcontainer.
-tickYcontainer addChild: tickYLabel.
+tickYcontainer := (LarContainer new initialize: widthGraph with: heightGraph) asElementVertical.
+tickYcontainer constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical exact:(widthGraph/ amountTickY)].
+
+	"tickYcontainer relocate: (posY-29)@(posX +((n)*(widthGraph/ (amountTickY+1))) - ((heightGraph/ (amountTickY+1))/2))."
+	tickYcontainer addChild: tickYLabel.
+ labelsYContainer addChild: tickYcontainer.
 ^self
 ]
 
@@ -137,7 +150,7 @@ tickYContainer addChild: tickY.
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTitle: text with: element [
-| titel titelContainer |
+| titel  |
 	titel:= element.
 	self title: text. 
 	"titelContainer := self createContainer: widthGraph with: heightLabel. 
@@ -150,7 +163,7 @@ LarPlotterBarElement >> addTitle: text with: element [
 	titelContainer relocate: posX@ 0. "
 	"titel relocate: posX@ 0. "
 	
-	container addChildFirst: titel.
+	container addChild: titel at: 5.
 	
 	
 	^self
@@ -165,19 +178,43 @@ posY := positionY.
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> create: width with: height [
-widthGraph := width.
+| empty empty_too  scroll empty_other grid |
+	widthGraph := width.
 heightGraph := height.
-heightLabel:= 50 .
-margin := 20.
+"heightLabel:= 50 .
+margin := 20."
+labelsYContainer := (LarContainer new initialize: width with: height) asElementVertical.
 graphElement := (LarContainer new initialize: width with: height) asElement.
 container := (LarContainer new initialize: width with: height) asElementVertical.
+containerTickAndLabel :=(LarContainer new initialize: width with: height) asElement.
+containerTickAndLabel addChild: labelsYContainer. 
 "posX :=100.
 posY := 100.
 graphElement relocate: 100@100."
 super initialize. 
 container addChild: graphElement.
+grid := BlGridLayoutImpl new.
+
+container layout columnCount: 2.
+container layout rowCount: 4.
+empty := BlElement new. 
+empty_too := BlElement new. 
+empty_other := BlElement new. 
+"grid fill: container from: 5 to: 6 with: graphElement."
+container addChildFirst: empty. 
+
+container addChild: containerTickAndLabel at: 2.  
+container addChild: empty_too at: 3. 
+container addChild: empty_other at: 4.
+
 labelsContainer:= (LarContainer new initialize: heightGraph with: widthGraph) asElement.
 container addChild: labelsContainer. 
+
+"scroll := BlScrollableElement new background: Color transparent.
+scroll constraintsDo: [ :c |
+			c horizontal matchParent.
+			c vertical matchParent ]. 
+scroll addChild: container. "
 ^self 
 border: (BlBorder builder
 					
@@ -186,8 +223,8 @@ border: (BlBorder builder
 					build);
 			background: (Color transparent);
 			constraintsDo: [ :c |
-			c horizontal exact:  800.
-			c vertical exact:  800 ];
+			c horizontal matchParent.
+			c vertical matchParent ];
 			background: (BlBackground paint: Color white);
 			addChild: container;
 			
@@ -203,7 +240,7 @@ LarPlotterBarElement >> createContainer: width with: height [
 	containerC := (LarContainer new initialize:  width with: height) asElement. 
 containerC border: (BlBorder builder
 					
-					paint: Color black;
+					paint: Color white;
 					width: 1;
 					build).
 					"constraintsDo: [ :c |
