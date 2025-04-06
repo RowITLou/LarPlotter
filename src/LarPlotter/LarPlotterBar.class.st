@@ -47,11 +47,11 @@ LarPlotterBar >> addBars: values [
 | bar |
 amountTicksX := values size. 
 	1 to: (values size) do: [:n|
-bar:= LarBar new initialize: ((values at: n)) with: (widthG/(values size)).
+bar:= LarBar new initialize: ((values at: n)) with: 65.
 graph addBars: (values size) with: n with: bar asElement. 
  bars add: bar. 
 ].
-"graph addBars: values."
+
 graph rotation: 180. 
 ]
 
@@ -83,18 +83,12 @@ ticksY add: tickX.
 LarPlotterBar >> addTicksLabel: valuesX [
 | tick |
 self tickLablesInitialize.
-	1 to: (amountTicksX) do: [: n| 
+	1 to: ( valuesX size) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
 graph addTicksLabelX: tick asElement with: amountTicksX with: n.
 tickLabelsX add: tick. 
 ].
 
-"1 to: ( amountTicksY ) do: [: n| 
-tick:= LarTickLabel new initialize: (( amountTicksY) - (n-1)). 
-graph addTicksLabelY: tick asElement with: amountTicksY with: n.
-tickLabelsY add: tick.
-]."
-"graph addTicksLabel: amountX with: amountY."
 
 ]
 
@@ -113,7 +107,7 @@ tick:= LarTickLabel new initialize: (valuesY at: (( valuesY size) - (n-1))).
 graph addTicksLabelY: tick asElement with: valuesY size with: n.
 tickLabelsY add: tick.
 ].
-"graph addTicksLabel: amountX with: amountY."
+
 
 ]
 
@@ -170,16 +164,22 @@ LarPlotterBar >> gtLiveFor: aView [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> initialize [
+graph := LarPlotterBarElement new create.
+self barsDefinition. 
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> initialize: sizeWidth with: sizeHeight [
 "These are default values and can be changes if wished."
-posX := 100.
-posY := 100. 
+"posX := 100.
+posY := 100. "
 "amountTicksX:= 8. 
 amountTicksY := 8. "
-labelHeight := 50.
+"labelHeight := 50.
 margine := 20.
 heightG:= sizeHeight. 
-widthG := sizeWidth.
+widthG := sizeWidth."
 
 graph := LarPlotterBarElement new create: sizeWidth with: sizeHeight.
 "graph changePosition: posX with: posY. "
@@ -192,7 +192,7 @@ LarPlotterBar >> initializeBarGraphFromSpec [
 
 	| data axisX axisy |
 	dict := STONJSON fromString: self spec.
-	self initialize: 300 with: 300.
+	self initialize.
 	data := ((dict at: 'data') at: 'values') collect: #values.
 	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
 	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
