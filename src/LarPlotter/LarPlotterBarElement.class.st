@@ -18,7 +18,9 @@ Class {
 		'container',
 		'labelsContainer',
 		'containerTickAndLabel',
-		'labelsYContainer'
+		'labelsYContainer',
+		'ticksYContainer',
+		'tickYContainer'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -31,7 +33,9 @@ LarPlotterBarElement >> addAxisLabel: elementX with: elementY [
   	topLeftOrigin
 		rotateBy: 270;
 		apply.
+	labelAxisY forceLayout.
 	containerTickAndLabel addChildFirst: labelAxisY. 
+	containerTickAndLabel forceLayout. 
     container addChild: labelAxisX.
 ^self
 ]
@@ -48,27 +52,12 @@ graphElement forceLayout.
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicks: amountTickX with: element with: n [
-
-| tickX tickXcontainer |
-"	1 to: (amountTickX - 1) do: [: n| "
-tickX := element.
-tickXcontainer := (self createContainer:( widthGraph/  amountTickX) with: 12).
-tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ amountTickX)) + ((widthGraph/ amountTickX)/2)) @ (posY + heightGraph).
-
-self addChild: tickXcontainer. 
-tickXcontainer addChild: tickX.
-
-^self 
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelX: elementX with: amountTickX with: n [
 
 | tickXLabel tickXcontainer |
 	"1 to: (amountTickX - 1) do: [: n| "
 tickXLabel := elementX.
- tickXcontainer:= self createContainer: heightGraph with: widthGraph.
+ tickXcontainer:= self createContainer.
 
  tickXcontainer constraintsDo: [ :c |
 			c vertical fitContent.
@@ -82,7 +71,7 @@ labelsContainer addChild: tickXcontainer.
 LarPlotterBarElement >> addTicksLabelY: elementY with: amountTickY with: n [
 | tickYLabel tickYcontainer |
 tickYLabel := elementY. 
-tickYcontainer := (LarContainer new initialize: widthGraph with: heightGraph) asElementVertical.
+tickYcontainer := (LarContainer new initialize) asElementVertical.
 tickYcontainer constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical exact: 50].
@@ -107,13 +96,30 @@ tickXcontainer addChild: tickX.
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksY: amountTickY with: element with: n [
+LarPlotterBarElement >> addTicksY: element with: n [
 | tickY tickYContainer |
 tickY := element.
-tickYContainer := self createContainer: 12 with: ( widthGraph/  (amountTickY+1)).
-tickYContainer relocate: (posX-12)@(posY +((n)*(heightGraph/ (amountTickY+1))) - ((heightGraph/ (amountTickY+1))/2)).
-self addChild: tickYContainer.
+tickYContainer := (LarContainer new initialize) asElementVertical.
+tickYContainer constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical exact: 50].
+
 tickYContainer addChild: tickY.
+ticksYContainer addChild: tickYContainer.
+^self
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addTicksY: amountTickY with: element with: n [
+| tickY  |
+tickY := element.
+tickYContainer := (LarContainer new initialize) asElementVertical.
+tickYContainer constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical exact: 50].
+
+tickYContainer addChild: tickY.
+ticksYContainer addChild: tickYContainer.
 ^self
 ]
 
@@ -141,10 +147,12 @@ LarPlotterBarElement >> create [
 | empty empty_too  scroll empty_other grid |
 
 labelsYContainer := LarContainer new  asElementVertical.
+ticksYContainer := LarContainer new  asElementVertical.
 graphElement := LarContainer new  asElement.
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
 containerTickAndLabel addChild: labelsYContainer. 
+containerTickAndLabel addChild: ticksYContainer. 
 
 super initialize. 
 container addChild: graphElement.

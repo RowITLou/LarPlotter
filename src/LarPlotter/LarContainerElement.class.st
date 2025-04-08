@@ -18,18 +18,14 @@ super initialize.
 					paint: Color white;
 					width: 1;
 					build);
-			"constraintsDo: [ :c |
-			c horizontal exact:  width.
-			c vertical exact:  height ];"
+			
 			background: (BlBackground paint: Color white);
 			layout: BlGridLayout horizontal;
 		constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical fitContent].
 			self layout cellSpacing: 3.
-			"self layout columnCount: 2.
-			"
-			"layout: BlLinearLayout horizontal;"^self yourself.
+			^self yourself.
 
 ]
 
@@ -44,16 +40,14 @@ super initialize.
 					paint: Color white;
 					width: 1;
 					build);
-			"constraintsDo: [ :c |
-			c horizontal exact:  width.
-			c vertical exact:  height ];"
+			
 			background: (BlBackground paint: Color white);
 			layout: BlGridLayout vertical;
 		constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical fitContent].
 			self layout cellSpacing: 3.
-			"self layout columnCount: 4."
 			
-			"layout: BlLinearLayout horizontal;"^self yourself.
+			
+			^self yourself.
 ]
