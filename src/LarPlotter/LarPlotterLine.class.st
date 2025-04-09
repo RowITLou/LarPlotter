@@ -8,7 +8,7 @@ Class {
 		'amountTicksY',
 		'amountTicksX',
 		'tickLabelsY',
-		'bars',
+		'lines',
 		'ticksX',
 		'ticksY',
 		'tickLabelsX',
@@ -22,6 +22,18 @@ LarPlotterLine >> addAxisLabel: textX with: textY [
 labelAxisX := LarLabelAxis new initialize: textX. 
 labelAxisY := LarLabelAxis new initialize: textY. 
 graph addAxisLabel: labelAxisX asElement with: labelAxisY asElement. 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> addLines: values [
+| line |
+	1 to: (values size) do: [:n|
+ n=1
+ifTrue:[line:= LarLine new initialize: (0@0) with: (60*n)@(values at: n)]
+ifFalse:[line:= LarLine new initialize: (60*(n-1))@(values at: (n-1)) with: (n*60)@(values at: n)].
+graph addLines: (values size) with: n with: (line asElement). 
+ lines add: line. 
+].
 ]
 
 { #category : #'as yet unclassified' }
@@ -58,12 +70,6 @@ tickLabelsY add: tick.
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLine >> barsDefinition [
-
-	bars:=  OrderedCollection new. 
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterLine >> graph [
 ^graph
 ]
@@ -76,16 +82,19 @@ LarPlotterLine >> gtLiveFor: aView [
 		priority: 10;
 		stencil: [ self graph   ];
 		actionUpdateButton.
-		"updateWhen: LePageTitleChanged in: self page announcer.
 		
-	column ifNotNil: [column announcer announce: KBNameUpdate new]."
-	"^view"
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterLine >> initialize [
-graph := LarPlotterBarElement new create.
-self barsDefinition. 
+graph := LarPlotterLineElement new create.
+self linesDefinition. 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> linesDefinition [
+
+	lines:=  OrderedCollection new. 
 ]
 
 { #category : #'as yet unclassified' }

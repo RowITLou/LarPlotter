@@ -12,7 +12,7 @@ LarContainerElement >> create: height with: width [
 
 super initialize.
 	self
-	"size: width@height;"
+	
 			border: (BlBorder builder
 					
 					paint: Color white;
@@ -34,7 +34,7 @@ LarContainerElement >> createVertical: height with: width [
 
 super initialize.
 	self
-	"size: width@height;"
+	
 			border: (BlBorder builder
 					
 					paint: Color white;

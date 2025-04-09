@@ -45,7 +45,7 @@ graph addAxisLabel: labelAxisX asElement with: labelAxisY asElement.
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars: values [
 | bar |
-amountTicksX := values size. 
+
 	1 to: (values size) do: [:n|
 bar:= LarBar new initialize: ((values at: n)) with: 65.
 graph addBars: (values size) with: n with: bar asElement. 
@@ -196,7 +196,7 @@ LarPlotterBar >> initializeBarGraphFromSpec [
 	self titel: 'This is a title'.
 	self addBars: (data collect: [ :each | each last ]).
 	self addAxisLabel: axisX with: axisy.
-	self addTicks: 0 with: data size.
+	self addTicks:  data size.
 	self addTicksLabel: (data collect: [ :each | each first ])
 ]
 
