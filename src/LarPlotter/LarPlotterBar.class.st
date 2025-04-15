@@ -2,19 +2,8 @@ Class {
 	#name : #LarPlotterBar,
 	#superclass : #Object,
 	#instVars : [
-		'amountTicksX',
-		'amountTicksY',
-		'posX',
-		'posY',
-		'labelHeight',
-		'margine',
 		'labelAxisX',
 		'labelAxisY',
-		'base',
-		'heightG',
-		'widthG',
-		'graphElement',
-		'graph',
 		'title',
 		'bars',
 		'tickLabelsX',
@@ -22,7 +11,8 @@ Class {
 		'ticksX',
 		'ticksY',
 		'spec',
-		'dict'
+		'dict',
+		'amountTicksY'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -38,21 +28,16 @@ LarPlotterBar class >> withSpec: aSpec [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addAxisLabel: textX with: textY [
 labelAxisX := LarLabelAxis new initialize: textX. 
-labelAxisY := LarLabelAxis new initialize: textY. 
-"graph addAxisLabel: labelAxisX asElement with: labelAxisY asElement. "
+labelAxisY := LarLabelAxis new initialize: textY.
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars: values [
 | bar |
-
 	1 to: (values size) do: [:n|
 bar:= LarBar new initialize: ((values at: n)) with: 65.
-"graph addBars: (values size) with: n with: bar asElement. "
  bars add: bar. 
 ].
-
-graph rotation: 180. 
 ]
 
 { #category : #'as yet unclassified' }
@@ -72,24 +57,10 @@ ticksY add: tickY.
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addTicks: tickXAmount with: tickYAmount [
 | tickX tickY |
-"self tickInitialize.
-ticksX removeAll. 
-ticksY removeAll. 
-amountTicksY := tickYAmount.
-amountTicksX := tickXAmount.
-amountTicksX = 0
-  ifFalse:[
-	1 to: (tickXAmount) do: [: n| 
-tickX := (LarTick new initialize: 3 with: 10). 
-graph addTicksX: tickXAmount with: tickX asElementX with: n.
-ticksX add: tickX.
-].]."
-
 1 to: ( tickYAmount ) do: [: n| 
 tickY := (LarTick new initialize: 3 with: 10).
-"graph addTicksY: tickYAmount with: tickY asElementY with: n."
-ticksY add: tickX.
 
+ticksY add: tickX.
 ].
 ]
 
@@ -99,11 +70,9 @@ LarPlotterBar >> addTicksLabel: valuesX [
 self tickLablesInitialize.
 	1 to: ( valuesX size) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
-"graph addTicksLabelX: tick asElement with: amountTicksX with: n."
+
 tickLabelsX add: tick. 
 ].
-
-
 ]
 
 { #category : #'as yet unclassified' }
@@ -112,29 +81,15 @@ LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 self tickLablesInitialize.
 	1 to: (valuesX size ) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
-"graph addTicksLabelX: tick asElement with: amountTicksX with: n."
+
 tickLabelsX add: tick. 
 ].
 
 1 to: ( valuesY size ) do: [: n| 
 tick:= LarTickLabel new initialize: (valuesY at: (( valuesY size) - (n-1))). 
-"graph addTicksLabelY: tick asElement with: valuesY size with: n."
+
 tickLabelsY add: tick.
 ].
-
-
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> amountTicks: numberX with: numberY [
-amountTicksX:=numberX.
-amountTicksY := numberY.
-self addTicks: numberX with: numberY
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> amountTicksX [
-^amountTicksX
 ]
 
 { #category : #'as yet unclassified' }
@@ -143,8 +98,18 @@ LarPlotterBar >> amountTicksY [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> asElement [
+^LarPlotterBarElement new initialize: self.
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> bars [
 ^bars
+]
+
+{ #category : #accessing }
+LarPlotterBar >> bars: anObject [
+	bars := anObject
 ]
 
 { #category : #'as yet unclassified' }
@@ -155,12 +120,7 @@ bars:=  OrderedCollection new.
 { #category : #'as yet unclassified' }
 LarPlotterBar >> changeTitle: text [
 title setText: text. 
-^graph
-]
 
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> graph [
-^graph
 ]
 
 { #category : #'as yet unclassified' }
@@ -169,17 +129,14 @@ LarPlotterBar >> gtLiveFor: aView [
 	^aView explicit
 		title: 'Live';
 		priority: 10;
-		stencil: [ self graph   ];
+		stencil: [ self asElement   ];
 		actionUpdateButton.
-		"updateWhen: LePageTitleChanged in: self page announcer.
 		
-	column ifNotNil: [column announcer announce: KBNameUpdate new]."
-	"^view"
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initialize [
-"graph := LarPlotterBarElement new create."
+
 self tickLablesInitialize.
 self tickInitialize.
 self barsDefinition. 
@@ -202,24 +159,24 @@ LarPlotterBar >> initializeBarGraphFromSpec [
 	self addTicksLabel: (data collect: [ :each | each first ])
 ]
 
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> labelHeight [
-^labelHeight
+{ #category : #accessing }
+LarPlotterBar >> labelAxisX [
+	^ labelAxisX
 ]
 
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> labelHeight: height [
-labelHeight := height. 
+{ #category : #accessing }
+LarPlotterBar >> labelAxisX: anObject [
+	labelAxisX := anObject
 ]
 
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> margine [
-^margine
+{ #category : #accessing }
+LarPlotterBar >> labelAxisY [
+	^ labelAxisY
 ]
 
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> margine: number [
-margine := number
+{ #category : #accessing }
+LarPlotterBar >> labelAxisY: anObject [
+	labelAxisY := anObject
 ]
 
 { #category : #accessing }
@@ -243,9 +200,19 @@ LarPlotterBar >> tickLabelsX [
 ^tickLabelsX
 ]
 
+{ #category : #accessing }
+LarPlotterBar >> tickLabelsX: anObject [
+	tickLabelsX := anObject
+]
+
 { #category : #'as yet unclassified' }
 LarPlotterBar >> tickLabelsY [
 ^tickLabelsY
+]
+
+{ #category : #accessing }
+LarPlotterBar >> tickLabelsY: anObject [
+	tickLabelsY := anObject
 ]
 
 { #category : #'as yet unclassified' }
@@ -259,9 +226,19 @@ LarPlotterBar >> ticksX [
 ^ticksX
 ]
 
+{ #category : #accessing }
+LarPlotterBar >> ticksX: anObject [
+	ticksX := anObject
+]
+
 { #category : #'as yet unclassified' }
 LarPlotterBar >> ticksY [
 ^ticksY
+]
+
+{ #category : #accessing }
+LarPlotterBar >> ticksY: anObject [
+	ticksY := anObject
 ]
 
 { #category : #'as yet unclassified' }
