@@ -45,10 +45,8 @@ LarPlotterBar >> addTicks: tickAmount [
 |  tickY |
 self tickInitialize.
 ticksY removeAll. 
-amountTicksY := tickAmount.
-	1 to: ( tickAmount ) do: [: n| 
+1 to: ( tickAmount ) do: [: n| 
 tickY := (LarTick new initialize: 3 with: 10).
-"graph addTicksY: tickAmount with: (tickY asElementY) with: n."
 ticksY add: tickY.
 
 ].

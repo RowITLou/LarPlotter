@@ -29,8 +29,8 @@ LarBar >> height: anObject [
 { #category : #'as yet unclassified' }
 LarBar >> initialize: sizeHeight with: sizeWidth [
 
-self sizeHeight: sizeHeight. 
-self sizeWidth: sizeWidth. 
+self height: sizeHeight. 
+self width: sizeWidth. 
 ^self.
 ]
 

@@ -8,8 +8,6 @@ Class {
 		'graphElement',
 		'posX',
 		'posY',
-		'widthGraph',
-		'heightGraph',
 		'labelAxisX',
 		'labelAxisY',
 		'heightLabel',
@@ -27,139 +25,81 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addAxisLabel: elementX with: elementY [
-	labelAxisX := elementX.
-	labelAxisY := elementY.
-	labelAxisY transform
+LarPlotterBarElement >> addAxisLabelX: elementX [ 
+	
+	containerTickAndLabel forceLayout. 
+    container addChild: elementX.
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addAxisLabelY:  elementY [
+	elementY transform
   	topLeftOrigin
 		rotateBy: 270;
 		apply.
-	labelAxisY forceLayout.
-	containerTickAndLabel addChildFirst: labelAxisY. 
+	elementY forceLayout.
+	containerTickAndLabel addChildFirst: elementY. 
 	containerTickAndLabel forceLayout. 
-    container addChild: labelAxisX.
-^self
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addBars: valuesSize with: n with: element [
-| bar |
-bar:= element.
+LarPlotterBarElement >> addBars: bars [
+bars do: [:bar|
 
-graphElement addChild: bar. 
+graphElement addChild: bar. ].
 graphElement forceLayout.
 
-^self
+
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksLabelX: elementX with: amountTickX with: n [
+LarPlotterBarElement >> addTicksLabelX: labelsX [
 
-| tickXLabel tickXcontainer |
-	"1 to: (amountTickX - 1) do: [: n| "
-tickXLabel := elementX.
+| tickXcontainer |
+labelsX do: [:tickXLabel |
  tickXcontainer:= self createContainer.
 
  tickXcontainer constraintsDo: [ :c |
 			c vertical fitContent.
 			c horizontal exact:65].
  tickXcontainer addChild: tickXLabel.
-labelsContainer addChild: tickXcontainer.
-^self
+labelsContainer addChild: tickXcontainer.].
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksLabelY: elementY with: amountTickY with: n [
-| tickYLabel tickYcontainer |
-tickYLabel := elementY. 
+LarPlotterBarElement >> addTicksLabelY: labelsY [
+|  tickYcontainer |
+labelsY do: [:tickYLabel|
 tickYcontainer := (LarContainer new initialize) asElementVertical.
 tickYcontainer constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical exact: 50].
 
 	tickYcontainer addChild: tickYLabel.
- labelsYContainer addChild: tickYcontainer.
-^self
+ labelsYContainer addChild: tickYcontainer.]
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksX: amountTickX with: element with: n [
-
-| tickX tickXcontainer |
-tickX := element.
-tickXcontainer := (self createContainer:( widthGraph/  (amountTickX+1)) with: 12).
-tickXcontainer relocate: (posX + ((n-1)*(widthGraph/ (amountTickX+1))) + ((widthGraph/ (amountTickX+1))/2)) @ (posY + heightGraph).
-
-self addChild: tickXcontainer. 
-tickXcontainer addChild: tickX.
-
-^self 
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksY: element with: n [
-| tickY tickYContainer |
-tickY := element.
+LarPlotterBarElement >> addTicksY: ticksY [
+ticksY do: [:tickY |
 tickYContainer := (LarContainer new initialize) asElementVertical.
 tickYContainer constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical exact: 50].
 
 tickYContainer addChild: tickY.
-ticksYContainer addChild: tickYContainer.
-^self
+ticksYContainer addChild: tickYContainer.]
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksY: amountTickY with: element with: n [
-| tickY  |
-tickY := element.
-tickYContainer := (LarContainer new initialize) asElementVertical.
-tickYContainer constraintsDo: [ :c |
-			c horizontal fitContent.
-			c vertical exact: 50].
-
-tickYContainer addChild: tickY.
-ticksYContainer addChild: tickYContainer.
-^self
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTitle: text with: element [
-| titel  |
-	titel:= element.
-	self title: text. 
-	
-	container addChild: titel at: 5.
-	
-	
-	^self
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> changePosition: positionX with: positionY [
-graphElement relocate: positionX @ positionY. 
-posX := positionX. 
-posY := positionY. 
+LarPlotterBarElement >> addTitle: element [
+	container addChild: element at: 5.
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> createContainer [
 | containerC |
 	containerC := (LarContainer new asElement).
-containerC border: (BlBorder builder
-					
-					paint: Color white;
-					width: 1;
-					build).
-					
-^containerC
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> createContainer: width with: height [
-| containerC |
-	containerC := (LarContainer new initialize:  width with: height) asElement. 
 containerC border: (BlBorder builder
 					
 					paint: Color white;
@@ -195,17 +135,13 @@ container layout rowCount: 4.
 empty := BlElement new. 
 empty_too := BlElement new. 
 empty_other := BlElement new. 
-
 container addChildFirst: empty. 
-
 container addChild: containerTickAndLabel at: 2.  
 container addChild: empty_too at: 3. 
 container addChild: empty_other at: 4.
 
-labelsContainer:= (LarContainer new initialize: heightGraph with: widthGraph) asElement.
+labelsContainer:= (LarContainer new) asElement.
 container addChild: labelsContainer. 
-
-
 ^self 
 border: (BlBorder builder
 
@@ -224,28 +160,20 @@ paint: Color white;
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> initializeFor [
-plotter
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> position: x with: y [
-posX := x.
-posY := y
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> rotation: value [
-graphElement transform
-		rotateBy: value;
-		apply.
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> title [
-^title
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> title: text [
-title:= text
+plotter labelAxisX isNil
+ifFalse:[self addAxisLabelX: plotter labelAxisX].
+plotter labelAxisY isNil
+ifFalse:[self addAxisLabelY: plotter labelAxisX].
+plotter bars isNil
+ifFalse:[self addBars: plotter bars].
+plotter tickLabelsX isNil
+ifFalse:[self addTicksLabelX: plotter labelAxisX].
+plotter tickLabelsY isNil
+ifFalse:[self addTicksLabelY: plotter labelAxisX].
+plotter title isNil
+ifFalse:[self addTitle: plotter labelAxisX].
+plotter ticksX isNil
+ifFalse:[self addTicksY: plotter labelAxisX].
+plotter ticksY isNil
+ifFalse:[self addTicksY: plotter labelAxisX].
 ]
