@@ -58,7 +58,29 @@ LarContainerElement >> initializeVertical [
 super initialize.
 	self
 	
+			border: (BlBorder builder
+					
+					paint: Color white;
+					width: 1;
+					build);
+			
+			background: (BlBackground paint: Color white);
+			layout: BlGridLayout vertical;
+		constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical fitContent].
+			self layout cellSpacing: 3.
+			
+			
+			^self yourself.
+]
 
+{ #category : #'as yet unclassified' }
+LarContainerElement >> initializeVertical: aContainer [
+container := aContainer.
+super initialize.
+	self
+	
 			border: (BlBorder builder
 					
 					paint: Color white;
