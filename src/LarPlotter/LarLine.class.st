@@ -2,7 +2,7 @@ Class {
 	#name : #LarLine,
 	#superclass : #Object,
 	#instVars : [
-		'lineElement',
+
 		'from',
 		'to'
 	],
@@ -11,8 +11,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarLine >> asElement [
-lineElement := LarLineElement new create: from with: to.
-^lineElement
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -21,3 +20,4 @@ from:= fromPos.
 to:= toPos. 
 ^self
 ]
+

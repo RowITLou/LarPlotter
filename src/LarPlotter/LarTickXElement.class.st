@@ -6,19 +6,19 @@ Class {
 	#superclass : #BlElement,
 	#instVars : [
 		'width',
-		'length'
+		'length',
+		'tick'
 	],
 	#category : #'LarPlotter-Element'
 }
 
 { #category : #'as yet unclassified' }
-LarTickXElement >> create: sizeWidth with: sizeLength [
+LarTickXElement >> initialize: aTick [
 super initialize.
-    width:= sizeWidth.
-    length:= sizeLength.
+    tick := aTick.
     
 	^self
-	size: width@ length;
+	size: (tick width)@ (tick length);
 	border: (BlBorder paint: Color black width: 1);
 	background: (BlBackground paint: Color black);
 	constraintsDo: [ :c |

@@ -39,7 +39,7 @@ LarPlotterBar class >> withSpec: aSpec [
 LarPlotterBar >> addAxisLabel: textX with: textY [
 labelAxisX := LarLabelAxis new initialize: textX. 
 labelAxisY := LarLabelAxis new initialize: textY. 
-graph addAxisLabel: labelAxisX asElement with: labelAxisY asElement. 
+"graph addAxisLabel: labelAxisX asElement with: labelAxisY asElement. "
 ]
 
 { #category : #'as yet unclassified' }
@@ -48,7 +48,7 @@ LarPlotterBar >> addBars: values [
 
 	1 to: (values size) do: [:n|
 bar:= LarBar new initialize: ((values at: n)) with: 65.
-graph addBars: (values size) with: n with: bar asElement. 
+"graph addBars: (values size) with: n with: bar asElement. "
  bars add: bar. 
 ].
 
@@ -63,7 +63,7 @@ ticksY removeAll.
 amountTicksY := tickAmount.
 	1 to: ( tickAmount ) do: [: n| 
 tickY := (LarTick new initialize: 3 with: 10).
-graph addTicksY: tickAmount with: (tickY asElementY) with: n.
+"graph addTicksY: tickAmount with: (tickY asElementY) with: n."
 ticksY add: tickY.
 
 ].
@@ -87,7 +87,7 @@ ticksX add: tickX.
 
 1 to: ( tickYAmount ) do: [: n| 
 tickY := (LarTick new initialize: 3 with: 10).
-graph addTicksY: tickYAmount with: tickY asElementY with: n.
+"graph addTicksY: tickYAmount with: tickY asElementY with: n."
 ticksY add: tickX.
 
 ].
@@ -99,7 +99,7 @@ LarPlotterBar >> addTicksLabel: valuesX [
 self tickLablesInitialize.
 	1 to: ( valuesX size) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
-graph addTicksLabelX: tick asElement with: amountTicksX with: n.
+"graph addTicksLabelX: tick asElement with: amountTicksX with: n."
 tickLabelsX add: tick. 
 ].
 
@@ -112,13 +112,13 @@ LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 self tickLablesInitialize.
 	1 to: (valuesX size ) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
-graph addTicksLabelX: tick asElement with: amountTicksX with: n.
+"graph addTicksLabelX: tick asElement with: amountTicksX with: n."
 tickLabelsX add: tick. 
 ].
 
 1 to: ( valuesY size ) do: [: n| 
 tick:= LarTickLabel new initialize: (valuesY at: (( valuesY size) - (n-1))). 
-graph addTicksLabelY: tick asElement with: valuesY size with: n.
+"graph addTicksLabelY: tick asElement with: valuesY size with: n."
 tickLabelsY add: tick.
 ].
 
@@ -179,7 +179,9 @@ LarPlotterBar >> gtLiveFor: aView [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initialize [
-graph := LarPlotterBarElement new create.
+"graph := LarPlotterBarElement new create."
+self tickLablesInitialize.
+self tickInitialize.
 self barsDefinition. 
 ]
 
@@ -208,22 +210,6 @@ LarPlotterBar >> labelHeight [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> labelHeight: height [
 labelHeight := height. 
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> location: positionX with: positionY [
-posY := positionX. 
-posY := positionY.
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> locationX [
-^posX
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> locationY [
-^posY
 ]
 
 { #category : #'as yet unclassified' }
@@ -281,7 +267,7 @@ LarPlotterBar >> ticksY [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> titel: text [
 	title := LarTitel new initialize: text. 
-	graph addTitle: text with: title asElement. 
+	"graph addTitle: text with: title asElement. "
 ]
 
 { #category : #'as yet unclassified' }

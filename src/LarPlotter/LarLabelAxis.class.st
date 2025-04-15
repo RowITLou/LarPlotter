@@ -8,7 +8,6 @@ Class {
 	#name : #LarLabelAxis,
 	#superclass : #Object,
 	#instVars : [
-		'LabelElement',
 		'text'
 	],
 	#category : #'LarPlotter-Model'
@@ -16,7 +15,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarLabelAxis >> asElement [
-^LarLabelAxisElement new create: text. 
+^LarLabelAxisElement new initialize: self.
 
 ]
 
@@ -28,24 +27,29 @@ self text: textAxis.
 
 { #category : #'as yet unclassified' }
 LarLabelAxis >> setBackground: color [
-LabelElement background: color
+^self asElement background: color
 ]
 
 { #category : #'as yet unclassified' }
 LarLabelAxis >> setBorderColor: color [
-LabelElement border: (BlBorder paint: color). 
+^self asElement border: (BlBorder paint: color). 
 ]
 
 { #category : #'as yet unclassified' }
 LarLabelAxis >> setFontSize: number [
-LabelElement defaultFontSize: number
+^self asElement defaultFontSize: number
 ]
 
 { #category : #'as yet unclassified' }
 LarLabelAxis >> setText: textAxis [
-LabelElement text: textAxis.
+self asElement text: textAxis.
 text:= textAxis.
 ^text
+]
+
+{ #category : #accessing }
+LarLabelAxis >> text [
+	^ text
 ]
 
 { #category : #'as yet unclassified' }

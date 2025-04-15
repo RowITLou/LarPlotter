@@ -20,7 +20,8 @@ Class {
 		'containerTickAndLabel',
 		'labelsYContainer',
 		'ticksYContainer',
-		'tickYContainer'
+		'tickYContainer',
+		'plotter'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -268,6 +269,59 @@ containerC border: (BlBorder builder
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> graphElement [
 ^graphElement
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> initialize: aPlotter [
+| empty empty_too  scroll empty_other grid |
+plotter := aPlotter.
+labelsYContainer := LarContainer new  asElementVertical.
+ticksYContainer := LarContainer new  asElementVertical.
+graphElement := LarContainer new  asElement.
+container := LarContainer new asElementVertical.
+containerTickAndLabel :=LarContainer new  asElement.
+containerTickAndLabel addChild: labelsYContainer. 
+containerTickAndLabel addChild: ticksYContainer. 
+
+super initialize. 
+container addChild: graphElement.
+grid := BlGridLayoutImpl new.
+
+container layout columnCount: 2.
+container layout rowCount: 4.
+empty := BlElement new. 
+empty_too := BlElement new. 
+empty_other := BlElement new. 
+
+container addChildFirst: empty. 
+
+container addChild: containerTickAndLabel at: 2.  
+container addChild: empty_too at: 3. 
+container addChild: empty_other at: 4.
+
+labelsContainer:= (LarContainer new initialize: heightGraph with: widthGraph) asElement.
+container addChild: labelsContainer. 
+
+
+^self 
+border: (BlBorder builder
+
+paint: Color white;
+					width: 1;
+					build);
+			background: (Color transparent);
+			constraintsDo: [ :c |
+			c horizontal matchParent.
+			c vertical matchParent ];
+			background: (BlBackground paint: Color white);
+			addChild: container;
+			
+			 yourself. 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> initializeFor [
+plotter
 ]
 
 { #category : #'as yet unclassified' }

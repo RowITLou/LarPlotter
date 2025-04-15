@@ -5,19 +5,20 @@ Class {
 	#name : #LarTickLabelElement,
 	#superclass : #BlTextElement,
 	#instVars : [
-		'textLabel'
+		'textLabel',
+		'label'
 	],
 	#category : #'LarPlotter-Element'
 }
 
 { #category : #'as yet unclassified' }
-LarTickLabelElement >> create: labelText [
-
+LarTickLabelElement >> initialize: aLabel [
+label := aLabel.
 super initialize.
 ^self
 	defaultFontSize: 30;
 	
-	text: labelText asRopedText;
+	text: label labelText asRopedText;
 	background: Color white;
 	border: (BlBorder paint: Color white width: 1);
 	"margin: (BlInsets all: 20);"

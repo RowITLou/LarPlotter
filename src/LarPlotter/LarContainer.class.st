@@ -6,75 +6,67 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'width',
-		'height',
-		'containerElement'
+		'height'
 	],
 	#category : #'LarPlotter-Model'
 }
 
 { #category : #'as yet unclassified' }
 LarContainer >> asElement [
-
-^LarContainerElement new create: height with: width 
+^LarContainerElement new initializeHorizontal.
 ]
 
 { #category : #'as yet unclassified' }
 LarContainer >> asElementVertical [
-^LarContainerElement new createVertical: height with: width 
+^LarContainerElement new initializeVertical.
+]
+
+{ #category : #accessing }
+LarContainer >> height [
+	^ height
+]
+
+{ #category : #accessing }
+LarContainer >> height: anObject [
+	height := anObject
 ]
 
 { #category : #'as yet unclassified' }
 LarContainer >> initialize [
-self sizeWidth: 0.
-self sizeHeight: 0.
 ^self
 ]
 
 { #category : #'as yet unclassified' }
 LarContainer >> initialize: sizeWidth with: sizeHeight [
-self sizeWidth: sizeWidth. 
-self sizeHeight: sizeHeight. 
+self width: sizeWidth. 
+self height: sizeHeight. 
 ^self
 ]
 
 { #category : #'as yet unclassified' }
 LarContainer >> resize: widthX with: lengthX [
-self sizeWidth: widthX. 
-self sizeHeight: lengthX.
-containerElement size: widthX with: lengthX.
+self width: widthX. 
+self height: lengthX.
+^self asElement size: widthX with: lengthX.
 
 ]
 
 { #category : #'as yet unclassified' }
 LarContainer >> setBackground: color [
-containerElement background: color.
+^self asElement background: color.
 ]
 
 { #category : #'as yet unclassified' }
 LarContainer >> setBorderColor: color [
-containerElement border: (BlBorder paint: color)
+^self asElement border: (BlBorder paint: color)
 ]
 
-{ #category : #'as yet unclassified' }
-LarContainer >> sizeHeight [
-height isNil
-ifTrue:[^0]
-ifFalse:[^height]
+{ #category : #accessing }
+LarContainer >> width [
+	^ width
 ]
 
-{ #category : #'as yet unclassified' }
-LarContainer >> sizeHeight: size [
-height := size
-]
-
-{ #category : #'as yet unclassified' }
-LarContainer >> sizeWidth [
-width isNil
-ifTrue:[^0]
-ifFalse:[^width]
-]
-
-{ #category : #'as yet unclassified' }
-LarContainer >> sizeWidth: size [
-width := size
+{ #category : #accessing }
+LarContainer >> width: anObject [
+	width := anObject
 ]

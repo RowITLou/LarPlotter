@@ -4,11 +4,14 @@ This class creates the container element
 Class {
 	#name : #LarContainerElement,
 	#superclass : #BlElement,
+	#instVars : [
+		'container'
+	],
 	#category : #'LarPlotter-Element'
 }
 
 { #category : #'as yet unclassified' }
-LarContainerElement >> create: height with: width [
+LarContainerElement >> initializeHorizontal [
 
 super initialize.
 	self
@@ -26,15 +29,36 @@ super initialize.
 			c vertical fitContent].
 			self layout cellSpacing: 3.
 			^self yourself.
-
 ]
 
 { #category : #'as yet unclassified' }
-LarContainerElement >> createVertical: height with: width [
+LarContainerElement >> initializeHorizontal: aContainer [
+container := aContainer. 
+super initialize.
+	self
+	
+			border: (BlBorder builder
+					
+					paint: Color white;
+					width: 1;
+					build);
+			
+			background: (BlBackground paint: Color white);
+			layout: BlGridLayout horizontal;
+		constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical fitContent].
+			self layout cellSpacing: 3.
+			^self yourself.
+]
+
+{ #category : #'as yet unclassified' }
+LarContainerElement >> initializeVertical [
 
 super initialize.
 	self
 	
+
 			border: (BlBorder builder
 					
 					paint: Color white;

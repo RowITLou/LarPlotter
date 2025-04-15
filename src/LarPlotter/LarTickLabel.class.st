@@ -7,15 +7,14 @@ Class {
 	#name : #LarTickLabel,
 	#superclass : #Object,
 	#instVars : [
-		'labelText',
-		'label'
+		'labelText'
 	],
 	#category : #'LarPlotter-Model'
 }
 
 { #category : #'as yet unclassified' }
 LarTickLabel >> asElement [
-^label:= LarTickLabelElement new create: labelText
+^LarTickLabelElement new initialize: self.
 ]
 
 { #category : #'as yet unclassified' }
@@ -24,30 +23,34 @@ self labelText: text.
 ^self.
 ]
 
+{ #category : #accessing }
+LarTickLabel >> labelText [
+	^ labelText
+]
+
 { #category : #'as yet unclassified' }
-LarTickLabel >> labelText: textLabel [
-labelText:= textLabel.
-^labelText
+LarTickLabel >> labelText: anObject [
+	labelText := anObject
 ]
 
 { #category : #'as yet unclassified' }
 LarTickLabel >> setBackground: color [
-label background: color
+self asElement background: color
 ]
 
 { #category : #'as yet unclassified' }
 LarTickLabel >> setBorderColor: color [
-label border: (BlBorder paint: color). 
+self asElement border: (BlBorder paint: color). 
 ]
 
 { #category : #'as yet unclassified' }
 LarTickLabel >> setFontSize: number [
-label defaultFontSize: number
+self asElement defaultFontSize: number
 ]
 
 { #category : #'as yet unclassified' }
 LarTickLabel >> setText: textlabel [
-label text: textlabel.
+self asElement text: textlabel.
 labelText:= textlabel.
 ^labelText
 ]
