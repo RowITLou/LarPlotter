@@ -31,6 +31,17 @@ LarPlotterLineElement >> addAxisLabel: elementX with: elementY [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterLineElement >> addLines: valuesSize with: n with: element [
+| line |
+line:= element.
+
+graphElement addChild: line. 
+graphElement forceLayout.
+
+^self
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterLineElement >> addTicksLabelX: elementX with: amountTickX with: n [
 
 | tickXLabel tickXcontainer |

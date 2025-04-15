@@ -7,23 +7,20 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'width',
-		'length',
-		'tickElementX',
-		'tickElementY'
+		'length'
 	],
 	#category : #'LarPlotter-Model'
 }
 
 { #category : #'as yet unclassified' }
 LarTick >> asElementX [
-^LarTickXElement new create: self sizeWidth with: self sizeLength.
+^LarTickXElement new initialize: self.
 
 ]
 
 { #category : #'as yet unclassified' }
 LarTick >> asElementY [
-"<return: #LarTick>"
-^LarTickYElement new create: self sizeWidth with: self sizeLength.
+^LarTickYElement new initialize: self.
 ]
 
 { #category : #'as yet unclassified' }
@@ -32,46 +29,42 @@ self sizeWidth: sizeWidth.
 self sizeLength: sizeLength. 
 ]
 
+{ #category : #accessing }
+LarTick >> length [
+	^ length
+]
+
+{ #category : #accessing }
+LarTick >> length: anObject [
+	length := anObject
+]
+
 { #category : #'as yet unclassified' }
 LarTick >> resize: widthX with: lengthX [
-self sizeWidth: widthX. 
-self sizeLength: lengthX.
-tickElementX size: widthX with: lengthX.
-tickElementY size: widthX with: lengthX.
+self width: widthX. 
+self length: lengthX.
+self asElementX size: widthX with: lengthX.
+self asElementY size: widthX with: lengthX.
 ]
 
 { #category : #'as yet unclassified' }
 LarTick >> setBackground: color [
-tickElementX background: color.
-tickElementY background: color
+self asElementX background: color.
+self asElementY background: color
 ]
 
 { #category : #'as yet unclassified' }
 LarTick >> setBorderColor: color [
-tickElementX border: (BlBorder paint: color). 
-tickElementY border: (BlBorder paint: color). 
+self asElementX border: (BlBorder paint: color). 
+self asElementY border: (BlBorder paint: color). 
 ]
 
-{ #category : #'as yet unclassified' }
-LarTick >> sizeLength [
-length isNil
-ifTrue:[^0]
-ifFalse:[^length]
+{ #category : #accessing }
+LarTick >> width [
+	^ width
 ]
 
-{ #category : #'as yet unclassified' }
-LarTick >> sizeLength: size [
-length := size
-]
-
-{ #category : #'as yet unclassified' }
-LarTick >> sizeWidth [
-width isNil
-ifTrue:[^0]
-ifFalse:[^width]
-]
-
-{ #category : #'as yet unclassified' }
-LarTick >> sizeWidth: size [
-width := size
+{ #category : #accessing }
+LarTick >> width: anObject [
+	width := anObject
 ]

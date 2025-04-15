@@ -4,16 +4,20 @@ This class creates the element for a title of a graph
 Class {
 	#name : #LarTitelElement,
 	#superclass : #BlTextElement,
+	#instVars : [
+		'titel'
+	],
 	#category : #'LarPlotter-Element'
 }
 
 { #category : #'as yet unclassified' }
-LarTitelElement >> create: labelText [
+LarTitelElement >> initialize: aTitel [
 super initialize.
+titel := aTitel.
 ^self
 	defaultFontSize: 30;
 	
-	text: labelText asRopedText;
+	text: titel text asRopedText;
 	background: Color white;
 	border: (BlBorder paint: Color white width: 1);
 	
