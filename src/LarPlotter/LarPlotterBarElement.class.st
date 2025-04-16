@@ -28,17 +28,19 @@ Class {
 LarPlotterBarElement >> addAxisLabelX: elementX [ 
 	
 	containerTickAndLabel forceLayout. 
-    container addChild: elementX.
+    container addChild: (elementX asElement).
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addAxisLabelY:  elementY [
-	elementY transform
+LarPlotterBarElement >> addAxisLabelY:  labelY [
+| elementY |
+	elementY := labelY asElement.
+	elementY  transform
   	topLeftOrigin
 		rotateBy: 270;
 		apply.
 	elementY forceLayout.
-	containerTickAndLabel addChildFirst: elementY. 
+	containerTickAndLabel addChildFirst: (elementY). 
 	containerTickAndLabel forceLayout. 
 ]
 
@@ -46,9 +48,12 @@ LarPlotterBarElement >> addAxisLabelY:  elementY [
 LarPlotterBarElement >> addBars: bars [
 bars do: [:bar|
 
-graphElement addChild: bar. ].
+graphElement addChildFirst: (bar asElement). ].
 graphElement forceLayout.
-
+graphElement  transform
+  	
+		rotateBy: 180;
+		apply.
 
 ]
 
@@ -62,7 +67,7 @@ labelsX do: [:tickXLabel |
  tickXcontainer constraintsDo: [ :c |
 			c vertical fitContent.
 			c horizontal exact:65].
- tickXcontainer addChild: tickXLabel.
+ tickXcontainer addChild: (tickXLabel asElement).
 labelsContainer addChild: tickXcontainer.].
 ]
 
@@ -75,7 +80,7 @@ tickYcontainer constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical exact: 50].
 
-	tickYcontainer addChild: tickYLabel.
+	tickYcontainer addChild: (tickYLabel asElement).
  labelsYContainer addChild: tickYcontainer.]
 ]
 
@@ -87,13 +92,13 @@ tickYContainer constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical exact: 50].
 
-tickYContainer addChild: tickY.
+tickYContainer addChild: tickY asElementY.
 ticksYContainer addChild: tickYContainer.]
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTitle: element [
-	container addChild: element at: 5.
+	container addChild: (element asElement) at: 5.
 ]
 
 { #category : #'as yet unclassified' }
@@ -128,7 +133,7 @@ containerTickAndLabel addChild: ticksYContainer.
 
 super initialize. 
 container addChild: graphElement.
-grid := BlGridLayoutImpl new.
+"grid := BlGridLayoutImpl new."
 
 container layout columnCount: 2.
 container layout rowCount: 4.
@@ -141,7 +146,13 @@ container addChild: empty_too at: 3.
 container addChild: empty_other at: 4.
 
 labelsContainer:= (LarContainer new) asElement.
+self initializeFor.
 container addChild: labelsContainer. 
+scroll := BlScrollableElement new. 
+scroll constraintsDo: [ :c |
+		c horizontal matchParent.
+		c vertical matchParent ].
+scroll addChild: container.
 ^self 
 border: (BlBorder builder
 
@@ -153,9 +164,12 @@ paint: Color white;
 			c horizontal matchParent.
 			c vertical matchParent ];
 			background: (BlBackground paint: Color white);
-			addChild: container;
 			
-			 yourself. 
+			addChild: scroll. 
+
+
+			
+			
 ]
 
 { #category : #'as yet unclassified' }
@@ -163,17 +177,17 @@ LarPlotterBarElement >> initializeFor [
 plotter labelAxisX isNil
 ifFalse:[self addAxisLabelX: plotter labelAxisX].
 plotter labelAxisY isNil
-ifFalse:[self addAxisLabelY: plotter labelAxisX].
+ifFalse:[self addAxisLabelY: plotter labelAxisY].
 plotter bars isNil
 ifFalse:[self addBars: plotter bars].
 plotter tickLabelsX isNil
-ifFalse:[self addTicksLabelX: plotter labelAxisX].
+ifFalse:[self addTicksLabelX: plotter tickLabelsX].
 plotter tickLabelsY isNil
-ifFalse:[self addTicksLabelY: plotter labelAxisX].
+ifFalse:[self addTicksLabelY: plotter tickLabelsY].
 plotter title isNil
-ifFalse:[self addTitle: plotter labelAxisX].
+ifFalse:[self addTitle: plotter title].
 plotter ticksX isNil
-ifFalse:[self addTicksY: plotter labelAxisX].
+ifFalse:[self addTicksY: plotter ticksX].
 plotter ticksY isNil
-ifFalse:[self addTicksY: plotter labelAxisX].
+ifFalse:[self addTicksY: plotter ticksY].
 ]

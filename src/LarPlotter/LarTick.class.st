@@ -25,8 +25,8 @@ LarTick >> asElementY [
 
 { #category : #'as yet unclassified' }
 LarTick >> initialize: sizeWidth with: sizeLength [
-self sizeWidth: sizeWidth. 
-self sizeLength: sizeLength. 
+self width: sizeWidth. 
+self length: sizeLength. 
 ]
 
 { #category : #accessing }

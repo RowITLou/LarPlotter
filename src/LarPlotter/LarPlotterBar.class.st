@@ -127,7 +127,7 @@ LarPlotterBar >> gtLiveFor: aView [
 	^aView explicit
 		title: 'Live';
 		priority: 10;
-		stencil: [ self asElement   ];
+		stencil: [ self asElement asScalableElement  ];
 		actionUpdateButton.
 		
 ]
