@@ -6,13 +6,6 @@ Class {
 	#superclass : #BlElement,
 	#instVars : [
 		'graphElement',
-		'posX',
-		'posY',
-		'labelAxisX',
-		'labelAxisY',
-		'heightLabel',
-		'margin',
-		'title',
 		'container',
 		'labelsContainer',
 		'containerTickAndLabel',
