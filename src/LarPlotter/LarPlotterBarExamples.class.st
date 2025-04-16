@@ -106,7 +106,7 @@ LarPlotterBarExamples >> graphWithTicks [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> labels [
-^ #(#A #B  #C #D #E #F #G #H #I #J #K)
+^ #(#A #B  #C #D #E #F #G #H #I #J)
 ]
 
 { #category : #'as yet unclassified' }

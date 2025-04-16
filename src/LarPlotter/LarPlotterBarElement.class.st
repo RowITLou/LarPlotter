@@ -40,7 +40,9 @@ LarPlotterBarElement >> addAxisLabelY:  labelY [
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addBars: bars [
 bars do: [:bar|
-
+graphElement constraintsDo: [ :c |
+			c horizontal fitContent.
+			c vertical matchParent].
 graphElement addChildFirst: (bar asElement). ].
 graphElement forceLayout.
 graphElement  transform
