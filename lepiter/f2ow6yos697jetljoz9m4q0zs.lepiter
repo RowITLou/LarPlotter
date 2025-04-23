@@ -103,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:23:31.228+02:00"
+						"dateAndTimeString" : "2025-04-23T14:59:31.472+02:00"
 					}
 				},
 				"uid" : {
@@ -113,7 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "Alos I began implementing the LinePlotter. For this I could use almost use all the previously implemented elements from the bar plotter. "
 			}
 		]
 	},

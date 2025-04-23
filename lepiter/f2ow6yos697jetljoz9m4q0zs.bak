@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:23:04.023+02:00"
+						"dateAndTimeString" : "2025-04-23T14:23:30.505+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,44 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : " The plotter is now scalable. This is visible when we add more and more elements into the graph, the entire graph will get smaller. "
+				"string" : " The plotter is now scalable. This is visible when we add more and more elements into the graph, the entire graph will get smaller. This can also be tested with the snippets in [[Snippets for Elements]]. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-23T14:23:31.228+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-23T14:59:06.227+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "YHH459LvDQCewEwgD4DHvg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Alos I began implementing the LinePlotter. For this I could use a"
 			}
 		]
 	},
