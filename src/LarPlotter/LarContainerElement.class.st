@@ -18,7 +18,7 @@ super initialize.
 	
 			border: (BlBorder builder
 					
-					paint: Color white;
+					paint: Color black;
 					width: 1;
 					build);
 			
@@ -39,7 +39,7 @@ super initialize.
 	
 			border: (BlBorder builder
 					
-					paint: Color white;
+					paint: Color black;
 					width: 1;
 					build);
 			
@@ -60,7 +60,7 @@ super initialize.
 	
 			border: (BlBorder builder
 					
-					paint: Color white;
+					paint: Color black;
 					width: 1;
 					build);
 			
@@ -83,7 +83,7 @@ super initialize.
 	
 			border: (BlBorder builder
 					
-					paint: Color white;
+					paint: Color black;
 					width: 1;
 					build);
 			

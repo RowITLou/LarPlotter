@@ -25,5 +25,6 @@ bar := aBar.
 		 c vertical exact: (bar height).
 		    
 	    c horizontal exact: (bar width)
+	   
 			]; yourself.
 ]
