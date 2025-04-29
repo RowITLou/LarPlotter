@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:21:37.78+02:00"
+						"dateAndTimeString" : "2025-04-29T11:35:32.198+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:21:37.78+02:00"
+						"dateAndTimeString" : "2025-04-29T11:36:13.709+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "IF014dLvDQC9meAPDYGh/g=="
+					"uidString" : "cOZCQknwDQCK9+fTAurNoQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "I worked on the Bar plotter and solved some issues from the last week (bars that where not fully visible, etc.) An issue is stille the y Axis lable. As long as the ticks or the ticklabels are not in the container with the label, the yAxis label is not fully visible. Even tough the containers around should fit the content and it is aligned in the middle! I did tests in the following page. By seperating all the elements in different snippets we can combine all elements freely and see how they interact with each other. [[Snippets for Elements]]. "
+				"string" : "{{gtClass:name=LarLine}} {{gtClass:name=LarLineElement}}"
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:18:16.255+02:00"
+						"dateAndTimeString" : "2025-04-29T11:41:33.539+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,20 +66,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:23:30.505+02:00"
+						"dateAndTimeString" : "2025-04-29T11:41:33.539+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "GFYy1dLvDQCyAhTnDYGh/g=="
+					"uidString" : "WJXWREnwDQCLszGbAurNoQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : " The plotter is now scalable. This is visible when we add more and more elements into the graph, the entire graph will get smaller. This can also be tested with the snippets in [[Snippets for Elements]]. "
+				"string" : ""
 			},
 			{
-				"__type" : "textSnippet",
+				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -92,7 +92,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:23:31.228+02:00"
+						"dateAndTimeString" : "2025-04-29T11:37:01.685+02:00"
 					}
 				},
 				"editEmail" : {
@@ -103,17 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T15:54:45.252+02:00"
+						"dateAndTimeString" : "2025-04-29T11:38:05.388+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "YHH459LvDQCewEwgD4DHvg=="
+					"uidString" : "CF2YR0nwDQCL+VqQAurNoQ=="
 				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "Alos I began implementing the LinePlotter. For this I could use almost use all the previously implemented elements from the bar plotter. these are the classes I have newly implemented. {{gtClass:name=LarLine}}, {{gtClass:name=LarLineElement}}, {{gtClass:name=LarPlotterLine}} {{gtClass:name=LarPlotterLineElement}},  {{gtClass:name=LarLinePlotterUpdate}}"
+				"code" : "line := LarLine new initialize: (0@0) with: (100@100) .\rline asElement"
 			}
 		]
 	},
@@ -125,7 +122,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-04-23T14:18:16.197+02:00"
+			"dateAndTimeString" : "2025-04-29T11:35:32.127+02:00"
 		}
 	},
 	"editEmail" : {
@@ -136,15 +133,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-04-23T14:18:16.197+02:00"
+			"dateAndTimeString" : "2025-04-29T11:35:32.127+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Report 30.4.25"
+		"title" : "Lines"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "887331d5-d2ef-0d00-b201-04d40d81a1fe"
+		"uuid" : "48c94142-49f0-0d00-8af6-4a6002eacda1"
 	}
 }

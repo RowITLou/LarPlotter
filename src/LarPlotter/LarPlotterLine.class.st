@@ -11,7 +11,8 @@ Class {
 		'spec',
 		'ticksX',
 		'title',
-		'dict'
+		'dict',
+		'lines'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -20,6 +21,18 @@ Class {
 LarPlotterLine >> addAxisLabel: textX with: textY [
 labelAxisX := LarLabelAxis new initialize: textX. 
 labelAxisY := LarLabelAxis new initialize: textY.
+self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> addLines: values [
+| line |
+	1 to: (values size) do: [:n|
+n = 1
+	ifTrue:  [line:= LarLine new initialize: (0@0) with: (65 @(values at: 1))]
+	ifFalse:[line:= LarLine new initialize: 65 * (n-1) @(values at: (n-1)) with: (65*n) @ (values at: n)].
+ lines add: line. 
+].
 self notifyUpdate
 ]
 
@@ -119,7 +132,7 @@ LarPlotterLine >> initialize [
 announcer := Announcer new.
 self tickLablesInitialize.
 self tickInitialize.
-
+self linesDefinition
 ]
 
 { #category : #accessing }
@@ -140,6 +153,21 @@ LarPlotterLine >> labelAxisY [
 { #category : #accessing }
 LarPlotterLine >> labelAxisY: anObject [
 	labelAxisY := anObject
+]
+
+{ #category : #accessing }
+LarPlotterLine >> lines [
+	^ lines
+]
+
+{ #category : #accessing }
+LarPlotterLine >> lines: anObject [
+	lines := anObject
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> linesDefinition [
+lines:=  OrderedCollection new. 
 ]
 
 { #category : #'as yet unclassified' }
