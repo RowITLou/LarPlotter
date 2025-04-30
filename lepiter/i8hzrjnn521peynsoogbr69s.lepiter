@@ -457,6 +457,183 @@
 					"__type" : "textStyle"
 				},
 				"string" : "As long as the container Element does not contain a bigger element than the AxisY element, the text element is not fully visible. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-04-30T11:13:25.260921+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-04-30T11:28:56.477624+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "KNACEV3wDQCCona/AE1RKw=="
+							},
+							"code" : "labelY := LarLabelAxis new text: 'Foobar'.\rcontainer := LarContainer new asElement.\rcontainer\r\tconstraintsDo: [ :c | \r\t\tc horizontal fitContent.\r\t\tc vertical fitContent.\r\t\tc grid vertical alignCenter.\r\t\tc grid horizontal alignCenter ].\relementY := labelY asElement.\r\relementY transform topLeftOrigin\r\trotateBy: 270;\r\tapply.\relementY forceLayout.\rcontainer addChild: elementY"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-04-30T11:14:56.088288+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-04-30T11:29:18.286754+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Y7hsFl3wDQCCs3/9AE1RKw=="
+							},
+							"code" : "container := BlElement new\r\t\tborder: (BlBorder builder\r\t\t\t\tpaint: Color black;\r\t\t\t\twidth: 1;\r\t\t\t\tbuild);\r\t\tlayout: BlGridLayout horizontal;\r\t\tconstraintsDo: [ :c | \r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent.\r\t\t\tc grid vertical alignCenter.\r\t\t\tc grid horizontal alignCenter ].\r\relementY := BlTextElement new text: 'Foobar' asRopedText.\r\relementY transform\r\trotateBy: 270;\r\tapply.\r\rcontainer addChild: elementY"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-04-30T11:23:24.034469+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-04-30T11:27:32.092105+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "/12zNF3wDQCEkC+QAE1RKw=="
+							},
+							"code" : "elementY := BlTextElement new text: 'Foobar' asRopedText.\r\relementY transform topLeftOrigin\r\trotateBy: 270;\r\tapply.\r\relementY"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-30T11:13:09.982346+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-30T11:13:23.845506+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "WKoZEF3wDQCBj0eSAE1RKw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Creating a minimal example of the vertical text anomaly."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-30T11:28:51.380322+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-30T11:28:51.380322+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "8UU2SF3wDQCFKWuEAE1RKw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
