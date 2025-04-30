@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T11:36:15.431+02:00"
+						"dateAndTimeString" : "2025-04-29T11:41:33.539+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T11:36:55.965+02:00"
+						"dateAndTimeString" : "2025-04-29T14:43:49.279+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "L"
+				"string" : "Need to give a specific sive when creating the container element. We can find it by looking at the values and how many there are"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -103,14 +103,119 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T11:38:05.388+02:00"
+						"dateAndTimeString" : "2025-04-29T14:49:30.099+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "CF2YR0nwDQCL+VqQAurNoQ=="
 				},
-				"code" : "line := LarLine new initialize: (0@0) with: (100@100) .\rline asElement"
+				"code" : "line := LarLine new initialize: (0@0) with: (100@100) .\rlineElement :=line asElement.\rline_two := LarLine new initialize: (100@100) with: (200@100) ."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-29T12:49:28.009+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-29T14:44:49.37+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "KAGoSkrwDQCNIYQCBdv7RQ=="
+				},
+				"code" : "container := LarContainer new asElement. \r\rcontainer layout cellSpacing: 0.\rcontainer size: 100@ 500.\rcontainer addChild: line asElement"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-29T13:11:20.606+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-29T13:16:19.308+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MKXkmErwDQCPAVhMBdv7RQ=="
+				},
+				"code" : "element := BlElement new .\relement addChild: line asElement.\relement constraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent].\r"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-29T12:49:15.439+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-04-29T13:11:16.275+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4CfoSUrwDQCMzK/QBdv7RQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "e"
 			}
 		]
 	},

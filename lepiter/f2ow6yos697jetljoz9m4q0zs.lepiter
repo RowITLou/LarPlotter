@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:21:37.78+02:00"
+						"dateAndTimeString" : "2025-04-30T09:46:08.412+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "I worked on the Bar plotter and solved some issues from the last week (bars that where not fully visible, etc.) An issue is stille the y Axis lable. As long as the ticks or the ticklabels are not in the container with the label, the yAxis label is not fully visible. Even tough the containers around should fit the content and it is aligned in the middle! I did tests in the following page. By seperating all the elements in different snippets we can combine all elements freely and see how they interact with each other. [[Snippets for Elements]]. "
+				"string" : "I worked on the Bar plotter and solved some issues from two weeks (bars that where not fully visible, etc.) An issue is stille the y Axis lable. As long as the ticks or the ticklabels are not in the container with the label, the yAxis label is not fully visible. Even tough the containers around should fit the content and it is aligned in the middle! I did tests in the following page. By seperating all the elements in different snippets we can combine all elements freely and see how they interact with each other. [[Snippets for Elements]]. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T14:23:30.505+02:00"
+						"dateAndTimeString" : "2025-04-30T09:47:03.361+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : " The plotter is now scalable. This is visible when we add more and more elements into the graph, the entire graph will get smaller. This can also be tested with the snippets in [[Snippets for Elements]]. "
+				"string" : " The plotter is now scalable. This is visible when we add more and more elements into the graph, the entire graph will get smaller. This can also be tested with the snippets in [[Snippets for Elements]]. or in the example class {{gtClass:name=LarPlotterBarExamples}}  "
 			},
 			{
 				"__type" : "textSnippet",
@@ -103,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T15:54:45.252+02:00"
+						"dateAndTimeString" : "2025-04-30T09:47:45.224+02:00"
 					}
 				},
 				"uid" : {
@@ -113,7 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Alos I began implementing the LinePlotter. For this I could use almost use all the previously implemented elements from the bar plotter. these are the classes I have newly implemented. {{gtClass:name=LarLine}}, {{gtClass:name=LarLineElement}}, {{gtClass:name=LarPlotterLine}} {{gtClass:name=LarPlotterLineElement}},  {{gtClass:name=LarLinePlotterUpdate}}"
+				"string" : "I also began implementing the LinePlotter. For this I could use almost use all the previously implemented elements from the bar plotter. these are the classes I have newly implemented. {{gtClass:name=LarLine}}, {{gtClass:name=LarLineElement}}, {{gtClass:name=LarPlotterLine}} {{gtClass:name=LarPlotterLineElement}},  {{gtClass:name=LarLinePlotterUpdate}}, {{gtClass:name=LarPlotterBarExamples}}"
 			},
 			{
 				"__type" : "textSnippet",
@@ -140,7 +140,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T10:42:54.992+02:00"
+						"dateAndTimeString" : "2025-04-30T09:44:42.935+02:00"
 					}
 				},
 				"uid" : {
@@ -150,7 +150,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Next step is to implement the spec for the line graph"
+				"string" : "Next step is to implement the spec for the line graph and continue working on the examples for the linePlotter {{gtClass:name=LarPlotterLineExamples}}"
 			}
 		]
 	},

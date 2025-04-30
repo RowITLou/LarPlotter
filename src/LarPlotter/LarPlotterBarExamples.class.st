@@ -19,8 +19,7 @@ LarPlotterBarExamples >> addAxisLabel [
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> addBars [
 <gtExample>
-|plotter|
-"plotter:= LarPlotterBar new initialize: 500 with: 500."
+
 ^self newGraph addBars: self values.
 
 ]

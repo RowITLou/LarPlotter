@@ -46,17 +46,25 @@ cont constraintsDo: [ :c |
 
 { #category : #'as yet unclassified' }
 LarPlotterLineElement >> addLines: lines [
-lines do: [:line|
+| length height |
+	length := (lines size)*65.
+	height := 100.
 graphElement constraintsDo: [ :c |
-			c horizontal fitContent.
-			c vertical fitContent].
+			c horizontal exact: length .
+			c vertical exact: height].
+graphElement  transform
+  	
+		origin: length @ height;
+		apply.
+
+lines do: [:line|
+
 graphElement addChildFirst: (line asElement). ].
 graphElement forceLayout.
 graphElement  transform
   	
-		rotateBy: 180;
+		flipY;
 		apply.
-
 ]
 
 { #category : #'as yet unclassified' }
@@ -133,9 +141,9 @@ titelContainer constraintsDo: [ :c |
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
 ticksYContainer := LarContainer new  asElementVertical.
-graphElement := LarContainer new  asElement.
-graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
-
+"graphElement := LarContainer new  asElement.
+graphElement constraintsDo: [:c| c grid vertical alignBottom. ]."
+graphElement := BlElement new. 
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
