@@ -16,7 +16,7 @@ LarPlotterLineExamples >> addAxisLabel [
 LarPlotterLineExamples >> addLines [
 <gtExample>
 
-^self addTitel addLines: self values.
+^self newGraph addLines: self values.
 
 ]
 
@@ -24,8 +24,30 @@ LarPlotterLineExamples >> addLines [
 LarPlotterLineExamples >> addTitel [
 <gtExample>
 
-^self newGraph titel: 'This is a title'. 
+^self addLines titel: 'This is a title'. 
 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLineExamples >> graphWithTickLabels [
+<gtExample>
+
+^self addAxisLabel addTicksLabel: (self labels). 
+
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLineExamples >> graphWithTickLabelsY [
+<gtExample>
+
+^self addAxisLabel addTicksLabel: (self labels) with: self values. 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLineExamples >> graphWithTicks [
+<gtExample>
+"^self newGraph addTicks: 8 with: 8. "
+^self graphWithTickLabelsY addTicks: self values size. 
 ]
 
 { #category : #'as yet unclassified' }

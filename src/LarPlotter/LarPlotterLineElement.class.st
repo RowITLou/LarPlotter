@@ -52,18 +52,17 @@ LarPlotterLineElement >> addLines: lines [
 graphElement constraintsDo: [ :c |
 			c horizontal exact: length .
 			c vertical exact: height].
-graphElement  transform
+"graphElement  transform
   	
 		origin: length @ height;
-		apply.
+		apply."
 
 lines do: [:line|
 
-graphElement addChildFirst: (line asElement). ].
+graphElement addChild: (line asElement). ].
 graphElement forceLayout.
-graphElement  transform
-  	
-		flipY;
+graphElement transform
+		flipX;
 		apply.
 ]
 
@@ -141,8 +140,8 @@ titelContainer constraintsDo: [ :c |
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
 ticksYContainer := LarContainer new  asElementVertical.
-"graphElement := LarContainer new  asElement.
-graphElement constraintsDo: [:c| c grid vertical alignBottom. ]."
+"graphElement := LarContainer new  asElement."
+graphElement constraintsDo: [:c| c vertical alignBottom. ].
 graphElement := BlElement new. 
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.

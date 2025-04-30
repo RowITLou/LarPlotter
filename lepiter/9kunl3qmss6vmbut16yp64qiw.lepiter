@@ -171,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T13:16:19.308+02:00"
+						"dateAndTimeString" : "2025-04-30T10:04:44.901+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "MKXkmErwDQCPAVhMBdv7RQ=="
 				},
-				"code" : "element := BlElement new .\relement addChild: line asElement.\relement constraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent].\r"
+				"code" : "element := BlElement new .\relement addChild: line asElement.\r\"element constraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent].\r\"\relement constraintsDo: [ :c |\r\t\t\tc horizontal exact: 200 .\r\t\t\tc vertical exact: 200].\r\"element  transform\r  \t\r\t\tflipY;\r\t\tapply.\"\r^element"
 			},
 			{
 				"__type" : "textSnippet",

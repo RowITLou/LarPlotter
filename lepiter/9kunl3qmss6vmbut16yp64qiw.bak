@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T14:49:30.099+02:00"
+						"dateAndTimeString" : "2025-04-29T14:49:41.069+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "CF2YR0nwDQCL+VqQAurNoQ=="
 				},
-				"code" : "line := LarLine new initialize: (0@0) with: (100@100) .\rlineElement :=line asElement.\rline_two := LarLine new initialize: (100@100) with: (200@100) ."
+				"code" : "line := LarLine new initialize: (0@0) with: (100@100) .\rlineElement :=line asElement.\rline_two := LarLine new initialize: (100@100) with: (250@200) ."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -137,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T14:44:49.37+02:00"
+						"dateAndTimeString" : "2025-04-29T14:49:58.386+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "KAGoSkrwDQCNIYQCBdv7RQ=="
 				},
-				"code" : "container := LarContainer new asElement. \r\rcontainer layout cellSpacing: 0.\rcontainer size: 100@ 500.\rcontainer addChild: line asElement"
+				"code" : "container := LarContainer new asElement. \r\rcontainer layout cellSpacing: 0.\rcontainer size: 500@ 500.\rcontainer addChild: line_two asElement.\rcontainer addChild: line asElement"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -171,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-29T13:16:19.308+02:00"
+						"dateAndTimeString" : "2025-04-30T10:04:23.835+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "MKXkmErwDQCPAVhMBdv7RQ=="
 				},
-				"code" : "element := BlElement new .\relement addChild: line asElement.\relement constraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent].\r"
+				"code" : "element := BlElement new .\relement addChild: line asElement.\r\"element constraintsDo: [ :c |\r\t\t\tc horizontal fitContent.\r\t\t\tc vertical fitContent].\r\"\relement constraintsDo: [ :c |\r\t\t\tc horizontal exact: 200 .\r\t\t\tc vertical exact: 200].\relement  transform\r  \t\r\t\tflipY;\r\t\tapply.\r^element"
 			},
 			{
 				"__type" : "textSnippet",
