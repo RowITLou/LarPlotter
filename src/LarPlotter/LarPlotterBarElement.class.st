@@ -28,7 +28,7 @@ LarPlotterBarElement >> addAxisLabelX: elementX [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addAxisLabelY:  labelY [
-| elementY cont |
+| elementY cont frame |
 cont := LarContainer new asElement. 
 cont constraintsDo: [ :c |
 		c horizontal fitContent.
@@ -36,13 +36,24 @@ cont constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 	elementY := labelY asElement.
-	
+	elementY constraintsDo: [ :c | 
+            c accountTransformation.
+            c horizontal fitContent.
+            c vertical fitContent ].
+
 	elementY  transform
   	topLeftOrigin
 		rotateBy: 270;
 		apply.
 	elementY forceLayout.
-	cont addChild: elementY. 
+	frame := BrFrame new fitContent. 
+	frame constraintsDo: [ :c | 
+	c grid horizontal alignCenter.
+		c grid vertical alignCenter.
+            c horizontal fitContent.
+            c vertical fitContent ].
+	containerTickAndLabel addChild: (frame addChild: elementY).
+	
 	containerTickAndLabel addChildFirst: cont. 
 	containerTickAndLabel forceLayout. 
 ]
