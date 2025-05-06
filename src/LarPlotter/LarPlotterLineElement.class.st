@@ -25,7 +25,7 @@ LarPlotterLineElement >> addAxisLabelX: elementX [
 
 { #category : #'as yet unclassified' }
 LarPlotterLineElement >> addAxisLabelY:  labelY [
-| elementY cont |
+| elementY cont frame |
 cont := LarContainer new asElement. 
 cont constraintsDo: [ :c |
 		c horizontal fitContent.
@@ -33,13 +33,24 @@ cont constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 	elementY := labelY asElement.
-	
+	elementY constraintsDo: [ :c | 
+            c accountTransformation.
+            c horizontal fitContent.
+            c vertical fitContent ].
+
 	elementY  transform
   	topLeftOrigin
 		rotateBy: 270;
 		apply.
 	elementY forceLayout.
-	cont addChild: elementY. 
+	frame := BrFrame new fitContent. 
+	frame constraintsDo: [ :c | 
+	c grid horizontal alignCenter.
+		c grid vertical alignCenter.
+            c horizontal fitContent.
+            c vertical fitContent ].
+	containerTickAndLabel addChild: (frame addChild: elementY).
+	
 	containerTickAndLabel addChildFirst: cont. 
 	containerTickAndLabel forceLayout. 
 ]
@@ -49,6 +60,7 @@ LarPlotterLineElement >> addLines: lines [
 | length height |
 	length := (lines size)*65.
 	height := 100.
+graphElement layout cellSpacing: 0.
 graphElement constraintsDo: [ :c |
 			c horizontal exact: length .
 			c vertical exact: height].
@@ -60,7 +72,7 @@ graphElement constraintsDo: [ :c |
 lines do: [:line|
 
 graphElement addChild: (line asElement). ].
-graphElement forceLayout.
+"graphElement forceLayout."
 graphElement transform
 		flipX;
 		apply.
@@ -140,9 +152,11 @@ titelContainer constraintsDo: [ :c |
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
 ticksYContainer := LarContainer new  asElementVertical.
-"graphElement := LarContainer new  asElement."
-graphElement constraintsDo: [:c| c vertical alignBottom. ].
-graphElement := BlElement new. 
+graphElement := LarContainer new  asElement.
+graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
+"graphElement := BlElement new. "
+
+
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
