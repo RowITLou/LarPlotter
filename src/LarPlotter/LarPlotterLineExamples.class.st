@@ -64,6 +64,11 @@ LarPlotterLineExamples >> newGraph [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterLineExamples >> spec [ 
+"https://vega.github.io/vega-lite/examples/data/stocks.csv"
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterLineExamples >> values [
 ^ #(20 40 60 80 10 90 70 50 30 10).
 
