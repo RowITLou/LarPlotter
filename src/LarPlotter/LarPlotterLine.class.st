@@ -12,7 +12,8 @@ Class {
 		'ticksX',
 		'title',
 		'dict',
-		'lines'
+		'lines',
+		'values'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -25,8 +26,9 @@ self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLine >> addLines: values [
+LarPlotterLine >> addLines: valuesCollection [
 | line |
+values := valuesCollection.
 	1 to: (values size) do: [:n|
 n = 1
 	ifTrue:  [line:= LarLine new initialize: (0@0) with: (65 @(values at: 1))]
@@ -62,19 +64,7 @@ self notifyUpdate
 
 { #category : #'as yet unclassified' }
 LarPlotterLine >> addTicksLabel: valuesX [
-| tick |
-self tickLablesInitialize.
-	1 to: ( valuesX size) do: [: n| 
-tick := LarTickLabel new initialize: (valuesX at: n).
-
-tickLabelsX add: tick. 
-].
-self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLine >> addTicksLabel: valuesX with: valuesY [
-| tick |
+| tick  |
 self tickLablesInitialize.
 	1 to: (valuesX size ) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
@@ -82,10 +72,25 @@ tick := LarTickLabel new initialize: (valuesX at: n).
 tickLabelsX add: tick. 
 ].
 
-1 to: ( valuesY size ) do: [: n| 
-tick:= LarTickLabel new initialize: (valuesY at: (( valuesY size) - (n-1))). 
+]
 
-tickLabelsY add: tick.
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> addTicksLabel: valuesX with: steps [
+| tick amount minDown |
+self tickLablesInitialize.
+	1 to: (valuesX size ) do: [: n| 
+tick := LarTickLabel new initialize: (valuesX at: n).
+
+tickLabelsX add: tick. 
+].
+
+amount := self calculateTickLabelsY: steps.
+minDown := (values min) roundDownTo: steps. 
+self tickLablesInitialize.
+	1 to: (amount+1) do: [: n| 
+tick := LarTickLabel new initialize: (minDown + (steps * (n-1))).
+
+tickLabelsY add: tick. 
 ].
 self notifyUpdate
 ]
@@ -103,6 +108,27 @@ LarPlotterLine >> announcer: anObject [
 { #category : #'as yet unclassified' }
 LarPlotterLine >> asElement [
 ^LarPlotterLineElement new initialize: self.
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> calculateTickLabelsY: steps [
+| min max interval amount minRound maxRound |
+	min := values min.
+	max := values max.
+	
+	minRound := min roundDownTo: steps.
+	maxRound := max roundUpTo: steps.
+	interval := maxRound - minRound. 
+	amount := interval / steps. 
+	^amount
+	
+	
+	"finalUp := amount roundUpTo: rounded. 
+	finalDown := amount roundDownTo: rounded. 
+	(amount - finalDown) abs > (amount - finalUp)
+	ifTrue: [final := finalUp]
+	ifFalse: [final := finalDown]"
+
 ]
 
 { #category : #accessing }

@@ -40,7 +40,7 @@ LarPlotterLineExamples >> graphWithTickLabels [
 LarPlotterLineExamples >> graphWithTickLabelsY [
 <gtExample>
 
-^self addAxisLabel addTicksLabel: (self labels) with: self values. 
+^self addAxisLabel addTicksLabel: (self labels) with: 30. 
 ]
 
 { #category : #'as yet unclassified' }

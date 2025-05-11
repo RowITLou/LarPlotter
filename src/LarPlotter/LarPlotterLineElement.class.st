@@ -99,8 +99,8 @@ labelsY do: [:tickYLabel|
 tickYcontainer := (LarContainer new initialize) asElementVertical.
 tickYcontainer constraintsDo: [ :c |
 			c horizontal fitContent.
-			c vertical exact: 50].
-
+			c vertical matchParent].
+    tickYcontainer constraintsDo: [:c| c vertical matchParent].
 	tickYcontainer addChild: (tickYLabel asElement).
  labelsYContainer addChild: tickYcontainer.]
 ]
@@ -151,6 +151,7 @@ titelContainer constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
+labelsYContainer constraintsDo: [:c| c vertical matchParent].
 ticksYContainer := LarContainer new  asElementVertical.
 graphElement := LarContainer new  asElement.
 graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
@@ -160,6 +161,7 @@ graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
+containerTickAndLabel constraintsDo: [:c| c vertical matchParent].
 containerTickAndLabel addChild: labelsYContainer. 
 containerTickAndLabel addChild: ticksYContainer. 
 axisXContainer constraintsDo: [ :c |

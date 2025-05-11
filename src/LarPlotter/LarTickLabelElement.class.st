@@ -16,7 +16,7 @@ LarTickLabelElement >> initialize: aLabel [
 label := aLabel.
 super initialize.
 ^self
-	defaultFontSize: 30;
+	"defaultFontSize: 30;"
 	
 	text: label labelText asRopedText;
 	background: Color white;
