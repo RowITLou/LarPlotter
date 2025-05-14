@@ -161,6 +161,23 @@ self tickInitialize.
 self linesDefinition
 ]
 
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> initializeLineGraphFromSpec [
+
+	| data axisX axisy |
+	dict := STONJSON fromString: self spec.
+	self initialize.
+	"data := ((dict at: 'data') at: 'values') collect: #values."
+	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
+	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
+
+	self titel: 'This is a title'.
+	"self addLines: (data collect: [ :each | each last ])."
+	self addAxisLabel: axisX with: axisy.
+	self addTicks:  data size.
+	self addTicksLabel: (data collect: [ :each | each first ])
+]
+
 { #category : #accessing }
 LarPlotterLine >> labelAxisX [
 	^ labelAxisX

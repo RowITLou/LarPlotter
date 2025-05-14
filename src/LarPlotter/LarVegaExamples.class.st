@@ -23,9 +23,33 @@ LarVegaExamples >> csvToJsonobject [
 ]
 
 { #category : #'as yet unclassified' }
+LarVegaExamples >> download [
+<gtExample>
+ZnClient new
+				url: 'https://vega.github.io/vega-lite/examples/data/stocks.csv';
+				signalProgress: true;
+				downloadTo: (FileLocator downloads  ).
+]
+
+{ #category : #'as yet unclassified' }
 LarVegaExamples >> jsonString [
 <gtExample>
-STONJSON toStringPretty: self csvToJson
+^self csvToJson asJsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarVegaExamples >> specEx [
+<gtExample>
+^'{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Google''s stock price over time.",
+  "data": {"url": "data/stocks.csv"},
+  "transform": [{"filter": "datum.symbol===''GOOG''"}],
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "date", "type": "temporal"},
+    "y": {"field": "price", "type": "quantitative"}
+  }}'
 ]
 
 { #category : #'as yet unclassified' }
@@ -605,6 +629,6 @@ AAPL,Mar 1 2010,223.02'
 { #category : #'as yet unclassified' }
 LarVegaExamples >> url [
 <gtExample>
-ZnClient new url: 'https://vega.github.io/vega-lite/examples/data/stocks.csv'; get
+^ZnClient new url: 'https://vega.github.io/vega-lite/examples/data/stocks.csv'; contents
 
 ]

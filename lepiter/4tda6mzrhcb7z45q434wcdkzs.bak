@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-11T15:53:48.445+02:00"
+						"dateAndTimeString" : "2025-05-14T09:45:44.292+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Last week I implemented a dynamic way for ticks and ticklabels to be created depending on the interval of data we have. "
+				"string" : "Last week I began implementing a dynamic way for ticks and ticklabels to be created depending on the interval of data we have. I have found a way for integer values, next will be for dates. for this I have implemented a new method to calculate the ticklabelvalues {{gtMethod:name=LarPlotterLine>>calculateTickLabelsY:}} The method for calculating will vary if the axis labesl ar nominal, quantitative or temporal. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-11T15:54:17.642+02:00"
+						"dateAndTimeString" : "2025-05-14T09:40:51.301+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,17 +66,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-11T15:54:17.642+02:00"
+						"dateAndTimeString" : "2025-05-14T09:41:51.863+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "EOC+RT7xDQCHyxSwBkBYUQ=="
+					"uidString" : "0FK/Z3XxDQCy2nTFCJdIDA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "I experimented with downloading the data file from the vega examples and have created the {{gtClass:name=LarVegaExamples}} class. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -92,7 +92,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-11T15:53:51.112+02:00"
+						"dateAndTimeString" : "2025-05-14T09:38:57.132+02:00"
 					}
 				},
 				"editEmail" : {
@@ -103,17 +103,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-11T16:04:41.698+02:00"
+						"dateAndTimeString" : "2025-05-14T09:43:39.083+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "QA8qRD7xDQCGO3PHBkBYUQ=="
+					"uidString" : "KD7xYHXxDQCutj3uCJdIDA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "I also implemented the spec for the linegraph and created a few more examples with it"
+				"string" : "I also began implementing the spec method, but since I have not found a way for all the ticks and ticklabes to be generated depending on the data we have I am still strugeling a bit with it. This is what I have for now {{gtMethod:name=LarPlotterLine>>initializeLineGraphFromSpec}}"
 			},
 			{
 				"__type" : "textSnippet",
@@ -140,7 +140,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-11T16:04:52.971+02:00"
+						"dateAndTimeString" : "2025-05-11T16:05:07.36+02:00"
 					}
 				},
 				"uid" : {
@@ -150,7 +150,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "In a next step I want to find a way for the ticks and the label size to be dynamically adapatable. Especiall"
+				"string" : "In a next step I want to find a way for the ticks and the label size to be dynamically adapatable. Especially when the labels are time stamps."
 			},
 			{
 				"__type" : "textSnippet",
