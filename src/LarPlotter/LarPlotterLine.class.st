@@ -142,6 +142,14 @@ LarPlotterLine >> dict: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterLine >> download: aUrl [
+ZnClient new
+				url: aUrl;
+				signalProgress: true;
+				downloadTo: (FileLocator downloads  ).
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterLine >> gtLiveFor: aView [
 	<gtView>
 	^aView explicit

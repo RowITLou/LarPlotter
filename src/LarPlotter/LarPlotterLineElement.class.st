@@ -26,12 +26,12 @@ LarPlotterLineElement >> addAxisLabelX: elementX [
 { #category : #'as yet unclassified' }
 LarPlotterLineElement >> addAxisLabelY:  labelY [
 | elementY cont frame |
-cont := LarContainer new asElement. 
+"cont := LarContainer new asElement. 
 cont constraintsDo: [ :c |
 		c horizontal fitContent.
 		c vertical fitContent.
 		c grid vertical alignCenter.
-		c grid horizontal alignCenter ].
+		c grid horizontal alignCenter ]."
 	elementY := labelY asElement.
 	elementY constraintsDo: [ :c | 
             c accountTransformation.
@@ -49,9 +49,9 @@ cont constraintsDo: [ :c |
 		c grid vertical alignCenter.
             c horizontal fitContent.
             c vertical fitContent ].
-	containerTickAndLabel addChild: (frame addChild: elementY).
+	containerTickAndLabel addChildFirst: (frame addChild: elementY).
 	
-	containerTickAndLabel addChildFirst: cont. 
+	"containerTickAndLabel addChildFirst: cont. "
 	containerTickAndLabel forceLayout. 
 ]
 
@@ -59,7 +59,9 @@ cont constraintsDo: [ :c |
 LarPlotterLineElement >> addLines: lines [
 | length height |
 	length := (lines size)*65.
-	height := 100.
+	labelsYContainer isNil
+	ifTrue:[height :=200]
+	ifFalse:[height := 150].
 graphElement layout cellSpacing: 0.
 graphElement constraintsDo: [ :c |
 			c horizontal exact: length .
@@ -99,10 +101,10 @@ labelsY do: [:tickYLabel|
 tickYcontainer := (LarContainer new initialize) asElementVertical.
 tickYcontainer constraintsDo: [ :c |
 			c horizontal fitContent.
-			c vertical matchParent].
-    tickYcontainer constraintsDo: [:c| c vertical matchParent].
-	tickYcontainer addChild: (tickYLabel asElement).
- labelsYContainer addChild: tickYcontainer.]
+			c vertical fitContent].
+    "tickYcontainer constraintsDo: [:c| c vertical matchParent]."
+	tickYcontainer addChildFirst: (tickYLabel asElement).
+ labelsYContainer addChildFirst: tickYcontainer.]
 ]
 
 { #category : #'as yet unclassified' }
@@ -151,7 +153,8 @@ titelContainer constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
-labelsYContainer constraintsDo: [:c| c vertical matchParent].
+"labelsYContainer constraintsDo: [:c| c vertical matchParent]."
+labelsYContainer constraintsDo: [:c| c grid vertical alignBottom. ].
 ticksYContainer := LarContainer new  asElementVertical.
 graphElement := LarContainer new  asElement.
 graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
