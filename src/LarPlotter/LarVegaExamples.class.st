@@ -25,7 +25,8 @@ LarVegaExamples >> csvToJsonobject [
 { #category : #'as yet unclassified' }
 LarVegaExamples >> download [
 <gtExample>
-ZnClient new
+(FileLocator downloads/ 'stocks.csv' ) ensureDelete.
+^ZnClient new
 				url: 'https://vega.github.io/vega-lite/examples/data/stocks.csv';
 				signalProgress: true;
 				downloadTo: (FileLocator downloads  ).
