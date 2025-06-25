@@ -9,11 +9,12 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarPointElement >> initialize: aPoint [
-	<return: #BlElement>
+	
 	super initialize.
+	point := aPoint.
 	^self 
-	x: aPoint x;
-	y: aPoint y.
+	x: point x;
+	y: point y.
 	
 	
 ]

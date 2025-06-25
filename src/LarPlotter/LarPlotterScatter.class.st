@@ -31,8 +31,8 @@ LarPlotterScatter >> addPoints: valuesCollection [
 values := valuesCollection.
 	1 to: (values size) do: [:n|
 n = 1
-	ifTrue:  [point= LarPoint new initialize: 0 with: (values at: 1)]
-	ifFalse: [point= LarPoint new initialize: (65 * (n)) with: (values at: n)].
+	ifTrue:  [point:= LarPoint new initialize: 0 with: (values at: 1)]
+	ifFalse: [point:= LarPoint new initialize: (65 * (n)) with: (values at: n)].
  points add: point. 
 ].
 self notifyUpdate
