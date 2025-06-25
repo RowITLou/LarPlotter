@@ -919,7 +919,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-14T11:22:33.978+02:00"
+						"dateAndTimeString" : "2025-06-25T17:39:06.539+02:00"
 					}
 				},
 				"uid" : {
@@ -929,7 +929,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "[[dynamic tick label generation]] "
 			},
 			{
 				"__type" : "textSnippet",

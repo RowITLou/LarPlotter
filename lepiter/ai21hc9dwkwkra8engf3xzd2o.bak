@@ -505,7 +505,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-06-25T10:27:33.618+02:00"
+									"dateAndTimeString" : "2025-06-25T10:27:39.176+02:00"
 								}
 							},
 							"editEmail" : {
@@ -516,7 +516,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-06-25T10:27:36.307+02:00"
+									"dateAndTimeString" : "2025-06-25T10:28:01.093+02:00"
 								}
 							},
 							"uid" : {
@@ -526,7 +526,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Pe"
+							"string" : "[[Report 25.06.25]] "
 						}
 					]
 				},
@@ -919,7 +919,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-14T11:22:33.978+02:00"
+						"dateAndTimeString" : "2025-06-25T16:21:53.172+02:00"
 					}
 				},
 				"uid" : {
@@ -929,7 +929,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "[[Demo Vega Lite dynamic ticks]] "
 			},
 			{
 				"__type" : "textSnippet",

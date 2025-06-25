@@ -304,6 +304,6 @@ LarPlotterLine >> title [
 LarPlotterLine >> withSpec: aSpec [
 	 ^ self new
 	 	spec: aSpec;
-	 	initializeBarGraphFromSpec;
+	 	initializeLineGraphFromSpec;
 	 	yourself
 ]
