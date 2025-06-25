@@ -78,6 +78,29 @@ graphElement transform
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatterElement >> addPoints: points [
+| length height |
+	
+	labelsYContainer isNil
+	ifTrue:[height :=200]
+	ifFalse:[height := 150].
+	length := 500.
+graphElement layout cellSpacing: 0.
+graphElement constraintsDo: [ :c |
+			c horizontal exact: length .
+			c vertical exact: height].
+
+
+points do: [:point|
+
+graphElement addChild: (point asElement). ].
+"graphElement forceLayout."
+graphElement transform
+		flipX;
+		apply.
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatterElement >> addTicksLabelX: labelsX [
 
 | tickXcontainer |
@@ -220,8 +243,8 @@ plotter labelAxisX isNil
 ifFalse:[self addAxisLabelX: plotter labelAxisX].
 plotter labelAxisY isNil
 ifFalse:[self addAxisLabelY: plotter labelAxisY].
-plotter lines isNil
-ifFalse:[self addLines: plotter lines].
+plotter points isNil
+ifFalse:[self addPoints: plotter points].
 plotter tickLabelsX isNil
 ifFalse:[self addTicksLabelX: plotter tickLabelsX].
 plotter tickLabelsY isNil

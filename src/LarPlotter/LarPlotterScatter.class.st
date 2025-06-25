@@ -26,14 +26,14 @@ self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> addLines: valuesCollection [
-| line |
+LarPlotterScatter >> addPoints: valuesCollection [
+| point |
 values := valuesCollection.
 	1 to: (values size) do: [:n|
 n = 1
-	ifTrue:  [line:= LarLine new initialize: (0@0) with: (65 @(values at: 1))]
-	ifFalse:[line:= LarLine new initialize: 65 * (n-1) @(values at: (n-1)) with: (65*n) @ (values at: n)].
- points add: line. 
+	ifTrue:  [point= LarPoint new initialize: 0 with: (values at: 1)]
+	ifFalse: [point= LarPoint new initialize: 65 * (n-1) with: (values at: n)].
+ points add: point. 
 ].
 self notifyUpdate
 ]
@@ -107,7 +107,7 @@ LarPlotterScatter >> announcer: anObject [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> asElement [
-^LarPlotterLineElement new initialize: self.
+^LarPlotterScatterElement new initialize: self.
 ]
 
 { #category : #'as yet unclassified' }
@@ -166,7 +166,7 @@ LarPlotterScatter >> initialize [
 announcer := Announcer new.
 self tickLablesInitialize.
 self tickInitialize.
-self linesDefinition
+self pointsDefinition
 ]
 
 { #category : #'as yet unclassified' }
