@@ -1,11 +1,11 @@
 Class {
-	#name : #LarPotterScatterExamples,
+	#name : #LarPlotterScatterExamples,
 	#superclass : #Object,
 	#category : #'LarPlotter-Examples'
 }
 
 { #category : #'as yet unclassified' }
-LarPotterScatterExamples >> addPoints [
+LarPlotterScatterExamples >> addPoints [
 <gtExample>
 
 ^self newGraph addPoints: self values.
@@ -13,7 +13,7 @@ LarPotterScatterExamples >> addPoints [
 ]
 
 { #category : #'as yet unclassified' }
-LarPotterScatterExamples >> addTitel [
+LarPlotterScatterExamples >> addTitel [
 <gtExample>
 
 ^self addPoints  titel: 'This is a title'. 
@@ -21,7 +21,7 @@ LarPotterScatterExamples >> addTitel [
 ]
 
 { #category : #'as yet unclassified' }
-LarPotterScatterExamples >> newGraph [
+LarPlotterScatterExamples >> newGraph [
 <gtExample>
 
 ^ LarPlotterScatter new 
@@ -29,7 +29,7 @@ LarPotterScatterExamples >> newGraph [
 ]
 
 { #category : #'as yet unclassified' }
-LarPotterScatterExamples >> values [
+LarPlotterScatterExamples >> values [
 ^ #(20 40 60 80 10 90 70 50 30 10).
 
 ]
