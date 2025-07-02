@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-06-25T16:32:53.898+02:00"
+						"dateAndTimeString" : "2025-06-27T09:59:03.740531+02:00"
 					}
 				},
 				"uid" : {
@@ -39,44 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Given a barchart: "
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-06-27T09:57:54.701193+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-06-27T09:57:54.701193+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "G6/Dxer0DQC+mrzwBbQexA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "[](https://vega.github.io/vega-lite/examples/bar.html)"
+				"string" : "Given a barchart: [](https://vega.github.io/vega-lite/examples/bar.html)"
 			},
 			{
 				"__type" : "textSnippet",
@@ -145,14 +108,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-06-27T09:58:14.2702+02:00"
+									"dateAndTimeString" : "2025-06-27T09:58:56.016508+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "9djZxur0DQC+oIS3BbQexA=="
 							},
-							"string" : "{\r\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\r\n  \"description\": \"A simple bar chart with embedded data.\",\r\n  \"data\": {\r\n    \"values\": [\r\n      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\r\n      {\"a\": \"D\", \"b\": 91}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\r\n      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}\r\n    ]\r\n  },\r\n  \"mark\": \"bar\",\r\n  \"encoding\": {\r\n    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\r\n    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\r\n  }\r\n}\r\n"
+							"string" : "{\r\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\r\n  \"description\": \"A simple bar chart with embedded data.\",\r\n  \"data\": {\r\n    \"values\": [\r\n      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\r\n      {\"a\": \"D\", \"b\": 91}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\r\n      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}\r\n    ]\r\n  },\r\n  \"mark\": \"bar\",\r\n  \"encoding\": {\r\n    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\r\n    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\r\n  }\r\n}"
 						}
 					]
 				},

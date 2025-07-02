@@ -1,0 +1,929 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:20:09.499367+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:27:40.672725+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Cv+Hqk/1DQC/fCirBFpO3A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This is a followup to [[Dynamic tick label generation]] "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "blockQuoteSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-07-02T10:22:25.968316+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-07-02T10:22:33.760986+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "41Gqsk/1DQCC6hhDBFpO3A=="
+										},
+										"string" : "{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\n  \"description\": \"A simple bar chart with embedded data.\",\n  \"data\": {\n    \"values\": [\n      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\n      {\"a\": \"D\", \"b\": 91}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\n      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}\n    ]\n  },\n  \"mark\": \"bar\",\n  \"encoding\": {\n    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\n    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\n  }\n}"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:20:35.530042+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:22:21.683261+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Cy0VrE/1DQCARgGKBFpO3A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Let's start with the Vega-Lite [Simple Bar Chart](https://vega.github.io/vega-lite/examples/bar.html). It takes a very high level specification in JSON and generates a nice bar chart."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:22:36.535591+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:27:33.99486+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "gZBLs0/1DQCC+OFmBFpO3A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "The JSON specifies the data values in an x-y space, populated by “bar” marks, and mapping the “a” and “b” JSON values to the “x” and “y” axes. Additionally we know that the “a” values are nominal and the “b”s are quantititive. It seems obvious that the x-axis will be labeled by the names of the “a” values, and the height of the bars will take on the “b” values, but how are the ticks generated on the y-axis? How does Vega-Lite know to make the y-axis range from 0 to 100, with ticks for every multiple of 10?"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:27:41.452475+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:27:47.140321+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "tj14xU/1DQCPauvcBFpO3A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# A simple example"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:28:07.508768+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:31:19.745604+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "7tMFx0/1DQCQZwjjBFpO3A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Vega-Lite is just a layer on top of [Vega](https://vega.github.io/vega/). Vega as well takes JSON specs and generates graphics, but it requires much more detailed specs. The [Bar Chart Tutorial](https://vega.github.io/vega/tutorials/bar-chart/) shows how detailed these specs must be. We too want to avoid this complexity, but how?"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-07-02T10:33:33.743633+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-07-02T10:33:34.168352+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "Kcd32k/1DQCWSJDNBFpO3A=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "The Vega-Lite compiler **automatically produces visualization components** including axes, legends, and scales. It determines default properties of these components based on a set of **carefully designed rules.**"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:31:24.378656+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:33:01.854053+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "FdPB0k/1DQCVWIsJBFpO3A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "The [Vega-Lite front page](https://vega.github.io/vega-lite/) says:"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:33:40.579957+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:43:21.630652+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "nRXg2k/1DQCWW6oXBFpO3A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "But what are these rules, and how are they specified? Confusingly, the Vega-Lite documentation contains a [section called Rule](https://vega.github.io/vega-lite/docs/rule.html), but these “rules” are *marks*, the entities that appear in a graph, and not the *logical* rules referred to before. Only by poking around can you discover a reference to *encoding rules* in the documentation page for [Condition](https://vega.github.io/vega-lite/docs/condition.html). But there is not further explanation of these encoding rules, except that they are part of the compiler."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:27:34.940895+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:28:06.923745+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "gN8UxU/1DQCPWaAVBFpO3A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# From Vega to Vega-Lite"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:43:31.186192+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:45:06.285219+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "aggU/k/1DQCgTU+yBFpO3A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If we explore the Simple Bar Chart in the [Vega-Lite editor](https://vega.github.io/editor/#/examples/vega-lite/bar), we can open a *dataflow viewer* at the bottom right. "
+						},
+						{
+							"__type" : "pictureSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:46:47.738976+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:47:21.612822+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Yi7LCVD1DQCi+FU/BFpO3A=="
+							},
+							"url" : "attachments/d1j9yzkxnijtcdqsq4h6sfvav/Screenshot 2025-07-02 at 10.46.37.png",
+							"caption" : "",
+							"previewHeight" : 451.98242187499994,
+							"reference" : ""
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:46:40.891065+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T10:50:27.252431+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "u7BiCVD1DQCi88cGBFpO3A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "This appears to show how the graph is generated as a dataflow of filters, or *operators*. This is not explain in the Vega-Lite documentation, but in the [How Vega Works](https://observablehq.com/@vega/how-vega-works) page. In particular there we learn that an *encode* operator computes the visual encodings. So we need to find out how encodings work in Vega-Lite."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "blockQuoteSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-07-02T11:15:15.775891+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-07-02T11:15:17.412244+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "/76Zb1D1DQCfqE5iBLdxdQ=="
+										},
+										"string" : "{\n  \"$schema\": \"https://vega.github.io/schema/vega/v6.json\",\n  \"description\": \"A simple bar chart with embedded data.\",\n  \"background\": \"white\",\n  \"padding\": 5,\n  \"height\": 300,\n  \"style\": \"cell\",\n  \"data\": [\n    {\n      \"name\": \"source_0\",\n      \"values\": [\n        {\"a\": \"A\", \"b\": 28},\n        {\"a\": \"B\", \"b\": 55},\n        {\"a\": \"C\", \"b\": 43},\n        {\"a\": \"D\", \"b\": 91},\n        {\"a\": \"E\", \"b\": 81},\n        {\"a\": \"F\", \"b\": 53},\n        {\"a\": \"G\", \"b\": 19},\n        {\"a\": \"H\", \"b\": 87},\n        {\"a\": \"I\", \"b\": 52}\n      ]\n    },\n    {\n      \"name\": \"data_0\",\n      \"source\": \"source_0\",\n      \"transform\": [\n        {\n          \"type\": \"stack\",\n          \"groupby\": [\"a\"],\n          \"field\": \"b\",\n          \"sort\": {\"field\": [], \"order\": []},\n          \"as\": [\"b_start\", \"b_end\"],\n          \"offset\": \"zero\"\n        },\n        {\n          \"type\": \"filter\",\n          \"expr\": \"isValid(datum[\\\"b\\\"]) && isFinite(+datum[\\\"b\\\"])\"\n        }\n      ]\n    }\n  ],\n  \"signals\": [\n    {\"name\": \"x_step\", \"value\": 20},\n    {\n      \"name\": \"width\",\n      \"update\": \"bandspace(domain('x').length, 0.1, 0.05) * x_step\"\n    }\n  ],\n  \"marks\": [\n    {\n      \"name\": \"marks\",\n      \"type\": \"rect\",\n      \"style\": [\"bar\"],\n      \"from\": {\"data\": \"data_0\"},\n      \"encode\": {\n        \"update\": {\n          \"fill\": {\"value\": \"#4c78a8\"},\n          \"ariaRoleDescription\": {\"value\": \"bar\"},\n          \"description\": {\n            \"signal\": \"\\\"a: \\\" + (isValid(datum[\\\"a\\\"]) ? datum[\\\"a\\\"] : \\\"\\\"+datum[\\\"a\\\"]) + \\\"; b: \\\" + (format(datum[\\\"b\\\"], \\\"\\\"))\"\n          },\n          \"x\": {\"scale\": \"x\", \"field\": \"a\"},\n          \"width\": {\"signal\": \"max(0.25, bandwidth('x'))\"},\n          \"y\": {\"scale\": \"y\", \"field\": \"b_end\"},\n          \"y2\": {\"scale\": \"y\", \"field\": \"b_start\"}\n        }\n      }\n    }\n  ],\n  \"scales\": [\n    {\n      \"name\": \"x\",\n      \"type\": \"band\",\n      \"domain\": {\"data\": \"data_0\", \"field\": \"a\", \"sort\": true},\n      \"range\": {\"step\": {\"signal\": \"x_step\"}},\n      \"paddingInner\": 0.1,\n      \"paddingOuter\": 0.05\n    },\n    {\n      \"name\": \"y\",\n      \"type\": \"linear\",\n      \"domain\": {\"data\": \"data_0\", \"fields\": [\"b_start\", \"b_end\"]},\n      \"range\": [{\"signal\": \"height\"}, 0],\n      \"nice\": true,\n      \"zero\": true\n    }\n  ],\n  \"axes\": [\n    {\n      \"scale\": \"y\",\n      \"orient\": \"left\",\n      \"gridScale\": \"x\",\n      \"grid\": true,\n      \"tickCount\": {\"signal\": \"ceil(height/40)\"},\n      \"domain\": false,\n      \"labels\": false,\n      \"aria\": false,\n      \"maxExtent\": 0,\n      \"minExtent\": 0,\n      \"ticks\": false,\n      \"zindex\": 0\n    },\n    {\n      \"scale\": \"x\",\n      \"orient\": \"bottom\",\n      \"grid\": false,\n      \"title\": \"a\",\n      \"labelAngle\": 0,\n      \"labelBaseline\": \"top\",\n      \"zindex\": 0\n    },\n    {\n      \"scale\": \"y\",\n      \"orient\": \"left\",\n      \"grid\": false,\n      \"title\": \"b\",\n      \"labelOverlap\": true,\n      \"tickCount\": {\"signal\": \"ceil(height/40)\"},\n      \"zindex\": 0\n    }\n  ]\n}"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:14:26.973166+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:27:40.837397+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "sBSxbFD1DQCdt9t6BLdxdQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We can also explore in the editor the *Compiled Vega* code.  For our simple bar graph we get:"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:43:23.159845+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:43:30.002901+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kIuZ/U/1DQCgFE/uBFpO3A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Dataflow"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:18:08.78319+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:18:28.345164+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "M6TpeVD1DQClyeJGB0xRHg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "How does Vega-Lite generate the low-level Vega specs?"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:05:44.423005+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:07:16.772047+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "vPVeTVD1DQCVH+ODBLdxdQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "The only other hint we get from the documentation is in [Usage > Compile](https://vega.github.io/vega-lite/usage/compile.html), where we learn that the translation is performed by `vegaLite.compile`. so we look  for it in the [Vega-Lite implementation](https://github.com/vega/vega-lite/). "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:07:18.291472+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:11:25.080212+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "t+ojU1D1DQCY3DhPBLdxdQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We find [](https://github.com/vega/vega-lite/tree/main/src/compile) and find many folders with `assemble.ts` and `encode.ts` files. For example [src/compile/scale/range.ts](https://github.com/vega/vega-lite/blob/main/src/compile/scale/range.ts) seems to define the “rules” for inferring the ranges of a graph."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T10:50:28.10172+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T11:18:08.209196+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ZqjtFlD1DQCptp+rBFpO3A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "# Vega-Lite encoding rules"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:11:36.287269+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:22:01.020968+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "R6GEYlD1DQCctO/vBLdxdQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Long story short: Vega-Lite takes high-level (incomplete) specs and expands them to low-level Vega specs using “rules” defined a TypeScript code. The rules are not defined declaratively, but procedurally, in a way that is not so easy to reverse-engineer. It is also not obvious that it worthwhile to try to do so. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:22:10.247406+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:28:33.501522+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "ixROiFD1DQCtylZOB0xRHg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "However, we can take a similar approach. For any spec that generates a graph, we can assume reasonable defaults for certain properties, and offer the possibility to override these. The question remains how to specify these defaults, and how to override them. To override them, we need more low-level specs (for example to define the placement of ticks), but should we do it the Vega way, or define our own? We don't necessarily want to assume a dataflow-based approach, since we aren't using that right now, so perhaps we don't want to rely on `signals`. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:29:21.365451+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-07-02T11:30:31.607388+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Jm8AolD1DQC5tCuDB0xRHg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "In any case, for anything that may be missing from the high-level spec, such as tick definition, we need a (low-levl) way to specify them, and a “rule” (method) to generate defaults when the spec is missing."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T11:21:31.553204+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-02T11:21:50.058937+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "cqr/hVD1DQCtTy73B0xRHg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Conclusion"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-07-02T10:20:09.455247+02:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-07-02T10:20:09.455247+02:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "How does Vega-Lite handle tick label generation?"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "545187aa-4ff5-0d00-bf7b-0f4b045a4edc"
+	}
+}

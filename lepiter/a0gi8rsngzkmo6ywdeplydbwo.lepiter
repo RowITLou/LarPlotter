@@ -319,12 +319,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-06-25T17:39:06.521+02:00"
+			"dateAndTimeString" : "2025-07-02T10:19:44.221593+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "dynamic tick label generation"
+		"title" : "Dynamic tick label generation"
 	},
 	"uid" : {
 		"__type" : "uuid",
