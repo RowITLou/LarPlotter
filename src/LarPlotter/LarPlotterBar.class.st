@@ -22,7 +22,6 @@ Class {
 LarPlotterBar class >> withSpec: aSpec [
 	 ^ self new
 	 	spec: aSpec;
-	 	initializeBarGraphFromSpec;
 	 	yourself
 ]
 
@@ -139,6 +138,21 @@ self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> ensureTicksSpec [
+	<brainstorming>
+	| rule newDict |
+	(dict includesKey: 'ticks') ifTrue: [ ^ self ].
+
+	rule := LARTickSpecUpdaterRule for: dict.
+	newDict := rule updateDict.
+	
+	(newDict includesKey: 'ticks') ifFalse: [ ^ self error: 'waah'].
+	dict:= newDict.
+	^ self
+	
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> gtLiveFor: aView [
 	<gtView>
 	^aView explicit
@@ -152,18 +166,21 @@ LarPlotterBar >> gtLiveFor: aView [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initialize [
+	<brainstorming>
 announcer := Announcer new.
-self tickLablesInitialize.
+"self tickLablesInitialize.
 self tickInitialize.
-self barsDefinition. 
+self barsDefinition. "
 ]
 
 { #category : #accessing }
-LarPlotterBar >> initializeBarGraphFromSpec [
+LarPlotterBar >> initializeDict [
+	<brainstorming>
 
-	| data axisX axisy |
+	"| data axisX axisy |"
 	dict := STONJSON fromString: self spec.
-	self initialize.
+	
+	"self initialize.
 	data := ((dict at: 'data') at: 'values') collect: #values.
 	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
 	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
@@ -172,12 +189,15 @@ LarPlotterBar >> initializeBarGraphFromSpec [
 	self addBars: (data collect: [ :each | each last ]).
 	self addAxisLabel: axisX with: axisy.
 	self addTicks:  data size.
-	self addTicksLabel: (data collect: [ :each | each first ])
+	self addTicksLabel: (data collect: [ :each | each first ])"
 ]
 
 { #category : #accessing }
 LarPlotterBar >> labelAxisX [
-	^ labelAxisX
+	<brainstorming>
+	| axisX |
+	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
+	^ LarLabelAxis new initialize: axisX
 ]
 
 { #category : #accessing }
@@ -206,8 +226,9 @@ LarPlotterBar >> spec [
 ]
 
 { #category : #accessing }
-LarPlotterBar >> spec: anObject [
-	spec := anObject
+LarPlotterBar >> spec: aJSONString [
+	spec := aJSONString.
+	self initializeDict
 ]
 
 { #category : #'as yet unclassified' }
@@ -218,7 +239,9 @@ ticksY := OrderedCollection new.
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> tickLabelsX [
-^tickLabelsX
+self ensureTicksSpec.
+
+^dict at: '...'
 ]
 
 { #category : #accessing }

@@ -304,6 +304,6 @@ LarPlotterScatter >> title [
 LarPlotterScatter >> withSpec: aSpec [
 	 ^ self new
 	 	spec: aSpec;
-	 	initializeBarGraphFromSpec;
+	 	initializeDict;
 	 	yourself
 ]

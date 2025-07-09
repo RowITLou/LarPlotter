@@ -34,6 +34,7 @@ LarPlotterBarExamples >> addTitel [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> barChartSpec [
+<gtExample>
 ^ '{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A simple bar chart with embedded data.",
