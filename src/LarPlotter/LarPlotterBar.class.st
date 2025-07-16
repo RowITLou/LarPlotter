@@ -122,9 +122,10 @@ LarPlotterBar >> asElement [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> bars [
-	| val |
-	 val := ((dict at: 'data') at: 'values') collect: #values.
-	self ensureBarsHeight: val.
+	| val data |
+	val := (dict at: 'data') at: 'values'.
+	data := val collect: [ :each | each at: 'b' ].
+	self ensureBarsHeight: data.
 
 	^ val
 ]
@@ -148,7 +149,7 @@ self notifyUpdate
 { #category : #'as yet unclassified' }
 LarPlotterBar >> ensureBarsHeight: values [
 	| max rule newDict |
-	max := values maxValue.
+	max := values max.
 	max > 450 & (max < 550) ifTrue: [ ^ self ].
 	rule := LARBarSpecUpdaterRule for: dict.
 	newDict := rule updateDict.

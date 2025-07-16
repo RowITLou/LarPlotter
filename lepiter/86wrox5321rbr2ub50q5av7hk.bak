@@ -100,14 +100,51 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-16T11:59:04.954+02:00"
+						"dateAndTimeString" : "2025-07-16T12:10:47.46+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "SDRI4mj2DQCQXhUJDTVfig=="
 				},
-				"code" : "ruleClass :=  LARBarSpecUpdaterRule. \rrule:= ruleClass for: dict. \r"
+				"code" : "ruleClass :=  LARBarSpecUpdaterRule. \rrule:= ruleClass for: dict. \rrule updateDict.\rdict"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-16T12:11:44.267+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-16T12:11:50.079+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "COPe2mr2DQCanO4+AEPt2A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "I was experimenting around "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -134,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-16T12:08:19.007+02:00"
+						"dateAndTimeString" : "2025-07-16T12:08:48.086+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "iPJorWr2DQCX9B8zDTVfig=="
 				},
-				"code" : "ele := dict at: 'data' at: 'values'. \"collect: #values\"\r\tdata := ele collect: [ :each | each at: 'b'].\r\tmax := data max.\rscale := 500 / max.\r\tmodifiedData := OrderedCollection new.\r\tdata do: [:each | modifiedData add: (each * scale)].\ri:= 1\r\tele do: [ :each :i | each at: 'b' put: (modifiedData at: i) ]. \r\tdict at: 'data' at: 'values' put: ele.\r\t^dict.\""
+				"code" : "ele := dict at: 'data' at: 'values'. \"collect: #values\"\r\tdata := ele collect: [ :each | each at: 'b'].\r\tmax := data max.\rscale := 500 / max.\r\tmodifiedData := OrderedCollection new.\r\tdata do: [:each | modifiedData add: (each * scale)].\ri:= 1.\r\tele do: [ :each | each at: 'b' put: (modifiedData at: i) .\r\ti:= i+1]. \r\tdict at: 'data' at: 'values' put: ele.\r\t^dict."
 			}
 		]
 	},

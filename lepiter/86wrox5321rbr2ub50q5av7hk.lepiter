@@ -100,14 +100,51 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-16T11:59:04.954+02:00"
+						"dateAndTimeString" : "2025-07-16T12:10:47.46+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "SDRI4mj2DQCQXhUJDTVfig=="
 				},
-				"code" : "ruleClass :=  LARBarSpecUpdaterRule. \rrule:= ruleClass for: dict. \r"
+				"code" : "ruleClass :=  LARBarSpecUpdaterRule. \rrule:= ruleClass for: dict. \rrule updateDict.\rdict"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-16T12:11:44.267+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-16T12:11:50.635+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "COPe2mr2DQCanO4+AEPt2A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "I was experimenting around here"
 			},
 			{
 				"__type" : "pharoSnippet",
