@@ -213,8 +213,8 @@ plotter labelAxisY isNil
 ifFalse:[self addAxisLabelY: plotter labelAxisY].
 plotter bars isNil
 ifFalse:[self addBars: plotter bars].
-plotter tickLabelsX isNil
-ifFalse:[self addTicksLabelX: plotter tickLabelsX].
+"plotter tickLabelsX isNil
+ifFalse:[self addTicksLabelX: plotter tickLabelsX]."
 plotter tickLabelsY isNil
 ifFalse:[self addTicksLabelY: plotter tickLabelsY].
 plotter title isNil

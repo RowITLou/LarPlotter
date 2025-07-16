@@ -34,12 +34,16 @@ self notifyUpdate
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars: values [
-| bar |
-	1 to: (values size) do: [:n|
-bar:= LarBar new initialize: ((values at: n)) with: 65.
- bars add: bar. 
-].
-self notifyUpdate
+	| bar val |
+	val := values.
+	dict isNotNil
+			ifTrue: [ self bars ].
+	1 to: val size
+		do: [ :n | 
+			bar := LarBar new initialize: (val at: n) with: 65.
+			bars add: bar ].
+	
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
@@ -118,7 +122,11 @@ LarPlotterBar >> asElement [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> bars [
-^bars
+	| val |
+	 val := ((dict at: 'data') at: 'values') collect: #values.
+	self ensureBarsHeight: val.
+
+	^ val
 ]
 
 { #category : #accessing }
@@ -135,6 +143,18 @@ bars:=  OrderedCollection new.
 LarPlotterBar >> changeTitle: text [
 title setText: text. 
 self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> ensureBarsHeight: values [
+	| max rule newDict |
+	max := values maxValue.
+	max > 450 & (max < 550) ifTrue: [ ^ self ].
+	rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDict.
+	
+	dict:= newDict.
+	^self
 ]
 
 { #category : #'as yet unclassified' }
