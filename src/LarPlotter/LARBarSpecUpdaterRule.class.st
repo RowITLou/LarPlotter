@@ -20,7 +20,11 @@ dict:= aDictionary
 ]
 
 { #category : #'as yet unclassified' }
-LARBarSpecUpdaterRule >> updateDict [
+LARBarSpecUpdaterRule >> forWidth [
+]
+
+{ #category : #'as yet unclassified' }
+LARBarSpecUpdaterRule >> updateDictHeight [
 	| ele data max scale modifiedData i |
 	ele := dict at: 'data' at: 'values'.	"collect: #values"
 	data := ele collect: [ :each | each at: 'b' ].

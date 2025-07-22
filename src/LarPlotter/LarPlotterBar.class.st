@@ -12,7 +12,8 @@ Class {
 		'spec',
 		'dict',
 		'amountTicksY',
-		'announcer'
+		'announcer',
+		'bars'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -33,16 +34,17 @@ self notifyUpdate
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars: values [
-	| bar val bars|
+	| bar val width |
 	bars := OrderedCollection new.
-	val := values.
-	dict isNotNil
-			ifTrue: [ self bars ].
+	width := 65.
+	val := self ensureBarsHeight: values.
+	width := self esnureBarsWidth: (val size). 
+    
 	1 to: val size
 		do: [ :n | 
-			bar := LarBar new initialize: (val at: n) with: 65.
+			bar := LarBar new initialize: (val at: n) with: width.
 			bars add: bar ].
-	
+
 	self notifyUpdate
 ]
 
@@ -122,8 +124,7 @@ LarPlotterBar >> asElement [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> bars [
-	| data |
-	data := self ensureBarsHeight
+^bars
 ]
 
 { #category : #accessing }
@@ -150,7 +151,21 @@ LarPlotterBar >> ensureBarsHeight [
 	max := data max.
 	max > 450 & (max < 550) ifTrue: [ ^ data ].
 	rule := LARBarSpecUpdaterRule for: dict.
-	newDict := rule updateDict.
+	newDict := rule updateDictHeight.
+
+	dict := newDict.
+	val := (dict at: 'data') at: 'values'.
+	data := val collect: [ :each | each at: 'b' ].
+	^ data
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> ensureBarsHeight: values [
+	| max rule newDict val data|
+	max := values max.
+	max > 450 & (max < 550) ifTrue: [ ^ values ].
+	rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictHeight.
 
 	dict := newDict.
 	val := (dict at: 'data') at: 'values'.
@@ -171,6 +186,14 @@ LarPlotterBar >> ensureTicksSpec [
 	dict:= newDict.
 	^ self
 	
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> esnureBarsWidth: aNumber [
+	| width |
+	aNumber * 65 < 660 & (aNumber * 65 > 600) ifTrue: [ ^ 65 ].
+	width := 600 /aNumber. 
+	^width
 ]
 
 { #category : #'as yet unclassified' }
@@ -200,8 +223,12 @@ LarPlotterBar >> initializeDict [
 
 	"| data axisX axisy |"
 	dict := STONJSON fromString: self spec.
-	
-	"self initialize.
+	self initializeFor
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> initializeFor [
+	| data axisX axisy |
 	data := ((dict at: 'data') at: 'values') collect: #values.
 	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
 	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
@@ -209,8 +236,8 @@ LarPlotterBar >> initializeDict [
 	self titel: 'This is a title'.
 	self addBars: (data collect: [ :each | each last ]).
 	self addAxisLabel: axisX with: axisy.
-	self addTicks:  data size.
-	self addTicksLabel: (data collect: [ :each | each first ])"
+	self addTicks: data size.
+	self addTicksLabel: (data collect: [ :each | each first ])
 ]
 
 { #category : #accessing }
