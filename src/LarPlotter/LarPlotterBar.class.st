@@ -5,7 +5,6 @@ Class {
 		'labelAxisX',
 		'labelAxisY',
 		'title',
-		'bars',
 		'tickLabelsX',
 		'tickLabelsY',
 		'ticksX',
@@ -34,7 +33,8 @@ self notifyUpdate
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars: values [
-	| bar val |
+	| bar val bars|
+	bars := OrderedCollection new.
 	val := values.
 	dict isNotNil
 			ifTrue: [ self bars ].
@@ -122,12 +122,8 @@ LarPlotterBar >> asElement [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> bars [
-	| val data |
-	val := (dict at: 'data') at: 'values'.
-	data := val collect: [ :each | each at: 'b' ].
-	self ensureBarsHeight: data.
-
-	^ val
+	| data |
+	data := self ensureBarsHeight
 ]
 
 { #category : #accessing }
@@ -147,15 +143,19 @@ self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> ensureBarsHeight: values [
-	| max rule newDict |
-	max := values max.
-	max > 450 & (max < 550) ifTrue: [ ^ self ].
+LarPlotterBar >> ensureBarsHeight [
+	| max rule newDict val data |
+	val := (dict at: 'data') at: 'values'.
+	data := val collect: [ :each | each at: 'b' ].
+	max := data max.
+	max > 450 & (max < 550) ifTrue: [ ^ data ].
 	rule := LARBarSpecUpdaterRule for: dict.
 	newDict := rule updateDict.
-	
-	dict:= newDict.
-	^self
+
+	dict := newDict.
+	val := (dict at: 'data') at: 'values'.
+	data := val collect: [ :each | each at: 'b' ].
+	^ data
 ]
 
 { #category : #'as yet unclassified' }

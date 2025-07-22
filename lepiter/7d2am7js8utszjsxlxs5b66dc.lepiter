@@ -177,7 +177,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-16T12:07:16.159+02:00"
+						"dateAndTimeString" : "2025-07-16T13:57:34.539+02:00"
 					}
 				},
 				"uid" : {
@@ -187,7 +187,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "I implemented the first rule for scaling the bar height. For this I created a new class {{gtClass:name=LARBarSpecUpdaterRule}} . The next step will be to figure out how to embedd this into the existing code. Can we generate our own data or will we from now on be relying on the data drom the example?\r\n"
+				"string" : "I implemented the first rule for scaling the bar height. For this I created a new class {{gtClass:name=LARBarSpecUpdaterRule}} . The next step will be to figure out how to embedd this into the existing code. Can we generate our own data or will we from now on be relying on the data drom the example?\r\n\r\nget dict first, from there create the elements\r\n"
 			},
 			{
 				"__type" : "textSnippet",
