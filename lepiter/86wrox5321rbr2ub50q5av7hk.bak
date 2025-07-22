@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-16T09:50:04.219+02:00"
+						"dateAndTimeString" : "2025-07-22T16:16:14.373+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : " "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-22T10:56:29.607+02:00"
+						"dateAndTimeString" : "2025-07-22T14:01:33.981+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "AKn+4Gj2DQCQGIC4DTVfig=="
 				},
-				"code" : "jsonString := '{\r  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\r  \"description\": \"A simple bar chart with embedded data.\",\r  \"data\": {\r    \"values\": [\r      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\r      {\"a\": \"D\", \"b\": 6}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\r      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}\r    ]\r  },\r  \"mark\": \"bar\",\r  \"encoding\": {\r    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\r    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\r  }\r}'.\rdict:= STONJSON fromString: jsonString."
+				"code" : "jsonString := '{\r  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\r  \"description\": \"A simple bar chart with embedded data.\",\r  \"data\": {\r    \"values\": [\r      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\r      {\"a\": \"D\", \"b\": 6}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\r      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}, {\"a\": \"I\", \"b\": 52},{\"a\": \"I\", \"b\": 52} , {\"a\": \"I\", \"b\": 52}, {\"a\": \"K\", \"b\": 52}\r    ]\r  },\r  \"mark\": \"bar\",\r  \"encoding\": {\r    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\r    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\r  }\r}'.\rdict:= STONJSON fromString: jsonString."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -108,6 +108,40 @@
 					"uidString" : "SDRI4mj2DQCQXhUJDTVfig=="
 				},
 				"code" : "ruleClass :=  LARBarSpecUpdaterRule. \rrule:= ruleClass for: dict. \rrule updateDictHeight.\rdict"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-22T17:26:39.448+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-22T17:26:40.994+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wB+j9Of2DQCJlOIGCnRLnQ=="
+				},
+				"code" : "width := 600 / aNumber.\r\tdict at: 'data' at: 'width' put: width. "
 			},
 			{
 				"__type" : "textSnippet",
@@ -250,6 +284,40 @@
 					"uidString" : "iPJorWr2DQCX9B8zDTVfig=="
 				},
 				"code" : "ele := dict at: 'data' at: 'values'. \"collect: #values\"\r\tdata := ele collect: [ :each | each at: 'b'].\r\tmax := data max.\rscale := 500 / max.\r\tmodifiedData := OrderedCollection new.\r\tdata do: [:each | modifiedData add: (each * scale)].\ri:= 1.\r\tele do: [ :each | each at: 'b' put: (modifiedData at: i) .\r\ti:= i+1]. \r\tdict at: 'data' at: 'values' put: ele.\r\t^dict."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-22T14:59:58.777+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-22T17:00:16.746+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2IIT6OX2DQCcmfNPAuPqQA=="
+				},
+				"code" : "idealSpace := 50.\rmaxSpace := 500.\rmin_ticks := 4.\rmax_ticks := 8. \rscale:= 12.\rarr := #(1 2 5 10 50 100 200).\r\rnum_ticks := (maxSpace/scale) / (idealSpace). \rnum_ticks.\r\rnum_ticks := (min_ticks max: (num_ticks min: max_ticks)).\rnum:= (maxSpace/scale)/num_ticks.\r\rnearest := (arr collect: [ :each | (each - num) abs ]). \rmin:= nearest min. \rindexofMin := nearest indexOf: min. \rspace := arr at: indexofMin. \r\r\n"
 			}
 		]
 	},

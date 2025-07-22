@@ -75,29 +75,37 @@ graphElement  transform
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelX: labelsX [
+	| tickXcontainer aNumber width |
+	aNumber := labelsX size.
+	aNumber * 65 < 660 & (aNumber * 65 > 600) ifTrue: [ ^ 65 ].
+	width := 600 / aNumber.
+	labelsX
+		do: [ :tickXLabel | 
+			tickXcontainer := self createContainer.
 
-| tickXcontainer |
-labelsX do: [:tickXLabel |
- tickXcontainer:= self createContainer.
-
- tickXcontainer constraintsDo: [ :c |
-			c vertical fitContent.
-			c horizontal exact:65].
- tickXcontainer addChild: (tickXLabel asElement).
-labelsContainer addChild: tickXcontainer.].
+			tickXcontainer
+				constraintsDo: [ :c | 
+					c vertical fitContent.
+					c horizontal exact: width ].
+			tickXcontainer addChild: tickXLabel asElement.
+			labelsContainer addChild: tickXcontainer ]
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
-|  tickYcontainer |
-labelsY do: [:tickYLabel|
-tickYcontainer := (LarContainer new initialize) asElementVertical.
-tickYcontainer constraintsDo: [ :c |
-			c horizontal fitContent.
-			c vertical exact: 50].
+	| tickYcontainer |
+	
 
-	tickYcontainer addChild: (tickYLabel asElement).
- labelsYContainer addChild: tickYcontainer.]
+	labelsY
+		do: [ :tickYLabel | 
+			tickYcontainer := LarContainer new initialize asElementVertical.
+			tickYcontainer
+				constraintsDo: [ :c | 
+					c horizontal fitContent.
+					c vertical exact: 50 ].
+
+			tickYcontainer addChild: tickYLabel asElement.
+			labelsYContainer addChild: tickYcontainer ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -213,8 +221,8 @@ plotter labelAxisY isNil
 ifFalse:[self addAxisLabelY: plotter labelAxisY].
 plotter bars isNil
 ifFalse:[self addBars: plotter bars].
-"plotter tickLabelsX isNil
-ifFalse:[self addTicksLabelX: plotter tickLabelsX]."
+plotter tickLabelsX isNil
+ifFalse:[self addTicksLabelX: plotter tickLabelsX].
 plotter tickLabelsY isNil
 ifFalse:[self addTicksLabelY: plotter tickLabelsY].
 plotter title isNil

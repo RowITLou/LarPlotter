@@ -38,7 +38,7 @@ LarPlotterBar >> addBars: values [
 	bars := OrderedCollection new.
 	width := 65.
 	val := self ensureBarsHeight: values.
-	width := self esnureBarsWidth: (val size). 
+	width := self ensureBarsWidth: (val size). 
     
 	1 to: val size
 		do: [ :n | 
@@ -174,6 +174,23 @@ LarPlotterBar >> ensureBarsHeight: values [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> ensureBarsWidth: aNumber [
+	| width rule newDict |
+	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth: aNumber.
+	dict := newDict.
+	^dict at: 'data' at: 'width' ].
+     
+     
+    width := dict at: 'data' at: 'width'.  
+    aNumber * width < 660 & (aNumber * width > 600) ifTrue: [ ^width].
+	rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth: aNumber.
+	dict := newDict.
+	^ dict at: 'data' at: 'width'
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> ensureTicksSpec [
 	<brainstorming>
 	| rule newDict |
@@ -186,14 +203,6 @@ LarPlotterBar >> ensureTicksSpec [
 	dict:= newDict.
 	^ self
 	
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> esnureBarsWidth: aNumber [
-	| width |
-	aNumber * 65 < 660 & (aNumber * 65 > 600) ifTrue: [ ^ 65 ].
-	width := 600 /aNumber. 
-	^width
 ]
 
 { #category : #'as yet unclassified' }
@@ -287,9 +296,12 @@ ticksY := OrderedCollection new.
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> tickLabelsX [
-self ensureTicksSpec.
+^tickLabelsX
 
-^dict at: '...'
+
+"self ensureTicksSpec.
+
+^dict at: '...'"
 ]
 
 { #category : #accessing }
