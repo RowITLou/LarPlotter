@@ -13,7 +13,9 @@ Class {
 		'dict',
 		'amountTicksY',
 		'announcer',
-		'bars'
+		'bars',
+		'scale',
+		'space'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -45,6 +47,22 @@ LarPlotterBar >> addBars: values [
 			bar := LarBar new initialize: (val at: n) with: width.
 			bars add: bar ].
 
+	self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addTicks [
+	| tickY tickAmount |
+	self tickInitialize.
+	ticksY removeAll.
+	tickAmount := self ensureAmountTicksY.
+	1
+		to: tickAmount
+		do: [ :n | 
+			tickY := LarTick new initialize: 3 with: 10.
+			ticksY add: tickY ].
+	self scale: (dict at: 'data' at: 'scale'). 
+	self space: (dict at: 'data' at: 'space'). 
 	self notifyUpdate
 ]
 
@@ -141,6 +159,15 @@ bars:=  OrderedCollection new.
 LarPlotterBar >> changeTitle: text [
 title setText: text. 
 self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> ensureAmountTicksY [
+	| rule newDict |
+	rule := LARTickSpecUpdaterRule for: dict.
+	newDict := rule updateDict.
+	dict := newDict.
+	^ dict at: 'data' at: 'tick'
 ]
 
 { #category : #'as yet unclassified' }
@@ -245,7 +272,7 @@ LarPlotterBar >> initializeFor [
 	self titel: 'This is a title'.
 	self addBars: (data collect: [ :each | each last ]).
 	self addAxisLabel: axisX with: axisy.
-	self addTicks: data size.
+	self addTicks. 
 	self addTicksLabel: (data collect: [ :each | each first ])
 ]
 
@@ -275,6 +302,26 @@ LarPlotterBar >> labelAxisY: anObject [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> notifyUpdate [
 self announcer announce: LarBarPlotterUpdate new
+]
+
+{ #category : #accessing }
+LarPlotterBar >> scale [
+	^ scale
+]
+
+{ #category : #accessing }
+LarPlotterBar >> scale: anObject [
+	scale := anObject
+]
+
+{ #category : #accessing }
+LarPlotterBar >> space [
+	^ space
+]
+
+{ #category : #accessing }
+LarPlotterBar >> space: anObject [
+	space := anObject
 ]
 
 { #category : #accessing }

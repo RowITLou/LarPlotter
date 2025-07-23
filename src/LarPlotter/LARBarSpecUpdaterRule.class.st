@@ -46,14 +46,6 @@ LARBarSpecUpdaterRule >> updateDictHeight [
 ]
 
 { #category : #'as yet unclassified' }
-LARBarSpecUpdaterRule >> updateDictWidth [
-	| aNumber width |
-	aNumber * 65 < 660 & (aNumber * 65 > 600) ifTrue: [ ^ 65 ].
-	width := 600 / aNumber.
-	^ width
-]
-
-{ #category : #'as yet unclassified' }
 LARBarSpecUpdaterRule >> updateDictWidth: aNumber [
 	|  width |
 	

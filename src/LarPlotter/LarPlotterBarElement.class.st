@@ -110,14 +110,20 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksY: ticksY [
-ticksY do: [:tickY |
-tickYContainer := (LarContainer new initialize) asElementVertical.
-tickYContainer constraintsDo: [ :c |
-			c horizontal fitContent.
-			c vertical exact: 50].
+	ticksY
+		do: [ :tickY | 
+			| scale height space |
+			tickYContainer := LarContainer new initialize asElementVertical.
+			scale := plotter scale.
+			space := plotter space.
+			height := space *scale.
+			tickYContainer
+				constraintsDo: [ :c | 
+					c horizontal fitContent.
+					c vertical exact: height ].
 
-tickYContainer addChild: tickY asElementY.
-ticksYContainer addChild: tickYContainer.]
+			tickYContainer addChild: tickY asElementY.
+			ticksYContainer addChild: tickYContainer ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -155,12 +161,14 @@ titelContainer constraintsDo: [ :c |
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
 ticksYContainer := LarContainer new  asElementVertical.
+ticksYContainer layout cellSpacing: 0.
 graphElement := LarContainer new  asElement.
 graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
 
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
+containerTickAndLabel constraintsDo: [:c| c grid vertical alignBottom. ].
 containerTickAndLabel addChild: labelsYContainer. 
 containerTickAndLabel addChild: ticksYContainer. 
 axisXContainer constraintsDo: [ :c |
@@ -227,8 +235,8 @@ plotter tickLabelsY isNil
 ifFalse:[self addTicksLabelY: plotter tickLabelsY].
 plotter title isNil
 ifFalse:[self addTitle: plotter title].
-plotter ticksX isNil
-ifFalse:[self addTicksY: plotter ticksX].
+"plotter ticksX isNil
+ifFalse:[self addTicksY: plotter ticksX]."
 plotter ticksY isNil
 ifFalse:[self addTicksY: plotter ticksY].
 ]

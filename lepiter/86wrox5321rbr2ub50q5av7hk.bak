@@ -134,14 +134,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-22T17:26:40.994+02:00"
+						"dateAndTimeString" : "2025-07-22T17:26:58.49+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "wB+j9Of2DQCJlOIGCnRLnQ=="
 				},
-				"code" : "width := 600 / aNumber.\r\tdict at: 'data' at: 'width' put: width. "
+				"code" : "aNumber := 3.\r\rwidth := 600 / aNumber.\r\tdict at: 'data' at: 'width' put: width. \r\tdict"
 			},
 			{
 				"__type" : "textSnippet",
@@ -286,6 +286,43 @@
 				"code" : "ele := dict at: 'data' at: 'values'. \"collect: #values\"\r\tdata := ele collect: [ :each | each at: 'b'].\r\tmax := data max.\rscale := 500 / max.\r\tmodifiedData := OrderedCollection new.\r\tdata do: [:each | modifiedData add: (each * scale)].\ri:= 1.\r\tele do: [ :each | each at: 'b' put: (modifiedData at: i) .\r\ti:= i+1]. \r\tdict at: 'data' at: 'values' put: ele.\r\t^dict."
 			},
 			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-23T09:04:41.285+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-23T09:22:32.956+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ALpLD/X2DQCuSSArANXeSg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Idea behind this rule:  We have the height and an ideal space of how much the ticks should be apart. we additionally have a minimum and a maximum of ticks per graph. we then calculate the amout of ticks that would make sense with the spaces we have. This is all to scale since we have scaled up/down the bars. \r\nWe then look ath the value of the space and try to find the best and nearest space for the ticks.  "
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -310,14 +347,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-22T17:00:16.746+02:00"
+						"dateAndTimeString" : "2025-07-23T11:07:14.01+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "2IIT6OX2DQCcmfNPAuPqQA=="
 				},
-				"code" : "idealSpace := 50.\rmaxSpace := 500.\rmin_ticks := 4.\rmax_ticks := 8. \rscale:= 12.\rarr := #(1 2 5 10 50 100 200).\r\rnum_ticks := (maxSpace/scale) / (idealSpace). \rnum_ticks.\r\rnum_ticks := (min_ticks max: (num_ticks min: max_ticks)).\rnum:= (maxSpace/scale)/num_ticks.\r\rnearest := (arr collect: [ :each | (each - num) abs ]). \rmin:= nearest min. \rindexofMin := nearest indexOf: min. \rspace := arr at: indexofMin. \r\r\n"
+				"code" : "idealSpace := 70.\rmaxSpace := 500.\rmin_ticks := 4.\rmax_ticks := 8. \rscale:= (500/87).\rarr := #(1 2 5 10 50 100 200).\r\rnum_ticks := (maxSpace/scale) / (idealSpace/scale). \r\r\rnum_ticks := (min_ticks max: (num_ticks min: max_ticks)).\rnum_ticks := num_ticks rounded.\rnum:= (maxSpace/scale)/num_ticks.\r\rnearest := (arr collect: [ :each | (each - num) abs ]). \rmin:= nearest min. \r\rindexofMin := nearest indexOf: min. \rindexofMin.\r\rspace := arr at: indexofMin.\ramount := (maxSpace / scale) / space.\ramount := amount roundDownTo: 0\r\n"
 			}
 		]
 	},

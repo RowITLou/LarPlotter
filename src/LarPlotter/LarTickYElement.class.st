@@ -22,6 +22,6 @@ super initialize.
 	border: (BlBorder paint: Color black width: 1);
 	background: (BlBackground paint: Color black);
 	constraintsDo: [ :c |
-		c grid vertical alignCenter.
+		c grid vertical alignTop.
 		c grid horizontal alignCenter ]; yourself.
 ]

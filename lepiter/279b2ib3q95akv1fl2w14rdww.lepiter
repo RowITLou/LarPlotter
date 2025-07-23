@@ -177,7 +177,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-22T17:30:53.935+02:00"
+						"dateAndTimeString" : "2025-07-23T09:04:05.646+02:00"
 					}
 				},
 				"uid" : {
@@ -187,7 +187,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Todo:  clean up  ticks in bargraph\r\nfinish rule for ticks amount and ticks labels\r\n\r\n\r\nneed to add scale to the code"
+				"string" : "Todo:  clean up  ticks in bargraph\r\nfinish rule for ticks amount and ticks labels\r\n\r\nNeed to define a default for ticks if there are no bars. Otherwise an error will come up. \r\nWant to set a default for the titel and the axislabel\r\n"
 			}
 		]
 	},
