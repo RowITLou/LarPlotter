@@ -93,8 +93,10 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
-	| tickYcontainer |
-	
+	| tickYcontainer scale space height |
+	scale := plotter scale.
+	space := plotter space.
+	height := space * scale.
 
 	labelsY
 		do: [ :tickYLabel | 
@@ -102,9 +104,10 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 			tickYcontainer
 				constraintsDo: [ :c | 
 					c horizontal fitContent.
-					c vertical exact: 50 ].
+					c vertical exact: height ].
 
 			tickYcontainer addChild: tickYLabel asElement.
+			 labelsYContainer layout cellSpacing: 0.
 			labelsYContainer addChild: tickYcontainer ]
 ]
 
@@ -121,7 +124,7 @@ LarPlotterBarElement >> addTicksY: ticksY [
 				constraintsDo: [ :c | 
 					c horizontal fitContent.
 					c vertical exact: height ].
-
+              tickYContainer layout cellSpacing: 0.
 			tickYContainer addChild: tickY asElementY.
 			ticksYContainer addChild: tickYContainer ]
 ]

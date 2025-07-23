@@ -104,20 +104,22 @@ self notifyUpdate
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
-| tick |
-self tickLablesInitialize.
-	1 to: (valuesX size ) do: [: n| 
-tick := LarTickLabel new initialize: (valuesX at: n).
+	| tick amount |
+	self tickLablesInitialize.
+	1
+		to: valuesX size
+		do: [ :n | 
+			tick := LarTickLabel new initialize: (valuesX at: n).
 
-tickLabelsX add: tick. 
-].
+			tickLabelsX add: tick ].
+	amount := dict at: 'data' at: 'tick'.
+	1
+		to: amount
+		do: [ :n | 
+			tick := LarTickLabel new initialize: (valuesY * (amount- (n - 1))).
 
-1 to: ( valuesY size ) do: [: n| 
-tick:= LarTickLabel new initialize: (valuesY at: (( valuesY size) - (n-1))). 
-
-tickLabelsY add: tick.
-].
-self notifyUpdate
+			tickLabelsY add: tick ].
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
@@ -273,7 +275,7 @@ LarPlotterBar >> initializeFor [
 	self addBars: (data collect: [ :each | each last ]).
 	self addAxisLabel: axisX with: axisy.
 	self addTicks. 
-	self addTicksLabel: (data collect: [ :each | each first ])
+	self addTicksLabel: (data collect: [ :each | each first ]) with: self space. 
 ]
 
 { #category : #accessing }
