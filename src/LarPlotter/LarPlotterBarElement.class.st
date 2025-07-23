@@ -93,7 +93,7 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
-	| tickYcontainer scale space height |
+	| tickYcontainer scale space height spareLabelYContainer |
 	scale := plotter scale.
 	space := plotter space.
 	height := space * scale.
@@ -107,26 +107,39 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 					c vertical exact: height ].
 
 			tickYcontainer addChild: tickYLabel asElement.
-			 labelsYContainer layout cellSpacing: 0.
-			labelsYContainer addChild: tickYcontainer ]
+			labelsYContainer layout cellSpacing: 0.
+			labelsYContainer addChild: tickYcontainer ].
+
+
+	spareLabelYContainer := LarContainer new initialize asElementVertical
+			constraintsDo: [ :c | 
+				c horizontal fitContent.
+				c vertical exact: height / 2 ].
+	spareLabelYContainer layout cellSpacing: 0.
+	labelsYContainer addChild: spareLabelYContainer
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksY: ticksY [
+	| scale space height |
+	scale := plotter scale.
+	space := plotter space.
+	height := space * scale.
+
 	ticksY
 		do: [ :tickY | 
-			| scale height space |
 			tickYContainer := LarContainer new initialize asElementVertical.
-			scale := plotter scale.
-			space := plotter space.
-			height := space *scale.
+				
+			height := space * scale.
 			tickYContainer
 				constraintsDo: [ :c | 
 					c horizontal fitContent.
 					c vertical exact: height ].
-              tickYContainer layout cellSpacing: 0.
+			tickYContainer layout cellSpacing: 0.
 			tickYContainer addChild: tickY asElementY.
-			ticksYContainer addChild: tickYContainer ]
+			ticksYContainer addChild: tickYContainer ].
+			ticksYContainer constraintsDo: [:c| c grid vertical alignBottom. ].
+	
 ]
 
 { #category : #'as yet unclassified' }

@@ -67,44 +67,10 @@ LarPlotterBar >> addTicks [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addTicks: tickAmount [
-|  tickY |
-self tickInitialize.
-ticksY removeAll. 
-1 to: ( tickAmount ) do: [: n| 
-tickY := (LarTick new initialize: 3 with: 10).
-ticksY add: tickY.
-
-].
-self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> addTicks: tickXAmount with: tickYAmount [
-| tickX tickY |
-1 to: ( tickYAmount ) do: [: n| 
-tickY := (LarTick new initialize: 3 with: 10).
-
-ticksY add: tickX.
-].
-self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> addTicksLabel: valuesX [
-| tick |
-self tickLablesInitialize.
-	1 to: ( valuesX size) do: [: n| 
-tick := LarTickLabel new initialize: (valuesX at: n).
-
-tickLabelsX add: tick. 
-].
-self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 	| tick amount |
+	bars isNil
+	ifTrue:[^self].
 	self tickLablesInitialize.
 	1
 		to: valuesX size
@@ -120,11 +86,6 @@ LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 
 			tickLabelsY add: tick ].
 	self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> amountTicksY [
-^amountTicksY
 ]
 
 { #category : #accessing }
@@ -150,11 +111,6 @@ LarPlotterBar >> bars [
 { #category : #accessing }
 LarPlotterBar >> bars: anObject [
 	bars := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> barsDefinition [
-bars:=  OrderedCollection new. 
 ]
 
 { #category : #'as yet unclassified' }
@@ -217,21 +173,6 @@ LarPlotterBar >> ensureBarsWidth: aNumber [
 	newDict := rule updateDictWidth: aNumber.
 	dict := newDict.
 	^ dict at: 'data' at: 'width'
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> ensureTicksSpec [
-	<brainstorming>
-	| rule newDict |
-	(dict includesKey: 'ticks') ifTrue: [ ^ self ].
-
-	rule := LARTickSpecUpdaterRule for: dict.
-	newDict := rule updateDict.
-	
-	(newDict includesKey: 'ticks') ifFalse: [ ^ self error: 'waah'].
-	dict:= newDict.
-	^ self
-	
 ]
 
 { #category : #'as yet unclassified' }
