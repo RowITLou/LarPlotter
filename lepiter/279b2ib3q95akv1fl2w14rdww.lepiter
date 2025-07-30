@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-22T14:32:24.563+02:00"
+						"dateAndTimeString" : "2025-07-29T12:00:04.886+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "I now imbedded the rule into the code. I now have a rule to ensure the height of the bars and one to ensure the width of the bars (the second one is not in the {{gtClass:name=LARBarSpecUpdaterRule}} class since we do not have to change anything in the dict) (Or should I embedd this into the dict?){{gtMethod:name=LarPlotterBar>>ensureBarsHeight}}, {{gtMethod:name=LarPlotterBar>>ensureBarsWidth:}}"
+				"string" : "I now imbedded the rule into the code. I now have a rule to ensure the height of the bars and one to ensure the width of the bars (the second one is not in the {{gtClass:name=LARBarSpecUpdaterRule}} class since we do not have to change anything in the dict) (Or should I embedd this into the dict?){{gtMethod:name=LarPlotterBar>>ensureBarsHeight:}}, {{gtMethod:name=LarPlotterBar>>ensureBarsWidth:}}"
 			},
 			{
 				"__type" : "textSnippet",
@@ -214,7 +214,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-23T13:40:53.16+02:00"
+						"dateAndTimeString" : "2025-07-29T09:53:48.277+02:00"
 					}
 				},
 				"uid" : {
@@ -224,7 +224,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Tought: We need default settings for when we do not use a dict or the informations are not complete. for ex "
+				"string" : "Thought: We need default settings for when we do not use a dict or the informations are not complete. for ex "
 			},
 			{
 				"__type" : "textSnippet",

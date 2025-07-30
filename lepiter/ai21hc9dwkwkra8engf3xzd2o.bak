@@ -664,7 +664,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-07-23T13:59:18.917+02:00"
+									"dateAndTimeString" : "2025-07-23T13:59:35.863+02:00"
 								}
 							},
 							"uid" : {
@@ -674,7 +674,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Rep"
+							"string" : "[[Report 30.07.25]] "
 						}
 					]
 				},
@@ -1004,6 +1004,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "[[Lines]]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-29T12:06:50.361+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-07-29T12:07:19.653+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "CHXETXD3DQCkuKTMDAxy/Q=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Dataimport Example]] "
 			},
 			{
 				"__type" : "textSnippet",

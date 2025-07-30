@@ -13,7 +13,8 @@ Class {
 		'title',
 		'dict',
 		'lines',
-		'values'
+		'scale',
+		'space'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -27,15 +28,22 @@ self notifyUpdate
 
 { #category : #'as yet unclassified' }
 LarPlotterLine >> addLines: valuesCollection [
-| line |
-values := valuesCollection.
-	1 to: (values size) do: [:n|
-n = 1
-	ifTrue:  [line:= LarLine new initialize: (0@0) with: (65 @(values at: 1))]
-	ifFalse:[line:= LarLine new initialize: 65 * (n-1) @(values at: (n-1)) with: (65*n) @ (values at: n)].
- lines add: line. 
-].
-self notifyUpdate
+	| line width val values |
+	values := valuesCollection.
+	width := 65.
+	val := self ensureDataHeight: values.
+	width := self ensureDataWidth: val size.
+
+	1
+		to: values size
+		do: [ :n | 
+			n = 1
+				ifTrue: [ line := LarLine new initialize: 0 @ 0 with: width @ (values at: 1) ]
+				ifFalse: [ line := LarLine new
+							initialize: (width * (n - 1)) @ (values at: n - 1)
+							with: (width * n) @ (values at: n) ].
+			lines add: line ].
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
@@ -147,6 +155,37 @@ ZnClient new
 				url: aUrl;
 				signalProgress: true;
 				downloadTo: (FileLocator downloads  ).
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> ensureDataHeight: values [
+| max rule newDict val data|
+	max := values max.
+	max > 450 & (max < 550) ifTrue: [ ^ values ].
+	rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictHeight.
+
+	dict := newDict.
+	val := (dict at: 'data') at: 'values'.
+	data := val collect: [ :each | each at: 'b' ].
+	^ data
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> ensureDataWidth: aNumber [
+	| width rule newDict |
+	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth: aNumber.
+	dict := newDict.
+	^dict at: 'data' at: 'width' ].
+     
+     
+    width := dict at: 'data' at: 'width'.  
+    aNumber * width < 660 & (aNumber * width > 600) ifTrue: [ ^width].
+	rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth: aNumber.
+	dict := newDict.
+	^ dict at: 'data' at: 'width'
 ]
 
 { #category : #'as yet unclassified' }

@@ -140,7 +140,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T13:35:23.013+02:00"
+						"dateAndTimeString" : "2025-07-30T13:30:54.943+02:00"
 					}
 				},
 				"uid" : {
@@ -150,7 +150,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "My idea for this is to get the timespan of the data entries. Then I will need to look what labels would make sense. For this I will count the years, months, weeks and days. Depending how many of each I have, I will have to chose 1 option and even if there are too many entries, I will have to aggregate them (take every secosn year instead of taking each year). \r\nI will then have to find a way to"
+				"string" : "My idea for this is to get the timespan of the data entries. Then I will need to look what labels would make sense. For this I will count the years, months, weeks and days. Depending how many of each I have, I will have to chose 1 option and even if there are too many entries, I will have to aggregate them (take every secosn year instead of taking each year). \r\nI will then have to fins a way"
 			}
 		]
 	},

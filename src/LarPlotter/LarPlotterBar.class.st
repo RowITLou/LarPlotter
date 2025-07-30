@@ -11,7 +11,6 @@ Class {
 		'ticksY',
 		'spec',
 		'dict',
-		'amountTicksY',
 		'announcer',
 		'bars',
 		'scale',
@@ -126,22 +125,6 @@ LarPlotterBar >> ensureAmountTicksY [
 	newDict := rule updateDict.
 	dict := newDict.
 	^ dict at: 'data' at: 'tick'
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> ensureBarsHeight [
-	| max rule newDict val data |
-	val := (dict at: 'data') at: 'values'.
-	data := val collect: [ :each | each at: 'b' ].
-	max := data max.
-	max > 450 & (max < 550) ifTrue: [ ^ data ].
-	rule := LARBarSpecUpdaterRule for: dict.
-	newDict := rule updateDictHeight.
-
-	dict := newDict.
-	val := (dict at: 'data') at: 'values'.
-	data := val collect: [ :each | each at: 'b' ].
-	^ data
 ]
 
 { #category : #'as yet unclassified' }

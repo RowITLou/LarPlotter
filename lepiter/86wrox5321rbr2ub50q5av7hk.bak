@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-23T11:57:48.458+02:00"
+						"dateAndTimeString" : "2025-07-29T09:54:09.707+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "##to see how it looks now please go down to the last pahor cell "
+				"string" : "\r\n##to see how it looks now please go down to the last pahor cell "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -381,14 +381,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-23T12:00:35.657+02:00"
+						"dateAndTimeString" : "2025-07-23T12:01:09.75+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "6BHfevf2DQCFK+NYB5JKzw=="
 				},
-				"code" : "jsonString := '{\r  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\r  \"description\": \"A simple bar chart with embedded data.\",\r  \"data\": {\r    \"values\": [\r      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\r      {\"a\": \"D\", \"b\": 6000}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\r      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}, {\"a\": \"I\", \"b\": 52},{\"a\": \"I\", \"b\": 52} , {\"a\": \"I\", \"b\": 52}, {\"a\": \"K\", \"b\": 52}\r    ]\r  },\r  \"mark\": \"bar\",\r  \"encoding\": {\r    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\r    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\r  }\r}'.\rdict:= STONJSON fromString: jsonString.\r\rplotter := LarPlotterBar new. \rplotter spec: jsonString. \r\rplotter"
+				"code" : "jsonString := '{\r  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\r  \"description\": \"A simple bar chart with embedded data.\",\r  \"data\": {\r    \"values\": [\r      {\"a\": \"A\", \"b\": 28}, {\"a\": \"B\", \"b\": 55}, {\"a\": \"C\", \"b\": 43},\r      {\"a\": \"D\", \"b\": 60}, {\"a\": \"E\", \"b\": 81}, {\"a\": \"F\", \"b\": 53},\r      {\"a\": \"G\", \"b\": 19}, {\"a\": \"H\", \"b\": 87}, {\"a\": \"I\", \"b\": 52}, {\"a\": \"I\", \"b\": 52},{\"a\": \"I\", \"b\": 52} , {\"a\": \"I\", \"b\": 52}, {\"a\": \"K\", \"b\": 52}\r    ]\r  },\r  \"mark\": \"bar\",\r  \"encoding\": {\r    \"x\": {\"field\": \"a\", \"type\": \"nominal\", \"axis\": {\"labelAngle\": 0}},\r    \"y\": {\"field\": \"b\", \"type\": \"quantitative\"}\r  }\r}'.\rdict:= STONJSON fromString: jsonString.\r\rplotter := LarPlotterBar new. \rplotter spec: jsonString. \r\rplotter"
 			}
 		]
 	},

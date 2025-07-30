@@ -214,7 +214,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-23T13:40:53.16+02:00"
+						"dateAndTimeString" : "2025-07-29T09:53:48.277+02:00"
 					}
 				},
 				"uid" : {
@@ -224,7 +224,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Tought: We need default settings for when we do not use a dict or the informations are not complete. for ex "
+				"string" : "Thought: We need default settings for when we do not use a dict or the informations are not complete. for ex "
 			},
 			{
 				"__type" : "textSnippet",
@@ -251,7 +251,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-23T14:04:51.183+02:00"
+						"dateAndTimeString" : "2025-07-23T14:05:11.588+02:00"
 					}
 				},
 				"uid" : {
@@ -261,7 +261,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Next steps: Implement rules for scatter plot and line graph"
+				"string" : "Next steps: Implement rules for scatter plot and line graph. Implement difference nominal and quantitative. "
 			}
 		]
 	},
