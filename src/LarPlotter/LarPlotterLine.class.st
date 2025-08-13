@@ -34,52 +34,29 @@ LarPlotterLine >> addLines: valuesCollection [
 	val := self ensureDataHeight: values.
 	width := self ensureDataWidth: val size.
 
-	1
-		to: values size
+	1 to: val size
 		do: [ :n | 
-			n = 1
-				ifTrue: [ line := LarLine new initialize: 0 @ 0 with: width @ (values at: 1) ]
-				ifFalse: [ line := LarLine new
-							initialize: (width * (n - 1)) @ (values at: n - 1)
-							with: (width * n) @ (values at: n) ].
+			"n = 1
+				ifTrue: [ line := LarLine new initialize: 0 @ 0 with: width @ (values at: 1) ]"
+				"ifFalse:" [ line := LarLine new
+							initialize: (width * (n - 1)) @ (values at: n)
+							with: (width * n) @ (values at: n+1) ].
 			lines add: line ].
 	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLine >> addTicks: tickAmount [
-|  tickY |
-self tickInitialize.
-ticksY removeAll. 
-1 to: ( tickAmount ) do: [: n| 
-tickY := (LarTick new initialize: 3 with: 10).
-ticksY add: tickY.
-
-].
-self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLine >> addTicks: tickXAmount with: tickYAmount [
-| tickX tickY |
-1 to: ( tickYAmount ) do: [: n| 
-tickY := (LarTick new initialize: 3 with: 10).
-
-ticksY add: tickX.
-].
-self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLine >> addTicksLabel: valuesX [
-| tick  |
-self tickLablesInitialize.
-	1 to: (valuesX size ) do: [: n| 
-tick := LarTickLabel new initialize: (valuesX at: n).
-
-tickLabelsX add: tick. 
-].
-
+LarPlotterLine >> addTicks [
+	| tickY tickAmount |
+	self tickInitialize.
+	ticksY removeAll.
+	tickAmount := self ensureAmountTicksY.
+	1
+		to: tickAmount
+		do: [ :n | 
+			tickY := LarTick new initialize: 3 with: 10.
+			ticksY add: tickY ].
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
@@ -221,7 +198,7 @@ LarPlotterLine >> initializeLineGraphFromSpec [
 	self titel: 'This is a title'.
 	"self addLines: (data collect: [ :each | each last ])."
 	self addAxisLabel: axisX with: axisy.
-	self addTicks:  data size.
+	self addTicks.
 	self addTicksLabel: (data collect: [ :each | each first ])
 ]
 

@@ -341,14 +341,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T10:00:12.708+02:00"
+						"dateAndTimeString" : "2025-08-12T13:43:17.467+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "mJONnHL3DQClCx9SCde6YQ=="
 				},
-				"code" : "\rfilter := (((dict at: 'transform' ) first at: 'filter') findTokens: '===') last.\r\"How can I show ' as a string\""
+				"code" : "\rfilter := ((((dict at: 'transform' ) first at: 'filter') findTokens: '===') last) copyWithout: $'.\r\"How can I show ' as a string\""
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -375,14 +375,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T10:00:29.517+02:00"
+						"dateAndTimeString" : "2025-08-12T13:40:56.831+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "cKIIj3P3DQCbfDb6AKf/3g=="
 				},
-				"code" : "transformation := OrderedCollection new. \rjsonData do: [:d| (d at: 'symbol') = ('GOOG')\rifTrue:[transformation add: d].]."
+				"code" : "transformation := OrderedCollection new. \rjsonData do: [:d| (d at: 'symbol') = (filter)\rifTrue:[transformation add: d].].\rtransformation"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -409,14 +409,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T10:09:17.436+02:00"
+						"dateAndTimeString" : "2025-08-12T13:34:51.852+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "4MnQiXP3DQCbaKQCAKf/3g=="
 				},
-				"code" : "\rdata := jsonData collect:[:d | \rd at: 'price']."
+				"code" : "\rdata := transformation collect:[:d | \rd at: 'price']."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -443,14 +443,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T10:09:45.293+02:00"
+						"dateAndTimeString" : "2025-08-12T13:35:40.203+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "UHHRqIL3DQClTpBlC/VdBQ=="
 				},
-				"code" : "time := jsonData collect:[:d | \rd at: 'date']."
+				"code" : "time := transformation collect:[:d | \rd at: 'date']."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -511,14 +511,184 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T13:21:41.734+02:00"
+						"dateAndTimeString" : "2025-08-13T09:31:34.701+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "EMQ8joP3DQCpSvXjC/VdBQ=="
 				},
-				"code" : "months := duration  months. \rduation duration asDays.\ryears := duration years. \r"
+				"code" : "\rmonths := timespan  months size. \r"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-12T13:56:37.128+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-13T09:31:38.724+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "QNsleIv4DQCBrQ1dCWV+Ow=="
+				},
+				"code" : "years := timespan years size. "
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-12T13:56:43.391+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-13T09:32:21.83+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GGyFeIv4DQCBsX/RCWV+Ow=="
+				},
+				"code" : "days := (timespan duration asDays) asInteger.\rarr := OrderedCollection new.\r"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-12T15:01:14.723+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-12T15:05:40.366+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "uEJFX4z4DQCFuj+SCWV+Ow=="
+				},
+				"code" : "arr := {days.  months. years}"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-12T13:53:54.067+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-12T15:10:02+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "OL5tbov4DQCBMLowCWV+Ow=="
+				},
+				"code" : "\r\tidealSpace := 70.\r\tmaxSpace := 500.\r\tmin_ticks := 4.\r\tmax_ticks := 8.\r\t\r\tnum_ticks := (maxSpace) / (idealSpace). \r\rnum_ticks := (min_ticks max: (num_ticks min: max_ticks)).\rnum_ticks := num_ticks rounded.\r\rnearest := (arr collect: [ :each | (each - num_ticks) abs ]). \r\rmin:= nearest min. \r\rindexofMin := nearest indexOf: min. \rindexofMin.\r\rspace := arr at: indexofMin.\r"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-12T15:24:05.292+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-13T09:41:50.552+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4Hv2sIz4DQCGinhZCWV+Ow=="
+				},
+				"code" : "timeArr := {timespan dates . timespan  months. timespan years}.\rtimeData := timeArr at: indexofMin. \r"
 			},
 			{
 				"__type" : "textSnippet",

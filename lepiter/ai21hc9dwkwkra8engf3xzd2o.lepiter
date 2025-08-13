@@ -675,6 +675,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[[Report 30.07.25]] "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-08-13T09:48:54.804+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-08-13T09:50:02.552+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "UCIgIJz4DQCGfzibCDdHoA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Report 13.08.25]] "
 						}
 					]
 				},
@@ -723,7 +760,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-02-26T10:25:45.954+01:00"
+						"dateAndTimeString" : "2025-08-13T09:49:45.529+02:00"
 					}
 				},
 				"editEmail" : {
@@ -734,12 +771,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-08T12:50:54.374+01:00"
+						"dateAndTimeString" : "2025-08-13T09:49:51.962+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "0EYo5WnrDQCshocBA3E2Xw=="
+					"uidString" : "qComI5z4DQCHHwKsCDdHoA=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -782,6 +819,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "[[Questions]]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-13T10:30:03.387+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-13T10:30:13.243+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MAkls5z4DQCRCJfSAV3CHw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Aggregation of axis points]] "
 			},
 			{
 				"__type" : "textSnippet",

@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:07:22.249+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:20.186+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,91 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:07:41.545+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:20.202+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "KBerT3D3DQClMf8cDAxy/Q=="
+					"uidString" : "mMr1s5z4DQCRvcyBAV3CHw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "{{gtClass:name=LarPlotterLineExamples}}"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:08:14.994+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:08:30.121+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "gOLPUnD3DQClokyIDAxy/Q=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "{{gtClass:name=LarVegaExamples}}"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T11:47:02.161+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T11:47:15.076+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "KIeQxp34DQCV2Fx1AvYlcA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "{{gtClass:name=LARLineSpecUpdaterRule}}"
+				"string" : "[[Data Import Example]]"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -129,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:07:59.307+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:35.319+02:00"
 					}
 				},
 				"editEmail" : {
@@ -140,12 +66,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:36:13.291+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:36.277+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "+IzgUXD3DQClk1AVDAxy/Q=="
+					"uidString" : "2P4qtZz4DQCR1Q6ZAV3CHw=="
 				},
 				"code" : "url := 'https://vega.github.io/vega-lite/examples/'"
 			},
@@ -163,7 +89,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:08:09.464+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:40.543+02:00"
 					}
 				},
 				"editEmail" : {
@@ -174,12 +100,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:32:28.436+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:45.516+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "wIh7UnD3DQClndtaDAxy/Q=="
+					"uidString" : "eKV6tZz4DQCR394aAV3CHw=="
 				},
 				"code" : "jsonString := '{\r  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\r  \"description\": \"Google''s stock price over time.\",\r  \"data\": {\"url\": \"data/stocks.csv\"},\r  \"transform\": [{\"filter\": \"datum.symbol===''GOOG''\"}],\r  \"mark\": \"line\",\r  \"encoding\": {\r    \"x\": {\"field\": \"date\", \"type\": \"temporal\"},\r    \"y\": {\"field\": \"price\", \"type\": \"quantitative\"}\r  }}'"
 			},
@@ -197,7 +123,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:31:23.474+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:53.875+02:00"
 					}
 				},
 				"editEmail" : {
@@ -208,12 +134,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:32:17.797+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:54.979+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "ULi5UnL3DQC/92LhC2iM2g=="
+					"uidString" : "OCNGtpz4DQCR6dEdAV3CHw=="
 				},
 				"code" : "dict:= STONJSON fromString: jsonString."
 			},
@@ -231,7 +157,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:32:59.311+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:59.002+02:00"
 					}
 				},
 				"editEmail" : {
@@ -242,12 +168,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:46:46.565+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:05.543+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "yAtwWHL3DQCAl4inC2iM2g=="
+					"uidString" : "ECCUtpz4DQCR8wuGAV3CHw=="
 				},
 				"code" : "urlNew := ((dict at: 'data') at: 'url') addedToZnUrl: (url asZnUrl)"
 			},
@@ -265,7 +191,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T15:28:29.4+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:09.64+02:00"
 					}
 				},
 				"editEmail" : {
@@ -276,12 +202,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T15:29:30.101+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:15.686+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "wDPtHnP3DQCT5LJEAKf/3g=="
+					"uidString" : "oKE2t5z4DQCR/aTKAV3CHw=="
 				},
 				"code" : "segments :=  ((dict at: 'data') at: 'url')findTokens: '/'.\rfileName := segments last"
 			},
@@ -299,7 +225,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:49:36.21+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:19.118+02:00"
 					}
 				},
 				"editEmail" : {
@@ -310,12 +236,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T15:29:57.138+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:25.478+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "gITbk3L3DQCDJcfmC2iM2g=="
+					"uidString" : "sFDHt5z4DQCSB3boAV3CHw=="
 				},
 				"code" : "(FileLocator downloads/ fileName) ensureDelete.\rZnClient new\r\t\t\t\turl: urlNew;\r\t\t\t\tsignalProgress: true;\r\t\t\t\tdownloadTo: (FileLocator downloads  ).\rfile :=(FileLocator downloads  / fileName) contents"
 			},
@@ -333,7 +259,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:50:11.616+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:35.101+02:00"
 					}
 				},
 				"editEmail" : {
@@ -344,12 +270,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:52:21.512+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:37.698+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "2Kn3lXL3DQCDND1HC2iM2g=="
+					"uidString" : "SDK7uJz4DQCSEQHoAV3CHw=="
 				},
 				"code" : "jsonData := (CSV2JSON for: file) jsonObject."
 			},
@@ -367,7 +293,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T14:52:02.095+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:41.429+02:00"
 					}
 				},
 				"editEmail" : {
@@ -378,14 +304,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T13:43:17.467+02:00"
+						"dateAndTimeString" : "2025-08-13T10:31:48.424+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "mJONnHL3DQClCx9SCde6YQ=="
+					"uidString" : "CMEbuZz4DQCSGzokAV3CHw=="
 				},
-				"code" : "\rfilter := ((((dict at: 'transform' ) first at: 'filter') findTokens: '===') last) copyWithout: $'.\r\"How can I show ' as a string\""
+				"code" : "filter := ((((dict at: 'transform' ) first at: 'filter') findTokens: '===') last) copyWithout: $'.\r\"How can I show ' as a string\""
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -401,7 +327,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T15:59:50.248+02:00"
+						"dateAndTimeString" : "2025-08-13T10:32:03.103+02:00"
 					}
 				},
 				"editEmail" : {
@@ -412,12 +338,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T13:40:56.831+02:00"
+						"dateAndTimeString" : "2025-08-13T10:32:04.834+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "cKIIj3P3DQCbfDb6AKf/3g=="
+					"uidString" : "GHlmupz4DQCSJYTdAV3CHw=="
 				},
 				"code" : "transformation := OrderedCollection new. \rjsonData do: [:d| (d at: 'symbol') = (filter)\rifTrue:[transformation add: d].].\rtransformation"
 			},
@@ -435,7 +361,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T15:58:22.702+02:00"
+						"dateAndTimeString" : "2025-08-13T10:32:34.35+02:00"
 					}
 				},
 				"editEmail" : {
@@ -446,14 +372,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T13:34:51.852+02:00"
+						"dateAndTimeString" : "2025-08-13T10:32:36.02+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "4MnQiXP3DQCbaKQCAKf/3g=="
+					"uidString" : "sENDvJz4DQCSOdxNAV3CHw=="
 				},
-				"code" : "\rdata := transformation collect:[:d | \rd at: 'price']."
+				"code" : "data := transformation collect:[:d | \rd at: 'price']."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -469,7 +395,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T10:00:47.352+02:00"
+						"dateAndTimeString" : "2025-08-13T10:35:55.858+02:00"
 					}
 				},
 				"editEmail" : {
@@ -480,12 +406,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T13:35:40.203+02:00"
+						"dateAndTimeString" : "2025-08-13T10:35:57.682+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "UHHRqIL3DQClTpBlC/VdBQ=="
+					"uidString" : "UAhGyJz4DQCSQ1ulAV3CHw=="
 				},
 				"code" : "time := transformation collect:[:d | \rd at: 'date']."
 			},
@@ -503,7 +429,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T10:41:31.546+02:00"
+						"dateAndTimeString" : "2025-08-13T10:36:18.166+02:00"
 					}
 				},
 				"editEmail" : {
@@ -514,14 +440,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T13:23:13.753+02:00"
+						"dateAndTimeString" : "2025-08-13T10:42:03.675+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "kPmAOoP3DQCl6hyWC/VdBQ=="
+					"uidString" : "8GyayZz4DQCSVyhhAV3CHw=="
 				},
-				"code" : "firstDate := time first asDate.\rlastDate := time last asDate.\rtimespan := Timespan starting: firstDate ending: lastDate. "
+				"code" : "firstDate := time first asDate.\rlastDate := time last asDate.\rtimespan := Timespan starting: firstDate ending: lastDate. \ryears := timespan years. "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -537,7 +463,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-30T11:04:56.366+02:00"
+						"dateAndTimeString" : "2025-08-13T10:37:47.053+02:00"
 					}
 				},
 				"editEmail" : {
@@ -548,14 +474,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T09:31:34.701+02:00"
+						"dateAndTimeString" : "2025-08-13T11:22:55.531+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "EMQ8joP3DQCpSvXjC/VdBQ=="
+					"uidString" : "yLvmzpz4DQCSf/LzAV3CHw=="
 				},
-				"code" : "\rmonths := timespan  months size. \r"
+				"code" : "collectYears := OrderedCollection new. \ryears do: [:y | collectYears add: OrderedCollection new].\ryears doWithIndex: [:y :i | transformation do:[:each| (((each at: 'date') asDate) asYear) = y\rifTrue:[(collectYears at: i) add: ((each at: 'price')asInteger). ].\r] ].\rcollectYears"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -571,7 +497,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T13:56:37.128+02:00"
+						"dateAndTimeString" : "2025-08-13T11:10:05.099+02:00"
 					}
 				},
 				"editEmail" : {
@@ -582,187 +508,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T09:31:38.724+02:00"
+						"dateAndTimeString" : "2025-08-13T11:26:12.9+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "QNsleIv4DQCBrQ1dCWV+Ow=="
+					"uidString" : "+PdqQp34DQCZxc9cAV3CHw=="
 				},
-				"code" : "years := timespan years size. "
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T13:56:43.391+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T09:32:21.83+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "GGyFeIv4DQCBsX/RCWV+Ow=="
-				},
-				"code" : "days := (timespan duration asDays) asInteger.\rarr := OrderedCollection new.\r"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T15:01:14.723+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T15:05:40.366+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "uEJFX4z4DQCFuj+SCWV+Ow=="
-				},
-				"code" : "arr := {days.  months. years}"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T13:53:54.067+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T15:10:02+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "OL5tbov4DQCBMLowCWV+Ow=="
-				},
-				"code" : "\r\tidealSpace := 70.\r\tmaxSpace := 500.\r\tmin_ticks := 4.\r\tmax_ticks := 8.\r\t\r\tnum_ticks := (maxSpace) / (idealSpace). \r\rnum_ticks := (min_ticks max: (num_ticks min: max_ticks)).\rnum_ticks := num_ticks rounded.\r\rnearest := (arr collect: [ :each | (each - num_ticks) abs ]). \r\rmin:= nearest min. \r\rindexofMin := nearest indexOf: min. \rindexofMin.\r\rspace := arr at: indexofMin.\r"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-12T15:24:05.292+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T09:41:50.552+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "4Hv2sIz4DQCGinhZCWV+Ow=="
-				},
-				"code" : "timeArr := {timespan dates . timespan  months. timespan years}.\rtimeData := timeArr at: indexofMin. \r"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:12:54.156+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:13:25.085+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "EI9zY3D3DQCl/8xxDAxy/Q=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "How to read the data from the spec: first get data from the link"
+				"code" : "dataPoints := OrderedCollection new. \rcollectYears do: [ :y| dataPoints add: (y averageIfEmpty: [0])].\rcollectYears first averageIfEmpty: [0].\rdataPoints"
 			}
 		]
 	},
@@ -774,7 +527,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-07-29T12:07:22.173+02:00"
+			"dateAndTimeString" : "2025-08-13T10:30:14.898+02:00"
 		}
 	},
 	"editEmail" : {
@@ -785,15 +538,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2025-07-29T14:51:49.017+02:00"
+			"dateAndTimeString" : "2025-08-13T10:30:14.898+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Data Import Example"
+		"title" : "Aggregation of axis points"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "48eea94f-70f7-0d00-a530-fbb40c0c72fd"
+		"uuid" : "5065f3b3-9cf8-0d00-91bc-7331015dc21f"
 	}
 }
