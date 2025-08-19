@@ -58,3 +58,22 @@ amount := amount roundDownTo: 1.
 { #category : #'as yet unclassified' }
 LARTickSpecUpdaterRule >> updateDictDefault [
 ]
+
+{ #category : #'as yet unclassified' }
+LARTickSpecUpdaterRule >> updateDictLineX [
+	|  lineRules timeData dictionary |
+	lineRules := LARLineSpecUpdaterRule new.
+    lineRules dict: dict.
+	lineRules importData.
+	timeData := lineRules setup: (lineRules data).
+
+	dictionary := Dictionary new.
+
+	timeData
+		doWithIndex: [ :each :i | dictionary at: i  put: each ].
+	dict
+		at: 'data'
+		at: 'timeData'
+		put: dictionary.
+	^ dict
+]

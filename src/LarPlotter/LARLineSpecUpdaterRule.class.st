@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'dict',
-		'data'
+		'data',
+		'amountX'
 	],
 	#category : #LarPlotter
 }
@@ -13,6 +14,27 @@ LARLineSpecUpdaterRule class >> for: aDictionary [
 ^ self new
 	dict: aDictionary;
 	yourself 
+]
+
+{ #category : #'as yet unclassified' }
+LARLineSpecUpdaterRule >> aggregation [
+	| collectTime timeData dataPoints  |
+	self importData.
+	timeData := self setup: self data.
+
+	collectTime := OrderedCollection new.
+	timeData do: [ :y | collectTime add: OrderedCollection new ].
+	timeData
+		doWithIndex: [ :y :i | 
+			self data
+				do: [ :each | 
+					(each at: 'date') asDate asYear = y
+						ifTrue: [ (collectTime at: i) add: (each at: 'price') asInteger ] ] ].
+
+
+	dataPoints := OrderedCollection new.
+	collectTime do: [ :y | dataPoints add: (y averageIfEmpty: [ 0 ]) ].
+	^dataPoints
 ]
 
 { #category : #accessing }
@@ -53,40 +75,91 @@ LARLineSpecUpdaterRule >> importData [
 ]
 
 { #category : #'as yet unclassified' }
+LARLineSpecUpdaterRule >> setup: importedData [
+| time firstDate lastDate dataPoint timespan months years days arr num_ticks maxSpace idealSpace min_ticks max_ticks nearest min indexofMin timeArr timeData   |
+
+    dataPoint := importedData collect: [ :d | d at: 'price' ].
+	time := importedData collect: [ :d | d at: 'date' ].
+
+	firstDate := time first asDate.
+	lastDate := time last asDate.
+	timespan := Timespan starting: firstDate ending: lastDate.
+
+	months := timespan months size.
+	years := timespan years size.
+	days := timespan duration asDays asInteger.
+	arr := OrderedCollection new.
+	arr := {days.
+			months.
+			years}.
+
+	idealSpace := 70.
+	maxSpace := 500.
+	min_ticks := 4.
+	max_ticks := 8.
+
+	num_ticks := maxSpace / idealSpace.
+
+	num_ticks := min_ticks max: (num_ticks min: max_ticks).
+	num_ticks := num_ticks rounded.
+
+	nearest := arr collect: [ :each | (each - num_ticks) abs ].
+
+	min := nearest min.
+	
+	indexofMin := nearest indexOf: min.
+
+
+	timeArr := {timespan dates.
+			timespan months.
+			timespan years}.
+   timeData := timeArr at: indexofMin.
+   ^timeData
+
+]
+
+{ #category : #'as yet unclassified' }
 LARLineSpecUpdaterRule >> updateDictHeight [
-	| ele data max scale modifiedData i min minus |
-	ele := dict at: 'data' at: 'values'.	"collect: #values"
-	data := ele collect: [ :each | each at: 'b' ].
-	max := data max.
+	| dataPoint max scale modifiedData min minus dictionary |
+	
+	dataPoint := self aggregation.	
+	
+	max := dataPoint max.
 	scale := 500 / max.
 	dict
 		at: 'data'
 		at: 'scale'
 		put: scale.
 	modifiedData := OrderedCollection new.
-	data do: [ :each | modifiedData add: each * scale ].
+	dataPoint do: [ :each | modifiedData add: each * scale ].
 	minus := 0.
-	min := data min.
+	min := dataPoint min.
 
-	min >> 50
-		ifTrue: [ 
-			minus := min - 30 ].
-    minus := minus *scale.
-	i := 1.
-	ele
-		do: [ :each | 
-			each at: 'b' put: ((modifiedData at: i) - minus).
-			i := i + 1 ].
+	min > 50 ifTrue: [ minus := min - 30 ].
+	minus := minus * scale.
+
+	dictionary := Dictionary new.
+
+	modifiedData
+		doWithIndex: [ :each :i | dictionary at: (i) put: each - minus ].
 	dict
 		at: 'data'
 		at: 'values'
-		put: ele.
+		put: dictionary.
 	^ dict
 ]
 
 { #category : #'as yet unclassified' }
 LARLineSpecUpdaterRule >> updateDictWidth [
+	| amount width |
+	amount := self aggregation size.
+	width := 600 / amount.
+	dict
+		at: 'data'
+		at: 'width'
+		put: width.
 
+	^ dict
 ]
 
 { #category : #'as yet unclassified' }

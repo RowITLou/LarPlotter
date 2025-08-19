@@ -27,6 +27,23 @@ self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterLine >> addLines [
+	| line width val |
+	
+	width := 65.
+	val := self ensureDataHeight.
+	width := self ensureDataWidth: (val size).
+
+	1 to: ((val size)-1)
+		do: [ :n | 
+			  line := (LarLine new
+							initialize: (width * (n - 1)) @ (val at: n)
+							with: (width * n) @ (val at: (n+1))) .
+			lines add: line ].
+	self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterLine >> addLines: valuesCollection [
 	| line width val values |
 	values := valuesCollection.
@@ -36,9 +53,7 @@ LarPlotterLine >> addLines: valuesCollection [
 
 	1 to: val size
 		do: [ :n | 
-			"n = 1
-				ifTrue: [ line := LarLine new initialize: 0 @ 0 with: width @ (values at: 1) ]"
-				"ifFalse:" [ line := LarLine new
+			 [ line := LarLine new
 							initialize: (width * (n - 1)) @ (values at: n)
 							with: (width * n) @ (values at: n+1) ].
 			lines add: line ].
@@ -56,28 +71,33 @@ LarPlotterLine >> addTicks [
 		do: [ :n | 
 			tickY := LarTick new initialize: 3 with: 10.
 			ticksY add: tickY ].
+	
+	self scale: (dict at: 'data' at: 'scale'). 
+	self space: (dict at: 'data' at: 'space'). 
 	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLine >> addTicksLabel: valuesX with: steps [
-| tick amount minDown |
-self tickLablesInitialize.
+LarPlotterLine >> addTicksLabel: valuesX with: valuesY [
+| tick amount |
+lines isNil
+	ifTrue:[^self].
+	self tickLablesInitialize.
+	
 	1 to: (valuesX size ) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
 
 tickLabelsX add: tick. 
 ].
 
-amount := self calculateTickLabelsY: steps.
-minDown := (values min) roundDownTo: steps. 
-self tickLablesInitialize.
-	1 to: (amount+1) do: [: n| 
-tick := LarTickLabel new initialize: (minDown + (steps * (n-1))).
+amount := dict at: 'data' at: 'tick'.
+	1
+		to: amount
+		do: [ :n | 
+			tick := LarTickLabel new initialize: (valuesY * (amount- (n - 1))).
 
-tickLabelsY add: tick. 
-].
-self notifyUpdate
+			tickLabelsY add: tick ].
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
@@ -135,24 +155,34 @@ ZnClient new
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLine >> ensureDataHeight: values [
-| max rule newDict val data|
-	max := values max.
-	max > 450 & (max < 550) ifTrue: [ ^ values ].
-	rule := LARBarSpecUpdaterRule for: dict.
+LarPlotterLine >> ensureAmountTicksY [
+	| rule newDict |
+	rule := LARTickSpecUpdaterRule for: dict.
+	newDict := rule updateDict.
+	newDict := rule updateDictLineX.
+	dict := newDict.
+	
+	^ dict at: 'data' at: 'tick'
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> ensureDataHeight [
+| rule newDict val data|
+	rule := LARLineSpecUpdaterRule for: dict.
 	newDict := rule updateDictHeight.
 
 	dict := newDict.
 	val := (dict at: 'data') at: 'values'.
-	data := val collect: [ :each | each at: 'b' ].
+	data := OrderedCollection new. 
+	data := val doWithIndex: [ :each :i | data add: each ].
 	^ data
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterLine >> ensureDataWidth: aNumber [
 	| width rule newDict |
-	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARBarSpecUpdaterRule for: dict.
-	newDict := rule updateDictWidth: aNumber.
+	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARLineSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth.
 	dict := newDict.
 	^dict at: 'data' at: 'width' ].
      
@@ -183,6 +213,27 @@ announcer := Announcer new.
 self tickLablesInitialize.
 self tickInitialize.
 self linesDefinition
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> initializeDict [
+	<brainstorming>
+
+	"| data axisX axisy |"
+	dict := STONJSON fromString: self spec.
+	self initializeFor
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> initializeFor [
+	| axisX axisy |
+	
+
+	self titel: 'This is a title'.
+	self addLines.
+	self addAxisLabel: axisX with: axisy.
+	self addTicks. 
+	self addTicksLabel: (self dict at: 'data' at: 'timeData') with: self space. 
 ]
 
 { #category : #'as yet unclassified' }
@@ -243,13 +294,34 @@ self announcer announce: LarLinePlotterUpdate new
 ]
 
 { #category : #accessing }
+LarPlotterLine >> scale [
+	^ scale
+]
+
+{ #category : #accessing }
+LarPlotterLine >> scale: anObject [
+	scale := anObject
+]
+
+{ #category : #accessing }
+LarPlotterLine >> space [
+	^ space
+]
+
+{ #category : #accessing }
+LarPlotterLine >> space: anObject [
+	space := anObject
+]
+
+{ #category : #accessing }
 LarPlotterLine >> spec [
 	^ spec
 ]
 
 { #category : #accessing }
-LarPlotterLine >> spec: anObject [
-	spec := anObject
+LarPlotterLine >> spec: aJSONString [
+	spec := aJSONString.
+	self initializeDict
 ]
 
 { #category : #'as yet unclassified' }

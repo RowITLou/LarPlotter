@@ -712,6 +712,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[[Report 13.08.25]] "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-08-19T10:55:30.402+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-08-19T10:55:46.147+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "GFtUwRX5DQCUD/XECTlzAA=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Report 20.08.25]] "
 						}
 					]
 				},
@@ -845,7 +882,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T10:30:04.745+02:00"
+						"dateAndTimeString" : "2025-08-13T10:30:13.243+02:00"
 					}
 				},
 				"uid" : {
@@ -855,7 +892,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[["
+				"string" : "[[Aggregation of axis points]] "
 			},
 			{
 				"__type" : "textSnippet",

@@ -22,7 +22,7 @@ super initialize.
 	background: Color white;
 	border: (BlBorder paint: Color white width: 1);
 	"margin: (BlInsets all: 20);"
-			padding: (BlInsets all: 5);
+			padding: (BlInsets all: 0);
 	constraintsDo: [ :c |
 		c horizontal fitContent.
 		c vertical fitContent.

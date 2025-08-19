@@ -42,6 +42,43 @@
 				"string" : "[[Data Import Example]]"
 			},
 			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-13T14:04:46.787+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-13T14:10:22.874+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "uNUss5/4DQCrMXRjCjYZMA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "{{gtClass:name=LARTickSpecUpdaterRule}}\r\n{{gtClass:name=LARLineSpecUpdaterRule}}"
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -508,14 +545,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-13T11:24:04.735+02:00"
+						"dateAndTimeString" : "2025-08-13T11:26:12.9+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "+PdqQp34DQCZxc9cAV3CHw=="
 				},
-				"code" : "collectData := OrderedCollection new. \rcollectYears do: [ :y| dataPoints add: (y averageIfEmpty: [0])].\rcollectYears first averageIfEmpty: [0]"
+				"code" : "dataPoints := OrderedCollection new. \rcollectYears do: [ :y| dataPoints add: (y averageIfEmpty: [0])].\rcollectYears first averageIfEmpty: [0].\rdataPoints"
 			}
 		]
 	},
