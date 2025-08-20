@@ -57,49 +57,42 @@ cont constraintsDo: [ :c |
 
 { #category : #'as yet unclassified' }
 LarPlotterLineElement >> addLines: lines [
-| length height |
-	"length := (lines size)*65.
-	labelsYContainer isNil
-	ifTrue:[height :=200]
-	ifFalse:[height := 150].
-graphElement layout cellSpacing: 0.
-graphElement constraintsDo: [ :c |
-			c horizontal exact: length .
-			c vertical exact: height]."
-"graphElement  transform
-  	
-		origin: length @ height;
-		apply."
 
-		
-"lines do: [:line|
-
-graphElement addChild: (line asElement). ].
-graphElement forceLayout.
-graphElement transform
-		flipX;
-		apply."
-
-graphElement layout cellSpacing: 0.
+"graphElement layout cellSpacing: 0."
 graphElement constraintsDo: [ :c |
 			c horizontal exact: 600 .
 			c vertical exact: 500].
 		
 
-graphElement  transform
+"graphElement  transform
   	
-		origin: 600 @ 500;
-		apply.
+		origin: 0 @ 500;
+		apply."
 		
-graphElement layout cellSpacing: 0.
+
 
 lines do: [:line|
 
-graphElement addChildFirst: (line asElement). ].
+graphElement addChildFirst: (line asElement).].
+
 graphElement forceLayout.
 graphElement transform
 		flipX;
 		apply.
+self addPoints.
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLineElement >> addPoints [
+	| points |
+	points := plotter points.
+	points
+		do: [ :point | 
+			| pointEl |
+			pointEl := point asElement.
+			graphElement addChild: pointEl.
+			pointEl relocate: point x @ point y.
+			graphElement forceLayout ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -239,20 +232,29 @@ titelContainer constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
-"labelsYContainer constraintsDo: [:c| c vertical matchParent]."
+labelsYContainer constraintsDo: [:c| c vertical exact: 500].
 "labelsYContainer constraintsDo: [:c| c grid vertical alignBottom. ]."
 ticksYContainer := LarContainer new  asElementVertical.
 ticksYContainer layout cellSpacing: 0.
-graphElement := LarContainer new  asElement.
-graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
-"graphElement := BlElement new. "
+"graphElement := LarContainer new  asElement."
+"graphElement constraintsDo: [:c| c grid vertical alignBottom. ]."
+
+graphElement := BlElement new
+border: (BlBorder builder
+					
+					paint: Color black;
+					width: 1;
+					build);
+			
+			background: (BlBackground paint: Color white).
 
 
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
-"containerTickAndLabel constraintsDo: [:c| c vertical matchParent]."
+containerTickAndLabel constraintsDo: [:c| c vertical exact: 500].
 containerTickAndLabel constraintsDo: [:c| c grid vertical alignBottom. ].
+containerTickAndLabel layout cellSpacing: 0.
 containerTickAndLabel addChild: labelsYContainer. 
 containerTickAndLabel addChild: ticksYContainer. 
 axisXContainer constraintsDo: [ :c |
@@ -270,6 +272,8 @@ empty := BlElement new.
 empty_too := BlElement new. 
 empty_other := BlElement new. 
 labelsContainer:= (LarContainer new) asElement.
+labelsContainer constraintsDo: [:c| c horizontal exact: 600].
+labelsContainer layout cellSpacing: 0.
 container addChildFirst: empty. 
 container addChild: containerTickAndLabel at: 2.  
 container addChild: empty_too at: 3. 

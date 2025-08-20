@@ -1,6 +1,6 @@
 Class {
 	#name : #LarPointElement,
-	#superclass : #BlPoint2D,
+	#superclass : #BlElement,
 	#instVars : [
 		'point'
 	],
@@ -9,12 +9,13 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarPointElement >> initialize: aPoint [
-	
-	super initialize.
-	point := aPoint.
-	^self 
-	x: point x;
-	y: point y.
-	
-	
+super initialize.
+point := aPoint.
+	^self
+	    size: 20@20;
+	    geometry: BlCircleGeometry new;
+	    relocate:(aPoint x)@(aPoint y);
+		
+		background: Color lightGray.
+		
 ]

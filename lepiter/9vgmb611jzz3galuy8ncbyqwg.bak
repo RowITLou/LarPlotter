@@ -108,6 +108,142 @@
 					"uidString" : "4MEI1hj5DQCw9QvZB1rIpg=="
 				},
 				"code" : "plotter := LarPlotterLine new. \rplotter spec: jsonString. \r\rplotter"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-19T16:09:12.215+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-20T11:22:32.893+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2HkyIxr5DQC+1hEFDlCkEw=="
+				},
+				"code" : "\rcircle := BlCircleGeometry new.\rcircle initialize super. \rcircle extent: (100@100)+50.\rcircle relocate: 400@400."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-20T11:24:04.654+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-20T11:24:58.44+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "sC9ZRSr5DQCAHU/lCANgZQ=="
+				},
+				"code" : "circle := BlElement new\rgeometry: BlCircleGeometry new;\r size: 50@50;\r relocate: 200@200."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-20T11:26:28.533+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-20T11:29:14.739+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "4HfsTSr5DQCCG4uqCANgZQ=="
+				},
+				"code" : "ele := BlElement new\rborder: (BlBorder builder\r\t\t\t\t\t\r\t\t\t\t\tpaint: Color black;\r\t\t\t\t\twidth: 1;\r\t\t\t\t\tbuild);\r\trelocate: 100@100;\r\t\tsize: 400@400."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-20T11:25:42.431+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-20T11:28:48.568+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wAktSyr5DQCB8wjxCANgZQ=="
+				},
+				"code" : "circle := BlElement new\rsize: 20@20;\r\t    geometry: BlCircleGeometry new;\r\t    relocate: 200@200;\r\t\t\r\t\tbackground: Color lightGray.\rele addChild: circle."
 			}
 		]
 	},

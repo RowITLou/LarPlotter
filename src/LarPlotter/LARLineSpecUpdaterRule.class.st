@@ -134,8 +134,16 @@ LARLineSpecUpdaterRule >> updateDictHeight [
 	dataPoint do: [ :each | modifiedData add: each * scale ].
 	minus := 0.
 	min := dataPoint min.
+	dict
+		at: 'data'
+		at: 'change'
+		put: 0. 
 
-	min > 50 ifTrue: [ minus := min - 30 ].
+"	min > 50 ifTrue: [ minus := min - 30.
+	dict
+		at: 'data'
+		at: 'change'
+		put: 1. ]."
 	minus := minus * scale.
 
 	dictionary := Dictionary new.
@@ -146,6 +154,8 @@ LARLineSpecUpdaterRule >> updateDictHeight [
 		at: 'data'
 		at: 'values'
 		put: dictionary.
+		
+	
 	^ dict
 ]
 

@@ -14,7 +14,8 @@ Class {
 		'dict',
 		'lines',
 		'scale',
-		'space'
+		'space',
+		'points'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -33,31 +34,28 @@ LarPlotterLine >> addLines [
 	width := 65.
 	val := self ensureDataHeight.
 	width := self ensureDataWidth: (val size).
-
+    self addPoints: val with: width. 
 	1 to: ((val size)-1)
 		do: [ :n | 
 			  line := (LarLine new
 							initialize: (width * (n - 1)) @ (val at: n)
 							with: (width * n) @ (val at: (n+1))) .
 			lines add: line ].
+		
 	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLine >> addLines: valuesCollection [
-	| line width val values |
-	values := valuesCollection.
-	width := 65.
-	val := self ensureDataHeight: values.
-	width := self ensureDataWidth: val size.
+LarPlotterLine >> addPoints [
+]
 
-	1 to: val size
-		do: [ :n | 
-			 [ line := LarLine new
-							initialize: (width * (n - 1)) @ (values at: n)
-							with: (width * n) @ (values at: n+1) ].
-			lines add: line ].
-	self notifyUpdate
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> addPoints: values with: width [
+	1 to: values size
+		do: [ :n  | 
+			| point |
+			point := LarPoint new initialize: ((n - 1)*width) with:(values at: n).
+			points add: point ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -115,27 +113,6 @@ LarPlotterLine >> asElement [
 ^LarPlotterLineElement new initialize: self.
 ]
 
-{ #category : #'as yet unclassified' }
-LarPlotterLine >> calculateTickLabelsY: steps [
-| min max interval amount minRound maxRound |
-	min := values min.
-	max := values max.
-	
-	minRound := min roundDownTo: steps.
-	maxRound := max roundUpTo: steps.
-	interval := maxRound - minRound. 
-	amount := interval / steps. 
-	^amount
-	
-	
-	"finalUp := amount roundUpTo: rounded. 
-	finalDown := amount roundDownTo: rounded. 
-	(amount - finalDown) abs > (amount - finalUp)
-	ifTrue: [final := finalUp]
-	ifFalse: [final := finalDown]"
-
-]
-
 { #category : #accessing }
 LarPlotterLine >> dict [
 	^ dict
@@ -144,14 +121,6 @@ LarPlotterLine >> dict [
 { #category : #accessing }
 LarPlotterLine >> dict: anObject [
 	dict := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLine >> download: aUrl [
-ZnClient new
-				url: aUrl;
-				signalProgress: true;
-				downloadTo: (FileLocator downloads  ).
 ]
 
 { #category : #'as yet unclassified' }
@@ -212,7 +181,8 @@ LarPlotterLine >> initialize [
 announcer := Announcer new.
 self tickLablesInitialize.
 self tickInitialize.
-self linesDefinition
+self linesDefinition.
+self pointsDefinition.
 ]
 
 { #category : #'as yet unclassified' }
@@ -291,6 +261,21 @@ lines:=  OrderedCollection new.
 { #category : #'as yet unclassified' }
 LarPlotterLine >> notifyUpdate [
 self announcer announce: LarLinePlotterUpdate new
+]
+
+{ #category : #accessing }
+LarPlotterLine >> points [
+	^ points
+]
+
+{ #category : #accessing }
+LarPlotterLine >> points: anObject [
+	points := anObject
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> pointsDefinition [
+points :=  OrderedCollection new. 
 ]
 
 { #category : #accessing }
