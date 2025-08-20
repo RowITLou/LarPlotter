@@ -21,6 +21,13 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+LarPlotterLine class >> withSpec: aSpec [
+	 ^ self new
+	 	spec: aSpec;
+	 	yourself
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterLine >> addAxisLabel: textX with: textY [
 labelAxisX := LarLabelAxis new initialize: textX. 
 labelAxisY := LarLabelAxis new initialize: textY.
@@ -204,23 +211,6 @@ LarPlotterLine >> initializeFor [
 	self addAxisLabel: axisX with: axisy.
 	self addTicks. 
 	self addTicksLabel: (self dict at: 'data' at: 'timeData') with: self space. 
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLine >> initializeLineGraphFromSpec [
-
-	| data axisX axisy |
-	dict := STONJSON fromString: self spec.
-	self initialize.
-	"data := ((dict at: 'data') at: 'values') collect: #values."
-	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
-	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
-
-	self titel: 'This is a title'.
-	"self addLines: (data collect: [ :each | each last ])."
-	self addAxisLabel: axisX with: axisy.
-	self addTicks.
-	self addTicksLabel: (data collect: [ :each | each first ])
 ]
 
 { #category : #accessing }

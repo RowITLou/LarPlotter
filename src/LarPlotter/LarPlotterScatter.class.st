@@ -19,6 +19,13 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+LarPlotterScatter class >> withSpec: aSpec [
+	 ^ self new
+	 	spec: aSpec;
+	 	yourself
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatter >> addAxisLabel: textX with: textY [
 labelAxisX := LarLabelAxis new initialize: textX. 
 labelAxisY := LarLabelAxis new initialize: textY.
@@ -26,73 +33,58 @@ self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> addPoints: valuesCollection [
-| point |
-values := valuesCollection.
-	1 to: (values size) do: [:n|
-n = 1
-	ifTrue:  [point:= LarPoint new initialize: 0 with: (values at: 1)]
-	ifFalse: [point:= LarPoint new initialize: (65 * (n)) with: (values at: n)].
- points add: point. 
-].
-self notifyUpdate
+LarPlotterScatter >> addPoints [
+| point width val |
+	
+	width := 65.
+	val := self ensureDataHeight.
+	width := self ensureDataWidth: (val size).
+    
+	1 to: ((val size)-1)
+		do: [ :n | 
+			  point := LarPoint new initialize: ((n - 1)*width) with:(values at: n).
+			points add: point ].
+self notifyUpdate.
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> addTicks: tickAmount [
-|  tickY |
-self tickInitialize.
-ticksY removeAll. 
-1 to: ( tickAmount ) do: [: n| 
-tickY := (LarTick new initialize: 3 with: 10).
-ticksY add: tickY.
-
-].
-self notifyUpdate
+LarPlotterScatter >> addTicks [
+	| tickY tickAmount |
+	self tickInitialize.
+	ticksY removeAll.
+	tickAmount := self ensureAmountTicksY.
+	1
+		to: tickAmount
+		do: [ :n | 
+			tickY := LarTick new initialize: 3 with: 10.
+			ticksY add: tickY ].
+	
+	self scale: (dict at: 'data' at: 'scale'). 
+	self space: (dict at: 'data' at: 'space'). 
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> addTicks: tickXAmount with: tickYAmount [
-| tickX tickY |
-1 to: ( tickYAmount ) do: [: n| 
-tickY := (LarTick new initialize: 3 with: 10).
-
-ticksY add: tickX.
-].
-self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> addTicksLabel: valuesX [
-| tick  |
-self tickLablesInitialize.
+LarPlotterScatter >> addTicksLabel: valuesX with: valuesY [
+| tick amount |
+points isNil
+	ifTrue:[^self].
+	self tickLablesInitialize.
+	
 	1 to: (valuesX size ) do: [: n| 
 tick := LarTickLabel new initialize: (valuesX at: n).
 
 tickLabelsX add: tick. 
 ].
 
-]
+amount := dict at: 'data' at: 'tick'.
+	1
+		to: amount
+		do: [ :n | 
+			tick := LarTickLabel new initialize: (valuesY * (amount- (n - 1))).
 
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> addTicksLabel: valuesX with: steps [
-| tick amount minDown |
-self tickLablesInitialize.
-	1 to: (valuesX size ) do: [: n| 
-tick := LarTickLabel new initialize: (valuesX at: n).
-
-tickLabelsX add: tick. 
-].
-
-amount := self calculateTickLabelsY: steps.
-minDown := (values min) roundDownTo: steps. 
-self tickLablesInitialize.
-	1 to: (amount+1) do: [: n| 
-tick := LarTickLabel new initialize: (minDown + (steps * (n-1))).
-
-tickLabelsY add: tick. 
-].
-self notifyUpdate
+			tickLabelsY add: tick ].
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
@@ -111,27 +103,6 @@ LarPlotterScatter >> asElement [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> calculateTickLabelsY: steps [
-| min max interval amount minRound maxRound |
-	min := values min.
-	max := values max.
-	
-	minRound := min roundDownTo: steps.
-	maxRound := max roundUpTo: steps.
-	interval := maxRound - minRound. 
-	amount := interval / steps. 
-	^amount
-	
-	
-	"finalUp := amount roundUpTo: rounded. 
-	finalDown := amount roundDownTo: rounded. 
-	(amount - finalDown) abs > (amount - finalUp)
-	ifTrue: [final := finalUp]
-	ifFalse: [final := finalDown]"
-
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterScatter >> dict [
 	^ dict
 ]
@@ -142,11 +113,44 @@ LarPlotterScatter >> dict: anObject [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> download: aUrl [
-ZnClient new
-				url: aUrl;
-				signalProgress: true;
-				downloadTo: (FileLocator downloads  ).
+LarPlotterScatter >> ensureAmountTicksY [
+	| rule newDict |
+	rule := LARTickSpecUpdaterRule for: dict.
+	newDict := rule updateDict.
+	newDict := rule updateDictLineX.
+	dict := newDict.
+	
+	^ dict at: 'data' at: 'tick'
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> ensureDataHeight [
+| rule newDict val data|
+	rule := LARLineSpecUpdaterRule for: dict.
+	newDict := rule updateDictHeight.
+
+	dict := newDict.
+	val := (dict at: 'data') at: 'values'.
+	data := OrderedCollection new. 
+	data := val doWithIndex: [ :each :i | data add: each ].
+	^ data
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> ensureDataWidth: aNumber [
+	| width rule newDict |
+	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARLineSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth.
+	dict := newDict.
+	^dict at: 'data' at: 'width' ].
+     
+     
+    width := dict at: 'data' at: 'width'.  
+    aNumber * width < 660 & (aNumber * width > 600) ifTrue: [ ^width].
+	rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth: aNumber.
+	dict := newDict.
+	^ dict at: 'data' at: 'width'
 ]
 
 { #category : #'as yet unclassified' }
@@ -167,6 +171,27 @@ announcer := Announcer new.
 self tickLablesInitialize.
 self tickInitialize.
 self pointsDefinition
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> initializeDict [
+	<brainstorming>
+
+	"| data axisX axisy |"
+	dict := STONJSON fromString: self spec.
+	self initializeFor
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> initializeFor [
+	| axisX axisy |
+	
+
+	self titel: 'This is a title'.
+	self addPoints.
+	self addAxisLabel: axisX with: axisy.
+	self addTicks. 
+	self addTicksLabel: (self dict at: 'data' at: 'timeData') with: self space. 
 ]
 
 { #category : #'as yet unclassified' }
@@ -232,8 +257,9 @@ LarPlotterScatter >> spec [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> spec: anObject [
-	spec := anObject
+LarPlotterScatter >> spec: aJSONString [
+	spec := aJSONString.
+	self initializeDict
 ]
 
 { #category : #'as yet unclassified' }
@@ -298,12 +324,4 @@ LarPlotterScatter >> titel: text [
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> title [
 ^title
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> withSpec: aSpec [
-	 ^ self new
-	 	spec: aSpec;
-	 	initializeDict;
-	 	yourself
 ]
