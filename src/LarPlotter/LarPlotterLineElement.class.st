@@ -84,14 +84,15 @@ self addPoints.
 
 { #category : #'as yet unclassified' }
 LarPlotterLineElement >> addPoints [
+	"NB: The point element knows how to position itself"
+
 	| points |
 	points := plotter points.
 	points
 		do: [ :point | 
 			| pointEl |
 			pointEl := point asElement.
-			graphElement addChild: pointEl.
-			pointEl relocate: point x @ point y.
+			graphElement addChild: pointEl.	"pointEl relocate: point x @ point y."
 			graphElement forceLayout ]
 ]
 
