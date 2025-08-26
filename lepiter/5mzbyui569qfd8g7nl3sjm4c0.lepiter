@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-26T15:27:20.969+02:00"
+						"dateAndTimeString" : "2025-08-26T17:04:24.713+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "{{gtClass:name=LARScatterSpecUpdaterRule}}"
+				"string" : "{{gtClass:name=LARScatterSpecUpdaterRule}}\r\n{{gtClass:name=LarPlotterScatter}}"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -111,6 +111,40 @@
 					"uidString" : "sLO9+yv5DQCmxxJJAyk9Xw=="
 				},
 				"code" : "url := 'https://vega.github.io/vega-lite/examples/'.\rjsonString := '{\r\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\r\n  \"description\": \"A scatterplot showing horsepower and miles per gallons for various cars.\",\r\n  \"data\": {\"url\": \"data/cars.json\"},\r\n  \"mark\": \"point\",\r\n  \"encoding\": {\r\n    \"x\": {\"field\": \"Horsepower\", \"type\": \"quantitative\"},\r\n    \"y\": {\"field\": \"Miles_per_Gallon\", \"type\": \"quantitative\"}\r\n  }\r\n}'"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-26T16:28:13.942+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-26T16:28:26.616+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "KEYjOKf5DQC0APHFARcUAA=="
+				},
+				"code" : "plotter := LarPlotterScatter new. \rplotter spec: jsonString. \r\rplotter"
 			},
 			{
 				"__type" : "pharoSnippet",

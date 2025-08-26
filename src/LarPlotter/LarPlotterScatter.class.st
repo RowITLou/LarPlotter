@@ -14,8 +14,10 @@ Class {
 		'dict',
 		'points',
 		'values',
-		'scale',
-		'space'
+		'scale_one',
+		'space_one',
+		'scale_two',
+		'space_two'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -36,54 +38,66 @@ self notifyUpdate
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addPoints [
-| point width val |
+	| point   val_one val_two |
 	
-	width := 65.
-	val := self ensureDataHeight.
-	width := self ensureDataWidth: (val size).
-    
-	1 to: ((val size)-1)
+	val_one := self ensureDataHeight.
+	val_two := self ensureDataWidth.
+
+	1
+		to: val_one size
 		do: [ :n | 
-			  point := LarPoint new initialize: ((n - 1)*width) with:(values at: n).
+			point := LarPoint new initialize: (val_one at: n) with: (val_two at: n).
 			points add: point ].
-self notifyUpdate.
+	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addTicks [
-	| tickY tickAmount |
+	| tickY tickX tickAmountX tickAmountY |
 	self tickInitialize.
 	ticksY removeAll.
-	tickAmount := self ensureAmountTicksY.
+	ticksX removeAll.
+	self ensureAmountTicks.
+	tickAmountX := dict at: 'data' at: 'tick_one'.
+	tickAmountY := dict at: 'data' at: 'tick_two'.
 	1
-		to: tickAmount
+		to: tickAmountX
+		do: [ :n | 
+			
+			tickX := LarTick new initialize: 3 with: 10.
+			ticksX add: tickY ].
+	1
+		to: tickAmountY
 		do: [ :n | 
 			tickY := LarTick new initialize: 3 with: 10.
 			ticksY add: tickY ].
-	
-	self scale: (dict at: 'data' at: 'scale'). 
-	self space: (dict at: 'data' at: 'space'). 
+
+	self scale_one: (dict at: 'data' at: 'scale_one').
+	self space_one: (dict at: 'data' at: 'space_one').
+	self scale_two: (dict at: 'data' at: 'scale_two').
+	self space_two: (dict at: 'data' at: 'space_two').
 	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addTicksLabel: valuesX with: valuesY [
-| tick amount |
-points isNil
-	ifTrue:[^self].
+	| tick amountY amountX |
+	points isNil ifTrue: [ ^ self ].
 	self tickLablesInitialize.
-	
-	1 to: (valuesX size ) do: [: n| 
-tick := LarTickLabel new initialize: (valuesX at: n).
 
-tickLabelsX add: tick. 
-].
-
-amount := dict at: 'data' at: 'tick'.
+	amountX := dict at: 'data' at: 'tick_one'.
 	1
-		to: amount
+		to: amountX
 		do: [ :n | 
-			tick := LarTickLabel new initialize: (valuesY * (amount- (n - 1))).
+			tick := LarTickLabel new initialize: valuesX * (amountX - (n - 1)).
+
+			tickLabelsX add: tick ].
+
+	amountY := dict at: 'data' at: 'tick_two'.
+	1
+		to: amountY
+		do: [ :n | 
+			tick := LarTickLabel new initialize: valuesY * (amountY - (n - 1)).
 
 			tickLabelsY add: tick ].
 	self notifyUpdate
@@ -115,39 +129,50 @@ LarPlotterScatter >> dict: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatter >> ensureAmountTicks [
+	| rule newDict |
+	rule := LARTickSpecUpdaterRule for: dict.
+	newDict := rule updateDictScatterX.
+	newDict := rule updateDictScatterY.
+	dict := newDict.
+	
+	"^ dict at: 'data' at: 'tick'"
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatter >> ensureAmountTicksY [
 	| rule newDict |
 	rule := LARTickSpecUpdaterRule for: dict.
-	newDict := rule updateDict.
-	newDict := rule updateDictLineX.
+	newDict := rule updateDictScatterX.
+	newDict := rule updateDictScatterY.
 	dict := newDict.
 	
-	^ dict at: 'data' at: 'tick'
+	"^ dict at: 'data' at: 'tick'"
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> ensureDataHeight [
 | rule newDict val data|
-	rule := LARLineSpecUpdaterRule for: dict.
+	rule := LARScatterSpecUpdaterRule for: dict.
 	newDict := rule updateDictHeight.
 
 	dict := newDict.
 	val := (dict at: 'data') at: 'values_two'.
 	data := OrderedCollection new. 
-	data := val doWithIndex: [ :each :i | data add: (each at: i)].
+	data := val doWithIndex: [ :each :i | data add: (val at: i)].
 	^ data
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> ensureDataWidth: aNumber [
+LarPlotterScatter >> ensureDataWidth [
 	 |rule newDict val data|
-	rule := LARLineSpecUpdaterRule for: dict.
+	rule := LARScatterSpecUpdaterRule for: dict.
 	newDict := rule updateDictWidth.
 
 	dict := newDict.
 	val := (dict at: 'data') at: 'values_one'.
 	data := OrderedCollection new. 
-	data := val doWithIndex: [ :each :i | data add: (each at: i)].
+	data := val doWithIndex: [ :each :i | data add: (val at: i)].
 	^ data
 ]
 
@@ -190,7 +215,7 @@ axisX := (self dict at: 'encoding' at: 'x')at: 'field'.
 	self addPoints.
 	self addAxisLabel: axisX with: axisy.
 	self addTicks. 
-	"self addTicksLabel: (self dict at: 'data' at: 'timeData') with: self space". 
+	self addTicksLabel: (self dict at: 'data' at: 'space_one') with: (self dict at: 'data' at: 'space_two'). 
 ]
 
 { #category : #'as yet unclassified' }
@@ -244,6 +269,26 @@ LarPlotterScatter >> scale: anObject [
 ]
 
 { #category : #accessing }
+LarPlotterScatter >> scale_one [
+	^ scale_one
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> scale_one: anObject [
+	scale_one := anObject
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> scale_two [
+	^ scale_two
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> scale_two: anObject [
+	scale_two := anObject
+]
+
+{ #category : #accessing }
 LarPlotterScatter >> space [
 	^ space
 ]
@@ -251,6 +296,26 @@ LarPlotterScatter >> space [
 { #category : #accessing }
 LarPlotterScatter >> space: anObject [
 	space := anObject
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> space_one [
+	^ space_one
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> space_one: anObject [
+	space_one := anObject
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> space_two [
+	^ space_two
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> space_two: anObject [
+	space_two := anObject
 ]
 
 { #category : #'as yet unclassified' }

@@ -10,6 +10,13 @@ Class {
 	#category : #LarPlotter
 }
 
+{ #category : #'as yet unclassified' }
+LARScatterSpecUpdaterRule class >> for: aDictionary [
+^ self new
+	dict: aDictionary;
+	yourself 
+]
+
 { #category : #accessing }
 LARScatterSpecUpdaterRule >> data [
 	^ data
@@ -32,7 +39,7 @@ LARScatterSpecUpdaterRule >> dict: anObject [
 
 { #category : #'as yet unclassified' }
 LARScatterSpecUpdaterRule >> importData [
-	| urlNew segments fileName file jsonData info_one info_two filter_one filter_two |
+	| urlNew segments fileName file jsonData   filter_one filter_two |
 	urlNew := ((dict at: 'data') at: 'url') addedToZnUrl: self url asZnUrl.
 	segments := ((dict at: 'data') at: 'url') findTokens: '/'.
 	fileName := segments last.
@@ -57,6 +64,7 @@ LARScatterSpecUpdaterRule >> importData [
 { #category : #'as yet unclassified' }
 LARScatterSpecUpdaterRule >> updateDictHeight [
 	| scale max_two modifiedData_two |
+	self importData.
 	max_two := info_two max.
 	scale := 450 / max_two.
 	dict
@@ -71,12 +79,13 @@ LARScatterSpecUpdaterRule >> updateDictHeight [
 		at: 'data'
 		at: 'values_two'
 		put: modifiedData_two.
-	dict
+	^dict
 ]
 
 { #category : #'as yet unclassified' }
 LARScatterSpecUpdaterRule >> updateDictWidth [
 	| max_one scale modifiedData_one |
+	self importData.
 	max_one := info_one max.
 	scale := 450 / max_one.
 	dict
@@ -91,7 +100,7 @@ LARScatterSpecUpdaterRule >> updateDictWidth [
 		at: 'data'
 		at: 'values_one'
 		put: modifiedData_one.
-	dict
+	^dict
 ]
 
 { #category : #'as yet unclassified' }

@@ -183,7 +183,7 @@ LarPlotterLineElement >> addTicksY: ticksY [
 					c horizontal fitContent.
 					c vertical exact: height ].
 			tickYContainer layout cellSpacing: 0.
-			tickYContainer addChild: tickY asElementY.
+			tickYContainer addChild: (tickY asElementY).
 			ticksYContainer addChild: tickYContainer ].
 			ticksYContainer constraintsDo: [:c| c grid vertical alignBottom. ].
 
