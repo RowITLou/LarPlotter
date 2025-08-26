@@ -13,7 +13,9 @@ Class {
 		'title',
 		'dict',
 		'points',
-		'values'
+		'values',
+		'scale',
+		'space'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -130,27 +132,23 @@ LarPlotterScatter >> ensureDataHeight [
 	newDict := rule updateDictHeight.
 
 	dict := newDict.
-	val := (dict at: 'data') at: 'values'.
+	val := (dict at: 'data') at: 'values_two'.
 	data := OrderedCollection new. 
-	data := val doWithIndex: [ :each :i | data add: each ].
+	data := val doWithIndex: [ :each :i | data add: (each at: i)].
 	^ data
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> ensureDataWidth: aNumber [
-	| width rule newDict |
-	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARLineSpecUpdaterRule for: dict.
+	 |rule newDict val data|
+	rule := LARLineSpecUpdaterRule for: dict.
 	newDict := rule updateDictWidth.
+
 	dict := newDict.
-	^dict at: 'data' at: 'width' ].
-     
-     
-    width := dict at: 'data' at: 'width'.  
-    aNumber * width < 660 & (aNumber * width > 600) ifTrue: [ ^width].
-	rule := LARBarSpecUpdaterRule for: dict.
-	newDict := rule updateDictWidth: aNumber.
-	dict := newDict.
-	^ dict at: 'data' at: 'width'
+	val := (dict at: 'data') at: 'values_one'.
+	data := OrderedCollection new. 
+	data := val doWithIndex: [ :each :i | data add: (each at: i)].
+	^ data
 ]
 
 { #category : #'as yet unclassified' }
@@ -192,24 +190,7 @@ axisX := (self dict at: 'encoding' at: 'x')at: 'field'.
 	self addPoints.
 	self addAxisLabel: axisX with: axisy.
 	self addTicks. 
-	self addTicksLabel: (self dict at: 'data' at: 'timeData') with: self space. 
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> initializeLineGraphFromSpec [
-
-	| data axisX axisy |
-	dict := STONJSON fromString: self spec.
-	self initialize.
-	"data := ((dict at: 'data') at: 'values') collect: #values."
-	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
-	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
-
-	self titel: 'This is a title'.
-	"self addLines: (data collect: [ :each | each last ])."
-	self addAxisLabel: axisX with: axisy.
-	self addTicks:  data size.
-	self addTicksLabel: (data collect: [ :each | each first ])
+	"self addTicksLabel: (self dict at: 'data' at: 'timeData') with: self space". 
 ]
 
 { #category : #'as yet unclassified' }
@@ -250,6 +231,26 @@ LarPlotterScatter >> points: anObject [
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> pointsDefinition [
 points:=  OrderedCollection new. 
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> scale [
+	^ scale
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> scale: anObject [
+	scale := anObject
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> space [
+	^ space
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> space: anObject [
+	space := anObject
 ]
 
 { #category : #'as yet unclassified' }

@@ -53,10 +53,6 @@ LarPlotterLine >> addLines [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLine >> addPoints [
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterLine >> addPoints: values with: width [
 	1 to: values size
 		do: [ :n  | 
@@ -362,12 +358,4 @@ LarPlotterLine >> titel: text [
 { #category : #'as yet unclassified' }
 LarPlotterLine >> title [
 ^title
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLine >> withSpec: aSpec [
-	 ^ self new
-	 	spec: aSpec;
-	 	initializeLineGraphFromSpec;
-	 	yourself
 ]

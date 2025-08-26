@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-07-29T12:07:41.545+02:00"
+						"dateAndTimeString" : "2025-08-26T15:27:03.205+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "{{gtClass:name=LarPlotterLineExamples}}"
+				"string" : " \r \r\r\n{{gtClass:name=LarPlotterLineExamples}}"
 			},
 			{
 				"__type" : "textSnippet",

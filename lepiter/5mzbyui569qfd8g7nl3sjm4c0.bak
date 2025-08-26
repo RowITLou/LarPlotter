@@ -89,7 +89,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-20T13:27:20.314+02:00"
+						"dateAndTimeString" : "2025-08-26T12:05:46.2+02:00"
 					}
 				},
 				"editEmail" : {
@@ -100,14 +100,82 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-20T13:30:49.557+02:00"
+						"dateAndTimeString" : "2025-08-26T13:39:01.149+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "kAAq/iv5DQCnNd3/Ayk9Xw=="
+					"uidString" : "wP9/jaP5DQCxu/aNByXW4Q=="
 				},
-				"code" : "dict:= STONJSON fromString: jsonString.\rurlNew := ((dict at: 'data') at: 'url') addedToZnUrl: (url asZnUrl).\rsegments :=  ((dict at: 'data') at: 'url')findTokens: '/'.\rfileName := segments last. \r(FileLocator downloads/ fileName) ensureDelete.\rZnClient new\r\t\t\t\turl: urlNew;\r\t\t\t\tsignalProgress: true;\r\t\t\t\tdownloadTo: (FileLocator downloads  ).\rfile :=(FileLocator downloads  / fileName) contents.\rjsonData := (CSV2JSON for: file) jsonObject.\rfilter := ((((dict at: 'transform' ) first at: 'filter') findTokens: '===') last) copyWithout: $'.\rtransformation := OrderedCollection new. \rjsonData do: [:d| (d at: 'symbol') = (filter)\rifTrue:[transformation add: d].].\rtransformation"
+				"code" : "dict:= STONJSON fromString: jsonString.\rurlNew := ((dict at: 'data') at: 'url') addedToZnUrl: (url asZnUrl).\rsegments :=  ((dict at: 'data') at: 'url')findTokens: '/'.\rfileName := segments last. \r(FileLocator downloads/ fileName) ensureDelete.\rZnClient new\r\t\t\t\turl: urlNew;\r\t\t\t\tsignalProgress: true;\r\t\t\t\tdownloadTo: (FileLocator downloads  ).\rfile :=(FileLocator downloads  / fileName) contents.\rjsonData := STONJSON fromString: file.\rinfo_one := OrderedCollection new. \rinfo_two := OrderedCollection new. \rfilter_one := ((dict at: 'encoding' ) at: 'x' at: 'field')copyWithout: $'.\rfilter_two := ((dict at: 'encoding' ) at: 'y' at: 'field')copyWithout: $'.\rdata := jsonData asOrderedCollection.\rjsonData do: [:d | (d at: filter_one) isNil\r\t\t\t\tifTrue:[(data) remove: d] ].\rjsonData do: [:d | (d at: filter_two) isNil\r\t\t\t\tifTrue:[(data) remove: d] ].\rdata do: [:d |info_one add: (d at: filter_one)] .\rdata do: [:d |info_two add: (d at: filter_two)] .\r"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-26T14:17:41.797+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-26T15:18:47.973+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AFlOZaX5DQCdUaB6AY4y3w=="
+				},
+				"code" : "max_one := info_one max.\r\tscale := 450 / max_one.\r\tdict at: 'data' at: 'scale_one' put: scale. \r\tmodifiedData_one := Dictionary new.\r\tinfo_one doWithIndex: [ :each :i| modifiedData_one at: i put:( each * scale) ].\r\r\r\t\t\tdict at: 'data' at: 'values_one' put: modifiedData_one.\r\tdict."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-26T14:23:19.23+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-26T15:19:30.73+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MD5reaX5DQCdydb3AY4y3w=="
+				},
+				"code" : "max_two := info_two max.\r\tscale := 450 / max_two.\r\tdict at: 'data' at: 'scale_two' put: scale. \r\tmodifiedData_two := Dictionary new.\r\tinfo_two doWithIndex: [ :each :i| modifiedData_two at: i put:( each * scale) ].\r\r\r\t\t\tdict at: 'data' at: 'values_two' put: modifiedData_two.\r\tdict."
 			}
 		]
 	},

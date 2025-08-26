@@ -882,7 +882,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-20T13:26:20.963+02:00"
+						"dateAndTimeString" : "2025-08-20T13:26:28.684+02:00"
 					}
 				},
 				"uid" : {
@@ -892,7 +892,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Testing Scatter "
+				"string" : "[[Testing Scatter Plots]]"
 			},
 			{
 				"__type" : "textSnippet",
