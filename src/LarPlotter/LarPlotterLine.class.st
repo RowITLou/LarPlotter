@@ -204,7 +204,8 @@ LarPlotterLine >> initializeDict [
 { #category : #'as yet unclassified' }
 LarPlotterLine >> initializeFor [
 	| axisX axisy |
-	
+	axisX := (self dict at: 'encoding' at: 'x')at: 'field'. 
+	axisy := (self dict at: 'encoding' at: 'y')at: 'field'. 
 
 	self titel: 'This is a title'.
 	self addLines.

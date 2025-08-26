@@ -186,7 +186,8 @@ LarPlotterScatter >> initializeDict [
 LarPlotterScatter >> initializeFor [
 	| axisX axisy |
 	
-
+axisX := (self dict at: 'encoding' at: 'x')at: 'field'. 
+	axisy := (self dict at: 'encoding' at: 'y')at: 'field'. 
 	self titel: 'This is a title'.
 	self addPoints.
 	self addAxisLabel: axisX with: axisy.
