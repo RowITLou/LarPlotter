@@ -12,7 +12,8 @@ Class {
 		'containerTickAndLabel',
 		'labelsContainer',
 		'tickYContainer',
-		'containerTickAndLabelX'
+		'containerTickAndLabelX',
+		'tickXContainer'
 	],
 	#category : #'LarPlotter-Element'
 }
@@ -129,6 +130,26 @@ LarPlotterScatterElement >> addTicksLabelY: labelsY [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatterElement >> addTicksX: ticksX [
+| scale space height |
+	scale := plotter scale_two.
+	space := plotter space_two.
+	height := (space * scale).
+
+	ticksX
+		do: [ :tickY | 
+			tickYContainer := LarContainer new initialize asElementVertical.
+			tickYContainer
+				constraintsDo: [ :c | 
+					c horizontal fitContent.
+					c vertical exact: height ].
+			tickYContainer layout cellSpacing: 0.
+			tickYContainer addChild: (tickY asElementY).
+			ticksYContainer addChild: tickYContainer ].
+			ticksYContainer constraintsDo: [:c| c grid vertical alignBottom. ].
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatterElement >> addTicksY: ticksY [
 | scale space height |
 	scale := plotter scale_two.
@@ -210,12 +231,7 @@ containerTickAndLabel addChild: labelsYContainer.
 containerTickAndLabel addChild: ticksYContainer. 
 
 
-containerTickAndLabelX :=LarContainer new  asElement.
-containerTickAndLabelX constraintsDo: [:c| c vertical fitContent].
-"containerTickAndLabelX constraintsDo: [:c| c grid vertical alignBottom. ]."
-containerTickAndLabelX layout cellSpacing: 0.
-containerTickAndLabelX addChild: labelsYContainer. 
-containerTickAndLabelX addChild: ticksYContainer. 
+
 
 axisXContainer constraintsDo: [ :c |
 		c horizontal fitContent.
@@ -234,6 +250,16 @@ empty_other := BlElement new.
 labelsContainer:= (LarContainer new) asElement.
 labelsContainer constraintsDo: [:c| c horizontal exact: 600].
 labelsContainer layout cellSpacing: 0.
+
+"containerTickAndLabelX :=LarContainer new  asElement.
+containerTickAndLabelX constraintsDo: [:c| c vertical fitContent].
+containerTickAndLabelX constraintsDo: [:c| c grid vertical alignBottom. ].
+containerTickAndLabelX layout cellSpacing: 0.
+containerTickAndLabelX addChild: labelsContainer. 
+containerTickAndLabelX addChild: ticksYContainer. 
+"
+
+
 container addChildFirst: empty. 
 container addChild: containerTickAndLabel at: 2.  
 container addChild: empty_too at: 3. 
