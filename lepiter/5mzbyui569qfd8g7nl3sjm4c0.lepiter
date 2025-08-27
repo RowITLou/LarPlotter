@@ -160,6 +160,74 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-27T09:22:03.349+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-27T09:25:13.322+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "OIjaYbX5DQCNm14yDE94QA=="
+				},
+				"code" : "url := 'https://vega.github.io/vega-lite/examples/'.\rjsonString := '{\r\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.json\",\r\n  \"data\": {\r\n    \"url\": \"data/movies.json\"\r\n  },\r\n  \"mark\": \"point\",\r\n  \"encoding\": {\r\n    \"x\": {\r\n      \"field\": \"IMDB Rating\",\r\n      \"type\": \"quantitative\"\r\n    },\r\n    \"y\": {\r\n      \"field\": \"Rotten Tomatoes Rating\",\r\n      \"type\": \"quantitative\"\r\n    },\r\n    \"color\": {\r\n      \"condition\": {\r\n        \"test\": \"datum[''IMDB Rating''] === null || datum[''Rotten Tomatoes Rating''] === null\",\r\n        \"value\": \"#aaa\"\r\n      }\r\n    }\r\n  },\r\n  \"config\": {\r\n    \"mark\": {\"invalid\": null}\r\n  }\r\n}'\r\n"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-27T09:22:53.97+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-27T09:22:55.31+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "UPreZLX5DQCNwsvyDE94QA=="
+				},
+				"code" : "plotter := LarPlotterScatter new. \rplotter spec: jsonString. \r\rplotter"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2025-08-26T12:05:46.2+02:00"
 					}
 				},
@@ -171,14 +239,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-08-26T13:39:01.149+02:00"
+						"dateAndTimeString" : "2025-08-27T09:34:27.666+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "wP9/jaP5DQCxu/aNByXW4Q=="
 				},
-				"code" : "dict:= STONJSON fromString: jsonString.\rurlNew := ((dict at: 'data') at: 'url') addedToZnUrl: (url asZnUrl).\rsegments :=  ((dict at: 'data') at: 'url')findTokens: '/'.\rfileName := segments last. \r(FileLocator downloads/ fileName) ensureDelete.\rZnClient new\r\t\t\t\turl: urlNew;\r\t\t\t\tsignalProgress: true;\r\t\t\t\tdownloadTo: (FileLocator downloads  ).\rfile :=(FileLocator downloads  / fileName) contents.\rjsonData := STONJSON fromString: file.\rinfo_one := OrderedCollection new. \rinfo_two := OrderedCollection new. \rfilter_one := ((dict at: 'encoding' ) at: 'x' at: 'field')copyWithout: $'.\rfilter_two := ((dict at: 'encoding' ) at: 'y' at: 'field')copyWithout: $'.\rdata := jsonData asOrderedCollection.\rjsonData do: [:d | (d at: filter_one) isNil\r\t\t\t\tifTrue:[(data) remove: d] ].\rjsonData do: [:d | (d at: filter_two) isNil\r\t\t\t\tifTrue:[(data) remove: d] ].\rdata do: [:d |info_one add: (d at: filter_one)] .\rdata do: [:d |info_two add: (d at: filter_two)] .\r"
+				"code" : "dict:= STONJSON fromString: jsonString.\rurlNew := ((dict at: 'data') at: 'url') addedToZnUrl: (url asZnUrl).\rsegments :=  ((dict at: 'data') at: 'url')findTokens: '/'.\rfileName := segments last. \r(FileLocator downloads/ fileName) ensureDelete.\rZnClient new\r\t\t\t\turl: urlNew;\r\t\t\t\tsignalProgress: true;\r\t\t\t\tdownloadTo: (FileLocator downloads  ).\rfile :=(FileLocator downloads  / fileName) contents.\r\"jsonData := STONJSON fromString: file.\rinfo_one := OrderedCollection new. \rinfo_two := OrderedCollection new. \rfilter_one := ((dict at: 'encoding' ) at: 'x' at: 'field')copyWithout: $'.\rfilter_two := ((dict at: 'encoding' ) at: 'y' at: 'field')copyWithout: $'.\rdata := jsonData asOrderedCollection.\rjsonData do: [:d | (d at: filter_one) isNil\r\t\t\t\tifTrue:[(data) remove: d] ].\rjsonData do: [:d | (d at: filter_two) isNil\r\t\t\t\tifTrue:[(data) remove: d] ].\rdata do: [:d |info_one add: (d at: filter_one)] .\rdata do: [:d |info_two add: (d at: filter_two)] .\r\""
 			},
 			{
 				"__type" : "pharoSnippet",

@@ -55,7 +55,8 @@ LARScatterSpecUpdaterRule >> importData [
 	filter_one := ((dict at: 'encoding') at: 'x' at: 'field') copyWithout: $'.
 	filter_two := ((dict at: 'encoding') at: 'y' at: 'field') copyWithout: $'.
 	data := jsonData asOrderedCollection.
-	jsonData do: [ :d | (d at: filter_one) isNil ifTrue: [ data remove: d ] ].
+	jsonData do: [ :d | ((d at: filter_one) isNil) ifTrue: [ data remove: d ] ].
+	jsonData := data asArray.
 	jsonData do: [ :d | (d at: filter_two) isNil ifTrue: [ data remove: d ] ].
 	data do: [ :d | info_one add: (d at: filter_one) ].
 	data do: [ :d | info_two add: (d at: filter_two) ]

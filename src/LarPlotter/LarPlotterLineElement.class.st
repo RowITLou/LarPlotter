@@ -233,7 +233,7 @@ titelContainer constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
-labelsYContainer constraintsDo: [:c| c vertical exact: 500].
+labelsYContainer constraintsDo: [:c| c vertical fitContent].
 "labelsYContainer constraintsDo: [:c| c grid vertical alignBottom. ]."
 ticksYContainer := LarContainer new  asElementVertical.
 ticksYContainer layout cellSpacing: 0.
@@ -253,7 +253,7 @@ border: (BlBorder builder
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
-containerTickAndLabel constraintsDo: [:c| c vertical exact: 500].
+containerTickAndLabel constraintsDo: [:c| c vertical fitContent].
 containerTickAndLabel constraintsDo: [:c| c grid vertical alignBottom. ].
 containerTickAndLabel layout cellSpacing: 0.
 containerTickAndLabel addChild: labelsYContainer. 
@@ -266,7 +266,7 @@ axisXContainer constraintsDo: [ :c |
 super initialize. 
 "container addChild: graphElement at: 5."
 "grid := BlGridLayoutImpl new."
-
+graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
 container layout columnCount: 2.
 container layout rowCount: 4.
 empty := BlElement new. 

@@ -40,8 +40,8 @@ self notifyUpdate
 LarPlotterScatter >> addPoints [
 	| point   val_one val_two |
 	
-	val_one := self ensureDataHeight.
-	val_two := self ensureDataWidth.
+	val_two := self ensureDataHeight.
+	val_one := self ensureDataWidth.
 
 	1
 		to: val_one size

@@ -11,7 +11,8 @@ Class {
 		'container',
 		'containerTickAndLabel',
 		'labelsContainer',
-		'tickYContainer'
+		'tickYContainer',
+		'containerTickAndLabelX'
 	],
 	#category : #'LarPlotter-Element'
 }
@@ -61,14 +62,6 @@ graphElement constraintsDo: [ :c |
 			c horizontal exact: 600 .
 			c vertical exact: 500].
 		
-
-"graphElement  transform
-  	
-		origin: 0 @ 500;
-		apply."
-		
-
-
 points do: [:point|
 
 graphElement addChildFirst: (point asElement).].
@@ -190,7 +183,7 @@ titelContainer constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
-labelsYContainer constraintsDo: [:c| c vertical exact: 500].
+labelsYContainer constraintsDo: [:c| c vertical fitContent].
 "labelsYContainer constraintsDo: [:c| c grid vertical alignBottom. ]."
 ticksYContainer := LarContainer new  asElementVertical.
 ticksYContainer layout cellSpacing: 0.
@@ -210,11 +203,20 @@ border: (BlBorder builder
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
 containerTickAndLabel :=LarContainer new  asElement.
-containerTickAndLabel constraintsDo: [:c| c vertical exact: 500].
+containerTickAndLabel constraintsDo: [:c| c vertical fitContent].
 containerTickAndLabel constraintsDo: [:c| c grid vertical alignBottom. ].
 containerTickAndLabel layout cellSpacing: 0.
 containerTickAndLabel addChild: labelsYContainer. 
 containerTickAndLabel addChild: ticksYContainer. 
+
+
+containerTickAndLabelX :=LarContainer new  asElement.
+containerTickAndLabelX constraintsDo: [:c| c vertical fitContent].
+"containerTickAndLabelX constraintsDo: [:c| c grid vertical alignBottom. ]."
+containerTickAndLabelX layout cellSpacing: 0.
+containerTickAndLabelX addChild: labelsYContainer. 
+containerTickAndLabelX addChild: ticksYContainer. 
+
 axisXContainer constraintsDo: [ :c |
 		c horizontal fitContent.
 		c vertical fitContent.
@@ -223,7 +225,7 @@ axisXContainer constraintsDo: [ :c |
 super initialize. 
 "container addChild: graphElement at: 5."
 "grid := BlGridLayoutImpl new."
-
+graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
 container layout columnCount: 2.
 container layout rowCount: 4.
 empty := BlElement new. 
