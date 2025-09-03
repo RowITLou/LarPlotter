@@ -1,0 +1,39 @@
+Class {
+	#name : #LARTopicMapDataExamples,
+	#superclass : #Object,
+	#category : #'LarPlotter-Data Providers'
+}
+
+{ #category : #examples }
+LARTopicMapDataExamples >> dataFromFieldsByStyle [
+	<gtExample>
+	^ self fieldsByStyle collect: [ :d | d at: 'data' ]
+]
+
+{ #category : #examples }
+LARTopicMapDataExamples >> fieldsByStyle [
+	<gtExample>
+	| topicMap fields json |
+	topicMap := self gtBookTopicMap.
+	fields := topicMap databaseNode children nodes.
+	json := fields
+			collect: [ :aField | 
+				{'object' -> aField.
+					'data'
+						-> (topicMap styles
+								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p style = aStyle ]) size ])
+								asDictionary} asDictionary ].
+	^ json
+]
+
+{ #category : #examples }
+LARTopicMapDataExamples >> fieldsByStyleJsonString [
+	<gtExample>
+	^ STONJSON toStringPretty: self dataFromFieldsByStyle
+]
+
+{ #category : #examples }
+LARTopicMapDataExamples >> gtBookTopicMap [
+	<gtExample>
+	^ LeDatabase gtBook topicMap
+]
