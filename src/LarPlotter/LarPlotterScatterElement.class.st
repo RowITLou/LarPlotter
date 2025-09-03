@@ -276,6 +276,8 @@ scroll constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
 scroll addChild: container.
+(plotter borders )
+ifTrue: [self setBlackBorders].
 ^self 
 border: (BlBorder builder
 
@@ -313,4 +315,9 @@ ifFalse:[self addTitle: plotter title].
 ifFalse:[self addTicksY: plotter ticksX]."
 plotter ticksY isNil
 ifFalse:[self addTicksY: plotter ticksY].
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterElement >> setBlackBorders [
+container setBlackBorders. 
 ]

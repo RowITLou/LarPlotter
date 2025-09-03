@@ -211,6 +211,12 @@ container addChild: graphElement at: 6.
 container addChild: labelsContainer at: 7. 
 container addChild: axisXContainer at: 8 .
 
+"graphElement border: (BlBorder builder
+paint: Color black;
+					width: 1;
+					build).
+"
+
 self initializeFor.
 
 scroll := BlScalableElement new. 
@@ -218,6 +224,10 @@ scroll constraintsDo: [ :c |
 		c horizontal matchParent.
 		c vertical matchParent ].
 scroll addChild: container.
+
+(plotter borders )
+ifTrue: [self setBlackBorders].
+
 ^self 
 border: (BlBorder builder
 
@@ -255,4 +265,11 @@ ifFalse:[self addTitle: plotter title].
 ifFalse:[self addTicksY: plotter ticksX]."
 plotter ticksY isNil
 ifFalse:[self addTicksY: plotter ticksY].
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> setBlackBorders [
+container setBlackBorders. 
+
+					
 ]

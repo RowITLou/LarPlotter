@@ -16,11 +16,11 @@ LarContainerElement >> initializeHorizontal [
 super initialize.
 	self
 	
-			border: (BlBorder builder
+			"border: (BlBorder builder
 					
 					paint: Color black;
 					width: 1;
-					build);
+					build);"
 			
 			background: (BlBackground paint: Color white);
 			layout: BlGridLayout horizontal;
@@ -37,11 +37,11 @@ container := aContainer.
 super initialize.
 	self
 	
-			border: (BlBorder builder
+			"border: (BlBorder builder
 					
 					paint: Color black;
 					width: 1;
-					build);
+					build);"
 			
 			background: (BlBackground paint: Color white);
 			layout: BlGridLayout horizontal;
@@ -58,11 +58,11 @@ LarContainerElement >> initializeVertical [
 super initialize.
 	self
 	
-			border: (BlBorder builder
+			"border: (BlBorder builder
 					
 					paint: Color black;
 					width: 1;
-					build);
+					build);"
 			
 			background: (BlBackground paint: Color white);
 			layout: BlGridLayout vertical;
@@ -81,11 +81,11 @@ container := aContainer.
 super initialize.
 	self
 	
-			border: (BlBorder builder
+			"border: (BlBorder builder
 					
 					paint: Color black;
 					width: 1;
-					build);
+					build);"
 			
 			background: (BlBackground paint: Color white);
 			layout: BlGridLayout vertical;
@@ -96,4 +96,28 @@ super initialize.
 			
 			
 			^self yourself.
+]
+
+{ #category : #'as yet unclassified' }
+LarContainerElement >> setBlackBorders [
+self  childrenDo: [:child| child class == LarContainerElement
+ifTrue:[child setBlackBorders]].
+
+self border: (BlBorder builder
+
+paint: Color black;
+					width: 1;
+					build).
+]
+
+{ #category : #'as yet unclassified' }
+LarContainerElement >> setBlackBorders: aContainer [
+aContainer childrenDo: [:child| child class == LarContainerElement
+ifTrue:[child setBlackBorders]].
+
+aContainer border: (BlBorder builder
+
+paint: Color black;
+					width: 1;
+					build).
 ]

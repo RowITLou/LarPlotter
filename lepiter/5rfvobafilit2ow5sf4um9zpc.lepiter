@@ -40,6 +40,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "- Add ticks to x axis in line plotter\r\n- set values of line plotter down (center)\r\n- create scatter plotter"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-27T15:05:05.083+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-27T15:06:32.286+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "eOaeLLr5DQCc9+sVBRxUQw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Ticks hinzufügen für x-Achse\r\n\r\n\r\nFreitag: \r\nFrage finden\r\nAlles runter setzen"
 			}
 		]
 	},

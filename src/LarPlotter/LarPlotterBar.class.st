@@ -14,7 +14,8 @@ Class {
 		'announcer',
 		'bars',
 		'scale',
-		'space'
+		'space',
+		'borders'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -112,6 +113,16 @@ LarPlotterBar >> bars: anObject [
 	bars := anObject
 ]
 
+{ #category : #accessing }
+LarPlotterBar >> borders [
+	^ borders
+]
+
+{ #category : #accessing }
+LarPlotterBar >> borders: anObject [
+	borders := anObject
+]
+
 { #category : #'as yet unclassified' }
 LarPlotterBar >> changeTitle: text [
 title setText: text. 
@@ -165,8 +176,14 @@ LarPlotterBar >> gtLiveFor: aView [
 		title: 'Live';
 		priority: 10;
 		stencil: [ self asElement asScalableElement  ];
+		actionStencil: [ 
+			BrCheckbox new 
+				aptitude: BrGlamorousCheckboxAptitude;
+				whenUncheckedDo: [   self borders: false  ];
+				whenCheckedDo: [   self borders: true  ]];
 		actionUpdateButton;
 		updateWhen: LarBarPlotterUpdate in: self announcer.
+		
 		
 ]
 
@@ -174,6 +191,7 @@ LarPlotterBar >> gtLiveFor: aView [
 LarPlotterBar >> initialize [
 	<brainstorming>
 announcer := Announcer new.
+ self borders: false.
 "self tickLablesInitialize.
 self tickInitialize.
 self barsDefinition. "
@@ -238,6 +256,10 @@ LarPlotterBar >> scale [
 { #category : #accessing }
 LarPlotterBar >> scale: anObject [
 	scale := anObject
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> setBlackBorders [
 ]
 
 { #category : #accessing }

@@ -17,7 +17,8 @@ Class {
 		'scale_one',
 		'space_one',
 		'scale_two',
-		'space_two'
+		'space_two',
+		'borders'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -118,6 +119,16 @@ LarPlotterScatter >> asElement [
 ^LarPlotterScatterElement new initialize: self.
 ]
 
+{ #category : #accessing }
+LarPlotterScatter >> borders [
+	^ borders
+]
+
+{ #category : #accessing }
+LarPlotterScatter >> borders: anObject [
+	borders := anObject
+]
+
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> dict [
 	^ dict
@@ -183,6 +194,11 @@ LarPlotterScatter >> gtLiveFor: aView [
 		title: 'Live';
 		priority: 10;
 		stencil: [ self asElement asScalableElement  ];
+		actionStencil: [ 
+			BrCheckbox new 
+				aptitude: BrGlamorousCheckboxAptitude;
+				whenUncheckedDo: [   self borders: false  ];
+				whenCheckedDo: [   self borders: true  ]];
 		actionUpdateButton;
 		updateWhen: LarLinePlotterUpdate in: self announcer.
 		
@@ -191,6 +207,7 @@ LarPlotterScatter >> gtLiveFor: aView [
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> initialize [
 announcer := Announcer new.
+ self borders: false.
 self tickLablesInitialize.
 self tickInitialize.
 self pointsDefinition
