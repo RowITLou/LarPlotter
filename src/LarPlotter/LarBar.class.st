@@ -6,7 +6,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'width',
-		'height'
+		'height',
+		'data',
+		'object'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -14,6 +16,28 @@ Class {
 { #category : #'as yet unclassified' }
 LarBar >> asElement [
 ^LarBarElement new initialize: self.
+]
+
+{ #category : #accessing }
+LarBar >> data [
+	^ data
+]
+
+{ #category : #accessing }
+LarBar >> data: anObject [
+	data := anObject
+]
+
+{ #category : #'as yet unclassified' }
+LarBar >> gtObjectView: aView [
+<gtView>
+	^aView forward
+		title: 'Object';
+		priority: 10;
+		object: [ self object];
+		
+		actionUpdateButton.
+
 ]
 
 { #category : #accessing }
@@ -32,6 +56,16 @@ LarBar >> initialize: sizeHeight with: sizeWidth [
 self height: sizeHeight. 
 self width: sizeWidth. 
 ^self.
+]
+
+{ #category : #accessing }
+LarBar >> object [
+	^ object
+]
+
+{ #category : #accessing }
+LarBar >> object: anObject [
+	object := anObject
 ]
 
 { #category : #'as yet unclassified' }

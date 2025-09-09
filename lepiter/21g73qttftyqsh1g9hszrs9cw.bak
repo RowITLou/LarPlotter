@@ -378,14 +378,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-09-09T14:16:57.102+02:00"
+						"dateAndTimeString" : "2025-09-09T15:14:18.278+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "eI7zAb/6DQClBJnbBcUgyA=="
 				},
-				"code" : "plotter := LarPlotterBar new.\rplotter dict: dict"
+				"code" : "plotter := LarPlotterBar new.\rplotter dict: dict\r"
 			}
 		]
 	},

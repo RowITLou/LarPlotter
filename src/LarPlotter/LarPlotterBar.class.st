@@ -51,6 +51,13 @@ LarPlotterBar >> addBars: values [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> addObjects:objects [
+self bars isNil
+ifTrue:[^self].
+(self bars) doWithIndex: [:bar :i| bar object: (objects at: i)]
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> addTicks [
 	| tickY tickAmount |
 	self tickInitialize.
@@ -258,10 +265,10 @@ LarPlotterBar >> initializeFor [
 		put: bars.
 	
 	self addBars: bars.
+	self addObjects: (values collect: [ :each | each at: 'object'  ]).
 	self addAxisLabel: axisX with: axisy.
 	self addTicks.
-	self
-		addTicksLabel: (values collect: [ :each | each at: 'name' ])
+	self addTicksLabel: (values collect: [ :each | each at: 'name' ])
 		with: self space
 ]
 

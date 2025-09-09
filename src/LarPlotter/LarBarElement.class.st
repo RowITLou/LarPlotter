@@ -24,7 +24,9 @@ bar := aBar.
 		constraintsDo: [ :c | 
 		 c vertical exact: (bar height).
 		    
-	    c horizontal exact: (bar width)
+	    c horizontal exact: (bar width)];
+	    when: BlClickEvent do: [ :event | 
+				event currentTarget phlow spawnObject: (bar) ]
 	   
-			]; yourself.
+			; yourself.
 ]
