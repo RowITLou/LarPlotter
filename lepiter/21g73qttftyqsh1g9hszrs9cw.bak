@@ -205,14 +205,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-09-09T14:04:47.953+02:00"
+						"dateAndTimeString" : "2025-09-09T18:01:14.803+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "oPaaSL76DQCfBDsJBcUgyA=="
 				},
-				"code" : "topicMap := LeDatabase gtBook topicMap.\r\tfields := topicMap databaseNode children nodes.\r\tjson := fields\r\t\t\tcollect: [ :aField | \r\t\t\t\r\t\t\t\t{'name' -> 'aName'.\r\t\t\t\t'object' -> aField .\r\t\t\t\t\t'element'\r\t\t\t\t\t\t-> (topicMap styles\r\t\t\t\t\t\t\t\tcollect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p style = aStyle ]) size ])\r\t\t\t\t\t\t\t\tasDictionary} asDictionary ].\r\rdict at: 'data' at: 'bars' put: (json).\rdict"
+				"code" : "topicMap := LeDatabase gtBook topicMap.\r\tfields := topicMap databaseNode children nodes.\r\tjson := fields\r\t\t\tcollect: [ :aField | \r\t\t\t\r\t\t\t\t{'name' -> 'aName'.\r\t\t\t\t'object' -> aField .\r\t\t\t\t\t'element'\r\t\t\t\t\t\t-> (topicMap styles\r\t\t\t\t\t\t\t\tcollect: [ :aStyle | aStyle -> ((aField pageGroup select: [ :p | p style = aStyle ]) size )])\r\t\t\t\t\t\t\t\tasDictionary} asDictionary ].\r\rdict at: 'data' at: 'bars' put: (json).\rdict"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -307,7 +307,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-09-09T14:21:19.127+02:00"
+						"dateAndTimeString" : "2025-09-09T17:24:08.439+02:00"
 					}
 				},
 				"uid" : {
@@ -317,7 +317,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "{{gtClass:name=LarPlotterBar}} \r\n{{gtClass:name=LarPlotterBarElement}}"
+				"string" : "{{gtClass:name=LarPlotterBar}} \r\n{{gtClass:name=LarBar}}\r\n{{gtClass:name=LarPlotterBarElement}}"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -344,14 +344,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-09-09T14:07:56.28+02:00"
+						"dateAndTimeString" : "2025-09-09T16:01:40.283+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "IPY3jkj6DQCA5SANCHR2Ig=="
 				},
-				"code" : "plotter := LarPlotterBar new.\r\t\r\tvalues := ((dict at: 'data') at: 'bars').\r\taxisX := ((dict at: 'encoding') at: 'x') at: 'field'.\r\taxisy := ((dict at: 'encoding') at: 'y') at: 'field'.\r\r\tplotter titel: 'This is a title'.\r\t bars := OrderedCollection new. \r\t data := (values collect: [ :each | (each at: 'element') values]).\r     data do:[: each| each size == 1\r     ifTrue:[bars add: each. ]\r     ifFalse:[bars add: (each sumNumbers)]].\r     dict at: 'data' at: 'values' put: bars.\r     plotter dict: dict. \r\tplotter addBars: bars.\r\tplotter addAxisLabel: axisX with: axisy.\r\tplotter addTicks. \r\tplotter addTicksLabel: (values collect: [ :each | each at: 'name'  ]) with: plotter space. "
+				"code" : "plotter := LarPlotterBar new.\r\t\r\tvalues := ((dict at: 'data') at: 'bars').\r\taxisX := ((dict at: 'encoding') at: 'x') at: 'field'.\r\taxisy := ((dict at: 'encoding') at: 'y') at: 'field'.\r\r\tplotter titel: 'This is a title'.\r\t bars := OrderedCollection new. \r\t data := (values collect: [ :each | (each at: 'element') values]).\r     data do:[: each| each size == 1\r     ifTrue:[bars add: each. ]\r     ifFalse:[bars add: (each sumNumbers)]].\r     dict at: 'data' at: 'values' put: bars.\r     plotter dict: dict. \r\tplotter addBars: bars.\r\t\r\tplotter addAxisLabel: axisX with: axisy.\r\tplotter addTicks. \r\tplotter addTicksLabel: (values collect: [ :each | each at: 'name'  ]) with: plotter space. "
 			},
 			{
 				"__type" : "pharoSnippet",

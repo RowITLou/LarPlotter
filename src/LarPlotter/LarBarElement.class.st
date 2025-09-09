@@ -27,6 +27,7 @@ bar := aBar.
 	    c horizontal exact: (bar width)];
 	    when: BlClickEvent do: [ :event | 
 				event currentTarget phlow spawnObject: (bar) ]
+		
 	   
 			; yourself.
 ]

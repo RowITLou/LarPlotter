@@ -8,7 +8,8 @@ Class {
 		'width',
 		'height',
 		'data',
-		'object'
+		'object',
+		'value'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -35,7 +36,7 @@ LarBar >> gtObjectView: aView [
 		title: 'Object';
 		priority: 10;
 		object: [ self object];
-		
+		view: #gtRawFor:;
 		actionUpdateButton.
 
 ]
@@ -79,6 +80,16 @@ self sizeHeight: sizeHeight.
 { #category : #'as yet unclassified' }
 LarBar >> setBorderColor: color [
 self asElement border: (BlBorder paint: color)
+]
+
+{ #category : #accessing }
+LarBar >> value1 [
+	^ value
+]
+
+{ #category : #accessing }
+LarBar >> value: anObject [
+	value := anObject
 ]
 
 { #category : #accessing }

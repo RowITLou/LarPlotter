@@ -45,9 +45,17 @@ LarPlotterBar >> addBars: values [
 	1 to: val size
 		do: [ :n | 
 			bar := LarBar new initialize: (val at: n) with: width.
+			bar value: (val at: n).
 			bars add: bar ].
 
 	self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addData: data [
+self bars isNil
+ifTrue:[^self].
+(self bars) doWithIndex: [:bar :i| bar data: (data at: i)]
 ]
 
 { #category : #'as yet unclassified' }
@@ -249,7 +257,7 @@ LarPlotterBar >> initializeDict [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initializeFor [
-	| data axisX axisy values |
+	| data axisX axisy values  |
 	values := (dict at: 'data') at: 'bars'.
 	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
 	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
@@ -257,18 +265,21 @@ LarPlotterBar >> initializeFor [
 	self titel: 'This is a title'.
 	bars := OrderedCollection new.
 	data := values collect: [ :each | (each at: 'element') values ].
+	
 	data
 		do: [ :each | each size == 1 ifTrue: [ bars add: each ] ifFalse: [ bars add: each sumNumbers ] ].
 	dict
 		at: 'data'
 		at: 'values'
 		put: bars.
-	
+
 	self addBars: bars.
-	self addObjects: (values collect: [ :each | each at: 'object'  ]).
+	self addObjects: (values collect: [ :each | each at: 'object' ]).
+	self addData: (values collect: [ :each | (each at: 'element') keys ]).
 	self addAxisLabel: axisX with: axisy.
 	self addTicks.
-	self addTicksLabel: (values collect: [ :each | each at: 'name' ])
+	self
+		addTicksLabel: (values collect: [ :each | each at: 'name' ])
 		with: self space
 ]
 
