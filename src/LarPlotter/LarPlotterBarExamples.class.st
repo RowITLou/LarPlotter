@@ -134,8 +134,8 @@ LarPlotterBarExamples >> topicMapData [
 				{'name' -> 'aName'.
 					'object' -> aField.
 					'element'
-						-> (topicMap styles
-								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p style = aStyle ]) size ])
+						-> (topicMap kinds
+								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p kind = aStyle ]) size ])
 								asDictionary} asDictionary ].
 
 	dict
