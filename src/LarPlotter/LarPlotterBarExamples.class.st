@@ -54,15 +54,6 @@ LarPlotterBarExamples >> barChartSpec [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> changeBackgroundTitle [
-<gtExample>
-| plotter |
-	plotter:= self changeTitle. 
-(plotter title) setBackground: (Color  blue). 
-^plotter 
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> changeFontTitle [
 <gtExample>
 | plotter |
@@ -82,26 +73,10 @@ LarPlotterBarExamples >> changeTitle [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> graphWithTickLabels [
-<gtExample>
-
-^self addAxisLabel addTicksLabel: (self labels). 
-
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarExamples >> graphWithTickLabelsY [
-<gtExample>
-
-^self addAxisLabel addTicksLabel: (self labels) with: self values. 
-
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarExamples >> graphWithTicks [
-<gtExample>
-"^self newGraph addTicks: 8 with: 8. "
-^self graphWithTickLabelsY addTicks: self values size. 
-
+	<gtExample>
+	| plot |
+	plot := self addAxisLabel addTicks.
+	^ (plot addTicksLabel: self labels)
 ]
 
 { #category : #'as yet unclassified' }
@@ -111,29 +86,63 @@ LarPlotterBarExamples >> labels [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> newGraph [
-<gtExample>
-
-^ LarPlotterBar new 
-	
+	<gtExample>
+	| plotter |
+	 plotter := LarPlotterBar new.
+	 ^plotter
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> playWithBars [
-<gtExample>
-| graph |
-	graph := self addBars .
-	graph bars do: [:bar | 
-    (bar barElement)
-    background: Color blue;
-    border: (BlBorder paint: Color yellow width: 5)].
-    ^graph
-	
+LarPlotterBarExamples >> specExample [
+	| jsonString  |
+	jsonString := '{
+"data": {
+    
+  },
+  "encoding": {
+    "x": {"field": "a"},
+    "y": {"field": "b"}
+  }
+}'.
+	^STONJSON fromString: jsonString
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> testSpec [
 <gtExample>
-^LarPlotterBar withSpec: self barChartSpec.
+^self newGraph specVega: (self barChartSpec).
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> topicMapChart [
+	<gtExample>
+	| plotter dict |
+	dict := self topicMapData .
+	plotter:= LarPlotterBar new.
+	plotter dict: dict.
+	^plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> topicMapData [
+	| topicMap fields json dict |
+	dict := self specExample.
+	topicMap := LeDatabase gtBook topicMap.
+	fields := topicMap databaseNode children nodes.
+	json := fields
+			collect: [ :aField | 
+				{'name' -> 'aName'.
+					'object' -> aField.
+					'element'
+						-> (topicMap styles
+								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p style = aStyle ]) size ])
+								asDictionary} asDictionary ].
+
+	dict
+		at: 'data'
+		at: 'bars'
+		put: json.
+	^dict
 ]
 
 { #category : #'as yet unclassified' }

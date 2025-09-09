@@ -27,21 +27,43 @@ LARBarSpecUpdaterRule >> forWidth [
 LARBarSpecUpdaterRule >> updateDictHeight [
 	| ele data max scale modifiedData i |
 	ele := dict at: 'data' at: 'values'.	"collect: #values"
-	data := ele collect: [ :each | each at: 'b' ].
+	data := ele collect: [ :each | each ].
 	max := data max.
 	scale := 500 / max.
 	dict at: 'data' at: 'scale' put: scale. 
 	modifiedData := OrderedCollection new.
 	data do: [ :each | modifiedData add: each * scale ].
 	i := 1.
-	ele
+	"ele
 		do: [ :each | 
 			each at: 'b' put: (modifiedData at: i).
-			i := i + 1 ].
+			i := i + 1 ]."
 	dict
 		at: 'data'
 		at: 'values'
-		put: ele.
+		put: modifiedData.
+	^ dict
+]
+
+{ #category : #'as yet unclassified' }
+LARBarSpecUpdaterRule >> updateDictHeight: data [
+	|  max scale modifiedData i |
+	"ele := dict at: 'data' at: 'values'".	"collect: #values"
+	"data := ele collect: [ :each | each ]."
+	max := data max.
+	scale := 500 / max.
+	dict at: 'data' at: 'scale' put: scale. 
+	modifiedData := OrderedCollection new.
+	data do: [ :each | modifiedData add: each * scale ].
+	i := 1.
+	"ele
+		do: [ :each | 
+			each at: 'b' put: (modifiedData at: i).
+			i := i + 1 ]."
+	dict
+		at: 'data'
+		at: 'values'
+		put: modifiedData.
 	^ dict
 ]
 

@@ -7,7 +7,7 @@ Class {
 { #category : #examples }
 LARTopicMapDataExamples >> dataFromFieldsByStyle [
 	<gtExample>
-	^ self fieldsByStyle collect: [ :d | d at: 'data' ]
+	^ self fieldsByStyle collect: [ :d | d at: 'element' ]
 ]
 
 { #category : #examples }
@@ -19,7 +19,7 @@ LARTopicMapDataExamples >> fieldsByStyle [
 	json := fields
 			collect: [ :aField | 
 				{'object' -> aField.
-					'data'
+					'element'
 						-> (topicMap styles
 								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p style = aStyle ]) size ])
 								asDictionary} asDictionary ].
