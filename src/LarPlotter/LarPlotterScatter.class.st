@@ -228,7 +228,7 @@ LarPlotterScatter >> initializeFor [
 	
 axisX := (self dict at: 'encoding' at: 'x')at: 'field'. 
 	axisy := (self dict at: 'encoding' at: 'y')at: 'field'. 
-	self titel: 'This is a title'.
+	self title: 'This is a title'.
 	self addPoints.
 	self addAxisLabel: axisX with: axisy.
 	self addTicks. 
@@ -399,13 +399,13 @@ LarPlotterScatter >> ticksY: anObject [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> titel: text [
-	title := LarTitel new initialize: text. 
-	self notifyUpdate
-	
+LarPlotterScatter >> title [
+^title
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> title [
-^title
+LarPlotterScatter >> title: text [
+	title := LarTitel new initialize: text. 
+	self notifyUpdate
+	
 ]

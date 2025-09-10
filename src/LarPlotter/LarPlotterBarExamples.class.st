@@ -28,7 +28,7 @@ LarPlotterBarExamples >> addBars [
 LarPlotterBarExamples >> addTitel [
 <gtExample>
 
-^self addBars titel: 'This is a title'. 
+^self addBars title: 'This is a title'. 
 
 ]
 
@@ -125,6 +125,7 @@ LarPlotterBarExamples >> topicMapChart [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> topicMapData [
+	<gtExample>
 	| topicMap fields json dict |
 	dict := self specExample.
 	topicMap := LeDatabase gtBook topicMap.
@@ -132,7 +133,7 @@ LarPlotterBarExamples >> topicMapData [
 	json := fields
 			collect: [ :aField | 
 				{'name' -> 'aName'.
-					'object' -> aField.
+					"'object' -> aField."
 					'element'
 						-> (topicMap kinds
 								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p kind = aStyle ]) size ])
@@ -142,7 +143,7 @@ LarPlotterBarExamples >> topicMapData [
 		at: 'data'
 		at: 'bars'
 		put: json.
-	^dict
+	^ dict
 ]
 
 { #category : #'as yet unclassified' }

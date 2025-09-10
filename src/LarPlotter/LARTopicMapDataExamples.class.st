@@ -20,8 +20,8 @@ LARTopicMapDataExamples >> fieldsByStyle [
 			collect: [ :aField | 
 				{'object' -> aField.
 					'element'
-						-> (topicMap styles
-								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p style = aStyle ]) size ])
+						-> (topicMap kinds
+								collect: [ :aKind | aKind -> (aField pageGroup select: [ :p | p kind = aKind ]) size ])
 								asDictionary} asDictionary ].
 	^ json
 ]

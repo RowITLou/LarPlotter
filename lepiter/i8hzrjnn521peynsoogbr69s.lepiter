@@ -137,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-04-23T13:42:41.682+02:00"
+						"dateAndTimeString" : "2025-09-10T11:17:21.946008+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "EM6+VM/vDQCKARgEB2+OCA=="
 				},
-				"code" : "plotter titel: 'This is a new title'."
+				"code" : "plotter title: 'This is a new title'."
 			},
 			{
 				"__type" : "pharoSnippet",

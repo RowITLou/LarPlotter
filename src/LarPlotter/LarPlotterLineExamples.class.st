@@ -17,14 +17,13 @@ LarPlotterLineExamples >> addLines [
 <gtExample>
 
 ^self newGraph addLines: self values.
-
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterLineExamples >> addTitel [
 <gtExample>
 
-^self addLines titel: 'This is a title'. 
+^self addLines title: 'This is a title'. 
 
 ]
 

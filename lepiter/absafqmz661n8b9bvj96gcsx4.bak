@@ -171,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-03-25T15:56:03.855+01:00"
+						"dateAndTimeString" : "2025-03-26T11:05:29.110081+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "OMlilIntDQCXjk/4DSJxrg=="
 				},
-				"code" : "typeGraph = 'bar'\rifTrue:[\rgraph := LarPlotterBar new initialize: 300 with: 300. \rgraph titel: 'This is a title'. \rgraph addBars: (data collect: [ :each | each last ]).\rgraph addAxisLabel: axisX with: axisy. \rgraph addTicks: 0 with: (data size). \rgraph addTicksLabel: (data collect: [:each | each first]).]"
+				"code" : "typeGraph = 'bar'\r\tifTrue: [ graph := LarPlotterBar new initialize: 300 with: 300.\r\t\tgraph titel: 'This is a title'.\r\t\tgraph addBars: (data collect: [ :each | each last ]).\r\t\tgraph addAxisLabel: axisX with: axisy.\r\t\tgraph addTicks: 0 with: data size.\r\t\tgraph addTicksLabel: (data collect: [ :each | each first ]) ]"
 			},
 			{
 				"__type" : "pharoSnippet",

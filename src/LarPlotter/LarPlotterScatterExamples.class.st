@@ -16,7 +16,7 @@ LarPlotterScatterExamples >> addPoints [
 LarPlotterScatterExamples >> addTitel [
 <gtExample>
 
-^self addPoints  titel: 'This is a title'. 
+^self addPoints  title: 'This is a title'. 
 
 ]
 

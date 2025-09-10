@@ -262,7 +262,7 @@ LarPlotterBar >> initializeFor [
 	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
 	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
 
-	self titel: 'This is a title'.
+	self title: 'This is a title'.
 	bars := OrderedCollection new.
 	data := values collect: [ :each | (each at: 'element') values ].
 	
@@ -274,7 +274,7 @@ LarPlotterBar >> initializeFor [
 		put: bars.
 
 	self addBars: bars.
-	self addObjects: (values collect: [ :each | each at: 'object' ]).
+	"self addObjects: (values collect: [ :each | each at: 'object' ])."
 	self addData: (values collect: [ :each | (each at: 'element') keys ]).
 	self addAxisLabel: axisX with: axisy.
 	self addTicks.
@@ -299,7 +299,7 @@ LarPlotterBar >> initializeVegaFor [
 	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
 	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
 
-	self titel: 'This is a title'.
+	self title: 'This is a title'.
 	
 	self addBars: (data collect: [ :each |each last ]).
 	self addAxisLabel: axisX with: axisy.
@@ -450,13 +450,13 @@ LarPlotterBar >> ticksY: anObject [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> titel: text [
-	title := LarTitel new initialize: text. 
-	self notifyUpdate
-	
+LarPlotterBar >> title [
+^title
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> title [
-^title
+LarPlotterBar >> title: text [
+	title := LarTitel new initialize: text. 
+	self notifyUpdate
+	
 ]
