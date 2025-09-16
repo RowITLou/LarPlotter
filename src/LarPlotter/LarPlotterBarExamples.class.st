@@ -34,8 +34,9 @@ LarPlotterBarExamples >> addTitel [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> barChartSpec [
-<gtExample>
-^ '{
+	<gtExample>
+	| jsonString |
+	jsonString := '{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A simple bar chart with embedded data.",
   "data": {
@@ -51,6 +52,23 @@ LarPlotterBarExamples >> barChartSpec [
     "y": {"field": "b", "type": "quantitative"}
   }
 }'.
+	^ STONJSON fromString: jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> barChartSpecChange [
+	<gtExample>
+	| spec values bars |
+	spec := self barChartSpec.
+	values := spec at: 'data' at: 'values'.
+	bars := values
+			collect: [ :each | 
+				{'name' -> (each at: 'a').
+				  'object' -> (each at: 'b').
+					'element'
+						-> {(each at: 'a') -> ((each at: 'b') asInteger) } asDictionary
+								} asDictionary	 ].
+								^bars
 ]
 
 { #category : #'as yet unclassified' }
@@ -133,7 +151,7 @@ LarPlotterBarExamples >> topicMapData [
 	json := fields
 			collect: [ :aField | 
 				{'name' -> 'aName'.
-					"'object' -> aField."
+					'object' -> aField.
 					'element'
 						-> (topicMap kinds
 								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p kind = aStyle ]) size ])
@@ -150,4 +168,20 @@ LarPlotterBarExamples >> topicMapData [
 LarPlotterBarExamples >> values [
 ^ #(20 40 60 80 10 90 70 50 30 10).
 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaExample1 [
+<gtExample>
+	| json dict plotter |
+	json := self barChartSpecChange.
+	dict := self specExample.
+	
+		dict 
+		at: 'data'
+		at: 'bars'
+		put: json.
+	plotter := LarPlotterBar new.
+	plotter dict: dict.
+	^ plotter
 ]

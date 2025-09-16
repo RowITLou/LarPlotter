@@ -189,7 +189,9 @@ LarPlotterBar >> ensureAmountTicksY [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> ensureBarsHeight: values [
 	| max rule newDict val data|
-	max := values max.
+	values size = 1
+	ifTrue: [max := values at: 1]
+	ifFalse:[max := values max].
 	max > 450 & (max < 550) ifTrue: [ ^ values ].
 	rule := LARBarSpecUpdaterRule for: dict.
 	newDict := rule updateDictHeight: values.
@@ -267,7 +269,8 @@ LarPlotterBar >> initializeFor [
 	data := values collect: [ :each | (each at: 'element') values ].
 	
 	data
-		do: [ :each | each size == 1 ifTrue: [ bars add: each ] ifFalse: [ bars add: each sumNumbers ] ].
+		do: [ :each | each size == 1 ifTrue: [ bars add: (each at: 1) ] 
+		ifFalse: [ bars add: each sumNumbers ] ].
 	dict
 		at: 'data'
 		at: 'values'
