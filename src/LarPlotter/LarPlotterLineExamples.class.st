@@ -28,28 +28,6 @@ LarPlotterLineExamples >> addTitel [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterLineExamples >> graphWithTickLabels [
-<gtExample>
-
-^self addAxisLabel addTicksLabel: (self labels). 
-
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLineExamples >> graphWithTickLabelsY [
-<gtExample>
-
-^self addAxisLabel addTicksLabel: (self labels) with: 30. 
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterLineExamples >> graphWithTicks [
-<gtExample>
-"^self newGraph addTicks: 8 with: 8. "
-^self graphWithTickLabelsY addTicks: self values size. 
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterLineExamples >> labels [
 ^ #(#A #B  #C #D #E #F #G #H #I #J)
 ]

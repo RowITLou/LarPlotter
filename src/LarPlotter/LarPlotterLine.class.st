@@ -38,7 +38,7 @@ self notifyUpdate
 { #category : #'as yet unclassified' }
 LarPlotterLine >> addLines [
 	| line width val |
-	
+	self linesDefinition.
 	width := 65.
 	val := self ensureDataHeight.
 	width := self ensureDataWidth: (val size).
@@ -54,7 +54,26 @@ LarPlotterLine >> addLines [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterLine >> addLines: values [
+	| line width val |
+	self linesDefinition.
+	width := 65.
+	val := self ensureDataHeight: values.
+	width := self ensureDataWidth: (val size).
+    self addPoints: val with: width. 
+	1 to: ((val size)-1)
+		do: [ :n | 
+			  line := (LarLine new
+							initialize: (width * (n - 1)) @ (val at: n)
+							with: (width * n) @ (val at: (n+1))) .
+			lines add: line ].
+		
+	self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterLine >> addPoints: values with: width [
+self pointsDefinition.
 	1 to: values size
 		do: [ :n  | 
 			| point |
@@ -82,6 +101,7 @@ LarPlotterLine >> addTicks [
 { #category : #'as yet unclassified' }
 LarPlotterLine >> addTicksLabel: valuesX with: valuesY [
 | tick amount |
+self tickLablesInitialize.
 lines isNil
 	ifTrue:[^self].
 	self tickLablesInitialize.
@@ -162,10 +182,23 @@ LarPlotterLine >> ensureDataHeight [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterLine >> ensureDataHeight: values [
+| rule newDict val data|
+	rule := LARLineSpecUpdaterRule for: dict.
+	newDict := rule updateDictHeight: values.
+
+	dict := newDict.
+	val := (dict at: 'data') at: 'values'.
+	data := OrderedCollection new. 
+	data := val doWithIndex: [ :each :i | data add: each ].
+	^ data
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterLine >> ensureDataWidth: aNumber [
 	| width rule newDict |
-	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARLineSpecUpdaterRule for: dict.
-	newDict := rule updateDictWidth.
+	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARBarSpecUpdaterRule for: dict.
+	newDict := rule updateDictWidth: aNumber.
 	dict := newDict.
 	^dict at: 'data' at: 'width' ].
      
@@ -199,10 +232,10 @@ LarPlotterLine >> gtLiveFor: aView [
 LarPlotterLine >> initialize [
 announcer := Announcer new.
 self borders: false.
-self tickLablesInitialize.
-self tickInitialize.
-self linesDefinition.
-self pointsDefinition.
+self noDict. 
+
+
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -260,6 +293,20 @@ LarPlotterLine >> lines: anObject [
 { #category : #'as yet unclassified' }
 LarPlotterLine >> linesDefinition [
 lines:=  OrderedCollection new. 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterLine >> noDict [
+	| jsonString |
+	jsonString := '{
+"data": {
+    
+  },
+  "encoding": {
+   
+  }
+}'.
+	dict := STONJSON fromString: jsonString
 ]
 
 { #category : #'as yet unclassified' }

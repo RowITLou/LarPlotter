@@ -37,6 +37,27 @@ LARLineSpecUpdaterRule >> aggregation [
 	^dataPoints
 ]
 
+{ #category : #'as yet unclassified' }
+LARLineSpecUpdaterRule >> aggregation: values [
+	| collectTime timeData dataPoints  |
+	
+	timeData := self setup: values.
+
+	collectTime := OrderedCollection new.
+	timeData do: [ :y | collectTime add: OrderedCollection new ].
+	timeData
+		doWithIndex: [ :y :i | 
+			self data
+				do: [ :each | 
+					(each at: 'date') asDate asYear = y
+						ifTrue: [ (collectTime at: i) add: (each at: 'price') asInteger ] ] ].
+
+
+	dataPoints := OrderedCollection new.
+	collectTime do: [ :y | dataPoints add: (y averageIfEmpty: [ 0 ]) ].
+	^dataPoints
+]
+
 { #category : #accessing }
 LARLineSpecUpdaterRule >> data [
 	^ data
@@ -134,6 +155,47 @@ LARLineSpecUpdaterRule >> updateDictHeight [
 	dataPoint do: [ :each | modifiedData add: each * scale ].
 	minus := 0.
 	min := dataPoint min.
+	dict
+		at: 'data'
+		at: 'change'
+		put: 0. 
+
+"	min > 50 ifTrue: [ minus := min - 30.
+	dict
+		at: 'data'
+		at: 'change'
+		put: 1. ]."
+	minus := minus * scale.
+
+	dictionary := Dictionary new.
+
+	modifiedData
+		doWithIndex: [ :each :i | dictionary at: (i) put: each - minus ].
+	dict
+		at: 'data'
+		at: 'values'
+		put: dictionary.
+		
+	
+	^ dict
+]
+
+{ #category : #'as yet unclassified' }
+LARLineSpecUpdaterRule >> updateDictHeight: values [
+	| max scale modifiedData min minus dictionary |
+	
+	"dataPoint := self aggregation: values.	"
+	
+	max := values max.
+	scale := 500 / max.
+	(dict
+		at: 'data')
+		at: 'scale'
+		put: scale.
+	modifiedData := OrderedCollection new.
+	values do: [ :each | modifiedData add: each * scale ].
+	minus := 0.
+	min := values min.
 	dict
 		at: 'data'
 		at: 'change'
