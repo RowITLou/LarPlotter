@@ -179,12 +179,12 @@ LarPlotterBarExamples >> values [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample1 [
-<gtExample>
+	<gtExample>
 	| json dict plotter |
 	json := self barChartSpecChange.
 	dict := self specExample.
-	
-		dict 
+
+	dict
 		at: 'data'
 		at: 'bars'
 		put: json.
