@@ -178,6 +178,13 @@ LarPlotterBar >> dict: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> dictVega: anObject [
+
+	dict := anObject.
+	self initializeVegaFor
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> ensureAmountTicksY [
 	| rule newDict |
 	rule := LARTickSpecUpdaterRule for: dict.

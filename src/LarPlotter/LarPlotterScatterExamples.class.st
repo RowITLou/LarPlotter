@@ -5,22 +5,6 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-LarPlotterScatterExamples >> addPoints [
-<gtExample>
-
-^self newGraph addPoints: self values.
-
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatterExamples >> addTitel [
-<gtExample>
-
-^self addPoints  title: 'This is a title'. 
-
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterScatterExamples >> newGraph [
 <gtExample>
 

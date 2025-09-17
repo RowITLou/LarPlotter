@@ -127,8 +127,10 @@ LarPlotterBarExamples >> specExample [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> testSpec [
-<gtExample>
-^self newGraph specVega: (self barChartSpec).
+	<gtExample>
+	|  |
+	^self newGraph dictVega: self barChartSpec.
+	
 ]
 
 { #category : #'as yet unclassified' }
@@ -165,6 +167,11 @@ LarPlotterBarExamples >> topicMapData [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> url [
+^'https://vega.github.io/vega-lite/examples/'
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> values [
 ^ #(20 40 60 80 10 90 70 50 30 10).
 
@@ -184,4 +191,106 @@ LarPlotterBarExamples >> vegaExample1 [
 	plotter := LarPlotterBar new.
 	plotter dict: dict.
 	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaExample2 [
+<gtExample>
+	| json dict plotter oldDict |
+	json := self vegaSpecData2.
+	dict := self specExample.
+	oldDict := self vegaSpec2.
+
+	dict
+		at: 'data'
+		at: 'bars'
+		put: json.
+	dict at: 'encoding' put: (oldDict at: 'encoding'). 
+	plotter := LarPlotterBar new.
+	plotter dict: dict.
+	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaSpec2 [
+	| jsonString |
+	jsonString := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "data/barley.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"aggregate": "sum", "field": "yield"},
+    "y": {"field": "variety"},
+    "color": {"field": "site"}
+  }
+}'.
+^STONJSON fromString: jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaSpec3 [
+	| jsonString |
+	jsonString := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "data/seattle-weather.csv"},
+  "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+  "encoding": {
+    "x": {"timeUnit": "month", "field": "date", "type": "ordinal"},
+    "y": {"aggregate": "count"},
+    "color": {"field": "weather"}
+  }
+}'.
+^STONJSON fromString: jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaSpecData2 [
+	<gtExample>
+	| urlNew segments fileName file jsonData transformation spec json variety|
+	spec := self vegaSpec2.
+	urlNew := (spec at: 'data' at: 'url') addedToZnUrl: self url asZnUrl.
+	segments := ((self vegaSpec2 at: 'data') at: 'url') findTokens: '/'.
+	fileName := segments last.
+	(FileLocator downloads / fileName) ensureDelete.
+	ZnClient new
+		url: urlNew;
+		signalProgress: true;
+		downloadTo: FileLocator downloads.
+	file := (FileLocator downloads / fileName) contents.
+	jsonData := STONJSON fromString: file.
+
+	transformation := OrderedCollection new.
+	jsonData do: [ :d | transformation add: (d at: 'variety') ].
+	transformation := transformation removeDuplicates.
+
+
+	
+	json := transformation
+		 collect: [ :aField | 
+				variety := OrderedCollection new. 
+				jsonData do: [ :aStyle | (aStyle includes: aField )
+				ifTrue: [variety add: aStyle]].
+				 {'name' -> 'A'.
+					'object' -> aField.
+					'element'
+						-> (variety collect: [ :d | (d at: 'site') -> (d at: 'yield')]) asDictionary} asDictionary ].
+					^json asArray
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaSpecData3 [
+| urlNew segments fileName file jsonData filter transformation |
+	urlNew := ((self vegaSpec3 at: 'data') at: 'url') addedToZnUrl: self url asZnUrl.
+	segments := ((self vegaSpec3 at: 'data') at: 'url') findTokens: '/'.
+	fileName := segments last.
+	(FileLocator downloads / fileName) ensureDelete.
+	ZnClient new
+		url: urlNew;
+		signalProgress: true;
+		downloadTo: FileLocator downloads.
+	file := (FileLocator downloads / fileName) contents.
+	jsonData := (CSV2JSON for: file) jsonObject.
+	filter := (((self vegaSpec3 at: 'transform') first at: 'filter') findTokens: '===') last
+			copyWithout: $'.
+	transformation := OrderedCollection new.
 ]
