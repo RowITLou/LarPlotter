@@ -40,12 +40,24 @@ GtBarChartSpec >> barChartTemplateString [
 ]
 
 { #category : #views }
+GtBarChartSpec >> gtJsonObjectFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'JSON object';
+		priority: 10;
+		object: [ self json asGtJson ];
+		view: #gtJsonObjectFor:context:
+]
+
+{ #category : #views }
 GtBarChartSpec >> gtJsonStringFor: aView [
 	<gtView>
 	^ aView forward
 		title: 'JSON string';
+		priority: 20;
 		object: [ self json asGtJson ];
-		view: #gtJsonStringFor:
+		view: #gtJsonStringFor:;
+		actionUpdateButton
 ]
 
 { #category : #accessing }
