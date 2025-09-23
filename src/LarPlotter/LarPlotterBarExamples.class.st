@@ -174,7 +174,7 @@ LarPlotterBarExamples >> topicMapChart [
 	| plotter dict |
 	dict := self topicMapData .
 	plotter:= LarPlotterBar new.
-	plotter dict: dict.
+	plotter spec: dict.
 	^plotter
 ]
 
@@ -194,8 +194,8 @@ LarPlotterBarExamples >> topicMapData [
 								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p kind = aStyle ]) size ])
 								asDictionary} asDictionary ].
 
-	dict
-		at: 'data'
+	(dict
+		at: 'data')
 		at: 'bars'
 		put: json.
 	^ dict
@@ -234,19 +234,12 @@ LarPlotterBarExamples >> vegaExample1 [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample2 [
-<gtExample>
-	| json dict plotter oldDict |
-	json := self vegaSpecData2.
-	dict := self specExample.
-	oldDict := self vegaSpec2.
-
-	dict
-		at: 'data'
-		at: 'bars'
-		put: json.
-	dict at: 'encoding' put: (oldDict at: 'encoding'). 
+	<gtExample>
+	|  plotter spec |
+	
+	spec := self vegaSpec2.	
 	plotter := LarPlotterBar new.
-	plotter dict: dict.
+	plotter spec: spec.
 	^ plotter
 ]
 
@@ -263,7 +256,7 @@ LarPlotterBarExamples >> vegaSpec2 [
     "color": {"field": "site"}
   }
 }'.
-^STONJSON fromString: jsonString
+^ jsonString
 ]
 
 { #category : #'as yet unclassified' }

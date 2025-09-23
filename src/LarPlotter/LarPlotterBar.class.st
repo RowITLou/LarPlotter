@@ -125,6 +125,32 @@ LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 	self notifyUpdate
 ]
 
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> aggregateData: fieldOne with: fieldTwo [
+	| transformation json jsonData dictw|
+	transformation := OrderedCollection new.
+	dictw := dict.
+	jsonData := ((dict at: 'data') at: 'values').
+	jsonData do: [ :d | transformation add: (d at: fieldTwo)].
+	transformation := transformation removeDuplicates.
+
+
+
+	json := transformation
+			collect: [ :aField | 
+				| variety |
+				variety := OrderedCollection new.
+				
+				jsonData
+					do: [ :aStyle | (aStyle includes: aField) ifTrue: [ variety add: (aStyle at: fieldOne) ] ].
+					
+				{
+					fieldOne -> (variety sumNumbers).
+					fieldTwo -> aField.} asDictionary ] .
+  (dict at: 'data' at: 'values' put: json asOrderedCollection).
+  
+]
+
 { #category : #accessing }
 LarPlotterBar >> announcer [
 	^ announcer
@@ -192,7 +218,7 @@ LarPlotterBar >> ensureBarsHeight: values [
 	values size = 1
 	ifTrue: [max := values at: 1]
 	ifFalse:[max := values max].
-	max > 450 & (max < 550) ifTrue: [ ^ values ].
+	"max > 450 & (max < 550) ifTrue: [ ^ values ]."
 	rule := LARBarSpecUpdaterRule for: dict.
 	newDict := rule updateDictHeight: values.
 
@@ -233,7 +259,7 @@ LarPlotterBar >> getDataFromJsonFile [
 	file := (FileLocator downloads / fileName) contents.
 	jsonData := STONJSON fromString: file.
 	dict at: 'data' at: 'values' put: jsonData. 
-	^jsonData
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -274,19 +300,43 @@ LarPlotterBar >> initializeDict [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initializeFor [
-	| data axisX axisy   |
-    ((dict at: 'data') includesKey: 'url')
-    ifTrue: [self getDataFromJsonFile].
-	data := ((dict at: 'data') at: 'values') collect: #values.
-	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
-	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
+	| axisX axisy data    |
+	((dict at: 'data') includesKey: 'url') ifTrue: [ self getDataFromJsonFile ].
 
-	self title: 'This is a title'.
+
+
+
+
+	((dict at: 'encoding' at: 'x') includesKey: 'aggregate')
+		ifTrue: [ self
+				aggregateData: (((dict at: 'encoding') at: 'x') at: 'field')
+				with: (((dict at: 'encoding') at: 'y') at: 'field') ].
+
+	((dict at: 'encoding' at: 'y') includesKey: 'aggregate')
+		ifTrue: [ self
+				aggregateData: (((dict at: 'encoding') at: 'y') at: 'field')
+				with: (((dict at: 'encoding') at: 'x') at: 'field') ].
+
+	((dict at: 'encoding' at: 'x') includesKey: 'titel')
+		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'titel' ]
+		ifFalse: [ axisX := ((dict at: 'encoding') at: 'x') at: 'field' ].
+		
 	
+	
+	
+	((dict at: 'encoding' at: 'x') includesKey: 'titel')
+		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'titel'.
+			]
+		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field'.].
+
+	data := ((dict at: 'data') at: 'values') collect: #values.
+	
+	self title: 'This is a title'.
+
 	self addBars: (data collect: [ :each |each last ]).
 	self addAxisLabel: axisX with: axisy.
-	self addTicks. 
-	self addTicksLabel: (data collect: [ :each | each first ]) with: self space.
+	self addTicks.
+	self addTicksLabel: (data collect: [ :each |each first ]) with: self space
 ]
 
 { #category : #accessing }
