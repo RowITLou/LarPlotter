@@ -579,6 +579,40 @@
 							"caption" : "",
 							"previewHeight" : 300,
 							"reference" : ""
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-23T11:09:15.501+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-23T11:09:15.501+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "yIn0Btb7DQCkMwLoDzaoAg=="
+							},
+							"code" : ""
 						}
 					]
 				},
@@ -785,17 +819,54 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-18T09:38:36.783442+02:00"
+									"dateAndTimeString" : "2025-09-18T09:38:55.576934+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "7GmTLXD7DQCHW1tCDa/XHA=="
 							},
-							"url" : "",
+							"url" : "attachments/1pgzaqam7syyamujvml1dzrl6/visualization.png",
 							"caption" : "",
-							"previewHeight" : 0,
+							"previewHeight" : 300,
 							"reference" : ""
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-23T11:09:33.009+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-23T11:09:33.009+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "aLD/B9b7DQCkNZmgDzaoAg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
 						}
 					]
 				},

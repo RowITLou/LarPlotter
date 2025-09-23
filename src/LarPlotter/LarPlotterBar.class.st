@@ -178,13 +178,6 @@ LarPlotterBar >> dict: anObject [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> dictVega: anObject [
-
-	dict := anObject.
-	self initializeVegaFor
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> ensureAmountTicksY [
 	| rule newDict |
 	rule := LARTickSpecUpdaterRule for: dict.
@@ -227,6 +220,23 @@ LarPlotterBar >> ensureBarsWidth: aNumber [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> getDataFromJsonFile [
+	| urlNew segments fileName file jsonData |
+	urlNew := (dict at: 'data' at: 'url') addedToZnUrl: self url asZnUrl.
+	segments := ((dict at: 'data') at: 'url') findTokens: '/'.
+	fileName := segments last.
+	(FileLocator downloads / fileName) ensureDelete.
+	ZnClient new
+		url: urlNew;
+		signalProgress: true;
+		downloadTo: FileLocator downloads.
+	file := (FileLocator downloads / fileName) contents.
+	jsonData := STONJSON fromString: file.
+	dict at: 'data' at: 'values' put: jsonData. 
+	^jsonData
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> gtLiveFor: aView [
 	<gtView>
 	^aView explicit
@@ -258,53 +268,15 @@ self barsDefinition. "
 { #category : #accessing }
 LarPlotterBar >> initializeDict [
 	<brainstorming>
-
-	"| data axisX axisy |"
-	dict := self spec.
+	dict := STONJSON fromString: self spec.
 	self initializeFor
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initializeFor [
-	| data axisX axisy values  |
-	values := (dict at: 'data') at: 'bars'.
-	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
-	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
-
-	self title: 'This is a title'.
-	bars := OrderedCollection new.
-	data := values collect: [ :each | (each at: 'element') values ].
-	
-	data
-		do: [ :each | each size == 1 ifTrue: [ bars add: (each at: 1) ] 
-		ifFalse: [ bars add: each sumNumbers ] ].
-	dict
-		at: 'data'
-		at: 'values'
-		put: bars.
-
-	self addBars: bars.
-	"self addObjects: (values collect: [ :each | each at: 'object' ])."
-	self addData: (values collect: [ :each | (each at: 'element') keys ]).
-	self addAxisLabel: axisX with: axisy.
-	self addTicks.
-	self
-		addTicksLabel: (values collect: [ :each | each at: 'name' ])
-		with: self space
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> initializeVegaDict [
-	<brainstorming>
-
-	"| data axisX axisy |"
-	dict := STONJSON fromString: self spec.
-	self initializeVegaFor
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> initializeVegaFor [
-	| data axisX axisy |
+	| data axisX axisy   |
+    ((dict at: 'data') includesKey: 'url')
+    ifTrue: [self getDataFromJsonFile].
 	data := ((dict at: 'data') at: 'values') collect: #values.
 	axisX := ((dict at: 'encoding') at: 'x') at: 'field'.
 	axisy := ((dict at: 'encoding') at: 'y') at: 'field'.
@@ -314,7 +286,7 @@ LarPlotterBar >> initializeVegaFor [
 	self addBars: (data collect: [ :each |each last ]).
 	self addAxisLabel: axisX with: axisy.
 	self addTicks. 
-	self addTicksLabel: (data collect: [ :each | each first ]) with: self space. 
+	self addTicksLabel: (data collect: [ :each | each first ]) with: self space.
 ]
 
 { #category : #accessing }
@@ -397,12 +369,6 @@ LarPlotterBar >> spec: aJSONString [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> specVega: aJSONString [
-	spec := aJSONString.
-	self initializeVegaDict
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> tickInitialize [
 ticksX:= OrderedCollection new. 
 ticksY := OrderedCollection new.
@@ -469,4 +435,9 @@ LarPlotterBar >> title: text [
 	title := LarTitel new initialize: text. 
 	self notifyUpdate
 	
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> url [
+^'https://vega.github.io/vega-lite/examples/'
 ]

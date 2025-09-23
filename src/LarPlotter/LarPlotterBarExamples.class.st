@@ -52,23 +52,16 @@ LarPlotterBarExamples >> barChartSpec [
     "y": {"field": "b", "type": "quantitative"}
   }
 }'.
-	^ STONJSON fromString: jsonString
+	^jsonString
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> barChartSpecChange [
-	<gtExample>
-	| spec values bars |
-	spec := self barChartSpec.
-	values := spec at: 'data' at: 'values'.
-	bars := values
-			collect: [ :each | 
-				{'name' -> (each at: 'a').
-				  'object' -> (each at: 'b').
-					'element'
-						-> {(each at: 'a') -> ((each at: 'b') asInteger) } asDictionary
-								} asDictionary	 ].
-								^bars
+LarPlotterBarExamples >> bookPagesByKind [
+<gtExample>
+	| dict plotter |
+	dict := GtBarChartSpecExamples new gtBookPagesByKindBarChart asJsonString.	"dict := STONJSON fromString: dict. "
+	plotter := LarPlotterBar new.
+	^ plotter spec: dict
 ]
 
 { #category : #'as yet unclassified' }
@@ -87,6 +80,48 @@ LarPlotterBarExamples >> changeTitle [
 	plotter := (self changeFontTitle) .
 	plotter title setText: 'NewTitle'. 
 	^plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> colorSpec [
+	| jsonString |
+	jsonString := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "A bar chart that directly encodes color names in the data.",
+  "data": {
+    "values": [
+      {
+        "color": "red",
+        "b": 28
+      },
+      {
+        "color": "green",
+        "b": 55
+      },
+      {
+        "color": "blue",
+        "b": 43
+      }
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "color",
+      "type": "nominal"
+    },
+    "y": {
+      "field": "b",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "color",
+      "type": "nominal",
+      "scale": null
+    }
+  }
+}'.
+^jsonString
 ]
 
 { #category : #'as yet unclassified' }
@@ -122,14 +157,14 @@ LarPlotterBarExamples >> specExample [
     "y": {"field": "b"}
   }
 }'.
-	^STONJSON fromString: jsonString
+	^ jsonString
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> testSpec [
 	<gtExample>
 	|  |
-	^self newGraph dictVega: self barChartSpec.
+	^self newGraph spec: self barChartSpec.
 	
 ]
 
@@ -178,18 +213,22 @@ LarPlotterBarExamples >> values [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaColorChart [
+<gtExample>
+	| spec plotter |
+	spec := self colorSpec.
+	plotter := LarPlotterBar new.
+	plotter spec: spec.
+	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample1 [
 	<gtExample>
-	| json dict plotter |
-	json := self barChartSpecChange.
-	dict := self specExample.
-
-	dict
-		at: 'data'
-		at: 'bars'
-		put: json.
+	|   plotter spec |
+	spec := self barChartSpec.
 	plotter := LarPlotterBar new.
-	plotter dict: dict.
+	plotter spec: spec.
 	^ plotter
 ]
 
