@@ -1,0 +1,113 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-09-24T13:29:07.07+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-09-24T13:42:08.482+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MBj5GOz7DQCaoGG9A2S63w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "In this last iterarion I have been working on the examples. The examples for GT data Oscar gave me are now working and I have implemented some more examples from vega lite.\r\n[[Transform examples into BarCharts]]\r\nWhat is allowed in the json string. \r\n- aggregation: either sum up data or count data\r\n- titel: no such example but I will add a method such that this can be added manually. \r\n- transformation: filter data (There is still a bug, but will be working soon)\r\n- get data from a url (right now just from a json file)\r\n\r\n{{gtMethod:LarPlotterBarExamples>>vegaExample1}}\r\n{{gtMethod:LarPlotterBarExamples>>vegaExample2}}\r\n{{gtMethod:LarPlotterBarExamples>>vegaExample3}}\r\n{{gtMethod:LarPlotterBarExamples>>vegaExample4}}\r\n{{gtMethod:LarPlotterBarExamples>>vegaColorChart}}\r\n{{gtMethod:LarPlotterBarExamples>>bookPagesByKind}}\r\n\r\nwhat I'm still working on:\r\n- adjustable angle for the labelticks. \r\n- exchangable x and y axis"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-09-24T13:35:45.178+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-09-24T13:37:07.327+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kL2zMOz7DQCnoBDkA2S63w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "for next week I will be working on the adjustable label ticks, the exchangable axis and on eliminating the slot variables in the plotter class (Question)"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-09-24T13:29:07.006+02:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-09-24T13:29:07.006+02:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Report 24.09.25"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "481af818-ecfb-0d00-9a9f-d2d00364badf"
+	}
+}
