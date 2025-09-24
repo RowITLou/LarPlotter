@@ -84,8 +84,8 @@ LarPlotterBar >> addTicks [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addTicksLabel: valuesX [
 	| tick amount |
-	bars isNil
-	ifTrue:[^self].
+	"bars isNil
+	ifTrue:[^self]."
 	self tickLablesInitialize.
 	1
 		to: valuesX size
@@ -126,10 +126,35 @@ LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> aggregateData: fieldOne with: fieldTwo [
-	| transformation json jsonData dictw|
+LarPlotterBar >> aggregateDataCount: fieldOne [ 
+| transformation json jsonData |
 	transformation := OrderedCollection new.
-	dictw := dict.
+	
+	jsonData := ((dict at: 'data') at: 'values').
+	jsonData do: [ :d | transformation add: (d at: fieldOne)].
+	transformation := transformation removeDuplicates.
+
+
+
+	json := transformation
+			collect: [ :aField | 
+				| variety |
+				variety := OrderedCollection new.
+				
+				jsonData
+					do: [ :aStyle | (aStyle includes: aField) ifTrue: [ variety add: aStyle ] ].
+					
+				{fieldOne-> aField.
+					'count' -> (variety size).
+					} asDictionary ] .
+  (dict at: 'data' at: 'values' put: (json asArray)).
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> aggregateDataSum: fieldOne with: fieldTwo [
+	| transformation json jsonData |
+	transformation := OrderedCollection new.
+	
 	jsonData := ((dict at: 'data') at: 'values').
 	jsonData do: [ :d | transformation add: (d at: fieldTwo)].
 	transformation := transformation removeDuplicates.
@@ -144,10 +169,29 @@ LarPlotterBar >> aggregateData: fieldOne with: fieldTwo [
 				jsonData
 					do: [ :aStyle | (aStyle includes: aField) ifTrue: [ variety add: (aStyle at: fieldOne) ] ].
 					
-				{
+				{fieldTwo -> aField.
 					fieldOne -> (variety sumNumbers).
-					fieldTwo -> aField.} asDictionary ] .
-  (dict at: 'data' at: 'values' put: json asOrderedCollection).
+					} asDictionary ] .
+  (dict at: 'data' at: 'values' put: (json asArray)).
+  
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> aggregateDataX [
+	
+	(((dict at: 'encoding' at: 'x') at: 'aggregate') = 'sum')
+	ifTrue:[self aggregateDataSum: (((dict at: 'encoding') at: 'x') at: 'field')
+				with: (((dict at: 'encoding') at: 'y') at: 'field')]
+	ifFalse:[self aggregateDataCount: (((dict at: 'encoding') at: 'y') at: 'field')]
+  
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> aggregateDataY [
+	(((dict at: 'encoding' at: 'y') at: 'aggregate') = 'sum')
+	ifTrue:[self aggregateDataSum: (((dict at: 'encoding') at: 'y') at: 'field')
+				with: (((dict at: 'encoding') at: 'x') at: 'field')]
+	ifFalse:[self aggregateDataCount: (((dict at: 'encoding') at: 'x') at: 'field')]
   
 ]
 
@@ -300,43 +344,47 @@ LarPlotterBar >> initializeDict [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initializeFor [
-	| axisX axisy data    |
+	| axisX axisy data  int |
 	((dict at: 'data') includesKey: 'url') ifTrue: [ self getDataFromJsonFile ].
 
-
-
-
+	int := false.
+	
+	(dict includesKey: 'transform') 
+	ifTrue: [ self transform: ((dict at: 'transform'  first) at: 'filter')  ].
 
 	((dict at: 'encoding' at: 'x') includesKey: 'aggregate')
-		ifTrue: [ self
-				aggregateData: (((dict at: 'encoding') at: 'x') at: 'field')
-				with: (((dict at: 'encoding') at: 'y') at: 'field') ].
+		ifTrue: [ self aggregateDataX ].
 
 	((dict at: 'encoding' at: 'y') includesKey: 'aggregate')
-		ifTrue: [ self
-				aggregateData: (((dict at: 'encoding') at: 'y') at: 'field')
-				with: (((dict at: 'encoding') at: 'x') at: 'field') ].
+		ifTrue: [ self aggregateDataY ].
 
-	((dict at: 'encoding' at: 'x') includesKey: 'titel')
-		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'titel' ]
+	data := (dict at: 'data' at: 'values') collect: #values.
+
+	(data first) first isString 
+	ifTrue: [int:= true].
+
+	((dict at: 'encoding' at: 'x') includesKey: 'title')
+		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'title' ]
 		ifFalse: [ axisX := ((dict at: 'encoding') at: 'x') at: 'field' ].
+
+	((dict at: 'encoding' at: 'y') includesKey: 'title')
+		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'title' ]
+		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field' ].
+
+	(dict includesKey: 'title')
+		ifTrue: [ self title: (dict at: 'title') ]
+		ifFalse: [ self title: 'This is a title' ].
 		
-	
-	
-	
-	((dict at: 'encoding' at: 'x') includesKey: 'titel')
-		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'titel'.
-			]
-		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field'.].
-
-	data := ((dict at: 'data') at: 'values') collect: #values.
-	
-	self title: 'This is a title'.
-
-	self addBars: (data collect: [ :each |each last ]).
+	self addBars: (data collect: [ :each | int 
+	ifTrue:[each last] 
+	ifFalse:[each first]]).
 	self addAxisLabel: axisX with: axisy.
 	self addTicks.
-	self addTicksLabel: (data collect: [ :each |each first ]) with: self space
+	self
+		addTicksLabel: (data collect: [ :each | int 
+	ifTrue:[(each first) asString] 
+	ifFalse:[(each last) asString ]])
+		with: self space
 ]
 
 { #category : #accessing }
@@ -485,6 +533,19 @@ LarPlotterBar >> title: text [
 	title := LarTitel new initialize: text. 
 	self notifyUpdate
 	
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> transform: anObject [
+	| segment key jsonData json value |
+	segment := (anObject findTokens: '==') first.
+	value := (anObject findTokens: '==') last.
+	key := (segment findTokens: '.') last.
+
+	jsonData := (dict at: 'data') at: 'values'.
+	json := Array new.
+	json := jsonData collect: [ :d |  (d at: key) asString == value].
+	dict at: 'data' at: 'values' put: json. 
 ]
 
 { #category : #'as yet unclassified' }

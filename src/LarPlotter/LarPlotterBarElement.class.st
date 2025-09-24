@@ -77,7 +77,7 @@ graphElement  transform
 LarPlotterBarElement >> addTicksLabelX: labelsX [
 	| tickXcontainer aNumber width |
 	aNumber := labelsX size.
-	aNumber * 65 < 660 & (aNumber * 65 > 600) ifTrue: [ ^ 65 ].
+	"aNumber * 65 < 660 & (aNumber * 65 > 600) ifTrue: [ ^ 65 ]."
 	width := 600 / aNumber.
 	labelsX
 		do: [ :tickXLabel | 

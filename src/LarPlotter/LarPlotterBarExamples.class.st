@@ -39,6 +39,7 @@ LarPlotterBarExamples >> barChartSpec [
 	jsonString := '{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A simple bar chart with embedded data.",
+  "title": "A new title",
   "data": {
     "values": [
       {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
@@ -244,6 +245,28 @@ LarPlotterBarExamples >> vegaExample2 [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaExample3 [
+	<gtExample>
+	|  plotter spec |
+	
+	spec := self vegaSpec3.	
+	plotter := LarPlotterBar new.
+	plotter spec: spec.
+	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaExample4 [
+	<gtExample>
+	|  plotter spec |
+	
+	spec := self vegaSpec4.	
+	plotter := LarPlotterBar new.
+	plotter spec: spec.
+	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaSpec2 [
 	| jsonString |
 	jsonString := '{
@@ -264,65 +287,36 @@ LarPlotterBarExamples >> vegaSpec3 [
 	| jsonString |
 	jsonString := '{
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "data": {"url": "data/seattle-weather.csv"},
-  "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+  "description": "A bar chart showing the US population distribution of age groups in 2000.",
+  "height": {"step": 17},
+  "data": { "url": "data/population.json"},
+  "transform": [{"filter": "datum.year == 2000"}],
+  "mark": "bar",
   "encoding": {
-    "x": {"timeUnit": "month", "field": "date", "type": "ordinal"},
-    "y": {"aggregate": "count"},
-    "color": {"field": "weather"}
+    "y": {"field": "age"},
+    "x": {
+      "aggregate": "sum", "field": "people",
+      "title": "population"
+    }
+  }
+}
+'.
+^jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaSpec4 [
+	| jsonString |
+	jsonString := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "height": 250,
+  "data": {"url": "data/cars.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Origin"},
+    "y": {"aggregate": "count", "title": "Number of Cars"}
   }
 }'.
-^STONJSON fromString: jsonString
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarExamples >> vegaSpecData2 [
-	<gtExample>
-	| urlNew segments fileName file jsonData transformation spec json variety|
-	spec := self vegaSpec2.
-	urlNew := (spec at: 'data' at: 'url') addedToZnUrl: self url asZnUrl.
-	segments := ((self vegaSpec2 at: 'data') at: 'url') findTokens: '/'.
-	fileName := segments last.
-	(FileLocator downloads / fileName) ensureDelete.
-	ZnClient new
-		url: urlNew;
-		signalProgress: true;
-		downloadTo: FileLocator downloads.
-	file := (FileLocator downloads / fileName) contents.
-	jsonData := STONJSON fromString: file.
-
-	transformation := OrderedCollection new.
-	jsonData do: [ :d | transformation add: (d at: 'variety') ].
-	transformation := transformation removeDuplicates.
-
-
-	
-	json := transformation
-		 collect: [ :aField | 
-				variety := OrderedCollection new. 
-				jsonData do: [ :aStyle | (aStyle includes: aField )
-				ifTrue: [variety add: aStyle]].
-				 {'name' -> 'A'.
-					'object' -> aField.
-					'element'
-						-> (variety collect: [ :d | (d at: 'site') -> (d at: 'yield')]) asDictionary} asDictionary ].
-					^json asArray
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarExamples >> vegaSpecData3 [
-| urlNew segments fileName file jsonData filter transformation |
-	urlNew := ((self vegaSpec3 at: 'data') at: 'url') addedToZnUrl: self url asZnUrl.
-	segments := ((self vegaSpec3 at: 'data') at: 'url') findTokens: '/'.
-	fileName := segments last.
-	(FileLocator downloads / fileName) ensureDelete.
-	ZnClient new
-		url: urlNew;
-		signalProgress: true;
-		downloadTo: FileLocator downloads.
-	file := (FileLocator downloads / fileName) contents.
-	jsonData := (CSV2JSON for: file) jsonObject.
-	filter := (((self vegaSpec3 at: 'transform') first at: 'filter') findTokens: '===') last
-			copyWithout: $'.
-	transformation := OrderedCollection new.
+^jsonString
 ]
