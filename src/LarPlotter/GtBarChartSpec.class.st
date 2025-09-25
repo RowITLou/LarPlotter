@@ -88,11 +88,11 @@ GtBarChartSpec >> values: aValuesArray andFields: aFieldsArray [
 	self assert: aValuesArray isArray.
 	self assert: aValuesArray isNotEmpty.
 	self assert: aValuesArray first isDictionary.
-	self assert: aValuesArray first size equals: 2.
+	"self assert: aValuesArray first size equals: 2."
 	self assert: aFieldsArray isArray.
 	self assert: aFieldsArray size equals: 2.
-	aValuesArray
-		do: [ :dict | self assert: dict keys asSet equals: aFieldsArray asSet ].
+	"aValuesArray
+		do: [ :dict | self assert: dict keys asSet equals: aFieldsArray asSet ]."
 	(self json at: 'data') at: 'values' put: aValuesArray.
 	((self json at: 'encoding') at: 'x') at: 'field' put: aFieldsArray first.
 	((self json at: 'encoding') at: 'y') at: 'field' put: aFieldsArray second
