@@ -52,9 +52,24 @@ GtBarChartSpec >> beStackedBarChart [
 	self template: self stackedBarChartTemplateString
 ]
 
+{ #category : #accessing }
+GtBarChartSpec >> color [
+	^ self encoding at: 'color'
+]
+
 { #category : #initialization }
 GtBarChartSpec >> colorScale: aColorScale [
-	^ (self json at: 'color') at: 'scale' put: aColorScale
+	^ self color at: 'scale' put: aColorScale
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> description [
+	^ self json at: 'description'
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> description: aText [
+	^ self json at: 'description' put: aText
 ]
 
 { #category : #accessing }
@@ -65,8 +80,7 @@ GtBarChartSpec >> encoding [
 { #category : #initialization }
 GtBarChartSpec >> fields: aFieldsArray [
 	self assert: aFieldsArray isArray.
-	self assert: aFieldsArray size equals: 2.	"aValuesArray
-		do: [ :dict | self assert: dict keys asSet equals: aFieldsArray asSet ]."
+	self assert: aFieldsArray size equals: 2.
 	self x at: 'field' put: aFieldsArray first.
 	self y at: 'field' put: aFieldsArray second
 ]
@@ -122,6 +136,11 @@ GtBarChartSpec >> stackedBarChartTemplateString [
 	"description" : "A template for a simple bar chart with embedded data.",
 	"mark" : "bar",
 	"encoding" : {
+		"color" : {
+			"type" : "nominal",
+			"field" : "yFieldName",
+			"scale" : { }
+		},
 		"x" : {
 			"axis" : {
 				"labelAngle" : 45
@@ -130,20 +149,23 @@ GtBarChartSpec >> stackedBarChartTemplateString [
 			"type" : "nominal"
 		},
 		"y" : {
-			"type" : "quantitative",
-			"aggregate" : "count"
+			"aggregate" : "count",
+			"type" : "quantitative"
 		}
 	},
 	"$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
-	"color" : {
-		"scale" : { },
-		"field" : "yFieldName",
-		"type" : "nominal"
-	},
 	"data" : {
 		"values" : [ ]
 	}
 }'
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> stackedFields: aFieldsArray [
+	self assert: aFieldsArray isArray.
+	self assert: aFieldsArray size equals: 2.
+	self x at: 'field' put: aFieldsArray first.
+	self color at: 'field' put: aFieldsArray second
 ]
 
 { #category : #accessing }
@@ -174,6 +196,8 @@ GtBarChartSpec >> values: aValuesArray [
 { #category : #initialization }
 GtBarChartSpec >> values: aValuesArray andFields: aFieldsArray [
 	self
+		deprecated: 'Send values: and fields: or stackedFields: seperately as cascaded messages.'.
+	self
 		values: aValuesArray;
 		fields: aFieldsArray
 ]
@@ -188,7 +212,17 @@ GtBarChartSpec >> xAxis [
 	^ self x at: 'axis'
 ]
 
+{ #category : #initialization }
+GtBarChartSpec >> xTitle: aTitle [
+	^ self x at: 'title' put: aTitle
+]
+
 { #category : #accessing }
 GtBarChartSpec >> y [
 	^ self encoding at: 'y'
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> yTitle: aTitle [
+	^ self y at: 'title' put: aTitle
 ]

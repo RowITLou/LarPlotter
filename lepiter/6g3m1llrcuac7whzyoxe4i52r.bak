@@ -426,14 +426,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-17T16:20:16.273578+02:00"
+									"dateAndTimeString" : "2025-09-26T10:43:07.001177+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "ee+1b2H7DQCvGv4QBcjmbA=="
 							},
-							"code" : "GtBarChartSpec new\r\tvalues: ((#LarPlotter asPackage classes asOrderedCollection sortedAs: #name) asArray\r\t\t\t\tcollect: [ :aClass | \r\t\t\t\t\t{'class' -> aClass name asString.\r\t\t\t\t\t\t'methods' -> aClass realClass methods size} asDictionary ])\r\t\tandFields: {'class'.\r\t\t\t\t'methods'};\r\tlabelAngle: -45;\r\tyourself"
+							"code" : "GtBarChartSpec new\r\tvalues: ((#LarPlotter asPackage classes asOrderedCollection sortedAs: #name) asArray\r\t\t\tcollect: [ :aClass | \r\t\t\t\t{'class' -> aClass name asString.\r\t\t\t\t\t'methods' -> aClass realClass methods size} asDictionary ]);\r\tfields: {'class'.\r\t\t\t'methods'};\r\tlabelAngle: -45;\r\tyourself"
 						},
 						{
 							"__type" : "textSnippet",
@@ -819,14 +819,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-18T09:38:55.576934+02:00"
+									"dateAndTimeString" : "2025-09-26T10:57:50.015845+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "7GmTLXD7DQCHW1tCDa/XHA=="
 							},
-							"url" : "attachments/1pgzaqam7syyamujvml1dzrl6/visualization.png",
+							"url" : "attachments/ar0uoj40jf1rtwmd8h303vro0/visualization.png",
 							"caption" : "",
 							"previewHeight" : 300,
 							"reference" : ""
@@ -981,6 +981,43 @@
 							"string" : "We collect the triples of pages with their fields and kinds. Note that the same page may appear multiple times in different fields."
 						},
 						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:00:13.196769+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:01:32.135257+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "+ponPxL8DQCl9ufoAG6XtQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We extract the data and use it prototype a JSON that works in the Vega-Lite editor by replacing parts of the working example with our data."
+						},
+						{
 							"__type" : "pharoSnippet",
 							"children" : {
 								"__type" : "snippets",
@@ -1049,6 +1086,43 @@
 							"code" : "combinedData asGtJson."
 						},
 						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:01:01.896937+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:02:21.590401+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "BN0OQxL8DQCpNyNmAG6XtQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We extend the {{gtClass:name=GtBarChartSpec}} with new methods to access and initialize the new parts we have to access, and we add a new template for stacked bar charts. We prototype the example:"
+						},
+						{
 							"__type" : "pharoSnippet",
 							"children" : {
 								"__type" : "snippets",
@@ -1062,7 +1136,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-25T09:01:39.299289+02:00"
+									"dateAndTimeString" : "2025-09-26T10:29:01.448108+02:00"
 								}
 							},
 							"editEmail" : {
@@ -1073,14 +1147,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-26T09:37:02.359537+02:00"
+									"dateAndTimeString" : "2025-09-26T10:44:30.912277+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "gOpKevz7DQCokxyHA3FZ1g=="
+								"uidString" : "IB+X0BH8DQChXGRoAG6XtQ=="
 							},
-							"code" : "GtBarChartSpec new\r\tbeStackedBarChart;\r\tvalues: fieldKindData\r\t\tandFields: {'field'.\r\t\t\t\t'kind'};\r\tlabelAngle: -45;\r\tyourself"
+							"code" : "GtBarChartSpec new\r\tbeStackedBarChart;\r\tvalues: fieldKindData;\r\tstackedFields: {'field'.\r\t\t\t'kind'};\r\tcolorScale: colorScale;\r\tlabelAngle: -45;\r\tyourself"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1096,7 +1170,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-25T09:10:59.232048+02:00"
+									"dateAndTimeString" : "2025-09-26T11:02:46.236097+02:00"
 								}
 							},
 							"editEmail" : {
@@ -1107,7 +1181,115 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-25T09:12:46.096149+02:00"
+									"dateAndTimeString" : "2025-09-26T11:03:08.702501+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "h+1GSRL8DQCvOvzmAG6XtQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We also add accessors to set the `decsription` and the `x` and `y` `title`s."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:02:26.708446+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:02:38.518193+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "+vscSBL8DQCuakkZAG6XtQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Finally we turn it into a proper example:"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T10:58:09.911666+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T10:58:24.20938+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "3pHOOBL8DQClzg3vAG6XtQ=="
+							},
+							"code" : "GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T10:58:01.374218+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T10:58:01.374218+02:00"
 								}
 							},
 							"uid" : {
@@ -1117,7 +1299,44 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*To do:* \nDo we need a subclass of {{gtClass:name=GtBarChartSpec}} for stacked bar charts? \nHow to build the `color` component? "
+							"string" : ""
+						},
+						{
+							"__type" : "pictureSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:03:56.635723+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T11:03:56.635723+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Zyp5TRL8DQCw2GmhAG6XtQ=="
+							},
+							"url" : "",
+							"caption" : "",
+							"previewHeight" : 0,
+							"reference" : ""
 						}
 					]
 				},
