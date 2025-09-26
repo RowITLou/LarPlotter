@@ -1181,7 +1181,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-26T11:03:08.702501+02:00"
+									"dateAndTimeString" : "2025-09-26T11:05:01.28867+02:00"
 								}
 							},
 							"uid" : {
@@ -1191,7 +1191,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We also add accessors to set the `decsription` and the `x` and `y` `title`s."
+							"string" : "We also add accessors to set the `description` and the `x` and `y` `title`s."
 						},
 						{
 							"__type" : "textSnippet",
