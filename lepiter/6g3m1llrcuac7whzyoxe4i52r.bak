@@ -994,7 +994,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-25T08:31:57.260254+02:00"
+									"dateAndTimeString" : "2025-09-26T09:14:57.943085+02:00"
 								}
 							},
 							"editEmail" : {
@@ -1005,14 +1005,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-25T08:59:55.685234+02:00"
+									"dateAndTimeString" : "2025-09-26T09:24:55.103268+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "+SkTEPz7DQCel0RDA3FZ1g=="
+								"uidString" : "h568xxD8DQCGmxoGA+Sncg=="
 							},
-							"code" : "fieldKindData := LeDatabase gtBook topicMap fieldNodes\r\t\tflatCollect: [ :fn | \r\t\t\tfn pageNodes\r\t\t\t\tcollect: [ :pn | \r\t\t\t\t\t{'field' -> fn field.\r\t\t\t\t\t\t'page' -> pn page title.\r\t\t\t\t\t\t'kind' -> pn kind} asDictionary ] ].\rfieldKindData asGtJson"
+							"code" : "tm := LeDatabase gtBook topicMap.\rfieldKindData := tm fieldNodes\r\t\tflatCollect: [ :fn | \r\t\t\tfn pageNodes\r\t\t\t\tcollect: [ :pn | \r\t\t\t\t\t{'field' -> fn field.\r\t\t\t\t\t\t'page' -> pn page title.\r\t\t\t\t\t\t'kind' -> pn kind} asDictionary ] ].\rcolorScale := {'domain' -> tm kindsStandardOrder.\r\t\t'range'\r\t\t\t-> (tm kindsStandardOrder\r\t\t\t\t\tcollect: [ :k | '#' , (tm kindPalette at: k) asHexString ])} asDictionary.\rcombinedData := {'scale ' -> colorScale.\r\t\t'data' -> fieldKindData} asDictionary"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T09:22:54.874734+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-09-26T09:24:27.864329+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qwYq5BD8DQCIHr2BA+Sncg=="
+							},
+							"code" : "combinedData asGtJson."
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1039,14 +1073,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-25T09:02:31.444731+02:00"
+									"dateAndTimeString" : "2025-09-26T09:37:02.359537+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "gOpKevz7DQCokxyHA3FZ1g=="
 							},
-							"code" : " GtBarChartSpec new\r\t\t\tvalues: fieldKindData\r\t\t\t\tandFields: {'field'.\r\t\t\t\t\t\t'kind'};\r\t\t\tlabelAngle: -45;\r\t\t\tyourself."
+							"code" : "GtBarChartSpec new\r\tbeStackedBarChart;\r\tvalues: fieldKindData\r\t\tandFields: {'field'.\r\t\t\t\t'kind'};\r\tlabelAngle: -45;\r\tyourself"
 						},
 						{
 							"__type" : "textSnippet",
@@ -1073,7 +1107,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-25T09:12:10.548123+02:00"
+									"dateAndTimeString" : "2025-09-25T09:12:46.096149+02:00"
 								}
 							},
 							"uid" : {
@@ -1083,7 +1117,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "*To do:* \nDo we need a subclass of {{gtClass:name=GtBarChartSpec}} for stacked bar charts? \nHow to build the `color` "
+							"string" : "*To do:* \nDo we need a subclass of {{gtClass:name=GtBarChartSpec}} for stacked bar charts? \nHow to build the `color` component? "
 						}
 					]
 				},

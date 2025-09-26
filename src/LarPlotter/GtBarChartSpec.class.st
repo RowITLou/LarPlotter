@@ -5,7 +5,8 @@ Class {
 	#name : #GtBarChartSpec,
 	#superclass : #Object,
 	#instVars : [
-		'json'
+		'json',
+		'template'
 	],
 	#category : #'LarPlotter-Spec'
 }
@@ -15,28 +16,59 @@ GtBarChartSpec >> asJsonString [
 	^ STONJSON toStringPretty: self json
 ]
 
-{ #category : #accessing }
-GtBarChartSpec >> barChartTemplate [
-	<gtExample>
-	^ STONJSON fromString: self barChartTemplateString
-]
-
 { #category : #constants }
 GtBarChartSpec >> barChartTemplateString [
-	<gtExample>
+	"Basic template for a bar chart with data and fields to be rewritten."
 	^ '{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A template for a simple bar chart with embedded data.",
-  "data": {
-    "values": [
-    ]
-  },
-  "mark": "bar",
-  "encoding": {
-    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 45}},
-    "y": {"field": "b", "type": "quantitative"}
-  }
+	"description" : "A template for a simple bar chart with embedded data.",
+	"mark" : "bar",
+	"encoding" : {
+		"x" : {
+			"axis" : {
+				"labelAngle" : 45
+			},
+			"field" : "xFieldName",
+			"type" : "nominal"
+		},
+		"y" : {
+			"field" : "yFieldName",
+			"type" : "quantitative"
+		}
+	},
+	"$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
+	"data" : {
+		"values" : [ ]
+	}
 }'
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> beBarChart [
+	self template: self barChartTemplateString
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> beStackedBarChart [
+	self template: self stackedBarChartTemplateString
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> colorScale: aColorScale [
+	^ (self json at: 'color') at: 'scale' put: aColorScale
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> encoding [
+	^ self json at: 'encoding'
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> fields: aFieldsArray [
+	self assert: aFieldsArray isArray.
+	self assert: aFieldsArray size equals: 2.	"aValuesArray
+		do: [ :dict | self assert: dict keys asSet equals: aFieldsArray asSet ]."
+	self x at: 'field' put: aFieldsArray first.
+	self y at: 'field' put: aFieldsArray second
 ]
 
 { #category : #views }
@@ -60,14 +92,19 @@ GtBarChartSpec >> gtJsonStringFor: aView [
 		actionUpdateButton
 ]
 
+{ #category : #initialization }
+GtBarChartSpec >> initialize [
+	self beBarChart
+]
+
 { #category : #accessing }
 GtBarChartSpec >> json [
-	^ json ifNil: [ json := self barChartTemplate ]
+	^ json ifNil: [ json := STONJSON fromString: self template ]
 ]
 
 { #category : #accessing }
 GtBarChartSpec >> labelAngle [
-	^ (((self json at: 'encoding') at: 'x') at: 'axis') at: 'labelAngle'
+	^ self xAxis at: 'labelAngle'
 ]
 
 { #category : #initialization }
@@ -75,7 +112,49 @@ GtBarChartSpec >> labelAngle: aNumber [
 	self assert: aNumber isNumber.
 	self assert: aNumber <= 360.
 	self assert: aNumber >= -360.
-	(((self json at: 'encoding') at: 'x') at: 'axis') at: 'labelAngle' put: aNumber
+	self xAxis at: 'labelAngle' put: aNumber
+]
+
+{ #category : #constants }
+GtBarChartSpec >> stackedBarChartTemplateString [
+	"Basic template for a stacked bar chart with data and fields to be rewritten."
+	^ '{
+	"description" : "A template for a simple bar chart with embedded data.",
+	"mark" : "bar",
+	"encoding" : {
+		"x" : {
+			"axis" : {
+				"labelAngle" : 45
+			},
+			"field" : "xFieldName",
+			"type" : "nominal"
+		},
+		"y" : {
+			"type" : "quantitative",
+			"aggregate" : "count"
+		}
+	},
+	"$schema" : "https://vega.github.io/schema/vega-lite/v5.json",
+	"color" : {
+		"scale" : { },
+		"field" : "yFieldName",
+		"type" : "nominal"
+	},
+	"data" : {
+		"values" : [ ]
+	}
+}'
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> template [
+	^ template
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> template: aJsonTemplateString [
+	template := aJsonTemplateString.
+	json := nil
 ]
 
 { #category : #accessing }
@@ -84,16 +163,32 @@ GtBarChartSpec >> values [
 ]
 
 { #category : #initialization }
-GtBarChartSpec >> values: aValuesArray andFields: aFieldsArray [
+GtBarChartSpec >> values: aValuesArray [
 	self assert: aValuesArray isArray.
 	self assert: aValuesArray isNotEmpty.
 	self assert: aValuesArray first isDictionary.
 	"self assert: aValuesArray first size equals: 2."
-	self assert: aFieldsArray isArray.
-	self assert: aFieldsArray size equals: 2.
-	"aValuesArray
-		do: [ :dict | self assert: dict keys asSet equals: aFieldsArray asSet ]."
-	(self json at: 'data') at: 'values' put: aValuesArray.
-	((self json at: 'encoding') at: 'x') at: 'field' put: aFieldsArray first.
-	((self json at: 'encoding') at: 'y') at: 'field' put: aFieldsArray second
+	(self json at: 'data') at: 'values' put: aValuesArray
+]
+
+{ #category : #initialization }
+GtBarChartSpec >> values: aValuesArray andFields: aFieldsArray [
+	self
+		values: aValuesArray;
+		fields: aFieldsArray
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> x [
+	^ self encoding at: 'x'
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> xAxis [
+	^ self x at: 'axis'
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> y [
+	^ self encoding at: 'y'
 ]
