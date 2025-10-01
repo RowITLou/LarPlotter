@@ -27,7 +27,7 @@ LARTickSpecUpdaterRule >> updateDict [
 	min_ticks := 4.
 	max_ticks := 8.
 	scale := dict at: 'data' at: 'scale'.
-	arr := #(1 2 5 10 50 100 200  1000).
+	arr := #(1 2 5 10 50 100 200 1000 10000 100000 1000000 3000000 10000000).
 
 	num_ticks := (maxSpace/scale) / (idealSpace/scale). 
 

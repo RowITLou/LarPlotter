@@ -52,7 +52,7 @@ cont constraintsDo: [ :c |
 		c grid vertical alignCenter.
             c horizontal fitContent.
             c vertical fitContent ].
-	containerTickAndLabel addChild: (frame addChild: elementY).
+	containerTickAndLabel addChildFirst: (frame addChild: elementY).
 	
 	containerTickAndLabel addChildFirst: cont. 
 	containerTickAndLabel forceLayout. 
@@ -63,13 +63,21 @@ LarPlotterBarElement >> addBars: bars [
 bars do: [:bar|
 graphElement constraintsDo: [ :c |
 			c horizontal fitContent.
-			c vertical fitContent].
+			c vertical fitContent.
+			c accountTransformation.].
 graphElement addChildFirst: (bar asElement). ].
 graphElement forceLayout.
-graphElement  transform
+
+		"plotter turn
+ifTrue:["graphElement  transform
+  	
+		rotateBy: 270;
+		flipX;
+		apply.
+		"ifFalse:[graphElement  transform
   	
 		rotateBy: 180;
-		apply.
+		apply.]"
 
 ]
 
@@ -77,18 +85,26 @@ graphElement  transform
 LarPlotterBarElement >> addTicksLabelX: labelsX [
 	| tickXcontainer aNumber width |
 	aNumber := labelsX size.
-	"aNumber * 65 < 660 & (aNumber * 65 > 600) ifTrue: [ ^ 65 ]."
+	
 	width := 600 / aNumber.
 	labelsX
 		do: [ :tickXLabel | 
 			tickXcontainer := self createContainer.
-
+			plotter turn
+			ifTrue:[
+			tickXcontainer
+				constraintsDo: [ :c | 
+					c vertical exact: width.
+					c horizontal fitContent ].
+			tickXcontainer addChild: tickXLabel asElement.
+			labelsYContainer addChild:tickXcontainer]
+			ifFalse:[
 			tickXcontainer
 				constraintsDo: [ :c | 
 					c vertical fitContent.
 					c horizontal exact: width ].
 			tickXcontainer addChild: tickXLabel asElement.
-			labelsContainer addChild: tickXcontainer ]
+			labelsContainer addChild: tickXcontainer ]]
 ]
 
 { #category : #'as yet unclassified' }
@@ -101,6 +117,18 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 	labelsY
 		do: [ :tickYLabel | 
 			tickYcontainer := LarContainer new initialize asElementVertical.
+			
+			plotter turn
+			ifTrue:[
+			tickYcontainer
+				constraintsDo: [ :c | 
+					c horizontal exact: height.
+					c vertical fitContent ].
+
+			tickYcontainer addChild: tickYLabel asElement.
+			labelsContainer layout cellSpacing: 0.
+			labelsContainer addChildFirst: tickYcontainer ]
+			ifFalse:[
 			tickYcontainer
 				constraintsDo: [ :c | 
 					c horizontal fitContent.
@@ -108,7 +136,7 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 
 			tickYcontainer addChild: tickYLabel asElement.
 			labelsYContainer layout cellSpacing: 0.
-			labelsYContainer addChild: tickYcontainer ].
+			labelsYContainer addChild: tickYcontainer ].].
 
 
 	spareLabelYContainer := LarContainer new initialize asElementVertical
@@ -126,7 +154,23 @@ LarPlotterBarElement >> addTicksY: ticksY [
 	space := plotter space.
 	height := space * scale.
 
-	ticksY
+	plotter turn
+	ifTrue:[ticksY
+		do: [ :tickY | 
+			tickYContainer := LarContainer new initialize asElement.
+				
+			height := space * scale.
+			tickYContainer
+				constraintsDo: [ :c | 
+					c horizontal exact: height.
+					c vertical fitContent ].
+			tickYContainer layout cellSpacing: 0.
+			tickYContainer addChild: tickY asElementX.
+			ticksYContainer addChild: tickYContainer ].
+			"ticksYContainer constraintsDo: [:c| c grid ho alignBottom. ]"
+	]
+	
+	ifFalse:[ticksY
 		do: [ :tickY | 
 			tickYContainer := LarContainer new initialize asElementVertical.
 				
@@ -138,7 +182,8 @@ LarPlotterBarElement >> addTicksY: ticksY [
 			tickYContainer layout cellSpacing: 0.
 			tickYContainer addChild: tickY asElementY.
 			ticksYContainer addChild: tickYContainer ].
-			ticksYContainer constraintsDo: [:c| c grid vertical alignBottom. ].
+			ticksYContainer constraintsDo: [:c| c grid vertical alignBottom. ]].
+
 	
 ]
 
@@ -167,92 +212,110 @@ LarPlotterBarElement >> graphElement [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> initialize: aPlotter [
-| empty empty_too  scroll empty_other |
-plotter := aPlotter.
-titelContainer := LarContainer new asElement.
-titelContainer constraintsDo: [ :c |
-		c horizontal fitContent.
-		c vertical fitContent.
-		c grid vertical alignCenter.
-		c grid horizontal alignCenter ].
-labelsYContainer := LarContainer new  asElementVertical.
-ticksYContainer := LarContainer new  asElementVertical.
-ticksYContainer layout cellSpacing: 0.
-graphElement := LarContainer new  asElement.
-graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
+	| empty empty_too scroll empty_other overallContainer|
+	plotter := aPlotter.
+	titelContainer := LarContainer new asElement.
+	titelContainer
+		constraintsDo: [ :c | 
+			c horizontal fitContent.
+			c vertical fitContent.
+			c grid vertical alignCenter.
+			c grid horizontal alignCenter ].
+	labelsYContainer := LarContainer new asElementVertical.
+	ticksYContainer := LarContainer new asElementVertical.
+	ticksYContainer layout cellSpacing: 0.
+	graphElement := LarContainer new asElement.
+	graphElement constraintsDo: [ :c | c grid vertical alignBottom ].
 
-axisXContainer := LarContainer new asElement. 
-container := LarContainer new asElementVertical.
-containerTickAndLabel :=LarContainer new  asElement.
-containerTickAndLabel constraintsDo: [:c| c grid vertical alignBottom. ].
-containerTickAndLabel addChild: labelsYContainer. 
-containerTickAndLabel addChild: ticksYContainer. 
-axisXContainer constraintsDo: [ :c |
-		c horizontal fitContent.
-		c vertical fitContent.
-		c grid vertical alignCenter.
-		c grid horizontal alignCenter ].
-super initialize. 
-"container addChild: graphElement at: 5."
-"grid := BlGridLayoutImpl new."
+	axisXContainer := LarContainer new asElement.
+	container := LarContainer new asElementVertical.
+	containerTickAndLabel := LarContainer new asElement.
+	containerTickAndLabel constraintsDo: [ :c | c grid vertical alignBottom ].
+	containerTickAndLabel addChild: labelsYContainer.
 
-container layout columnCount: 2.
-container layout rowCount: 4.
-empty := BlElement new. 
-empty_too := BlElement new. 
-empty_other := BlElement new. 
-labelsContainer:= (LarContainer new) asElement.
-container addChildFirst: empty. 
-container addChild: containerTickAndLabel at: 2.  
-container addChild: empty_too at: 3. 
-container addChild: empty_other at: 4.
-container addChild: titelContainer at: 5.
-container addChild: graphElement at: 6.
-container addChild: labelsContainer at: 7. 
-container addChild: axisXContainer at: 8 .
 
-"graphElement border: (BlBorder builder
-paint: Color black;
-					width: 1;
-					build).
-"
 
-self initializeFor.
+	axisXContainer
+		constraintsDo: [ :c | 
+			c horizontal fitContent.
+			c vertical fitContent.
+			c grid vertical alignCenter.
+			c grid horizontal alignCenter ].
+	super initialize.
 
-scroll := BlScalableElement new. 
-scroll constraintsDo: [ :c |
-		c horizontal matchParent.
-		c vertical matchParent ].
-scroll addChild: container.
+	container layout columnCount: 2.
+	container layout rowCount: 4.
+	empty := BlElement new.
+	empty_too := BlElement new.
+	empty_other := BlElement new.
+	labelsContainer := LarContainer new asElement.
 
-(plotter borders )
-ifTrue: [self setBlackBorders].
+	plotter turn
+		ifTrue: [ overallContainer := LarContainer new asElementVertical.
+			overallContainer addChild: ticksYContainer.
+			
+			overallContainer addChild: labelsContainer ].
+		
+	plotter turn
+		ifTrue: [ | frame |
+			frame := BrFrame new fitContent.
+			frame
+				constraintsDo: [ :c | 
+					c grid horizontal alignCenter.
+					c grid vertical alignCenter.
+					c horizontal fitContent.
+					c vertical fitContent ].
+			frame addChild: graphElement.
 
-^self 
-border: (BlBorder builder
+			container addChildFirst: empty.
+			container addChild: containerTickAndLabel at: 2.
+			container addChild: empty_too at: 3.
+			container addChild: empty_other at: 4.
+			container addChild: titelContainer at: 5.
+			container addChild: frame at: 6.
+			container addChild: overallContainer at: 7.
+			container addChild: axisXContainer at: 8 ].
 
-paint: Color white;
-					width: 1;
-					build);
-			background: (Color transparent);
-			constraintsDo: [ :c |
+
+	self initializeFor.
+
+	scroll := BlScalableElement new.
+	scroll
+		constraintsDo: [ :c | 
+			c horizontal matchParent.
+			c vertical matchParent ].
+	scroll addChild: container.
+
+	plotter borders ifTrue: [ self setBlackBorders ].
+
+	^ self
+		border: (BlBorder builder
+				paint: Color white;
+				width: 1;
+				build);
+		background: Color transparent;
+		constraintsDo: [ :c | 
 			c horizontal matchParent.
 			c vertical matchParent ];
-			background: (BlBackground paint: Color white);
-			
-			addChild: scroll. 
-
-
-			
-			
+		background: (BlBackground paint: Color white);
+		addChild: scroll
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> initializeFor [
+plotter turn 
+ifTrue:[
+plotter labelAxisX isNil
+ifFalse:[self addAxisLabelX: plotter labelAxisY].
+plotter labelAxisY isNil
+ifFalse:[self addAxisLabelY: plotter labelAxisX]]
+
+ifFalse:[
 plotter labelAxisX isNil
 ifFalse:[self addAxisLabelX: plotter labelAxisX].
 plotter labelAxisY isNil
-ifFalse:[self addAxisLabelY: plotter labelAxisY].
+ifFalse:[self addAxisLabelY: plotter labelAxisY]].
+
 plotter bars isNil
 ifFalse:[self addBars: plotter bars].
 plotter tickLabelsX isNil
