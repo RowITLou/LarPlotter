@@ -8,8 +8,7 @@ Class {
 		'scale',
 		'space',
 		'borders',
-		'turn',
-		'angle'
+		'turn'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -51,27 +50,16 @@ LarPlotterBar >> addAxisLabel [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addAxisLabel: textX with: textY [
-	| data axisX axisy return |
-	data := (dict at: 'data' at: 'values') collect:[:each | each values].
+	|  axisX axisy  labelAxisX labelAxisY total |
+	((dict at: 'encoding') at: 'x') at: 'field' put: textX.
+	((dict at: 'encoding') at: 'y') at: 'field' put: textY.
 
-	data first first isString
-		ifTrue: [ | int |
-			int := true ].
-
-	((dict at: 'encoding' at: 'x') includesKey: 'title')
-		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'title' ]
-		ifFalse: [ axisX := ((dict at: 'encoding') at: 'x') at: 'field' ].
-
-	((dict at: 'encoding' at: 'y') includesKey: 'title')
-		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'title' ]
-		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field' ].
+	labelAxisX := LarLabelAxis new initialize: axisX.
+	labelAxisY := LarLabelAxis new initialize: axisy.
 
 
-	return := OrderedCollection new.
-	self notifyUpdate
-	return add: axisX.
-	return add: axisy.
-	^return
+	
+	self notifyUpdate.
 	
 ]
 
@@ -102,40 +90,6 @@ LarPlotterBar >> addBars [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addBars: values [
-	| bar val width  bars|
-	
-	bars := OrderedCollection new.
-	width := 65.
-	val := self ensureBarsHeight: values.
-	width := self ensureBarsWidth: val size.
-
-	1
-		to: val size
-		do: [ :n | 
-			bar := LarBar new initialize: (val at: n) with: width.
-			bar value: (val at: n).
-			bars add: bar ].
-
-	self notifyUpdate.
-	^bars
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> addData: data [
-self bars isNil
-ifTrue:[^self].
-(self bars) doWithIndex: [:bar :i| bar data: (data at: i)]
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> addObjects:objects [
-self bars isNil
-ifTrue:[^self].
-(self bars) doWithIndex: [:bar :i| bar object: (objects at: i)]
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> addTicks [
 	| tickY tickAmount ticksY |
 	ticksY := OrderedCollection new.
@@ -151,41 +105,12 @@ LarPlotterBar >> addTicks [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addTicksLabel [
-	| tick amount data int valuesX tickLabelsX tickLabelsY|
-	data := (dict at: 'data' at: 'values') collect: #values.
-
-	int := false.
-	data first first isString 
-	ifTrue: [ int := true ].
-	
-	valuesX := data collect: [ :each | int 
-	ifTrue: [ each first asString ] 
-	ifFalse: [ each last asString ] ].
-	1 to: valuesX size
-		do: [ :n | 
-			tick := LarTickLabel new initialize: (valuesX at: n).
-
-			tickLabelsX add: tick ].
-	amount := dict at: 'data' at: 'tick'.
-	1
-		to: amount
-		do: [ :n | 
-			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space') * (amount - (n - 1)).
-
-			tickLabelsY add: tick ].
-	self notifyUpdate
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 	| tick amount |
-	bars isNil
-	ifTrue:[^self].
-	self tickLablesInitialize.
 	1
 		to: valuesX size
 		do: [ :n | 
+			| tickLabelsX |
 			tick := LarTickLabel new initialize: (valuesX at: n).
 
 			tickLabelsX add: tick ].
@@ -193,7 +118,8 @@ LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 	1
 		to: amount
 		do: [ :n | 
-			tick := LarTickLabel new initialize: (valuesY * (amount- (n - 1))).
+			| tickLabelsY |
+			tick := LarTickLabel new initialize: valuesY * (amount - (n - 1)).
 
 			tickLabelsY add: tick ].
 	self notifyUpdate
@@ -236,6 +162,14 @@ LarPlotterBar >> addTicksLabelY [
 			tickLabelsY add: tick ].
 	self notifyUpdate. 
 	^tickLabelsY
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addTitle: aTitle [
+	| title |
+	(dict at: 'title') put: aTitle.
+	title := LarTitel new initialize: (dict at: 'title').
+	^title
 ]
 
 { #category : #'as yet unclassified' }
@@ -309,13 +243,19 @@ LarPlotterBar >> aggregateDataY [
 ]
 
 { #category : #accessing }
-LarPlotterBar >> angle [
-	^ 10
+LarPlotterBar >> angleX [
+	((dict at: 'encoding' at: 'x' ) includesKey: 'axis')
+	 ifTrue:[(((dict at: 'encoding' at: 'x' ) at: 'axis') includesKey: 'labelAngle')
+	 ifTrue:[^(((dict at: 'encoding' at: 'x' ) at: 'axis') at: 'labelAngle')]].
+	 ^0
 ]
 
 { #category : #accessing }
-LarPlotterBar >> angle: anObject [
-	angle := anObject
+LarPlotterBar >> angleY [
+	 ((dict at: 'encoding' at: 'y' ) includesKey: 'axis')
+	 ifTrue:[(((dict at: 'encoding' at: 'y' ) at: 'axis') includesKey: 'labelAngle')
+	 ifTrue:[^(((dict at: 'encoding' at: 'y' ) at: 'axis') at: 'labelAngle')]].
+	 ^0
 ]
 
 { #category : #accessing }
@@ -341,12 +281,6 @@ LarPlotterBar >> borders [
 { #category : #accessing }
 LarPlotterBar >> borders: anObject [
 	borders := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> changeTitle: text [
-title setText: text. 
-self notifyUpdate
 ]
 
 { #category : #accessing }
@@ -484,13 +418,23 @@ LarPlotterBar >> initializeFor [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> noDict [
 	| jsonString |
-	jsonString := '{
-"data": {
-    
-  },
-  "encoding": {
-   
-  }
+	jsonString :=  '{
+	"description" : "A template for a simple bar chart with embedded data.",
+	"mark" : "bar",
+	"encoding" : {
+		"x" : {
+			"field" : "xFieldName",
+			"type" : "nominal"
+		},
+		"y" : {
+			"field" : "yFieldName",
+			"type" : "quantitative"
+		}
+	},
+	
+	"data" : {
+		"values" : [ ]
+	}
 }'.
 	dict := STONJSON fromString: jsonString
 ]
@@ -501,7 +445,10 @@ self announcer announce: LarBarPlotterUpdate new
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> setBlackBorders [
+LarPlotterBar >> setAmountTicks: anInteger [
+(dict at: 'data' at: 'tick') put: anInteger.
+space := (500/anInteger)/scale.
+(dict at: 'data' at: 'space') put: space.
 ]
 
 { #category : #accessing }

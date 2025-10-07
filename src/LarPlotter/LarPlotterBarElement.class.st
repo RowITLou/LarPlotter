@@ -96,14 +96,16 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 							c vertical exact: width.
 							c horizontal fitContent ].
 					tickXcontainer addChild: tickXLabel asElement.
-					plotter angle == 0
+					plotter angleY == 0
 						ifFalse: [ tickXcontainer := self angleY: tickXcontainer ].
 					frame_t := LarContainer new asElement.
 					frame_t
 						constraintsDo: [ :c | 
 							c vertical exact: width.
-							c horizontal fitContent ].
+							c horizontal fitContent ];
+							clipChildren: false.
 					frame_t addChild: tickXcontainer.
+					labelsYContainer clipChildren: false.
 					labelsYContainer addChildFirst: frame_t ]
 					
 				ifFalse: [ | frame_s |
@@ -113,14 +115,16 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 							c vertical fitContent.
 							c horizontal exact: width ].
 					tickXcontainer addChild: tickXLabel asElement.
-					plotter angle == 0
+					plotter angleX == 0
 						ifFalse: [ tickXcontainer := self angleX: tickXcontainer ].
 					frame_s := LarContainer new asElement.
 					frame_s
 						constraintsDo: [ :c | 
 							c vertical fitContent.
-							c horizontal exact: width ].
+							c horizontal exact: width ];
+							clipChildren: false.
 					frame_s addChild: tickXcontainer.
+					labelsContainer clipChildren: false.
 					labelsContainer addChild: frame_s ] ]
 ]
 
@@ -189,7 +193,7 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 					tickYcontainer addChild: tickYLabel asElement.
 					labelsContainer layout cellSpacing: 0.
 
-					plotter angle == 0
+					plotter angleX == 0
 						ifFalse: [ tickYcontainer := self angleX: tickYcontainer ].
 					frame_t := LarContainer new asElement clipChildren: false.
 
@@ -210,8 +214,8 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 					tickYcontainer addChild: tickYLabel asElement.
 					labelsYContainer layout cellSpacing: 0.
 
-					plotter angle == 0
-						ifFalse: [ tickYcontainer := self angleX: tickYcontainer ].
+					plotter angleY == 0
+						ifFalse: [ tickYcontainer := self angleY: tickYcontainer ].
 					frame_s := LarContainer new asElement.
 					frame_s
 						constraintsDo: [ :c | 
@@ -282,7 +286,7 @@ LarPlotterBarElement >> angleX: tickXcontainer [
 			
 
 	tickXcontainer transform
-		rotateBy: plotter angle;
+		rotateBy: plotter angleX;
 		apply.
 	frame_t := BrFrame new fitContent.
 	
@@ -308,7 +312,7 @@ LarPlotterBarElement >> angleY: tickXcontainer [
 			c grid vertical alignCenter ].
 	"clipChildren: false."
 	tickXcontainer transform
-		rotateBy: plotter angle;
+		rotateBy: plotter angleY;
 		apply.
 	frame_t := BrFrame new fitContent.
 "	clipChildren: false."
@@ -454,7 +458,7 @@ LarPlotterBarElement >> initializeFor [
 self addBars: plotter addBars.
 self addAxisLabelX: (plotter addAxisLabel) first.
 self addAxisLabelY: (plotter addAxisLabel) last.
-self addTicksLabelXTry: plotter addTicksLabelX.
+self addTicksLabelX: plotter addTicksLabelX.
 self addTicksLabelY: plotter addTicksLabelY.
 self addTitle: plotter title.
 self addTicksY: plotter addTicks.

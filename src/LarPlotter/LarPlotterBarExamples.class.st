@@ -12,23 +12,15 @@ LarPlotterBarExamples >> addAxisLabel [
 <gtExample>
 | plotter |
 	"plotter:= LarPlotterBar new initialize: 500 with: 500."
-	^self addTitel addAxisLabel: 'AxisX' with: 'AxisY'. 
+	^self newGraph addAxisLabel: 'AxisX' with: 'AxisY'. 
 	
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarExamples >> addBars [
-<gtExample>
-
-^self newGraph addBars: self values.
-
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> addTitel [
 <gtExample>
 
-^self addBars title: 'This is a title'. 
+^self newGraph addTitle: 'This is a title'. 
 
 ]
 
@@ -66,19 +58,10 @@ LarPlotterBarExamples >> bookPagesByKind [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> changeFontTitle [
-<gtExample>
-| plotter |
-	plotter := self addTitel .
-	plotter title  setFontSize: 50.
-	^plotter
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> changeTitle [
 <gtExample>
 | plotter |
-	plotter := (self changeFontTitle) .
+	plotter := (self addTitel) .
 	plotter title setText: 'NewTitle'. 
 	^plotter
 ]
