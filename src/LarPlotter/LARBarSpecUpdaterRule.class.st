@@ -48,8 +48,6 @@ LARBarSpecUpdaterRule >> updateDictHeight [
 { #category : #'as yet unclassified' }
 LARBarSpecUpdaterRule >> updateDictHeight: data [
 	|  max scale modifiedData i |
-	"ele := dict at: 'data' at: 'values'".	"collect: #values"
-	"data := ele collect: [ :each | each ]."
 	max := data max.
 	scale := 500 / max.
 	dict at: 'data' at: 'scale' put: scale. 
@@ -62,7 +60,7 @@ LARBarSpecUpdaterRule >> updateDictHeight: data [
 			i := i + 1 ]."
 	dict
 		at: 'data'
-		at: 'values'
+		at: 'modified'
 		put: modifiedData.
 	^ dict
 ]

@@ -93,8 +93,7 @@ LarPlotterLine >> addTicks [
 			tickY := LarTick new initialize: 3 with: 10.
 			ticksY add: tickY ].
 	
-	self scale: (dict at: 'data' at: 'scale'). 
-	self space: (dict at: 'data' at: 'space'). 
+	
 	self notifyUpdate
 ]
 

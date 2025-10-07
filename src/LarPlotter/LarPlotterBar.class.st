@@ -2,21 +2,14 @@ Class {
 	#name : #LarPlotterBar,
 	#superclass : #Object,
 	#instVars : [
-		'labelAxisX',
-		'labelAxisY',
-		'title',
-		'tickLabelsX',
-		'tickLabelsY',
-		'ticksX',
-		'ticksY',
 		'spec',
 		'dict',
 		'announcer',
-		'bars',
 		'scale',
 		'space',
 		'borders',
-		'turn'
+		'turn',
+		'angle'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -29,27 +22,103 @@ LarPlotterBar class >> withSpec: aSpec [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addAxisLabel: textX with: textY [
-labelAxisX := LarLabelAxis new initialize: textX. 
-labelAxisY := LarLabelAxis new initialize: textY.
-self notifyUpdate
+LarPlotterBar >> addAxisLabel [
+	| data axisX axisy total labelAxisX labelAxisY |
+	data := (dict at: 'data' at: 'values') collect: [ :each | each values ].
+
+	data first first isString
+		ifTrue: [ | int |
+			int := true ].
+
+	((dict at: 'encoding' at: 'x') includesKey: 'title')
+		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'title' ]
+		ifFalse: [ axisX := ((dict at: 'encoding') at: 'x') at: 'field' ].
+
+	((dict at: 'encoding' at: 'y') includesKey: 'title')
+		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'title' ]
+		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field' ].
+
+	labelAxisX := LarLabelAxis new initialize: axisX.
+	labelAxisY := LarLabelAxis new initialize: axisy.
+
+
+	total := OrderedCollection new.
+	self notifyUpdate.
+	total add: labelAxisX.
+	total add: labelAxisY.
+	^ total
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addBars: values [
-	| bar val width |
+LarPlotterBar >> addAxisLabel: textX with: textY [
+	| data axisX axisy return |
+	data := (dict at: 'data' at: 'values') collect:[:each | each values].
+
+	data first first isString
+		ifTrue: [ | int |
+			int := true ].
+
+	((dict at: 'encoding' at: 'x') includesKey: 'title')
+		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'title' ]
+		ifFalse: [ axisX := ((dict at: 'encoding') at: 'x') at: 'field' ].
+
+	((dict at: 'encoding' at: 'y') includesKey: 'title')
+		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'title' ]
+		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field' ].
+
+
+	return := OrderedCollection new.
+	self notifyUpdate
+	return add: axisX.
+	return add: axisy.
+	^return
+	
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addBars [
+	| bar val width int values bars data point |
+	int := false.
+	point := (dict at: 'data' at: 'values').
+	data := point collect:[:each | each values].
+	data first first isString ifTrue: [ int := true ].
+	values := data
+			collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ].
+
 	bars := OrderedCollection new.
 	width := 65.
 	val := self ensureBarsHeight: values.
-	width := self ensureBarsWidth: (val size). 
-    
-	1 to: val size
+	width := self ensureBarsWidth: val size.
+
+	1
+		to: val size
 		do: [ :n | 
 			bar := LarBar new initialize: (val at: n) with: width.
 			bar value: (val at: n).
 			bars add: bar ].
 
-	self notifyUpdate
+	self notifyUpdate.
+	^ bars
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addBars: values [
+	| bar val width  bars|
+	
+	bars := OrderedCollection new.
+	width := 65.
+	val := self ensureBarsHeight: values.
+	width := self ensureBarsWidth: val size.
+
+	1
+		to: val size
+		do: [ :n | 
+			bar := LarBar new initialize: (val at: n) with: width.
+			bar value: (val at: n).
+			bars add: bar ].
+
+	self notifyUpdate.
+	^bars
 ]
 
 { #category : #'as yet unclassified' }
@@ -68,28 +137,32 @@ ifTrue:[^self].
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addTicks [
-	| tickY tickAmount |
-	self tickInitialize.
-	ticksY removeAll.
+	| tickY tickAmount ticksY |
+	ticksY := OrderedCollection new.
 	tickAmount := self ensureAmountTicksY.
 	1
 		to: tickAmount
 		do: [ :n | 
 			tickY := LarTick new initialize: 3 with: 10.
 			ticksY add: tickY ].
-	self scale: (dict at: 'data' at: 'scale'). 
-	self space: (dict at: 'data' at: 'space'). 
-	self notifyUpdate
+	
+	self notifyUpdate.
+	^ticksY
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addTicksLabel: valuesX [
-	| tick amount |
-	"bars isNil
-	ifTrue:[^self]."
-	self tickLablesInitialize.
-	1
-		to: valuesX size
+LarPlotterBar >> addTicksLabel [
+	| tick amount data int valuesX tickLabelsX tickLabelsY|
+	data := (dict at: 'data' at: 'values') collect: #values.
+
+	int := false.
+	data first first isString 
+	ifTrue: [ int := true ].
+	
+	valuesX := data collect: [ :each | int 
+	ifTrue: [ each first asString ] 
+	ifFalse: [ each last asString ] ].
+	1 to: valuesX size
 		do: [ :n | 
 			tick := LarTickLabel new initialize: (valuesX at: n).
 
@@ -98,7 +171,7 @@ LarPlotterBar >> addTicksLabel: valuesX [
 	1
 		to: amount
 		do: [ :n | 
-			tick := LarTickLabel new initialize: (self space * (amount- (n - 1))).
+			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space') * (amount - (n - 1)).
 
 			tickLabelsY add: tick ].
 	self notifyUpdate
@@ -124,6 +197,45 @@ LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
 
 			tickLabelsY add: tick ].
 	self notifyUpdate
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addTicksLabelX [
+	| tick amount data int valuesX tickLabelsX |
+	tickLabelsX := OrderedCollection new.
+	data := (dict at: 'data' at: 'values') collect: #values.
+	int := false.
+
+	data first first isString 
+	ifTrue: [ int := true ].
+	
+	valuesX := data collect: [ :each | int 
+	ifTrue: [ each first asString ] 
+	ifFalse: [ each last asString ] ].
+	1 to: valuesX size
+		do: [ :n | 
+			tick := LarTickLabel new initialize: (valuesX at: n).
+
+			tickLabelsX add: tick ].
+	amount := dict at: 'data' at: 'tick'.
+	^tickLabelsX
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addTicksLabelY [
+	| tick amount tickLabelsY|
+	
+	tickLabelsY := OrderedCollection new. 
+	
+	amount := dict at: 'data' at: 'tick'.
+	1
+		to: amount
+		do: [ :n | 
+			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space') * (amount - (n - 1)).
+
+			tickLabelsY add: tick ].
+	self notifyUpdate. 
+	^tickLabelsY
 ]
 
 { #category : #'as yet unclassified' }
@@ -197,6 +309,16 @@ LarPlotterBar >> aggregateDataY [
 ]
 
 { #category : #accessing }
+LarPlotterBar >> angle [
+	^ 90
+]
+
+{ #category : #accessing }
+LarPlotterBar >> angle: anObject [
+	angle := anObject
+]
+
+{ #category : #accessing }
 LarPlotterBar >> announcer [
 	^ announcer
 ]
@@ -209,16 +331,6 @@ LarPlotterBar >> announcer: anObject [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> asElement [
 ^LarPlotterBarElement new initialize: self.
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> bars [
-^bars
-]
-
-{ #category : #accessing }
-LarPlotterBar >> bars: anObject [
-	bars := anObject
 ]
 
 { #category : #accessing }
@@ -263,12 +375,12 @@ LarPlotterBar >> ensureBarsHeight: values [
 	values size = 1
 	ifTrue: [max := values at: 1]
 	ifFalse:[max := values max].
-	"max > 450 & (max < 550) ifTrue: [ ^ values ]."
+	
 	rule := LARBarSpecUpdaterRule for: dict.
 	newDict := rule updateDictHeight: values.
 
 	dict := newDict.
-	val := (dict at: 'data') at: 'values'.
+	val := (dict at: 'data') at: 'modified'.
 	data := val collect: [ :each | each  ].
 	^ data
 ]
@@ -345,7 +457,7 @@ LarPlotterBar >> initializeDict [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> initializeFor [
-	| axisX axisy data  int |
+	|   int |
 	((dict at: 'data') includesKey: 'url') ifTrue: [ self getDataFromJsonFile ].
 
 	int := false.
@@ -354,63 +466,21 @@ LarPlotterBar >> initializeFor [
 	ifTrue: [ self transform: (((dict at: 'transform')  first) at: 'filter')  ].
 
 	((dict at: 'encoding' at: 'x') includesKey: 'aggregate')
-		ifTrue: [ self aggregateDataX ].
+		ifTrue: [ self aggregateDataX.
+		turn:= false].
 
 	((dict at: 'encoding' at: 'y') includesKey: 'aggregate')
-		ifTrue: [ self aggregateDataY ].
+		ifTrue: [ self aggregateDataY . 
+		turn := true].
 
-	data := (dict at: 'data' at: 'values') collect: #values.
-
-	(data first) first isString 
-	ifTrue: [int:= true].
-
-	((dict at: 'encoding' at: 'x') includesKey: 'title')
-		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'title' ]
-		ifFalse: [ axisX := ((dict at: 'encoding') at: 'x') at: 'field' ].
-
-	((dict at: 'encoding' at: 'y') includesKey: 'title')
-		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'title' ]
-		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field' ].
-
-	(dict includesKey: 'title')
-		ifTrue: [ self title: (dict at: 'title') ]
-		ifFalse: [ self title: 'This is a title' ].
-		
-	self addBars: (data collect: [ :each | int 
-	ifTrue:[each last] 
-	ifFalse:[each first]]).
-	self addAxisLabel: axisX with: axisy.
-	self addTicks.
-	self
-		addTicksLabel: (data collect: [ :each | int 
-	ifTrue:[(each first) asString] 
-	ifFalse:[(each last) asString ]])
-		with: self space
-]
-
-{ #category : #accessing }
-LarPlotterBar >> labelAxisX [
-	<brainstorming>
-	| axisX |
 	
-	"axisX := ((dict at: 'encoding') at: 'x') at: 'field'."
-	"^ LarLabelAxis new initialize: axisX"
-	^labelAxisX
-]
-
-{ #category : #accessing }
-LarPlotterBar >> labelAxisX: anObject [
-	labelAxisX := anObject
-]
-
-{ #category : #accessing }
-LarPlotterBar >> labelAxisY [
-	^ labelAxisY
-]
-
-{ #category : #accessing }
-LarPlotterBar >> labelAxisY: anObject [
-	labelAxisY := anObject
+		
+	self title. 
+	self addBars.
+	self addAxisLabel.
+	self addTicks.
+	self addTicksLabelX.
+	self addTicksLabelY.
 ]
 
 { #category : #'as yet unclassified' }
@@ -432,28 +502,8 @@ LarPlotterBar >> notifyUpdate [
 self announcer announce: LarBarPlotterUpdate new
 ]
 
-{ #category : #accessing }
-LarPlotterBar >> scale [
-	^ scale
-]
-
-{ #category : #accessing }
-LarPlotterBar >> scale: anObject [
-	scale := anObject
-]
-
 { #category : #'as yet unclassified' }
 LarPlotterBar >> setBlackBorders [
-]
-
-{ #category : #accessing }
-LarPlotterBar >> space [
-	^ space
-]
-
-{ #category : #accessing }
-LarPlotterBar >> space: anObject [
-	space := anObject
 ]
 
 { #category : #accessing }
@@ -468,72 +518,13 @@ LarPlotterBar >> spec: aJSONString [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> tickInitialize [
-ticksX:= OrderedCollection new. 
-ticksY := OrderedCollection new.
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> tickLabelsX [
-^tickLabelsX
-
-
-"self ensureTicksSpec.
-
-^dict at: '...'"
-]
-
-{ #category : #accessing }
-LarPlotterBar >> tickLabelsX: anObject [
-	tickLabelsX := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> tickLabelsY [
-^tickLabelsY
-]
-
-{ #category : #accessing }
-LarPlotterBar >> tickLabelsY: anObject [
-	tickLabelsY := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> tickLablesInitialize [
-tickLabelsX:= OrderedCollection new. 
-tickLabelsY := OrderedCollection new.
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> ticksX [
-^ticksX
-]
-
-{ #category : #accessing }
-LarPlotterBar >> ticksX: anObject [
-	ticksX := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> ticksY [
-^ticksY
-]
-
-{ #category : #accessing }
-LarPlotterBar >> ticksY: anObject [
-	ticksY := anObject
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> title [
-^title
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> title: text [
-	title := LarTitel new initialize: text. 
-	self notifyUpdate
-	
+	| title |
+	(dict includesKey: 'title')
+		ifTrue: [ title := LarTitel new initialize: (dict at: 'title').  ]
+	ifFalse:[title := LarTitel new initialize: 'This is the title'].
+	self notifyUpdate.
+	^title
 ]
 
 { #category : #'as yet unclassified' }
@@ -549,12 +540,12 @@ LarPlotterBar >> transform: anObject [
 	jsonData
 			do: [ :d | newValue := (d at: key) asString.
 			(d at: key) asString = value ifTrue: [ json add: d . ] ].
-	dict at: 'data' at: 'values'	"put: json."
+	dict at: 'data' at: 'values'	
 ]
 
 { #category : #accessing }
 LarPlotterBar >> turn [
-	^ true
+	^ turn
 ]
 
 { #category : #accessing }

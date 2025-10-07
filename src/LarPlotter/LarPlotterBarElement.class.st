@@ -98,7 +98,18 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 					c vertical exact: width.
 					c horizontal fitContent ].
 			tickXcontainer addChild: tickXLabel asElement.
-			labelsYContainer addChild:tickXcontainer]
+			
+			tickXcontainer transform
+				topLeftOrigin;
+				rotateBy: plotter angle;
+				apply.
+			plotter angle == 0
+			ifFalse:[tickXcontainer
+				constraintsDo: [ :c | 
+					c vertical fitContent.]].
+			labelsYContainer addChildFirst:tickXcontainer]
+			
+			
 			ifFalse:[
 			tickXcontainer := LarContainer new asElement.
 			tickXcontainer
@@ -106,14 +117,25 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 					c vertical fitContent.
 					c horizontal exact: width ].
 			tickXcontainer addChild: tickXLabel asElement.
+			plotter angle == 0
+			ifFalse:[tickXcontainer
+				constraintsDo: [ :c | 
+					"c vertical fitContent."
+					c accountTransformation.]].
+			
+			tickXcontainer transform
+			"topLeftOrigin;"
+				rotateBy: plotter angle;
+				apply.
+			
 			labelsContainer addChild: tickXcontainer ]]
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
 	| tickYcontainer scale space height spareLabelYContainer |
-	scale := plotter scale.
-	space := plotter space.
+	scale := plotter dict at: 'data' at: 'scale'.
+	space := plotter dict at: 'data' at: 'space'.
 	height := space * scale.
 
 	labelsY
@@ -159,8 +181,8 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksY: ticksY [
 	| scale space height |
-	scale := plotter scale.
-	space := plotter space.
+	scale := plotter dict at: 'data' at: 'scale'.
+	space := plotter dict at: 'data' at: 'space'.
 	height := space * scale.
 
 	plotter turn
@@ -324,31 +346,23 @@ LarPlotterBarElement >> initialize: aPlotter [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> initializeFor [
+self addBars: plotter addBars.
+
 plotter turn 
 ifTrue:[
-plotter labelAxisX isNil
-ifFalse:[self addAxisLabelX: plotter labelAxisY].
-plotter labelAxisY isNil
-ifFalse:[self addAxisLabelY: plotter labelAxisX]]
+self addAxisLabelX: (plotter addAxisLabel) last.
+self addAxisLabelY: (plotter addAxisLabel) first]
 
 ifFalse:[
-plotter labelAxisX isNil
-ifFalse:[self addAxisLabelX: plotter labelAxisX].
-plotter labelAxisY isNil
-ifFalse:[self addAxisLabelY: plotter labelAxisY]].
+self addAxisLabelX: (plotter addAxisLabel) first.
+self addAxisLabelY: (plotter addAxisLabel) last].
 
-plotter bars isNil
-ifFalse:[self addBars: plotter bars].
-plotter tickLabelsX isNil
-ifFalse:[self addTicksLabelX: plotter tickLabelsX].
-plotter tickLabelsY isNil
-ifFalse:[self addTicksLabelY: plotter tickLabelsY].
-plotter title isNil
-ifFalse:[self addTitle: plotter title].
-"plotter ticksX isNil
-ifFalse:[self addTicksY: plotter ticksX]."
-plotter ticksY isNil
-ifFalse:[self addTicksY: plotter ticksY].
+
+
+self addTicksLabelX: plotter addTicksLabelY.
+self addTicksLabelY: plotter addTicksLabelY.
+self addTitle: plotter title.
+self addTicksY: plotter addTicks.
 ]
 
 { #category : #'as yet unclassified' }

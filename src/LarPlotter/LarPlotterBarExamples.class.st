@@ -126,14 +126,6 @@ LarPlotterBarExamples >> colorSpec [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> graphWithTickLabels [
-	<gtExample>
-	| plot |
-	plot := self addAxisLabel addTicks.
-	^ (plot addTicksLabel: self labels)
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> labels [
 ^ #(#A #B  #C #D #E #F #G #H #I #J)
 ]
