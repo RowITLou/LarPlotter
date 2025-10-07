@@ -22,7 +22,7 @@ super initialize.
 					width: 1;
 					build);"
 			
-			background: (BlBackground paint: Color white);
+			background: (BlBackground paint: Color transparent);
 			layout: BlGridLayout horizontal;
 		constraintsDo: [ :c |
 			c horizontal fitContent.
@@ -43,7 +43,7 @@ super initialize.
 					width: 1;
 					build);"
 			
-			background: (BlBackground paint: Color white);
+			background: (BlBackground paint: Color transparent);
 			layout: BlGridLayout horizontal;
 		constraintsDo: [ :c |
 			c horizontal fitContent.
@@ -64,7 +64,7 @@ super initialize.
 					width: 1;
 					build);"
 			
-			background: (BlBackground paint: Color white);
+			background: (BlBackground paint: Color transparent);
 			layout: BlGridLayout vertical;
 		constraintsDo: [ :c |
 			c horizontal fitContent.
@@ -87,7 +87,7 @@ super initialize.
 					width: 1;
 					build);"
 			
-			background: (BlBackground paint: Color white);
+			background: (BlBackground paint: Color transparent);
 			layout: BlGridLayout vertical;
 		constraintsDo: [ :c |
 			c horizontal fitContent.

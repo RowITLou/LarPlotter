@@ -170,7 +170,7 @@ LarPlotterBarElement >> addTicksLabelXTry: labelsX [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
-	| tickYcontainer scale space height  |
+	| tickYcontainer scale space height |
 	scale := plotter dict at: 'data' at: 'scale'.
 	space := plotter dict at: 'data' at: 'space'.
 	height := space * scale.
@@ -178,29 +178,51 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 	labelsY
 		do: [ :tickYLabel | 
 			tickYcontainer := LarContainer new initialize asElementVertical.
-			
+
 			plotter turn
-			ifTrue:[
-			tickYcontainer
-				constraintsDo: [ :c | 
-					c horizontal exact: height.
-					c vertical fitContent ].
+				ifTrue: [ | frame_t |
+					tickYcontainer
+						constraintsDo: [ :c | 
+							c horizontal exact: height.
+							c vertical fitContent ].
 
-			tickYcontainer addChild: tickYLabel asElement.
-			labelsContainer layout cellSpacing: 0.
-			labelsContainer addChildFirst: tickYcontainer ]
-			
-			ifFalse:[
-			tickYcontainer
-				constraintsDo: [ :c | 
-					c horizontal fitContent.
-					c vertical exact: height ].
+					tickYcontainer addChild: tickYLabel asElement.
+					labelsContainer layout cellSpacing: 0.
 
-			tickYcontainer addChild: tickYLabel asElement.
-			labelsYContainer layout cellSpacing: 0.
-			labelsYContainer addChild: tickYcontainer ].].
+					plotter angle == 0
+						ifFalse: [ tickYcontainer := self angleX: tickYcontainer ].
+					frame_t := LarContainer new asElement clipChildren: false.
 
-	 self smallAdding: height. 
+					frame_t
+						constraintsDo: [ :c | 
+							c horizontal exact: height.
+							c vertical fitContent ].
+
+					frame_t addChild: tickYcontainer.
+					labelsContainer clipChildren: false.
+					labelsContainer addChildFirst: frame_t ]
+				ifFalse: [ | frame_s |
+					tickYcontainer
+						constraintsDo: [ :c | 
+							c horizontal fitContent.
+							c vertical exact: height ].
+
+					tickYcontainer addChild: tickYLabel asElement.
+					labelsYContainer layout cellSpacing: 0.
+
+					plotter angle == 0
+						ifFalse: [ tickYcontainer := self angleX: tickYcontainer ].
+					frame_s := LarContainer new asElement.
+					frame_s
+						constraintsDo: [ :c | 
+							c vertical exact: height.
+							c horizontal fitContent ];
+							clipChildren: false.
+					frame_s addChild: tickYcontainer.
+					labelsYContainer clipChildren: false.
+					labelsYContainer addChild: frame_s ] ].
+
+	self smallAdding: height
 ]
 
 { #category : #'as yet unclassified' }
@@ -257,11 +279,13 @@ LarPlotterBarElement >> angleX: tickXcontainer [
 			c horizontal fitContent.
 			c grid horizontal alignCenter.
 			c grid vertical alignCenter ].
+			
 
 	tickXcontainer transform
 		rotateBy: plotter angle;
 		apply.
 	frame_t := BrFrame new fitContent.
+	
 	frame_t
 		constraintsDo: [ :c | 
 			c grid horizontal alignCenter.
@@ -282,11 +306,12 @@ LarPlotterBarElement >> angleY: tickXcontainer [
 			c vertical fitContent.
 			c grid horizontal alignCenter.
 			c grid vertical alignCenter ].
-
+	"clipChildren: false."
 	tickXcontainer transform
 		rotateBy: plotter angle;
 		apply.
 	frame_t := BrFrame new fitContent.
+"	clipChildren: false."
 	frame_t
 		constraintsDo: [ :c | 
 			c grid horizontal alignCenter.
@@ -337,9 +362,12 @@ LarPlotterBarElement >> initialize: aPlotter [
 
 	axisXContainer := LarContainer new asElement.
 	container := LarContainer new asElementVertical.
+	container clipChildren: false.
 	containerTickAndLabel := LarContainer new asElement.
 	containerTickAndLabel constraintsDo: [ :c | c grid vertical alignBottom ].
+	
 	containerTickAndLabel addChild: labelsYContainer.
+	containerTickAndLabel clipChildren: false.
 	plotter turn
 	ifFalse:
 	[containerTickAndLabel addChild: ticksYContainer.].
@@ -359,13 +387,15 @@ LarPlotterBarElement >> initialize: aPlotter [
 	empty_too := BlElement new.
 	empty_other := BlElement new.
 	labelsContainer := LarContainer new asElement.
-
+	
 	plotter turn
 		ifTrue: [ overallContainer := LarContainer new asElementVertical.
 			overallContainer addChild: ticksYContainer.
 			
-			overallContainer addChild: labelsContainer ].
-		
+			overallContainer addChild: labelsContainer. 
+			
+		overallContainer clipChildren: false.	].
+			
 	plotter turn
 		ifTrue: [ | frame |
 			frame := BrFrame new fitContent.

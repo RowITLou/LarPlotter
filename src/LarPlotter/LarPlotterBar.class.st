@@ -310,7 +310,7 @@ LarPlotterBar >> aggregateDataY [
 
 { #category : #accessing }
 LarPlotterBar >> angle [
-	^ 45
+	^ 10
 ]
 
 { #category : #accessing }
