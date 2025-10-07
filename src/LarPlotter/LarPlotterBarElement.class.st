@@ -22,7 +22,6 @@ Class {
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addAxisLabelX: elementX [ 
 	
-	"containerTickAndLabel forceLayout. "
     axisXContainer addChild: (elementX asElement).
 ]
 
@@ -85,55 +84,93 @@ ifTrue:[graphElement  transform
 LarPlotterBarElement >> addTicksLabelX: labelsX [
 	| tickXcontainer aNumber width |
 	aNumber := labelsX size.
-	
+
 	width := 600 / aNumber.
 	labelsX
 		do: [ :tickXLabel | 
-			
+			| frame_t |
 			plotter turn
-			ifTrue:[
-			tickXcontainer := LarContainer new asElementVertical.
-			tickXcontainer
-				constraintsDo: [ :c | 
-					c vertical exact: width.
-					c horizontal fitContent ].
-			tickXcontainer addChild: tickXLabel asElement.
-			
-			tickXcontainer transform
-				topLeftOrigin;
-				rotateBy: plotter angle;
-				apply.
-			plotter angle == 0
-			ifFalse:[tickXcontainer
-				constraintsDo: [ :c | 
-					c vertical fitContent.]].
-			labelsYContainer addChildFirst:tickXcontainer]
-			
-			
-			ifFalse:[
-			tickXcontainer := LarContainer new asElement.
-			tickXcontainer
-				constraintsDo: [ :c | 
-					c vertical fitContent.
-					c horizontal exact: width ].
-			tickXcontainer addChild: tickXLabel asElement.
-			plotter angle == 0
-			ifFalse:[tickXcontainer
-				constraintsDo: [ :c | 
-					"c vertical fitContent."
-					c accountTransformation.]].
-			
-			tickXcontainer transform
-			"topLeftOrigin;"
-				rotateBy: plotter angle;
-				apply.
-			
-			labelsContainer addChild: tickXcontainer ]]
+				ifTrue: [ tickXcontainer := LarContainer new asElementVertical.
+					tickXcontainer
+						constraintsDo: [ :c | 
+							c vertical exact: width.
+							c horizontal fitContent ].
+					tickXcontainer addChild: tickXLabel asElement.
+					plotter angle == 0
+						ifFalse: [ tickXcontainer := self angleY: tickXcontainer ].
+					frame_t := LarContainer new asElement.
+					frame_t
+						constraintsDo: [ :c | 
+							c vertical exact: width.
+							c horizontal fitContent ].
+					frame_t addChild: tickXcontainer.
+					labelsYContainer addChildFirst: frame_t ]
+					
+				ifFalse: [ | frame_s |
+					tickXcontainer := LarContainer new asElement.
+					tickXcontainer
+						constraintsDo: [ :c | 
+							c vertical fitContent.
+							c horizontal exact: width ].
+					tickXcontainer addChild: tickXLabel asElement.
+					plotter angle == 0
+						ifFalse: [ tickXcontainer := self angleX: tickXcontainer ].
+					frame_s := LarContainer new asElement.
+					frame_s
+						constraintsDo: [ :c | 
+							c vertical fitContent.
+							c horizontal exact: width ].
+					frame_s addChild: tickXcontainer.
+					labelsContainer addChild: frame_s ] ]
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addTicksLabelXTry: labelsX [
+	| tickXcontainer aNumber width |
+	aNumber := labelsX size.
+
+	width := 600 / aNumber.
+	labelsX
+		do: [ :tickXLabel | 
+			| frame_t |
+			plotter turn
+				ifTrue: [ tickXcontainer := LarContainer new asElementVertical.
+					tickXcontainer
+						constraintsDo: [ :c | 
+							c vertical exact: width.
+							c horizontal fitContent ].
+					tickXcontainer addChild: tickXLabel asElement.
+					plotter angle == 0
+						ifFalse: [ tickXcontainer := self angleY: tickXcontainer ].
+					frame_t := LarContainer new asElement.
+					frame_t
+						constraintsDo: [ :c | 
+							c vertical exact: width.
+							c horizontal fitContent ].
+					frame_t addChild: tickXcontainer.
+					labelsYContainer addChildFirst: frame_t ]
+					
+				ifFalse: [ | frame_s |
+					tickXcontainer := LarContainer new asElement.
+					tickXcontainer
+						constraintsDo: [ :c | 
+							c vertical fitContent.
+							c horizontal exact: width ].
+					tickXcontainer addChild: tickXLabel asElement.
+					plotter angle == 0
+						ifFalse: [ tickXcontainer := self angleX: tickXcontainer ].
+					frame_s := LarContainer new asElement.
+					frame_s
+						constraintsDo: [ :c | 
+							c vertical fitContent.
+							c horizontal exact: width ].
+					frame_s addChild: tickXcontainer.
+					labelsContainer addChild: frame_s ] ]
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
-	| tickYcontainer scale space height spareLabelYContainer |
+	| tickYcontainer scale space height  |
 	scale := plotter dict at: 'data' at: 'scale'.
 	space := plotter dict at: 'data' at: 'space'.
 	height := space * scale.
@@ -152,6 +189,7 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 			tickYcontainer addChild: tickYLabel asElement.
 			labelsContainer layout cellSpacing: 0.
 			labelsContainer addChildFirst: tickYcontainer ]
+			
 			ifFalse:[
 			tickYcontainer
 				constraintsDo: [ :c | 
@@ -162,20 +200,7 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 			labelsYContainer layout cellSpacing: 0.
 			labelsYContainer addChild: tickYcontainer ].].
 
-	plotter turn
-	ifTrue:[spareLabelYContainer := LarContainer new initialize asElement
-			constraintsDo: [ :c | 
-				c horizontal exact: height / 2.
-				c vertical fitContent ].
-	spareLabelYContainer layout cellSpacing: 0.
-	labelsContainer addChildFirst: spareLabelYContainer]
-	
-	ifFalse:[spareLabelYContainer := LarContainer new initialize asElementVertical
-			constraintsDo: [ :c | 
-				c horizontal fitContent.
-				c vertical exact: height / 2 ].
-	spareLabelYContainer layout cellSpacing: 0.
-	labelsYContainer addChild: spareLabelYContainer]
+	 self smallAdding: height. 
 ]
 
 { #category : #'as yet unclassified' }
@@ -221,6 +246,56 @@ LarPlotterBarElement >> addTicksY: ticksY [
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTitle: element [
 	titelContainer addChild: (element asElement).
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> angleX: tickXcontainer [
+	| frame_t |
+	tickXcontainer
+		constraintsDo: [ :c | 
+			c accountTransformation.
+			c horizontal fitContent.
+			c grid horizontal alignCenter.
+			c grid vertical alignCenter ].
+
+	tickXcontainer transform
+		rotateBy: plotter angle;
+		apply.
+	frame_t := BrFrame new fitContent.
+	frame_t
+		constraintsDo: [ :c | 
+			c grid horizontal alignCenter.
+			c grid vertical alignCenter.
+			c horizontal fitContent.
+			c vertical fitContent. ].
+	frame_t addChild: tickXcontainer.
+	
+	^frame_t
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> angleY: tickXcontainer [
+	| frame_t |
+	tickXcontainer
+		constraintsDo: [ :c | 
+			c accountTransformation.
+			c vertical fitContent.
+			c grid horizontal alignCenter.
+			c grid vertical alignCenter ].
+
+	tickXcontainer transform
+		rotateBy: plotter angle;
+		apply.
+	frame_t := BrFrame new fitContent.
+	frame_t
+		constraintsDo: [ :c | 
+			c grid horizontal alignCenter.
+			c grid vertical alignCenter.
+			c horizontal fitContent.
+			c vertical fitContent. ].
+	frame_t addChild: tickXcontainer.
+	
+	^frame_t
 ]
 
 { #category : #'as yet unclassified' }
@@ -347,19 +422,9 @@ LarPlotterBarElement >> initialize: aPlotter [
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> initializeFor [
 self addBars: plotter addBars.
-
-plotter turn 
-ifTrue:[
-self addAxisLabelX: (plotter addAxisLabel) last.
-self addAxisLabelY: (plotter addAxisLabel) first]
-
-ifFalse:[
 self addAxisLabelX: (plotter addAxisLabel) first.
-self addAxisLabelY: (plotter addAxisLabel) last].
-
-
-
-self addTicksLabelX: plotter addTicksLabelY.
+self addAxisLabelY: (plotter addAxisLabel) last.
+self addTicksLabelXTry: plotter addTicksLabelX.
 self addTicksLabelY: plotter addTicksLabelY.
 self addTitle: plotter title.
 self addTicksY: plotter addTicks.
@@ -370,4 +435,23 @@ LarPlotterBarElement >> setBlackBorders [
 container setBlackBorders. 
 
 					
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> smallAdding: height [
+	| spareLabelYContainer |
+	plotter turn
+		ifTrue: [ spareLabelYContainer := LarContainer new initialize asElement
+					constraintsDo: [ :c | 
+						c horizontal exact: height / 2.
+						c vertical fitContent ].
+			spareLabelYContainer layout cellSpacing: 0.
+			labelsContainer addChildFirst: spareLabelYContainer ]
+		ifFalse: [ spareLabelYContainer := LarContainer new initialize
+					asElementVertical
+					constraintsDo: [ :c | 
+						c horizontal fitContent.
+						c vertical exact: height / 2 ].
+			spareLabelYContainer layout cellSpacing: 0.
+			labelsYContainer addChild: spareLabelYContainer ]
 ]

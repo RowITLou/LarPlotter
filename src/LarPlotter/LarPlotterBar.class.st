@@ -310,7 +310,7 @@ LarPlotterBar >> aggregateDataY [
 
 { #category : #accessing }
 LarPlotterBar >> angle [
-	^ 90
+	^ 45
 ]
 
 { #category : #accessing }
@@ -443,9 +443,7 @@ LarPlotterBar >> initialize [
 announcer := Announcer new.
  self borders: false.
  self noDict. 
-"self tickLablesInitialize.
-self tickInitialize.
-self barsDefinition. "
+self turn: false.
 ]
 
 { #category : #accessing }
@@ -467,11 +465,11 @@ LarPlotterBar >> initializeFor [
 
 	((dict at: 'encoding' at: 'x') includesKey: 'aggregate')
 		ifTrue: [ self aggregateDataX.
-		turn:= false].
+		turn:= true].
 
 	((dict at: 'encoding' at: 'y') includesKey: 'aggregate')
 		ifTrue: [ self aggregateDataY . 
-		turn := true].
+		turn := false].
 
 	
 		
