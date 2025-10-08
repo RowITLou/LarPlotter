@@ -148,39 +148,6 @@ LarPlotterBarExamples >> testSpec [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarExamples >> topicMapChart [
-	<gtExample>
-	| plotter dict |
-	dict := self topicMapData .
-	plotter:= LarPlotterBar new.
-	plotter spec: dict.
-	^plotter
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarExamples >> topicMapData [
-	<gtExample>
-	| topicMap fields json dict |
-	dict := self specExample.
-	topicMap := LeDatabase gtBook topicMap.
-	fields := topicMap databaseNode children nodes.
-	json := fields
-			collect: [ :aField | 
-				{'name' -> 'aName'.
-					'object' -> aField.
-					'element'
-						-> (topicMap kinds
-								collect: [ :aStyle | aStyle -> (aField pageGroup select: [ :p | p kind = aStyle ]) size ])
-								asDictionary} asDictionary ].
-
-	(dict
-		at: 'data')
-		at: 'bars'
-		put: json.
-	^ dict
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> url [
 ^'https://vega.github.io/vega-lite/examples/'
 ]
@@ -204,6 +171,7 @@ LarPlotterBarExamples >> vegaColorChart [
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample1 [
 	<gtExample>
+	"https://vega.github.io/vega-lite/examples/bar.html"
 	|   plotter spec |
 	spec := self barChartSpec.
 	plotter := LarPlotterBar new.
@@ -213,6 +181,7 @@ LarPlotterBarExamples >> vegaExample1 [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample2 [
+"https://vega.github.io/vega-lite/examples/stacked_bar_h.html"
 	<gtExample>
 	|  plotter spec |
 	
@@ -224,6 +193,7 @@ LarPlotterBarExamples >> vegaExample2 [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample3 [
+"https://vega.github.io/vega-lite/examples/bar_aggregate.html"
 	<gtExample>
 	|  plotter spec |
 	
@@ -235,6 +205,7 @@ LarPlotterBarExamples >> vegaExample3 [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample4 [
+"https://vega.github.io/vega-lite/examples/bar_size_responsive.html"
 	<gtExample>
 	|  plotter spec |
 	

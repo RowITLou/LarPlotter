@@ -392,7 +392,7 @@ LarPlotterBar >> initializeFor [
 	int := false.
 	
 	(dict includesKey: 'transform') 
-	ifTrue: [ self transform: (((dict at: 'transform')  first) at: 'filter')  ].
+	ifTrue: [ self transform: (((dict at: 'transform')  first) at: 'filter')].
 
 	((dict at: 'encoding' at: 'x') includesKey: 'aggregate')
 		ifTrue: [ self aggregateDataX.
@@ -481,15 +481,15 @@ LarPlotterBar >> title [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> transform: anObject [
 	| segment key jsonData json value newValue |
-	segment := (anObject findTokens: '==') first.
+	segment := ((anObject findTokens: '==') first) trimLeft.
 	value := (anObject findTokens: '==') last.
-	key := (segment findTokens: '.') last trim.
+	key := ((segment findTokens: '.') last) trimRight.
 
 	jsonData := (dict at: 'data') at: 'values'.
 	json := Array new.
 	newValue := 0 .
 	jsonData
-			do: [ :d | newValue := (d at: key) asString.
+			do: [ :d | newValue := (d at: key).
 			(d at: key) asString = value ifTrue: [ json add: d . ] ].
 	dict at: 'data' at: 'values'	
 ]
