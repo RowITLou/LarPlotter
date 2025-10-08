@@ -61,11 +61,28 @@ LarPlotterBar >> addAxisLabel: textX with: textY [
 LarPlotterBar >> addBars [
 	| bar val width int values bars data point |
 	int := false.
-	point := (dict at: 'data' at: 'values').
-	data := point collect:[:each | each values].
-	data first first isString ifTrue: [ int := true ].
-	values := data
-			collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ].
+
+	values := OrderedCollection new.
+	((dict at: 'encoding') includesKey: 'color')
+		ifTrue: [  "self createSubBar."
+		point := dict at: 'data' at: 'values'.
+			point
+				do: [ :p | 
+					| vals sum |
+					vals := p at: 'count'.
+					sum := vals
+							sum: [ :v | 
+								| dat |
+								dat := v at: 'count'. ].
+								values add: sum ] ]
+								
+								
+								
+		ifFalse: [ point := dict at: 'data' at: 'values'.
+			data := point collect: [ :each | each values ].
+			data first first isString ifTrue: [ int := true ].
+			values := data
+					collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ] ].
 
 	bars := OrderedCollection new.
 	width := 65.
@@ -177,7 +194,7 @@ LarPlotterBar >> aggregateColorDataCount: aField [
 
 	fieldTwo := ((dict at: 'encoding') at: 'color') at: 'field'.
 	jsonData do: [ :d | transformation_two add: (d at: fieldTwo) ].
-	transformation_two := transformation removeDuplicates.
+	transformation_two := transformation_two removeDuplicates.
 
 
 	json := transformation
@@ -201,11 +218,43 @@ LarPlotterBar >> aggregateColorDataCount: aField [
 	dict
 		at: 'data'
 		at: 'values'
-		put: json asArray
+		put: json asArray.
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> aggregateColorDataSum: fieldOne with: fieldTwo [
+LarPlotterBar >> aggregateColorDataSum: fieldTwo with: fieldOne [
+	| transformation json jsonData transformation_two temp_1 temp_2 fieldThree |
+	transformation := OrderedCollection new.
+	transformation_two := OrderedCollection new.
+
+	jsonData := (dict at: 'data') at: 'values'.
+	jsonData do: [ :d | transformation add: (d at: fieldTwo) ].
+	transformation := transformation removeDuplicates.
+
+	fieldThree := ((dict at: 'encoding') at: 'color') at: 'field'.
+	jsonData do: [ :d | transformation_two add: (d at: fieldThree) ].
+	transformation_two := transformation_two removeDuplicates.
+
+
+	json := transformation
+			collect: [ :field | 
+				temp_1 := transformation_two
+						collect: [ :kind | 
+							temp_2 := OrderedCollection new.
+							jsonData
+								do: [ :d | 
+									(d includes: field) & (d includes: kind)
+										ifTrue: [ temp_2 add: (d at: fieldOne) ] ].
+
+							{fieldThree -> kind.
+								'count' -> temp_2 sumNumbers} asDictionary ].
+
+				{fieldTwo -> field.
+					'count' -> temp_1} asDictionary ].
+	dict
+		at: 'data'
+		at: 'values'
+		put: json asArray
 ]
 
 { #category : #'as yet unclassified' }
@@ -324,6 +373,10 @@ LarPlotterBar >> borders: anObject [
 	borders := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> createSubBar [
+]
+
 { #category : #accessing }
 LarPlotterBar >> dict [
 	^ dict
@@ -332,7 +385,7 @@ LarPlotterBar >> dict [
 { #category : #accessing }
 LarPlotterBar >> dict: anObject [
 	dict := anObject.
-	self initializeFor
+	"self initializeFor"
 ]
 
 { #category : #'as yet unclassified' }
@@ -452,7 +505,7 @@ LarPlotterBar >> initializeFor [
 		turn := false].
 		
     ((dict at: 'encoding' at: 'x') includesKey: 'type')
-    ifTrue:[(((dict at: 'encoding' at: 'x')) at: 'type' = 'nominal')
+    ifTrue:[(((dict at: 'encoding' at: 'x') at: 'type') = 'nominal')
     ifTrue: [turn := false ]
     ifFalse:[turn := true]].
 	
