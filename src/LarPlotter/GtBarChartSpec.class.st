@@ -132,14 +132,18 @@ GtBarChartSpec >> labelAngle: aNumber [
 { #category : #constants }
 GtBarChartSpec >> stackedBarChartTemplateString [
 	"Basic template for a stacked bar chart with data and fields to be rewritten."
+	"
+	in color: 
+	type : nominal,
+	"
 	^ '{
 	"description" : "A template for a simple bar chart with embedded data.",
 	"mark" : "bar",
 	"encoding" : {
 		"color" : {
-			"type" : "nominal",
-			"field" : "yFieldName",
-			"scale" : { }
+			"scale" : { },
+			"field" : "yFieldName"
+			
 		},
 		"x" : {
 			"axis" : {

@@ -1,20 +1,16 @@
-"
-This creates the elements for bars in a bargraph
-"
 Class {
-	#name : #LarBarElement,
+	#name : #LarSubBarElement,
 	#superclass : #BlElement,
 	#instVars : [
-		'bar',
 		'subbar'
 	],
 	#category : #'LarPlotter-Element'
 }
 
 { #category : #'as yet unclassified' }
-LarBarElement >> initialize: aBar [
+LarSubBarElement >> initialize: aBar [
 super initialize.
-bar := aBar.
+subbar := aBar.
 ^self
 		background: (Color transparent);
 		border: (BlBorder builder
@@ -23,11 +19,11 @@ bar := aBar.
 				build);
 				"layout: BlFrameLayout new;"
 		constraintsDo: [ :c | 
-		 c vertical exact: (bar height).
+		 c vertical exact: (subbar height).
 		    
-	    c horizontal exact: (bar width)];
+	    c horizontal exact: (subbar width)];
 	    when: BlClickEvent do: [ :event | 
-				event currentTarget phlow spawnObject: (bar) ]
+				event currentTarget phlow spawnObject: (subbar) ]
 		
 	   
 			; yourself.

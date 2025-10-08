@@ -166,6 +166,49 @@ LarPlotterBar >> addTitle: aTitle [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> aggregateColorDataCount: aField [
+	| transformation json jsonData fieldTwo transformation_two temp_1 temp_2 |
+	transformation := OrderedCollection new.
+	transformation_two := OrderedCollection new.
+
+	jsonData := (dict at: 'data') at: 'values'.
+	jsonData do: [ :d | transformation add: (d at: aField) ].
+	transformation := transformation removeDuplicates.
+
+	fieldTwo := ((dict at: 'encoding') at: 'color') at: 'field'.
+	jsonData do: [ :d | transformation_two add: (d at: fieldTwo) ].
+	transformation_two := transformation removeDuplicates.
+
+
+	json := transformation
+		collect: [ :field | 
+		
+			temp_1 := 
+			transformation_two
+				collect: [ :kind | 
+				temp_2 := OrderedCollection new. 
+				jsonData do:[:d| 
+				
+				(d includes: field) & (d includes: kind)
+				ifTrue: [ temp_2 add: d ]].
+
+			{fieldTwo -> kind.
+				'count' -> temp_2 size} asDictionary ].
+				
+				{aField -> field.
+				'count' -> temp_1} asDictionary
+				].
+	dict
+		at: 'data'
+		at: 'values'
+		put: json asArray
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> aggregateColorDataSum: fieldOne with: fieldTwo [
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> aggregateDataCount: fieldOne [ 
 | transformation json jsonData |
 	transformation := OrderedCollection new.
@@ -192,7 +235,7 @@ LarPlotterBar >> aggregateDataCount: fieldOne [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> aggregateDataSum: fieldOne with: fieldTwo [
-	| transformation json jsonData |
+| transformation json jsonData |
 	transformation := OrderedCollection new.
 	
 	jsonData := ((dict at: 'data') at: 'values').
@@ -213,16 +256,21 @@ LarPlotterBar >> aggregateDataSum: fieldOne with: fieldTwo [
 					fieldOne -> (variety sumNumbers).
 					} asDictionary ] .
   (dict at: 'data' at: 'values' put: (json asArray)).
-  
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> aggregateDataX [
+	((dict at: 'encoding' at: 'x') includesKey: 'color')
+	ifTrue:[(((dict at: 'encoding' at: 'x') at: 'aggregate') = 'sum')
+	ifTrue:[self aggregateColorDataSum: (((dict at: 'encoding') at: 'x') at: 'field')
+				with: (((dict at: 'encoding') at: 'y') at: 'field')]
+	ifFalse:[self aggregateColorDataCount: (((dict at: 'encoding') at: 'y') at: 'field')]]
 	
-	(((dict at: 'encoding' at: 'x') at: 'aggregate') = 'sum')
+	
+	ifFalse:[(((dict at: 'encoding' at: 'x') at: 'aggregate') = 'sum')
 	ifTrue:[self aggregateDataSum: (((dict at: 'encoding') at: 'x') at: 'field')
 				with: (((dict at: 'encoding') at: 'y') at: 'field')]
-	ifFalse:[self aggregateDataCount: (((dict at: 'encoding') at: 'y') at: 'field')]
+	ifFalse:[self aggregateDataCount: (((dict at: 'encoding') at: 'y') at: 'field')]]
   
 ]
 
@@ -393,6 +441,7 @@ LarPlotterBar >> initializeFor [
 	
 	(dict includesKey: 'transform') 
 	ifTrue: [ self transform: (((dict at: 'transform')  first) at: 'filter')].
+	
 
 	((dict at: 'encoding' at: 'x') includesKey: 'aggregate')
 		ifTrue: [ self aggregateDataX.
@@ -401,7 +450,11 @@ LarPlotterBar >> initializeFor [
 	((dict at: 'encoding' at: 'y') includesKey: 'aggregate')
 		ifTrue: [ self aggregateDataY . 
 		turn := false].
-
+		
+    ((dict at: 'encoding' at: 'x') includesKey: 'type')
+    ifTrue:[(((dict at: 'encoding' at: 'x')) at: 'type' = 'nominal')
+    ifTrue: [turn := false ]
+    ifFalse:[turn := true]].
 	
 		
 	self title. 
@@ -481,17 +534,18 @@ LarPlotterBar >> title [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> transform: anObject [
 	| segment key jsonData json value newValue |
-	segment := ((anObject findTokens: '==') first) trimLeft.
-	value := (anObject findTokens: '==') last.
+	segment := (anObject findTokens: '==') first.
+	value := ((anObject findTokens: '==') last) trimLeft.
 	key := ((segment findTokens: '.') last) trimRight.
 
 	jsonData := (dict at: 'data') at: 'values'.
-	json := Array new.
+	json := OrderedCollection new.
 	newValue := 0 .
 	jsonData
 			do: [ :d | newValue := (d at: key).
-			(d at: key) asString = value ifTrue: [ json add: d . ] ].
-	dict at: 'data' at: 'values'	
+			(d at: key) asString = value 
+			ifTrue: [ json add: d . ] ].
+	dict at: 'data' at: 'values' put: json. 
 ]
 
 { #category : #accessing }

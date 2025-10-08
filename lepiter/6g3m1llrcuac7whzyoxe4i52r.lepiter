@@ -1042,14 +1042,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-26T09:24:55.103268+02:00"
+									"dateAndTimeString" : "2025-10-08T15:27:05.28+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "h568xxD8DQCGmxoGA+Sncg=="
 							},
-							"code" : "tm := LeDatabase gtBook topicMap.\rfieldKindData := tm fieldNodes\r\t\tflatCollect: [ :fn | \r\t\t\tfn pageNodes\r\t\t\t\tcollect: [ :pn | \r\t\t\t\t\t{'field' -> fn field.\r\t\t\t\t\t\t'page' -> pn page title.\r\t\t\t\t\t\t'kind' -> pn kind} asDictionary ] ].\rcolorScale := {'domain' -> tm kindsStandardOrder.\r\t\t'range'\r\t\t\t-> (tm kindsStandardOrder\r\t\t\t\t\tcollect: [ :k | '#' , (tm kindPalette at: k) asHexString ])} asDictionary.\rcombinedData := {'scale ' -> colorScale.\r\t\t'data' -> fieldKindData} asDictionary"
+							"code" : "tm := LeDatabase gtBook topicMap.\rfieldKindData := tm fieldNodes\r\t\tflatCollect: [ :fn | \r\t\t\tfn pageNodes\r\t\t\t\tcollect: [ :pn | \r\t\t\t\t\t{'field' -> fn field.\r\t\t\t\t\t\t'page' -> pn page title.\r\t\t\t\t\t\t'kind' -> pn kind} asDictionary ] ].\rcolorScale := {\"'domain' -> tm kindsStandardOrder.\"\r\t\t'range'\r\t\t\t-> (tm kindsStandardOrder\r\t\t\t\t\tcollect: [ :k | '#' , (tm kindPalette at: k) asHexString ])} asDictionary.\rcombinedData := {'scale ' -> colorScale.\r\t\t'data' -> fieldKindData} asDictionary"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -1255,14 +1255,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-09-26T10:58:24.20938+02:00"
+									"dateAndTimeString" : "2025-10-08T16:12:27.382+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "3pHOOBL8DQClzg3vAG6XtQ=="
 							},
-							"code" : "GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart"
+							"code" : "dict := GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart asJsonString.\rdict := STONJSON fromString: dict.\r"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-08T16:07:54.035+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-08T16:16:06.366+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "OEua8gf9DQCRmhXKDy9W2Q=="
+							},
+							"code" : "aField := ((dict at: 'encoding') at: 'x') at: 'field'.\r\t\r\ttransformation := OrderedCollection new.\r\ttransformation_two := OrderedCollection new.\r\r\tjsonData := (dict at: 'data') at: 'values'.\r\tjsonData do: [ :d | transformation add: (d at: aField) ].\r\ttransformation := transformation removeDuplicates.\r\r\tfieldTwo := ((dict at: 'encoding') at: 'color') at: 'field'.\r\tjsonData do: [ :d | transformation_two add: (d at: fieldTwo) ].\r\ttransformation_two := transformation_two removeDuplicates.\r\r\r\tjson := transformation\r\t\tcollect: [ :field | \r\t\t\r\t\t\ttemp_1 := \r\t\t\ttransformation_two\r\t\t\t\tcollect: [ :kind | \r\t\t\t\ttemp_2 := OrderedCollection new. \r\t\t\t\tjsonData do:[:d| \r\t\t\t\t\r\t\t\t\t(d includes: field) & (d includes: kind)\r\t\t\t\tifTrue: [ temp_2 add: d ]].\r\r\t\t\t{fieldTwo -> kind.\r\t\t\t\t'count' -> temp_2 size} asDictionary ].\r\t\t\t\t\r\t\t\t\t{aField -> field.\r\t\t\t\t'count' -> temp_1} asDictionary\r\t\t\t\t].\r\tdict\r\t\tat: 'data'\r\t\tat: 'values'\r\t\tput: json asArray.\r^json"
 						},
 						{
 							"__type" : "textSnippet",
