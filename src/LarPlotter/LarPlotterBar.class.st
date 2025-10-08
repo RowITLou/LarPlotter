@@ -5,8 +5,6 @@ Class {
 		'spec',
 		'dict',
 		'announcer',
-		'scale',
-		'space',
 		'borders',
 		'turn'
 	],
@@ -22,12 +20,8 @@ LarPlotterBar class >> withSpec: aSpec [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addAxisLabel [
-	| data axisX axisy total labelAxisX labelAxisY |
-	data := (dict at: 'data' at: 'values') collect: [ :each | each values ].
-
-	data first first isString
-		ifTrue: [ | int |
-			int := true ].
+	| axisX axisy total labelAxisX labelAxisY |
+	
 
 	((dict at: 'encoding' at: 'x') includesKey: 'title')
 		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'title' ]
@@ -50,7 +44,7 @@ LarPlotterBar >> addAxisLabel [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addAxisLabel: textX with: textY [
-	|  axisX axisy  labelAxisX labelAxisY total |
+	|  axisX axisy  labelAxisX labelAxisY  |
 	((dict at: 'encoding') at: 'x') at: 'field' put: textX.
 	((dict at: 'encoding') at: 'y') at: 'field' put: textY.
 
@@ -167,9 +161,8 @@ LarPlotterBar >> addTicksLabelY [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addTitle: aTitle [
 	| title |
-	(dict at: 'title') put: aTitle.
+	dict at: 'title' put: aTitle.
 	title := LarTitel new initialize: (dict at: 'title').
-	^title
 ]
 
 { #category : #'as yet unclassified' }
@@ -297,6 +290,10 @@ LarPlotterBar >> dict: anObject [
 { #category : #'as yet unclassified' }
 LarPlotterBar >> ensureAmountTicksY [
 	| rule newDict |
+	(dict at: 'data') at: 'set' ifPresent:[
+	(((dict at: 'data') at: 'set') = 1)
+	ifTrue:[
+	^ dict at: 'data' at: 'tick']].
 	rule := LARTickSpecUpdaterRule for: dict.
 	newDict := rule updateDict.
 	dict := newDict.
@@ -391,7 +388,7 @@ LarPlotterBar >> initializeDict [
 LarPlotterBar >> initializeFor [
 	|   int |
 	((dict at: 'data') includesKey: 'url') ifTrue: [ self getDataFromJsonFile ].
-
+	dict at: 'data' at: 'set' put: 0.
 	int := false.
 	
 	(dict includesKey: 'transform') 
@@ -446,9 +443,18 @@ self announcer announce: LarBarPlotterUpdate new
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> setAmountTicks: anInteger [
-(dict at: 'data' at: 'tick') put: anInteger.
-space := (500/anInteger)/scale.
-(dict at: 'data' at: 'space') put: space.
+	| space scale |
+	(dict at: 'data') at: 'tick' put: anInteger.
+	(dict at: 'data')
+		at: 'scale'
+		ifAbsent: [ (dict at: 'data') at: 'scale' put: 1 ].
+	scale := (dict at: 'data') at: 'scale'.
+	space := 500 / anInteger / scale.
+	(dict at: 'data') at: 'space' put: space.
+	dict
+		at: 'data'
+		at: 'set'
+		put: 1
 ]
 
 { #category : #accessing }

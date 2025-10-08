@@ -12,7 +12,7 @@ LarPlotterBarExamples >> addAxisLabel [
 <gtExample>
 | plotter |
 	"plotter:= LarPlotterBar new initialize: 500 with: 500."
-	^self newGraph addAxisLabel: 'AxisX' with: 'AxisY'. 
+	^self addTitel addAxisLabel: 'AxisX' with: 'AxisY'. 
 	
 ]
 
@@ -55,15 +55,6 @@ LarPlotterBarExamples >> bookPagesByKind [
 	dict := GtBarChartSpecExamples new gtBookPagesByKindBarChart asJsonString.	"dict := STONJSON fromString: dict. "
 	plotter := LarPlotterBar new.
 	^ plotter spec: dict
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarExamples >> changeTitle [
-<gtExample>
-| plotter |
-	plotter := (self addTitel) .
-	plotter title setText: 'NewTitle'. 
-	^plotter
 ]
 
 { #category : #'as yet unclassified' }
@@ -119,6 +110,18 @@ LarPlotterBarExamples >> newGraph [
 	| plotter |
 	 plotter := LarPlotterBar new.
 	 ^plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> setTicksAmount [
+<gtExample>
+^self addAxisLabel setAmountTicks: 5
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> setTicksAmountEx4 [
+<gtExample>
+^self vegaExample4 setAmountTicks: 7
 ]
 
 { #category : #'as yet unclassified' }

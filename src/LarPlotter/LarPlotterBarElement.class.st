@@ -129,50 +129,6 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBarElement >> addTicksLabelXTry: labelsX [
-	| tickXcontainer aNumber width |
-	aNumber := labelsX size.
-
-	width := 600 / aNumber.
-	labelsX
-		do: [ :tickXLabel | 
-			| frame_t |
-			plotter turn
-				ifTrue: [ tickXcontainer := LarContainer new asElementVertical.
-					tickXcontainer
-						constraintsDo: [ :c | 
-							c vertical exact: width.
-							c horizontal fitContent ].
-					tickXcontainer addChild: tickXLabel asElement.
-					plotter angle == 0
-						ifFalse: [ tickXcontainer := self angleY: tickXcontainer ].
-					frame_t := LarContainer new asElement.
-					frame_t
-						constraintsDo: [ :c | 
-							c vertical exact: width.
-							c horizontal fitContent ].
-					frame_t addChild: tickXcontainer.
-					labelsYContainer addChildFirst: frame_t ]
-					
-				ifFalse: [ | frame_s |
-					tickXcontainer := LarContainer new asElement.
-					tickXcontainer
-						constraintsDo: [ :c | 
-							c vertical fitContent.
-							c horizontal exact: width ].
-					tickXcontainer addChild: tickXLabel asElement.
-					plotter angle == 0
-						ifFalse: [ tickXcontainer := self angleX: tickXcontainer ].
-					frame_s := LarContainer new asElement.
-					frame_s
-						constraintsDo: [ :c | 
-							c vertical fitContent.
-							c horizontal exact: width ].
-					frame_s addChild: tickXcontainer.
-					labelsContainer addChild: frame_s ] ]
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
 	| tickYcontainer scale space height |
 	scale := plotter dict at: 'data' at: 'scale'.
@@ -455,13 +411,19 @@ LarPlotterBarElement >> initialize: aPlotter [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> initializeFor [
-self addBars: plotter addBars.
+(plotter dict at: 'data' at: 'values') isEmpty 
+ifFalse:[self addBars: plotter addBars].
+
 self addAxisLabelX: (plotter addAxisLabel) first.
 self addAxisLabelY: (plotter addAxisLabel) last.
-self addTicksLabelX: plotter addTicksLabelX.
-self addTicksLabelY: plotter addTicksLabelY.
+(plotter dict at: 'data' at: 'values') isEmpty 
+ifFalse:[self addTicksLabelX: plotter addTicksLabelX.
+		self addTicksLabelY: plotter addTicksLabelY].
 self addTitle: plotter title.
-self addTicksY: plotter addTicks.
+(plotter dict at: 'data' at: 'values') isEmpty 
+ifTrue:[(plotter dict at: 'data') at: 'tick' ifPresent: [self addTicksY: plotter addTicks]]
+ifFalse:[self addTicksY: plotter addTicks]
+
 ]
 
 { #category : #'as yet unclassified' }
