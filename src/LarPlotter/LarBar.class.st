@@ -9,7 +9,8 @@ Class {
 		'height',
 		'data',
 		'object',
-		'value'
+		'value',
+		'subbar'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -80,6 +81,16 @@ self sizeHeight: sizeHeight.
 { #category : #'as yet unclassified' }
 LarBar >> setBorderColor: color [
 self asElement border: (BlBorder paint: color)
+]
+
+{ #category : #accessing }
+LarBar >> subbar [
+	^ subbar
+]
+
+{ #category : #accessing }
+LarBar >> subbar: anObject [
+	subbar := anObject
 ]
 
 { #category : #accessing }

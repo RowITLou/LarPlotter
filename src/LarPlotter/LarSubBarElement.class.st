@@ -12,9 +12,9 @@ LarSubBarElement >> initialize: aBar [
 super initialize.
 subbar := aBar.
 ^self
-		background: (Color transparent);
+		background: (Color orange);
 		border: (BlBorder builder
-				paint: (Color blue alpha: 0.5);
+				paint: (Color black alpha: 0.5);
 				width: 1;
 				build);
 				"layout: BlFrameLayout new;"

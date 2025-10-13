@@ -59,12 +59,17 @@ cont constraintsDo: [ :c |
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> addBars: bars [
+| barE |
 bars do: [:bar|
 graphElement constraintsDo: [ :c |
 			c horizontal fitContent.
 			c vertical fitContent.
 			c accountTransformation.].
-graphElement addChildFirst: (bar asElement). ].
+			barE := (bar asElement).
+			bar subbar isNil
+			ifFalse:[self addSubBars: bar with: barE].
+graphElement addChildFirst: barE. ].
+
 graphElement forceLayout.
 
 		plotter turn
@@ -78,6 +83,24 @@ ifTrue:[graphElement  transform
 		rotateBy: 180;
 		apply.]
 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addSubBars: bar [
+bar subbar do:[:b| b asElement. 
+b background: (Color transparent).
+bar addChild: b].
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarElement >> addSubBars: bar with: barE [
+	bar subbar
+		do: [ :b | 
+			| bel |
+			bel := b asElement.
+			
+			bel background: (Color fromHexString: (b color)).
+			barE addChild: bel ]
 ]
 
 { #category : #'as yet unclassified' }

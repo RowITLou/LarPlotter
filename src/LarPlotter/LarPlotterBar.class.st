@@ -63,9 +63,8 @@ LarPlotterBar >> addBars [
 	int := false.
 
 	values := OrderedCollection new.
-	((dict at: 'encoding') includesKey: 'color')
-		ifTrue: [  "self createSubBar."
-		point := dict at: 'data' at: 'values'.
+	((dict at: 'encoding') includesKey: 'color') 
+		ifTrue: [  point := dict at: 'data' at: 'values'.
 			point
 				do: [ :p | 
 					| vals sum |
@@ -94,6 +93,7 @@ LarPlotterBar >> addBars [
 		do: [ :n | 
 			bar := LarBar new initialize: (val at: n) with: width.
 			bar value: (val at: n).
+			bar subbar: (self createSubBar: n).
 			bars add: bar ].
 
 	self notifyUpdate.
@@ -228,7 +228,7 @@ LarPlotterBar >> aggregateColorDataSum: fieldTwo with: fieldOne [
 	transformation_two := OrderedCollection new.
 
 	jsonData := (dict at: 'data') at: 'values'.
-	jsonData do: [ :d | transformation add: (d at: fieldTwo) ].
+	jsonData do: [ :d | transformation add: (d at: fieldOne) ].
 	transformation := transformation removeDuplicates.
 
 	fieldThree := ((dict at: 'encoding') at: 'color') at: 'field'.
@@ -244,12 +244,12 @@ LarPlotterBar >> aggregateColorDataSum: fieldTwo with: fieldOne [
 							jsonData
 								do: [ :d | 
 									(d includes: field) & (d includes: kind)
-										ifTrue: [ temp_2 add: (d at: fieldOne) ] ].
+										ifTrue: [ temp_2 add: (d at: fieldTwo) ] ].
 
 							{fieldThree -> kind.
 								'count' -> temp_2 sumNumbers} asDictionary ].
 
-				{fieldTwo -> field.
+				{fieldOne -> field.
 					'count' -> temp_1} asDictionary ].
 	dict
 		at: 'data'
@@ -309,7 +309,7 @@ LarPlotterBar >> aggregateDataSum: fieldOne with: fieldTwo [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> aggregateDataX [
-	((dict at: 'encoding' at: 'x') includesKey: 'color')
+	((dict at: 'encoding') includesKey: 'color')
 	ifTrue:[(((dict at: 'encoding' at: 'x') at: 'aggregate') = 'sum')
 	ifTrue:[self aggregateColorDataSum: (((dict at: 'encoding') at: 'x') at: 'field')
 				with: (((dict at: 'encoding') at: 'y') at: 'field')]
@@ -325,10 +325,18 @@ LarPlotterBar >> aggregateDataX [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> aggregateDataY [
-	(((dict at: 'encoding' at: 'y') at: 'aggregate') = 'sum')
+	
+	((dict at: 'encoding') includesKey: 'color')
+	ifTrue:[(((dict at: 'encoding' at: 'y') at: 'aggregate') = 'sum')
+	ifTrue:[self aggregateColorDataSum: (((dict at: 'encoding') at: 'y') at: 'field')
+				with: (((dict at: 'encoding') at: 'x') at: 'field')]
+	ifFalse:[self aggregateColorDataCount: (((dict at: 'encoding') at: 'x') at: 'field')]]
+	
+	
+	ifFalse:[(((dict at: 'encoding' at: 'y') at: 'aggregate') = 'sum')
 	ifTrue:[self aggregateDataSum: (((dict at: 'encoding') at: 'y') at: 'field')
 				with: (((dict at: 'encoding') at: 'x') at: 'field')]
-	ifFalse:[self aggregateDataCount: (((dict at: 'encoding') at: 'x') at: 'field')]
+	ifFalse:[self aggregateDataCount: (((dict at: 'encoding') at: 'x') at: 'field')]]
   
 ]
 
@@ -377,6 +385,23 @@ LarPlotterBar >> borders: anObject [
 LarPlotterBar >> createSubBar [
 ]
 
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> createSubBar: index [
+	| subBar point val sub|
+	((dict at: 'encoding') includesKey: 'color') 
+	ifTrue:[
+	subBar := OrderedCollection new.
+	point := dict at: 'data' at: 'values'.
+	((point at: index) at: 'count') doWithIndex:
+	[:p :i| val := p at: 'count'.
+	sub := LarSubBar new initialize: (val * (dict at: 'data' at: 'scale')) with: (dict at: 'data' at: 'width').
+	sub color: ((((dict at:'encoding' at: 'color') at: 'scale') at: 'range') at:i).
+	"sub data:  "
+ subBar add: sub.].
+ ^subBar ]
+ ifFalse:[^nil]
+]
+
 { #category : #accessing }
 LarPlotterBar >> dict [
 	^ dict
@@ -385,7 +410,7 @@ LarPlotterBar >> dict [
 { #category : #accessing }
 LarPlotterBar >> dict: anObject [
 	dict := anObject.
-	"self initializeFor"
+	self initializeFor
 ]
 
 { #category : #'as yet unclassified' }

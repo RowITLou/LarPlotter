@@ -8,6 +8,15 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> Example1 [
+<gtExample>
+	| plotter dict |
+	dict := GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart asJsonString.	
+	plotter := LarPlotterBar new.
+	^ plotter spec: dict
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> addAxisLabel [
 <gtExample>
 | plotter |

@@ -17,6 +17,7 @@ super initialize.
 bar := aBar.
 ^self
 		background: (Color transparent);
+		layout: BlGridLayout vertical;
 		border: (BlBorder builder
 				paint: (Color blue alpha: 0.5);
 				width: 1;

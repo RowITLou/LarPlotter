@@ -1255,14 +1255,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-08T16:12:27.382+02:00"
+									"dateAndTimeString" : "2025-10-10T18:06:44.111+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "3pHOOBL8DQClzg3vAG6XtQ=="
 							},
-							"code" : "dict := GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart asJsonString.\rdict := STONJSON fromString: dict.\r"
+							"code" : "dict := GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart asJsonString.\r\"dict := STONJSON fromString: dict.\"\r^dict"
 						},
 						{
 							"__type" : "pharoSnippet",
