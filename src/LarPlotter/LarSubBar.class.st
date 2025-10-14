@@ -7,7 +7,8 @@ Class {
 		'data',
 		'object',
 		'value',
-		'color'
+		'color',
+		'tooltip'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -53,6 +54,16 @@ LarSubBar >> initialize: sizeHeight with: sizeWidth [
 self height: sizeHeight. 
 self width: sizeWidth. 
 ^self.
+]
+
+{ #category : #accessing }
+LarSubBar >> tooltip [
+	^ tooltip
+]
+
+{ #category : #accessing }
+LarSubBar >> tooltip: anObject [
+	tooltip := anObject
 ]
 
 { #category : #accessing }

@@ -57,26 +57,45 @@ LarPlotterBar >> addAxisLabel: textX with: textY [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars [
-	| bar val width int values bars data point colors|
+	| bar val width int values bars data point colors some|
 	int := false.
-
+     some := false.
+     colors := nil.
 	values := OrderedCollection new.
 	((dict at: 'encoding') includesKey: 'color') 
-	ifTrue:[((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'x') at: 'field')) |((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'y') at: 'field'))
-		ifTrue:[point := dict at: 'data' at: 'values'.
+	
+	ifTrue:[ 
+	(((dict at: 'encoding') at: 'x') includesKey: 'field')
+	
+	ifTrue:[((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'x') at: 'field'))
+	
+	ifTrue:[point := dict at: 'data' at: 'values'.
 			data := point collect: [ :each | each values ].
 			data first first isString ifTrue: [ int := true ].
 			values := data
 					collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ].
 					colors := data
-					collect: [ :each | int ifTrue: [ each first ] ifFalse: [ each last ]
+					collect: [ :each | int ifTrue: [ each first ] ifFalse: [ each last ]. ].
+					some := true.
+					]].
+	(((dict at: 'encoding') at: 'y') includesKey: 'field')
 					
+	ifTrue:[(((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'y') at: 'field') 
+	
+	ifTrue:[point := dict at: 'data' at: 'values'.
+			data := point collect: [ :each | each values ].
+			data first first isString ifTrue: [ int := true ].
+			values := data
+					collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ].
+					colors := data
+					collect: [ :each | int ifTrue: [ each first ] ifFalse: [ each last ]. 
+				
+					].
+						some := true.
+					]].
 					
-					]]
-					
-		
-		
-		ifFalse: [  point := dict at: 'data' at: 'values'.
+					colors isNil
+					ifTrue: [  point := dict at: 'data' at: 'values'.
 			point
 				do: [ :p | 
 					| vals sum |
@@ -86,7 +105,6 @@ LarPlotterBar >> addBars [
 								| dat |
 								dat := v at: 'count'. ].
 								values add: sum ] ]]
-								
 		ifFalse: [ point := dict at: 'data' at: 'values'.
 			data := point collect: [ :each | each values ].
 			data first first isString ifTrue: [ int := true ].
@@ -103,7 +121,9 @@ LarPlotterBar >> addBars [
 		do: [ :n | 
 			bar := LarBar new initialize: (val at: n) with: width.
 			bar value: (val at: n).
-			bar color: (colors at: n). 
+			some
+			ifTrue:[bar color: (colors at: n)]
+			ifFalse:[bar color: nil]. 
 			bar subbar: (self createSubBar: n).
 			bars add: bar ].
 
@@ -410,28 +430,42 @@ LarPlotterBar >> colorsSubBar [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> createSubBar [
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> createSubBar: index [
 	| subBar point val sub|
 	((dict at: 'encoding') includesKey: 'color') 
 	ifTrue:[
-	((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'x') at: 'field')) |((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'y') at: 'field'))
-	ifTrue:[^nil]
 	
-	ifFalse:[subBar := OrderedCollection new.
+	(((dict at: 'encoding') at: 'x') includesKey: 'field')
+	
+	ifTrue:[((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'x') at: 'field')) 
+	ifTrue:[^nil]].
+	
+	(((dict at: 'encoding') at: 'y') includesKey: 'field')
+	
+	ifTrue:[((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'y') at: 'field')) 
+	ifTrue:[^nil]].
+	
+	subBar := OrderedCollection new.
 	point := dict at: 'data' at: 'values'.
+	
 	((point at: index) at: 'count') doWithIndex:
 	[:p :i| val := p at: 'count'.
 	sub := LarSubBar new initialize: (val * (dict at: 'data' at: 'scale')) with: (dict at: 'data' at: 'width').
+	(((dict at: 'encoding') at: 'x') includesKey: 'field')
+	ifTrue:[(p includesKey: (((dict at: 'encoding') at: 'x') at: 'field'))
+	ifTrue:[sub tooltip: (p at: (((dict at: 'encoding') at: 'x') at: 'field'))]].
+	(((dict at: 'encoding') at: 'y') includesKey: 'field')
+	ifTrue: [(p includesKey: (((dict at: 'encoding') at: 'y') at: 'field'))
+	ifTrue:[sub tooltip: (p at: (((dict at: 'encoding') at: 'y') at: 'field'))]].
+	(p includesKey: (((dict at: 'encoding') at: 'color') at: 'field'))
+	ifTrue:[sub tooltip: (p at: (((dict at: 'encoding') at: 'color') at: 'field'))].
 	sub color: ((self colorsSubBar) at: i).
 	((dict at:'encoding' at: 'color') includesKey: 'scale')
 	ifTrue:[(((dict at:'encoding' at: 'color') at: 'scale') includesKey: 'range')
 	ifTrue:[sub color: ((((dict at:'encoding' at: 'color') at: 'scale') at: 'range') at:i)]].
- subBar add: sub.].
- ^subBar] ]
+ subBar add: sub.
+ ] .
+ ^subBar]
  ifFalse:[^nil]
 ]
 

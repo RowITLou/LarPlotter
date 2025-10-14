@@ -13,6 +13,7 @@ super initialize.
 subbar := aBar.
 ^self
 		background: Color transparent;
+		aptitude: (BrGlamorousWithExplicitTooltipAptitude text: subbar tooltip);
 		border: (BlBorder builder
 				paint: (Color black alpha: 0.5);
 				width: 1;
@@ -27,4 +28,14 @@ subbar := aBar.
 		
 	   
 			; yourself.
+]
+
+{ #category : #accessing }
+LarSubBarElement >> tooltip [
+	^ tooltip
+]
+
+{ #category : #accessing }
+LarSubBarElement >> tooltip: anObject [
+	tooltip := anObject
 ]
