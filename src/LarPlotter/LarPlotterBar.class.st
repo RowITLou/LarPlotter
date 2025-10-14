@@ -50,8 +50,6 @@ LarPlotterBar >> addAxisLabel: textX with: textY [
 
 	labelAxisX := LarLabelAxis new initialize: axisX.
 	labelAxisY := LarLabelAxis new initialize: axisy.
-
-
 	
 	self notifyUpdate.
 	
@@ -59,12 +57,26 @@ LarPlotterBar >> addAxisLabel: textX with: textY [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars [
-	| bar val width int values bars data point |
+	| bar val width int values bars data point colors|
 	int := false.
 
 	values := OrderedCollection new.
 	((dict at: 'encoding') includesKey: 'color') 
-		ifTrue: [  point := dict at: 'data' at: 'values'.
+	ifTrue:[((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'x') at: 'field')) |((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'y') at: 'field'))
+		ifTrue:[point := dict at: 'data' at: 'values'.
+			data := point collect: [ :each | each values ].
+			data first first isString ifTrue: [ int := true ].
+			values := data
+					collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ].
+					colors := data
+					collect: [ :each | int ifTrue: [ each first ] ifFalse: [ each last ]
+					
+					
+					]]
+					
+		
+		
+		ifFalse: [  point := dict at: 'data' at: 'values'.
 			point
 				do: [ :p | 
 					| vals sum |
@@ -73,9 +85,7 @@ LarPlotterBar >> addBars [
 							sum: [ :v | 
 								| dat |
 								dat := v at: 'count'. ].
-								values add: sum ] ]
-								
-								
+								values add: sum ] ]]
 								
 		ifFalse: [ point := dict at: 'data' at: 'values'.
 			data := point collect: [ :each | each values ].
@@ -93,6 +103,7 @@ LarPlotterBar >> addBars [
 		do: [ :n | 
 			bar := LarBar new initialize: (val at: n) with: width.
 			bar value: (val at: n).
+			bar color: (colors at: n). 
 			bar subbar: (self createSubBar: n).
 			bars add: bar ].
 
@@ -189,12 +200,18 @@ LarPlotterBar >> aggregateColorDataCount: aField [
 	transformation_two := OrderedCollection new.
 
 	jsonData := (dict at: 'data') at: 'values'.
+	
 	jsonData do: [ :d | transformation add: (d at: aField) ].
 	transformation := transformation removeDuplicates.
-
+	
 	fieldTwo := ((dict at: 'encoding') at: 'color') at: 'field'.
 	jsonData do: [ :d | transformation_two add: (d at: fieldTwo) ].
 	transformation_two := transformation_two removeDuplicates.
+
+	((dict at:'encoding' at: 'color') includesKey: 'scale') 
+	ifTrue:[(((dict at:'encoding' at: 'color') at: 'scale') includesKey: 'domain')
+	ifTrue:[transformation_two := (((dict at:'encoding' at: 'color') at: 'scale')at:  'domain')]].
+	
 
 
 	json := transformation
@@ -228,14 +245,20 @@ LarPlotterBar >> aggregateColorDataSum: fieldTwo with: fieldOne [
 	transformation_two := OrderedCollection new.
 
 	jsonData := (dict at: 'data') at: 'values'.
+	
+	
 	jsonData do: [ :d | transformation add: (d at: fieldOne) ].
 	transformation := transformation removeDuplicates.
-
+	
 	fieldThree := ((dict at: 'encoding') at: 'color') at: 'field'.
+	
 	jsonData do: [ :d | transformation_two add: (d at: fieldThree) ].
 	transformation_two := transformation_two removeDuplicates.
-
-
+	
+	((dict at:'encoding' at: 'color') includesKey:  'scale')
+	ifTrue:[(((dict at:'encoding' at: 'color') at: 'scale') includesKey: 'domain')
+	ifTrue:[transformation_two := (((dict at:'encoding' at: 'color') at: 'scale')at:  'domain').].].
+	
 	json := transformation
 			collect: [ :field | 
 				temp_1 := transformation_two
@@ -382,6 +405,11 @@ LarPlotterBar >> borders: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBar >> colorsSubBar [
+^#('#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800')
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBar >> createSubBar [
 ]
 
@@ -390,15 +418,20 @@ LarPlotterBar >> createSubBar: index [
 	| subBar point val sub|
 	((dict at: 'encoding') includesKey: 'color') 
 	ifTrue:[
-	subBar := OrderedCollection new.
+	((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'x') at: 'field')) |((((dict at: 'encoding') at: 'color') at: 'field') = (((dict at: 'encoding') at: 'y') at: 'field'))
+	ifTrue:[^nil]
+	
+	ifFalse:[subBar := OrderedCollection new.
 	point := dict at: 'data' at: 'values'.
 	((point at: index) at: 'count') doWithIndex:
 	[:p :i| val := p at: 'count'.
 	sub := LarSubBar new initialize: (val * (dict at: 'data' at: 'scale')) with: (dict at: 'data' at: 'width').
-	sub color: ((((dict at:'encoding' at: 'color') at: 'scale') at: 'range') at:i).
-	"sub data:  "
+	sub color: ((self colorsSubBar) at: i).
+	((dict at:'encoding' at: 'color') includesKey: 'scale')
+	ifTrue:[(((dict at:'encoding' at: 'color') at: 'scale') includesKey: 'range')
+	ifTrue:[sub color: ((((dict at:'encoding' at: 'color') at: 'scale') at: 'range') at:i)]].
  subBar add: sub.].
- ^subBar ]
+ ^subBar] ]
  ifFalse:[^nil]
 ]
 

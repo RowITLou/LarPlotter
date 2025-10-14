@@ -10,7 +10,8 @@ Class {
 		'data',
 		'object',
 		'value',
-		'subbar'
+		'subbar',
+		'color'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -18,6 +19,16 @@ Class {
 { #category : #'as yet unclassified' }
 LarBar >> asElement [
 ^LarBarElement new initialize: self.
+]
+
+{ #category : #accessing }
+LarBar >> color [
+	^ color
+]
+
+{ #category : #accessing }
+LarBar >> color: anObject [
+	color := anObject
 ]
 
 { #category : #accessing }

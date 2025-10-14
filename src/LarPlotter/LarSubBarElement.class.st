@@ -12,7 +12,7 @@ LarSubBarElement >> initialize: aBar [
 super initialize.
 subbar := aBar.
 ^self
-		background: (Color orange);
+		background: Color transparent;
 		border: (BlBorder builder
 				paint: (Color black alpha: 0.5);
 				width: 1;
@@ -21,9 +21,9 @@ subbar := aBar.
 		constraintsDo: [ :c | 
 		 c vertical exact: (subbar height).
 		    
-	    c horizontal exact: (subbar width)];
-	    when: BlClickEvent do: [ :event | 
-				event currentTarget phlow spawnObject: (subbar) ]
+	    c horizontal exact: (subbar width)]
+	    "when: BlClickEvent do: [ :event | 
+				event currentTarget phlow spawnObject: (subbar) ]"
 		
 	   
 			; yourself.

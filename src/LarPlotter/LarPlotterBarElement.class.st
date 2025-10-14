@@ -66,6 +66,8 @@ graphElement constraintsDo: [ :c |
 			c vertical fitContent.
 			c accountTransformation.].
 			barE := (bar asElement).
+			bar color isNil
+			ifFalse:[barE background: (Color fromString: (bar color))].
 			bar subbar isNil
 			ifFalse:[self addSubBars: bar with: barE].
 graphElement addChildFirst: barE. ].
@@ -83,13 +85,6 @@ ifTrue:[graphElement  transform
 		rotateBy: 180;
 		apply.]
 
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBarElement >> addSubBars: bar [
-bar subbar do:[:b| b asElement. 
-b background: (Color transparent).
-bar addChild: b].
 ]
 
 { #category : #'as yet unclassified' }
