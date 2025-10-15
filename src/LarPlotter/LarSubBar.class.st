@@ -57,6 +57,16 @@ self width: sizeWidth.
 ]
 
 { #category : #accessing }
+LarSubBar >> object [
+	^ object
+]
+
+{ #category : #accessing }
+LarSubBar >> object: anObject [
+	object := anObject
+]
+
+{ #category : #accessing }
 LarSubBar >> tooltip [
 	^ tooltip
 ]
@@ -64,6 +74,16 @@ LarSubBar >> tooltip [
 { #category : #accessing }
 LarSubBar >> tooltip: anObject [
 	tooltip := anObject
+]
+
+{ #category : #accessing }
+LarSubBar >> value [
+	^ value
+]
+
+{ #category : #accessing }
+LarSubBar >> value: anObject [
+	value := anObject
 ]
 
 { #category : #accessing }

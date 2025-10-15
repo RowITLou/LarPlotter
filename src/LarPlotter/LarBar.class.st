@@ -53,6 +53,27 @@ LarBar >> gtObjectView: aView [
 
 ]
 
+{ #category : #'as yet unclassified' }
+LarBar >> gtSubbarView: aView [
+<gtView>
+ subbar isNil
+ ifTrue: [^ (aView textEditor)
+		title: 'Print';
+		priority: 21;
+		aptitude: BrGlamorousCodeEditorAptitude;
+		text: [ 'There are no Subbars in this Bar' asRopedText ].]
+		
+	ifFalse:[^ (aView columnedList)
+		title: 'Subbars';
+		priority: 20;
+		
+		items: [ self subbar ];
+		column: 'Subbar' text: [ :sub | sub ];
+		column: 'Data' text: [ :sub |  sub tooltip];
+		column: 'Value' text: [ :sub | sub value ];
+		column: 'Object' text: [ :sub | sub object ].]
+]
+
 { #category : #accessing }
 LarBar >> height [
 	^ height

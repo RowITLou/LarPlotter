@@ -225,6 +225,18 @@ LarPlotterBarExamples >> vegaExample4 [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaExample5 [
+"https://vega.github.io/vega-lite/examples/bar_layered_transparent.html"
+<gtExample>
+	|  plotter spec |
+	
+	spec := self vegaSpec5.	
+	plotter := LarPlotterBar new.
+	plotter spec: spec.
+	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterBarExamples >> vegaSpec2 [
 	| jsonString |
 	jsonString := '{
@@ -274,6 +286,37 @@ LarPlotterBarExamples >> vegaSpec4 [
   "encoding": {
     "x": {"field": "Origin"},
     "y": {"aggregate": "count", "title": "Number of Cars"}
+  }
+}'.
+^jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> vegaSpec5 [
+	| jsonString |
+	"smal change in the field of the color. can not handle changes fo the field in the json"
+	jsonString := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "A bar chart showing the US population distribution of age groups and gender in 2000.",
+  "data": { "url": "data/population.json"},
+  "transform": [
+    {"filter": "datum.year == 2000"},
+    {"calculate": "datum.sex == 2 ? ''Female'' : ''Male''", "as": "gender"}
+  ],
+  "width": {"step": 17},
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "age", "type": "ordinal"},
+    "y": {
+      "aggregate": "sum", "field": "people",
+      "title": "population",
+      "stack": null
+    },
+    "color": {
+      "field": "sex", 
+      "scale": {"range": ["#675193", "#ca8861"]}
+    },
+    "opacity": {"value": 0.7}
   }
 }'.
 ^jsonString

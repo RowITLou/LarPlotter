@@ -57,7 +57,7 @@ LarPlotterBar >> addAxisLabel: textX with: textY [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> addBars [
-	| bar val width int values bars data point colors some|
+	| bar val width int values bars data point colors some domain|
 	int := false.
      some := false.
      colors := nil.
@@ -109,7 +109,9 @@ LarPlotterBar >> addBars [
 			data := point collect: [ :each | each values ].
 			data first first isString ifTrue: [ int := true ].
 			values := data
-					collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ] ].
+					collect: [ :each | int ifTrue: [ each last ] ifFalse: [ each first ] ] .
+			domain := data
+					collect: [ :each | int ifTrue: [ each first ] ifFalse: [ each last ]]		].
 
 	bars := OrderedCollection new.
 	width := 65.
@@ -120,11 +122,14 @@ LarPlotterBar >> addBars [
 		to: val size
 		do: [ :n | 
 			bar := LarBar new initialize: (val at: n) with: width.
-			bar value: (val at: n).
+			bar value: (values at: n).
 			some
-			ifTrue:[bar color: (colors at: n)]
+			ifTrue:[bar color: (colors at: n).
+			bar data: (colors at: n)]
 			ifFalse:[bar color: nil]. 
 			bar subbar: (self createSubBar: n).
+			bar subbar isNil & colors isNil
+			ifTrue:[bar data: (domain at: n)].
 			bars add: bar ].
 
 	self notifyUpdate.
@@ -426,7 +431,7 @@ LarPlotterBar >> borders: anObject [
 
 { #category : #'as yet unclassified' }
 LarPlotterBar >> colorsSubBar [
-^#('#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800' '#FF8800')
+^#('#1f77b4' '#ff7f0e' '#2ca02c' '#d62728' '#9467bd' '#8c564b' '#e377c2' '#7f7f7f' '#bcbd22' '#17becf' '#aec7e8' '#ffbb78' '#98df8a' '#ff9896' '#c5b0d5' '#c49c94' '#f7b6d2' '#c7c7c7' '#dbdb8d' '#9edae5')
 ]
 
 { #category : #'as yet unclassified' }
@@ -451,6 +456,7 @@ LarPlotterBar >> createSubBar: index [
 	((point at: index) at: 'count') doWithIndex:
 	[:p :i| val := p at: 'count'.
 	sub := LarSubBar new initialize: (val * (dict at: 'data' at: 'scale')) with: (dict at: 'data' at: 'width').
+	sub value: val. 
 	(((dict at: 'encoding') at: 'x') includesKey: 'field')
 	ifTrue:[(p includesKey: (((dict at: 'encoding') at: 'x') at: 'field'))
 	ifTrue:[sub tooltip: (p at: (((dict at: 'encoding') at: 'x') at: 'field'))]].
@@ -597,7 +603,7 @@ LarPlotterBar >> initializeFor [
 		turn := false].
 		
     ((dict at: 'encoding' at: 'x') includesKey: 'type')
-    ifTrue:[(((dict at: 'encoding' at: 'x') at: 'type') = 'nominal')
+    ifTrue:[(((dict at: 'encoding' at: 'x') at: 'type') = 'nominal' |(((dict at: 'encoding' at: 'x') at: 'type') = 'ordinal' ))
     ifTrue: [turn := false ]
     ifFalse:[turn := true]].
 	
