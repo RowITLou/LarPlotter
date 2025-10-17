@@ -9,11 +9,8 @@ Class {
 
 { #category : #'as yet unclassified' }
 LarPlotterBarExamples >> Example1 [
-<gtExample>
-	| plotter dict |
-	dict := GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart asJsonString.	
-	plotter := LarPlotterBar new.
-	^ plotter spec: dict
+	<gtExample>
+	^ self stackedGtBookFieldsByKindBarChart
 ]
 
 { #category : #'as yet unclassified' }
@@ -146,6 +143,16 @@ LarPlotterBarExamples >> specExample [
   }
 }'.
 	^ jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBarExamples >> stackedGtBookFieldsByKindBarChart [
+	<gtExample>
+	| plotter dict |
+	dict := GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart
+			asJsonString.
+	plotter := LarPlotterBar new.
+	^ plotter spec: dict
 ]
 
 { #category : #'as yet unclassified' }
