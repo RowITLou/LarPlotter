@@ -261,7 +261,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2025-10-17T10:45:40.115178+02:00"
+												"dateAndTimeString" : "2025-10-20T08:30:27.435976+02:00"
 											}
 										},
 										"uid" : {
@@ -271,7 +271,44 @@
 										"paragraphStyle" : {
 											"__type" : "textStyle"
 										},
-										"string" : "[[Specifying the sending object for a chart element]] "
+										"string" : "[[(First attempt) Specifying the sending object for a chart element]] "
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-10-20T08:26:39.632024+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-10-20T08:30:37.537269+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "JOUs5/L9DQCzPwiVBLUAgw=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "[[(Second attempt) Simplifying the sending object spec for chart elements]] "
 									}
 								]
 							},

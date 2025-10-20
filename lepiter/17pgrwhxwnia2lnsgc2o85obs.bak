@@ -18,6 +18,43 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-20T08:27:17.609258+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-20T08:28:18.355161+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "SUqj6PL9DQC0g/NSBLUAgw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "*First attempt*\nNB: this version has issues since:\n(i) it is more general or complicated than needed, and\n(ii) there could be security issues, since the message sends could invoke anything.\nSee [[Simplifying the sending object spec for chart elements]]. "
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2025-10-17T10:45:42.536369+02:00"
 					}
 				},
@@ -224,7 +261,42 @@
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "blockQuoteSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-17T11:42:34.82053+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-17T11:42:36.427769+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "1LtQSrn9DQCEWQC4DuyBFA=="
+							},
+							"string" : "{\"sendSpec\":[\"LeDatabase\",\"gtBook\",\"topicMap\",\"kindNodeNamed:inFieldNamed:\"]}"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -245,14 +317,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-10-17T11:42:20.700633+02:00"
+						"dateAndTimeString" : "2025-10-17T11:42:26.077873+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "jghCQLn9DQCC20fwDuyBFA=="
 				},
-				"code" : "{'sendSpec'\r\t\t\t-> #('LeDatabase' 'gtBook' 'topicMap' 'kindNodeNamed:inFieldNamed:')}\r\t\tasDictionary asGtJson asJsonString"
+				"code" : "{'sendSpec' -> #('LeDatabase' 'gtBook' 'topicMap' 'kindNodeNamed:inFieldNamed:')}\r\tasDictionary asGtJson asJsonString"
 			},
 			{
 				"__type" : "textSnippet",

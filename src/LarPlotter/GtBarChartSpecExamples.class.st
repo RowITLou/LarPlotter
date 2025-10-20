@@ -55,6 +55,54 @@ GtBarChartSpecExamples >> larPackageClassMethodsBarChart [
 	^ barChart
 ]
 
+{ #category : #accessing }
+GtBarChartSpecExamples >> sendBar: aBarValue andGroup: aGroupValue withSpec: aJson [
+	"An example of how the gtChartSend spec can be interpreted."
+
+	| spec aMethodSelector aClassSymbol |
+	spec := aJson at: 'gtChartSend'.
+	aClassSymbol := (spec at: 'class') asSymbol.
+	aMethodSelector := (spec at: 'selector') asSymbol.
+
+	self assert: (Smalltalk globals includesKey: aClassSymbol).
+	self assert: aMethodSelector isValidSelector.
+	self assert: aMethodSelector isKeyword.
+	self assert: (aMethodSelector occurrencesOf: $:) equals: 2.
+	self
+		assert: (aClassSymbol asClass >> aMethodSelector hasPragmaNamed: 'gtChartSend').
+
+	^ aClassSymbol asClass new
+		perform: aMethodSelector
+		withArguments: {aBarValue.
+				aGroupValue}
+]
+
+{ #category : #'as yet unclassified' }
+GtBarChartSpecExamples >> sendBarAndGroupExample [
+	<gtExample>
+	| aField aKind aJson result |
+	aField := 'Glamorous Toolkit Basics'.
+	aKind := 'Introduction'.
+	aJson := self stackedGtBookFieldsByKindBarChartWithChartSend json.
+	result := self
+			sendBar: aField
+			andGroup: aKind
+			withSpec: aJson.
+	self assert: result kind equals: aKind.
+	self assert: (result fields includes: aField).
+	^ result
+]
+
+{ #category : #accessing }
+GtBarChartSpecExamples >> sendGtBookField: aField andKind: aKind [
+	"An example of a dedicated method to define from the bar and stacked element the object to send to."
+
+	<gtChartSend>
+	| topicMap |
+	topicMap := LeDatabase gtBook topicMap.
+	^ (topicMap fieldNodeNamed: aField) kindNodeNamed: aKind
+]
+
 { #category : #examples }
 GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChart [
 	<gtExample>
@@ -81,5 +129,21 @@ GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChart [
 					asDictionary;
 			labelAngle: -45;
 			yourself.
+	^ barChart
+]
+
+{ #category : #examples }
+GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSend [
+	<gtExample>
+	| barChart |
+	barChart := self stackedGtBookFieldsByKindBarChart
+			gtChartSend: GtBarChartSpecExamples >> #sendGtBookField:andKind:;
+			yourself.
+	self
+		assert: (barChart gtChartSend at: 'class')
+		equals: 'GtBarChartSpecExamples'.
+	self
+		assert: (barChart gtChartSend at: 'selector')
+		equals: 'sendGtBookField:andKind:'.
 	^ barChart
 ]

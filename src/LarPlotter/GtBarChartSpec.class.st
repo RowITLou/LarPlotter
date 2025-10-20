@@ -85,6 +85,20 @@ GtBarChartSpec >> fields: aFieldsArray [
 	self y at: 'field' put: aFieldsArray second
 ]
 
+{ #category : #accessing }
+GtBarChartSpec >> gtChartSend [
+	^ self json at: 'gtChartSend'
+]
+
+{ #category : #accessing }
+GtBarChartSpec >> gtChartSend: specMethod [
+	self json
+		at: 'gtChartSend'
+		put: {'class' -> specMethod methodClass name.
+				'selector' -> specMethod selector asString} asDictionary.
+	^ self json
+]
+
 { #category : #views }
 GtBarChartSpec >> gtJsonObjectFor: aView [
 	<gtView>
