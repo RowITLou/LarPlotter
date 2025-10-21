@@ -104,7 +104,10 @@ LarPlotterBar >> addBars [
 							sum: [ :v | 
 								| dat |
 								dat := v at: 'count'. ].
-								values add: sum ] ]]
+								values add: sum ] .
+								domain :=  point collect:[:p| self getBarData: p]
+								
+								]]
 		ifFalse: [ point := dict at: 'data' at: 'values'.
 			data := point collect: [ :each | each values ].
 			data first first isString ifTrue: [ int := true ].
@@ -128,12 +131,39 @@ LarPlotterBar >> addBars [
 			bar data: (colors at: n)]
 			ifFalse:[bar color: nil]. 
 			bar subbar: (self createSubBar: n).
-			bar subbar isNil & colors isNil
+			colors isNil
 			ifTrue:[bar data: (domain at: n)].
+			bar subbar isNotNil 
+			ifTrue:[ self addObject: bar data  with: bar subbar].
 			bars add: bar ].
 
 	self notifyUpdate.
 	^ bars
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addObject: barValue with: subbars [
+	| aClassSymbol  subbar jsonSpec aMethodSelector |
+	(dict includesKey: 'gtChartSendSubobject') ifFalse: [ ^ nil ].
+	jsonSpec := dict at: 'gtChartSendSubobject'.
+	aClassSymbol := (jsonSpec at: 'class') asSymbol.
+	aMethodSelector := (jsonSpec at: 'selector') asSymbol.
+
+	self assert: (Smalltalk globals includesKey: aClassSymbol).
+	self assert: aMethodSelector isValidSelector.
+	self assert: aMethodSelector isKeyword.
+	self assert: (aMethodSelector occurrencesOf: $:) equals: 2.
+	"self
+		assert: (aClassSymbol asClass >> aMethodSelector hasPragmaNamed: 'gtChartSend')."
+
+	subbar := subbars reject: [ :s | s value == 0 ].
+	subbar
+		do: [ :s | 
+		s object: (aClassSymbol asClass new
+	perform: aMethodSelector
+		withArguments: {barValue.
+				s tooltip}).
+			 ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -530,6 +560,19 @@ LarPlotterBar >> ensureBarsWidth: aNumber [
 	newDict := rule updateDictWidth: aNumber.
 	dict := newDict.
 	^ dict at: 'data' at: 'width'
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> getBarData: point [
+	
+	(((dict at: 'encoding') at: 'x') includesKey: 'field')
+		ifTrue: [ ^(point includesKey: (((dict at: 'encoding') at: 'x') at: 'field'))
+				ifTrue: [ (point at: (((dict at: 'encoding') at: 'x') at: 'field')) ] ].
+	(((dict at: 'encoding') at: 'y') includesKey: 'field')
+		ifTrue: [ (point includesKey: (((dict at: 'encoding') at: 'y') at: 'field'))
+				ifTrue: [ ^(point at: (((dict at: 'encoding') at: 'y') at: 'field')) ] ].
+	(point includesKey: (((dict at: 'encoding') at: 'color') at: 'field'))
+		ifTrue: [^(point at: (((dict at: 'encoding') at: 'color') at: 'field')) ]
 ]
 
 { #category : #'as yet unclassified' }

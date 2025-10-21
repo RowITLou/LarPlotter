@@ -22,9 +22,9 @@ subbar := aBar.
 		constraintsDo: [ :c | 
 		 c vertical exact: (subbar height).
 		    
-	    c horizontal exact: (subbar width)]
-	    "when: BlClickEvent do: [ :event | 
-				event currentTarget phlow spawnObject: (subbar) ]"
+	    c horizontal exact: (subbar width)];
+	    when: BlClickEvent do: [ :event | 
+				event currentTarget phlow spawnObject: (subbar object) ]
 		
 	   
 			; yourself.

@@ -57,6 +57,7 @@ GtBarChartSpecExamples >> larPackageClassMethodsBarChart [
 
 { #category : #accessing }
 GtBarChartSpecExamples >> sendBar: aBarValue andGroup: aGroupValue withSpec: aJson [
+<gtExample>
 	"An example of how the gtChartSend spec can be interpreted."
 
 	| spec aMethodSelector aClassSymbol |

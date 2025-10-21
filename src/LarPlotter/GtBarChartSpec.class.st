@@ -87,13 +87,13 @@ GtBarChartSpec >> fields: aFieldsArray [
 
 { #category : #accessing }
 GtBarChartSpec >> gtChartSend [
-	^ self json at: 'gtChartSend'
+	^ self json at: 'gtChartSendSubobject'
 ]
 
 { #category : #accessing }
 GtBarChartSpec >> gtChartSend: specMethod [
 	self json
-		at: 'gtChartSend'
+		at: 'gtChartSendSubobject'
 		put: {'class' -> specMethod methodClass name.
 				'selector' -> specMethod selector asString} asDictionary.
 	^ self json
