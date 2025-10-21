@@ -135,10 +135,28 @@ LarPlotterBar >> addBars [
 			ifTrue:[bar data: (domain at: n)].
 			bar subbar isNotNil 
 			ifTrue:[ self addObject: bar data  with: bar subbar].
+			bar object: (self addObject: (bar data)).
 			bars add: bar ].
 
 	self notifyUpdate.
 	^ bars
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addObject [
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterBar >> addObject: barValue [
+	| jsonSpec aClassSymbol aMethodSelector result |
+	(dict includesKey: 'gtChartSendObject') ifFalse: [ ^ nil ].
+	jsonSpec := dict at: 'gtChartSendObject'.
+	aClassSymbol := (jsonSpec at: 'class') asSymbol.
+	aMethodSelector := (jsonSpec at: 'selector') asSymbol.
+	result := aClassSymbol asClass new
+			perform: aMethodSelector
+			withArguments: {barValue}.
+			^result
 ]
 
 { #category : #'as yet unclassified' }
@@ -420,18 +438,21 @@ LarPlotterBar >> aggregateDataY [
 
 { #category : #accessing }
 LarPlotterBar >> angleX [
-	((dict at: 'encoding' at: 'x' ) includesKey: 'axis')
+^45
+
+	"((dict at: 'encoding' at: 'x' ) includesKey: 'axis')
 	 ifTrue:[(((dict at: 'encoding' at: 'x' ) at: 'axis') includesKey: 'labelAngle')
 	 ifTrue:[^(((dict at: 'encoding' at: 'x' ) at: 'axis') at: 'labelAngle')]].
-	 ^0
+	 ^0"
 ]
 
 { #category : #accessing }
 LarPlotterBar >> angleY [
-	 ((dict at: 'encoding' at: 'y' ) includesKey: 'axis')
+^45
+	" ((dict at: 'encoding' at: 'y' ) includesKey: 'axis')
 	 ifTrue:[(((dict at: 'encoding' at: 'y' ) at: 'axis') includesKey: 'labelAngle')
 	 ifTrue:[^(((dict at: 'encoding' at: 'y' ) at: 'axis') at: 'labelAngle')]].
-	 ^0
+	 ^0"
 ]
 
 { #category : #accessing }

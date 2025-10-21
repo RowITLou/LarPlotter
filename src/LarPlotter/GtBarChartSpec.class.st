@@ -99,6 +99,20 @@ GtBarChartSpec >> gtChartSend: specMethod [
 	^ self json
 ]
 
+{ #category : #'as yet unclassified' }
+GtBarChartSpec >> gtChartSendBar [
+	^ self json at: 'gtChartSendObject'
+]
+
+{ #category : #'as yet unclassified' }
+GtBarChartSpec >> gtChartSendBar: specMethod [
+	self json
+		at: 'gtChartSendObject'
+		put: {'class' -> specMethod methodClass name.
+				'selector' -> specMethod selector asString} asDictionary.
+	^ self json
+]
+
 { #category : #views }
 GtBarChartSpec >> gtJsonObjectFor: aView [
 	<gtView>

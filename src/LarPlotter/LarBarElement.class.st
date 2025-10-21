@@ -15,7 +15,7 @@ Class {
 LarBarElement >> initialize: aBar [
 super initialize.
 bar := aBar.
-^self
+self
 		background: (Color transparent);
 		layout: BlGridLayout vertical;
 		border: (BlBorder builder
@@ -26,10 +26,18 @@ bar := aBar.
 		constraintsDo: [ :c | 
 		 c vertical exact: (bar height).
 		    
-	    c horizontal exact: (bar width)]
-	   " when: BlClickEvent do: [ :event | 
-				event currentTarget phlow spawnObject: (bar) ]"
+	    c horizontal exact: (bar width)].
+	    bar subbar isNil
+	    ifTrue:[ self aptitude: (BrGlamorousWithExplicitContextMenuAptitude
+				items: {'Insbect Bar Object' -> [ (bar object) inspect].
+						'Inspect Bar' -> [ bar inspect ].
+						'Bar Value' -> [ (bar value) inspect]})]
+		ifFalse:[self aptitude: (BrGlamorousWithExplicitContextMenuAptitude
+				items: {'Insbect Bar Object' -> [ (bar object) inspect].
+						'Inspect Bar' -> [ bar inspect ].
+						'Inspect Subbars' -> [ (bar subbar) inspect].
+						'Bar Value' -> [ (bar value) inspect]})].
 		
 	   
-			; yourself.
+			 ^self
 ]

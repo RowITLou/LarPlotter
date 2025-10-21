@@ -94,6 +94,15 @@ GtBarChartSpecExamples >> sendBarAndGroupExample [
 	^ result
 ]
 
+{ #category : #'as yet unclassified' }
+GtBarChartSpecExamples >> sendGtBookField: aField [
+	"An example of a dedicated method to define from the bar and stacked element the object to send to."
+	<gtChartSend>
+	| topicMap |
+	topicMap := LeDatabase gtBook topicMap.
+	^ (topicMap fieldNodeNamed: aField)
+]
+
 { #category : #accessing }
 GtBarChartSpecExamples >> sendGtBookField: aField andKind: aKind [
 	"An example of a dedicated method to define from the bar and stacked element the object to send to."
@@ -146,5 +155,20 @@ GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSend [
 	self
 		assert: (barChart gtChartSend at: 'selector')
 		equals: 'sendGtBookField:andKind:'.
+	^ barChart
+]
+
+{ #category : #'as yet unclassified' }
+GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSendBar [
+	| barChart |
+	barChart := self stackedGtBookFieldsByKindBarChartWithChartSend
+			gtChartSendBar: GtBarChartSpecExamples >> #sendGtBookField:;
+			yourself.
+	self
+		assert: (barChart gtChartSend at: 'class')
+		equals: 'GtBarChartSpecExamples'.
+	self
+		assert: (barChart gtChartSendBar at: 'selector')
+		equals: 'sendGtBookField:'.
 	^ barChart
 ]
