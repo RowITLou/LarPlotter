@@ -143,10 +143,6 @@ LarPlotterBar >> addBars [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterBar >> addObject [
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterBar >> addObject: barValue [
 	| jsonSpec aClassSymbol aMethodSelector result |
 	(dict includesKey: 'gtChartSendObject') ifFalse: [ ^ nil ].
@@ -197,27 +193,6 @@ LarPlotterBar >> addTicks [
 	
 	self notifyUpdate.
 	^ticksY
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterBar >> addTicksLabel: valuesX with: valuesY [
-	| tick amount |
-	1
-		to: valuesX size
-		do: [ :n | 
-			| tickLabelsX |
-			tick := LarTickLabel new initialize: (valuesX at: n).
-
-			tickLabelsX add: tick ].
-	amount := dict at: 'data' at: 'tick'.
-	1
-		to: amount
-		do: [ :n | 
-			| tickLabelsY |
-			tick := LarTickLabel new initialize: valuesY * (amount - (n - 1)).
-
-			tickLabelsY add: tick ].
-	self notifyUpdate
 ]
 
 { #category : #'as yet unclassified' }

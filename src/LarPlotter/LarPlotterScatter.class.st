@@ -2,23 +2,11 @@ Class {
 	#name : #LarPlotterScatter,
 	#superclass : #Object,
 	#instVars : [
-		'labelAxisX',
-		'labelAxisY',
-		'ticksY',
-		'tickLabelsX',
-		'tickLabelsY',
 		'announcer',
 		'spec',
-		'ticksX',
-		'title',
 		'dict',
-		'points',
-		'values',
-		'scale_one',
-		'space_one',
-		'scale_two',
-		'space_two',
-		'borders'
+		'borders',
+		'turn'
 	],
 	#category : #'LarPlotter-Plotter'
 }
@@ -31,10 +19,39 @@ LarPlotterScatter class >> withSpec: aSpec [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatter >> addAxisLabel [
+	| axisX axisy total labelAxisX labelAxisY |
+	
+
+	((dict at: 'encoding' at: 'x') includesKey: 'title')
+		ifTrue: [ axisX := ((dict at: 'encoding') at: 'x') at: 'title' ]
+		ifFalse: [ axisX := ((dict at: 'encoding') at: 'x') at: 'field' ].
+
+	((dict at: 'encoding' at: 'y') includesKey: 'title')
+		ifTrue: [ axisy := ((dict at: 'encoding') at: 'y') at: 'title' ]
+		ifFalse: [ axisy := ((dict at: 'encoding') at: 'y') at: 'field' ].
+
+	labelAxisX := LarLabelAxis new initialize: axisX.
+	labelAxisY := LarLabelAxis new initialize: axisy.
+
+
+	total := OrderedCollection new.
+	self notifyUpdate.
+	total add: labelAxisX.
+	total add: labelAxisY.
+	^ total
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatter >> addAxisLabel: textX with: textY [
-labelAxisX := LarLabelAxis new initialize: textX. 
-labelAxisY := LarLabelAxis new initialize: textY.
-self notifyUpdate
+	|  axisX axisy  labelAxisX labelAxisY  |
+	((dict at: 'encoding') at: 'x') at: 'field' put: textX.
+	((dict at: 'encoding') at: 'y') at: 'field' put: textY.
+
+	labelAxisX := LarLabelAxis new initialize: axisX.
+	labelAxisY := LarLabelAxis new initialize: axisy.
+	
+	self notifyUpdate.
 ]
 
 { #category : #'as yet unclassified' }
@@ -54,54 +71,80 @@ LarPlotterScatter >> addPoints [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addTicks [
-	| tickY tickX tickAmountX tickAmountY |
-	self tickInitialize.
-	ticksY removeAll.
-	ticksX removeAll.
-	self ensureAmountTicks.
-	tickAmountX := dict at: 'data' at: 'tick_one'.
-	tickAmountY := dict at: 'data' at: 'tick_two'.
+	| tickY tickAmount ticksY |
+	ticksY := OrderedCollection new.
+	tickAmount := self ensureAmountTicksY.
 	1
-		to: tickAmountX
-		do: [ :n | 
-			
-			tickX := LarTick new initialize: 3 with: 10.
-			ticksX add: tickY ].
-	1
-		to: tickAmountY
+		to: tickAmount
 		do: [ :n | 
 			tickY := LarTick new initialize: 3 with: 10.
 			ticksY add: tickY ].
-
-	self scale_one: (dict at: 'data' at: 'scale_one').
-	self space_one: (dict at: 'data' at: 'space_one').
-	self scale_two: (dict at: 'data' at: 'scale_two').
-	self space_two: (dict at: 'data' at: 'space_two').
-	self notifyUpdate
+	
+	self notifyUpdate.
+	^ticksY
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> addTicksLabel: valuesX with: valuesY [
-	| tick amountY amountX |
-	points isNil ifTrue: [ ^ self ].
-	self tickLablesInitialize.
+LarPlotterScatter >> addTicksLabelX [
+	| tick amount data int valuesX tickLabelsX |
+	tickLabelsX := OrderedCollection new.
+	data := (dict at: 'data' at: 'values') collect: #values.
+	int := false.
 
-	amountX := dict at: 'data' at: 'tick_one'.
-	1
-		to: amountX
+	data first first isString 
+	ifTrue: [ int := true ].
+	
+	valuesX := data collect: [ :each | int 
+	ifTrue: [ each first asString ] 
+	ifFalse: [ each last asString ] ].
+	1 to: valuesX size
 		do: [ :n | 
-			tick := LarTickLabel new initialize: valuesX * (amountX - (n - 1)).
+			tick := LarTickLabel new initialize: (valuesX at: n).
 
 			tickLabelsX add: tick ].
+	amount := dict at: 'data' at: 'tick'.
+	^tickLabelsX
+]
 
-	amountY := dict at: 'data' at: 'tick_two'.
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> addTicksLabelY [
+	| tick amount tickLabelsY|
+	
+	tickLabelsY := OrderedCollection new. 
+	
+	amount := dict at: 'data' at: 'tick'.
 	1
-		to: amountY
+		to: amount
 		do: [ :n | 
-			tick := LarTickLabel new initialize: valuesY * (amountY - (n - 1)).
+			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space') * (amount - (n - 1)).
 
 			tickLabelsY add: tick ].
-	self notifyUpdate
+	self notifyUpdate. 
+	^tickLabelsY
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> addTitle: aTitle [
+	| title |
+	dict at: 'title' put: aTitle.
+	title := LarTitel new initialize: (dict at: 'title').
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> angleX [
+
+((dict at: 'encoding' at: 'x' ) includesKey: 'axis')
+	 ifTrue:[(((dict at: 'encoding' at: 'x' ) at: 'axis') includesKey: 'labelAngle')
+	 ifTrue:[^(((dict at: 'encoding' at: 'x' ) at: 'axis') at: 'labelAngle')]].
+	 ^0
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> angleY [
+ ((dict at: 'encoding' at: 'y' ) includesKey: 'axis')
+	 ifTrue:[(((dict at: 'encoding' at: 'y' ) at: 'axis') includesKey: 'labelAngle')
+	 ifTrue:[^(((dict at: 'encoding' at: 'y' ) at: 'axis') at: 'labelAngle')]].
+	 ^0
 ]
 
 { #category : #'as yet unclassified' }
@@ -142,12 +185,16 @@ LarPlotterScatter >> dict: anObject [
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> ensureAmountTicks [
 	| rule newDict |
+	(dict at: 'data') at: 'set' ifPresent:[
+	(((dict at: 'data') at: 'set') = 1)
+	ifTrue:[
+	^ dict at: 'data' at: 'tick']].
 	rule := LARTickSpecUpdaterRule for: dict.
 	newDict := rule updateDictScatterX.
 	newDict := rule updateDictScatterY.
 	dict := newDict.
 	
-	"^ dict at: 'data' at: 'tick'"
+	^ dict at: 'data' at: 'tick'
 ]
 
 { #category : #'as yet unclassified' }
@@ -188,6 +235,22 @@ LarPlotterScatter >> ensureDataWidth [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatter >> getDataFromJsonFile [
+	| urlNew segments fileName file jsonData |
+	urlNew := (dict at: 'data' at: 'url') addedToZnUrl: self url asZnUrl.
+	segments := ((dict at: 'data') at: 'url') findTokens: '/'.
+	fileName := segments last.
+	(FileLocator downloads / fileName) ensureDelete.
+	ZnClient new
+		url: urlNew;
+		signalProgress: true;
+		downloadTo: FileLocator downloads.
+	file := (FileLocator downloads / fileName) contents.
+	jsonData := STONJSON fromString: file.
+	dict at: 'data' at: 'values' put: jsonData. 
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatter >> gtLiveFor: aView [
 	<gtView>
 	^aView explicit
@@ -208,9 +271,7 @@ LarPlotterScatter >> gtLiveFor: aView [
 LarPlotterScatter >> initialize [
 announcer := Announcer new.
  self borders: false.
-self tickLablesInitialize.
-self tickInitialize.
-self pointsDefinition
+self noDict. 
 ]
 
 { #category : #'as yet unclassified' }
@@ -224,15 +285,21 @@ LarPlotterScatter >> initializeDict [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> initializeFor [
-	| axisX axisy |
-	
-axisX := (self dict at: 'encoding' at: 'x')at: 'field'. 
-	axisy := (self dict at: 'encoding' at: 'y')at: 'field'. 
-	self title: 'This is a title'.
+	| int |
+	((dict at: 'data') includesKey: 'url') ifTrue: [ self getDataFromJsonFile ].
+	dict
+		at: 'data'
+		at: 'set'
+		put: 0.
+	int := false.
+(dict includesKey: 'transform') 
+	ifTrue: [ self transform: (((dict at: 'transform')  first) at: 'filter')].
+	self title. 
 	self addPoints.
-	self addAxisLabel: axisX with: axisy.
-	self addTicks. 
-	self addTicksLabel: (self dict at: 'data' at: 'space_one') with: (self dict at: 'data' at: 'space_two'). 
+	self addAxisLabel.
+	self addTicks.
+	self addTicksLabelX.
+	self addTicksLabelY.
 ]
 
 { #category : #'as yet unclassified' }
@@ -253,6 +320,30 @@ LarPlotterScatter >> labelAxisY [
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> labelAxisY: anObject [
 	labelAxisY := anObject
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> noDict [
+	| jsonString |
+	jsonString :=  '{
+	"description" : "A template for a simple scatter plot with embedded data.",
+	"mark" : "point",
+	"encoding" : {
+		"x" : {
+			"field" : "xFieldName",
+			"type" : "quantitative"
+		},
+		"y" : {
+			"field" : "yFieldName",
+			"type" : "quantitative"
+		}
+	},
+	
+	"data" : {
+		"values" : [ ]
+	}
+}'.
+	dict := STONJSON fromString: jsonString
 ]
 
 { #category : #'as yet unclassified' }
@@ -305,34 +396,20 @@ LarPlotterScatter >> scale_two: anObject [
 	scale_two := anObject
 ]
 
-{ #category : #accessing }
-LarPlotterScatter >> space [
-	^ space
-]
-
-{ #category : #accessing }
-LarPlotterScatter >> space: anObject [
-	space := anObject
-]
-
-{ #category : #accessing }
-LarPlotterScatter >> space_one [
-	^ space_one
-]
-
-{ #category : #accessing }
-LarPlotterScatter >> space_one: anObject [
-	space_one := anObject
-]
-
-{ #category : #accessing }
-LarPlotterScatter >> space_two [
-	^ space_two
-]
-
-{ #category : #accessing }
-LarPlotterScatter >> space_two: anObject [
-	space_two := anObject
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> setAmountTicks: anInteger [
+	| space scale |
+	(dict at: 'data') at: 'tick' put: anInteger.
+	(dict at: 'data')
+		at: 'scale'
+		ifAbsent: [ (dict at: 'data') at: 'scale' put: 1 ].
+	scale := (dict at: 'data') at: 'scale'.
+	space := 500 / anInteger / scale.
+	(dict at: 'data') at: 'space' put: space.
+	dict
+		at: 'data'
+		at: 'set'
+		put: 1
 ]
 
 { #category : #'as yet unclassified' }
@@ -347,60 +424,13 @@ LarPlotterScatter >> spec: aJSONString [
 ]
 
 { #category : #'as yet unclassified' }
-LarPlotterScatter >> tickInitialize [
-ticksX:= OrderedCollection new. 
-ticksY := OrderedCollection new.
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> tickLabelsX [
-	^ tickLabelsX
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> tickLabelsX: anObject [
-	tickLabelsX := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> tickLabelsY [
-	^ tickLabelsY
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> tickLabelsY: anObject [
-	tickLabelsY := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> tickLablesInitialize [
-tickLabelsX:= OrderedCollection new. 
-tickLabelsY := OrderedCollection new.
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> ticksX [
-	^ ticksX
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> ticksX: anObject [
-	ticksX := anObject
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> ticksY [
-	^ ticksY
-]
-
-{ #category : #'as yet unclassified' }
-LarPlotterScatter >> ticksY: anObject [
-	ticksY := anObject
-]
-
-{ #category : #'as yet unclassified' }
 LarPlotterScatter >> title [
-^title
+| title |
+	(dict includesKey: 'title')
+		ifTrue: [ title := LarTitel new initialize: (dict at: 'title').  ]
+	ifFalse:[title := LarTitel new initialize: 'This is the title'].
+	self notifyUpdate.
+	^title
 ]
 
 { #category : #'as yet unclassified' }
@@ -408,4 +438,26 @@ LarPlotterScatter >> title: text [
 	title := LarTitel new initialize: text. 
 	self notifyUpdate
 	
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> transform: anObject [
+	| segment key jsonData json value newValue |
+	segment := (anObject findTokens: '==') first.
+	value := ((anObject findTokens: '==') last) trimLeft.
+	key := ((segment findTokens: '.') last) trimRight.
+
+	jsonData := (dict at: 'data') at: 'values'.
+	json := OrderedCollection new.
+	newValue := 0 .
+	jsonData
+			do: [ :d | newValue := (d at: key).
+			(d at: key) asString = value 
+			ifTrue: [ json add: d . ] ].
+	dict at: 'data' at: 'values' put: json. 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> url [
+^'https://vega.github.io/vega-lite/examples/'
 ]
