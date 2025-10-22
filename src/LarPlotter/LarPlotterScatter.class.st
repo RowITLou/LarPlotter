@@ -56,8 +56,8 @@ LarPlotterScatter >> addAxisLabel: textX with: textY [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addPoints [
-	| point   val_one val_two |
-	
+	| point val_one val_two points |
+	points := OrderedCollection new. 
 	val_two := self ensureDataHeight.
 	val_one := self ensureDataWidth.
 
@@ -66,7 +66,8 @@ LarPlotterScatter >> addPoints [
 		do: [ :n | 
 			point := LarPoint new initialize: (val_one at: n) with: (val_two at: n).
 			points add: point ].
-	self notifyUpdate
+	self notifyUpdate.
+	^points
 ]
 
 { #category : #'as yet unclassified' }
@@ -102,7 +103,7 @@ LarPlotterScatter >> addTicksLabelX [
 			tick := LarTickLabel new initialize: (valuesX at: n).
 
 			tickLabelsX add: tick ].
-	amount := dict at: 'data' at: 'tick'.
+	amount := dict at: 'data' at: 'tick_two'.
 	^tickLabelsX
 ]
 
@@ -112,11 +113,11 @@ LarPlotterScatter >> addTicksLabelY [
 	
 	tickLabelsY := OrderedCollection new. 
 	
-	amount := dict at: 'data' at: 'tick'.
+	amount := dict at: 'data' at: 'tick_two'.
 	1
 		to: amount
 		do: [ :n | 
-			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space') * (amount - (n - 1)).
+			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space_two') * (amount - (n - 1)).
 
 			tickLabelsY add: tick ].
 	self notifyUpdate. 
@@ -200,11 +201,15 @@ LarPlotterScatter >> ensureAmountTicks [
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> ensureAmountTicksY [
 	| rule newDict |
+	(dict at: 'data') at: 'set' ifPresent:[
+	(((dict at: 'data') at: 'set') = 1)
+	ifTrue:[
+	^ dict at: 'data' at: 'tick_two']].
 	rule := LARTickSpecUpdaterRule for: dict.
 	newDict := rule updateDictScatterX.
 	newDict := rule updateDictScatterY.
 	dict := newDict.
-	
+	^ dict at: 'data' at: 'tick_two'
 	"^ dict at: 'data' at: 'tick'"
 ]
 

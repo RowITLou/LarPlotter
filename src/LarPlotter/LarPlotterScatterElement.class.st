@@ -81,29 +81,7 @@ LarPlotterScatterElement >> addTicksLabelX: labelsX [
 	width := 600 / aNumber.
 	labelsX
 		do: [ :tickXLabel | 
-			| frame_t |
-			plotter turn
-				ifTrue: [ tickXcontainer := LarContainer new asElementVertical.
-					tickXcontainer
-						constraintsDo: [ :c | 
-							c vertical exact: width.
-							c horizontal fitContent ].
-					tickXcontainer addChild: tickXLabel asElement.
-					plotter angleY == 0
-						ifFalse: [ tickXcontainer := self angleY: tickXcontainer with: width ].
-					frame_t := LarContainer new asElement.
-					frame_t
-						constraintsDo: [ :c | 
-							c vertical exact: width.
-							c horizontal fitContent ];
-							clipChildren: false.
-							
-					frame_t addChild: tickXcontainer.
-					labelsYContainer clipChildren: false.
-					labelsYContainer addChildFirst: frame_t ]
-					
-					
-				ifFalse: [ | frame_s |
+			| frame_t frame_s|
 					tickXcontainer := LarContainer new asElement.
 					tickXcontainer
 						constraintsDo: [ :c | 
@@ -122,43 +100,20 @@ LarPlotterScatterElement >> addTicksLabelX: labelsX [
 					frame_s addChild: tickXcontainer.
 					
 					labelsContainer clipChildren: false.
-					labelsContainer addChild: frame_s ] ]
+					labelsContainer addChild: frame_s ] 
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterScatterElement >> addTicksLabelY: labelsY [
 	| tickYcontainer scale space height |
-	scale := plotter dict at: 'data' at: 'scale'.
-	space := plotter dict at: 'data' at: 'space'.
+	scale := plotter dict at: 'data' at: 'scale_two'.
+	space := plotter dict at: 'data' at: 'space_two'.
 	height := space * scale.
 
 	labelsY
 		do: [ :tickYLabel | 
-			tickYcontainer := LarContainer new initialize asElementVertical.
-
-			plotter turn
-				ifTrue: [ | frame_t |
-					tickYcontainer
-						constraintsDo: [ :c | 
-							c horizontal exact: height.
-							c vertical fitContent ].
-
-					tickYcontainer addChild: tickYLabel asElement.
-					labelsContainer layout cellSpacing: 0.
-
-					plotter angleX == 0
-						ifFalse: [ tickYcontainer := self angleX: tickYcontainer with: height ].
-					frame_t := LarContainer new asElement clipChildren: false.
-
-					frame_t
-						constraintsDo: [ :c | 
-							c horizontal exact: height.
-							c vertical fitContent ].
-
-					frame_t addChild: tickYcontainer.
-					labelsContainer clipChildren: false.
-					labelsContainer addChildFirst: frame_t ]
-				ifFalse: [ | frame_s |
+		|frame_s|
+			tickYcontainer := LarContainer new initialize asElementVertical. 
 					tickYcontainer
 						constraintsDo: [ :c | 
 							c horizontal fitContent.
@@ -177,7 +132,7 @@ LarPlotterScatterElement >> addTicksLabelY: labelsY [
 							clipChildren: false.
 					frame_s addChild: tickYcontainer.
 					labelsYContainer clipChildren: false.
-					labelsYContainer addChild: frame_s ] ].
+					labelsYContainer addChild: frame_s  ].
 
 	self smallAdding: height
 ]
@@ -204,23 +159,28 @@ LarPlotterScatterElement >> addTicksX: ticksX [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatterElement >> addTicksY: ticksY [
-| scale space height |
-	scale := plotter scale_two.
-	space := plotter space_two.
-	height := (space * scale).
+	| scale space height |
+	scale := plotter dict at: 'data' at: 'scale_two'.
+	space := plotter dict at: 'data' at: 'space_two'.
+	height := space * scale.
 
+	
+	
 	ticksY
 		do: [ :tickY | 
 			tickYContainer := LarContainer new initialize asElementVertical.
+				
+			height := space * scale.
 			tickYContainer
 				constraintsDo: [ :c | 
 					c horizontal fitContent.
 					c vertical exact: height ].
 			tickYContainer layout cellSpacing: 0.
-			tickYContainer addChild: (tickY asElementY).
+			tickYContainer addChild: tickY asElementY.
 			ticksYContainer addChild: tickYContainer ].
 			ticksYContainer constraintsDo: [:c| c grid vertical alignBottom. ].
 
+	
 ]
 
 { #category : #'as yet unclassified' }
@@ -474,4 +434,17 @@ ifFalse:[self addTicksY: plotter addTicks]
 { #category : #'as yet unclassified' }
 LarPlotterScatterElement >> setBlackBorders [
 container setBlackBorders. 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterElement >> smallAdding: height [
+	| spareLabelYContainer |
+	
+		spareLabelYContainer := LarContainer new initialize
+					asElementVertical
+					constraintsDo: [ :c | 
+						c horizontal fitContent.
+						c vertical exact: height / 2 ].
+			spareLabelYContainer layout cellSpacing: 0.
+			labelsYContainer addChild: spareLabelYContainer 
 ]
