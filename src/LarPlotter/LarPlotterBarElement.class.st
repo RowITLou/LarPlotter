@@ -257,19 +257,22 @@ LarPlotterBarElement >> angleX: tickXcontainer with: width [
 	| frame_t |
 	tickXcontainer
 		constraintsDo: [ :c | 
-			c accountTransformation.];
+			c accountTransformation.
+			c horizontal fitContent];
 			clipChildren: false.
 		plotter angleX <0 
 		ifTrue:[tickXcontainer layout: BlFrameLayout new;
 			constraintsDo: [ :c | 
-		    c frame vertical alignCenter.
+		    c frame vertical alignTop.
 			c frame horizontal alignRight
 			].
 			tickXcontainer constraintsDo: [ :c | 
-			c grid horizontal alignRight ].]
+			c grid horizontal alignRight. ].]
+			
+			
 			ifFalse:[tickXcontainer layout: BlFrameLayout new;
 			constraintsDo: [ :c | 
-		    c frame vertical alignCenter.
+		    c frame vertical alignTop.
 			c frame horizontal alignLeft
 			].].
 		
@@ -305,58 +308,53 @@ LarPlotterBarElement >> angleX: tickXcontainer with: width [
 
 { #category : #'as yet unclassified' }
 LarPlotterBarElement >> angleY: tickXcontainer with: height [
-	| frame_t |
+	| frame_t size |
 	tickXcontainer
 		constraintsDo: [ :c | 
-			"c accountTransformation.
-			c vertical fitContent."
-			c grid horizontal alignCenter.
-			c grid vertical alignCenter ].
-			
-			plotter angleY <0 
-		ifTrue:[tickXcontainer layout: BlFrameLayout new;
-			constraintsDo: [ :c | 
-		    c frame vertical alignBottom.
-			c frame horizontal alignRight
-			].]
-			ifFalse:[tickXcontainer layout: BlFrameLayout new;
-			constraintsDo: [ :c | 
-		    c frame vertical alignTop.
-			c frame horizontal alignRight
-			].].
-			
-	"tickXcontainer layout: BlFrameLayout new;
+			c accountTransformation.
+			c vertical fitContent	"c grid horizontal alignCenter.
+			c grid vertical alignCenter" ].
+	size := tickXcontainer size x.
+	plotter angleY < 0
+			ifTrue: [ tickXcontainer
+					layout: BlFrameLayout new;
+					constraintsDo: [ :c | 
+						c frame vertical alignBottom.
+						c frame horizontal alignRight ] ]
+			ifFalse: [ tickXcontainer
+					layout: BlFrameLayout new;
+					constraintsDo: [ :c | 
+						c frame vertical alignTop.
+						c frame horizontal alignRight ] ].	"tickXcontainer layout: BlFrameLayout new;
 			constraintsDo: [ :c | 
 		    c frame vertical alignTop.
 		    
 			c frame horizontal alignRight
-			]."
-	"clipChildren: false."
+			]."	"clipChildren: false."
 	tickXcontainer transform
 		rotateBy: plotter angleY;
 		apply.
 	frame_t := BrFrame new.
 	frame_t
 		constraintsDo: [ :c | 
-			
 			c horizontal fitContent.
-			c vertical exact: (height*3/5). ];
-			clipChildren: false.
-	plotter angleY <0 
-	ifTrue:[frame_t layout: BlFrameLayout new;
-			constraintsDo: [ :c | 
-		    c frame vertical alignTop.
-			c frame horizontal alignRight
-			].]
-			ifFalse:[frame_t layout: BlFrameLayout new;
-			constraintsDo: [ :c | 
-		    c frame vertical alignBottom.
-			c frame horizontal alignRight].
-			frame_t constraintsDo: [ :c | 
-			c grid vertical alignBottom ]].
+			c vertical exact: (size * 16 / 5) ];
+		clipChildren: false.
+	plotter angleY < 0
+		ifTrue: [ frame_t
+				layout: BlFrameLayout new;
+				constraintsDo: [ :c | 
+					c frame vertical alignTop.
+					c frame horizontal alignRight ] ]
+		ifFalse: [ frame_t
+				layout: BlFrameLayout new;
+				constraintsDo: [ :c | 
+					c frame vertical alignCenter.
+					c frame horizontal alignRight ].
+			frame_t constraintsDo: [ :c | c grid vertical alignCenter ] ].
 	frame_t addChild: tickXcontainer.
-	
-	^frame_t
+
+	^ frame_t
 ]
 
 { #category : #'as yet unclassified' }
