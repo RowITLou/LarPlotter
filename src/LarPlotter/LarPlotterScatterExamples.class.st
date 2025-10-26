@@ -29,8 +29,19 @@ LarPlotterScatterExamples >> vegaExample1 [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> vegaExample2 [
+<gtExample>
+	| spec plotter |
+	spec := self vegaSpec2.
+	plotter := LarPlotterScatter  new.
+	plotter spec: spec.
+	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatterExamples >> vegaSpec1 [
 	| jsonString |
+	"https://vega.github.io/vega-lite/examples/point_2d.html"
 	jsonString := '{
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
@@ -42,4 +53,32 @@ LarPlotterScatterExamples >> vegaSpec1 [
   }
 }'.
 	^ jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> vegaSpec2 [
+	| jsonString |
+	jsonString := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "A scatterplot showing body mass and flipper lengths of penguins.",
+  "data": {
+    "url": "data/penguins.json"
+  },
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "Flipper Length (mm)",
+      "type": "quantitative",
+      "scale": {"zero": false}
+    },
+    "y": {
+      "field": "Body Mass (g)",
+      "type": "quantitative",
+      "scale": {"zero": false}
+    },
+    "color": {"field": "Species", "type": "nominal"},
+    "shape": {"field": "Species", "type": "nominal"}
+  }
+}'.
+^jsonString
 ]

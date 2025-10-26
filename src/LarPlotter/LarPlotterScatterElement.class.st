@@ -60,8 +60,9 @@ cont constraintsDo: [ :c |
 { #category : #'as yet unclassified' }
 LarPlotterScatterElement >> addPoints: points [
 graphElement constraintsDo: [ :c |
-			c horizontal exact: 600 .
-			c vertical exact: 500].
+			c horizontal exact: 600.
+			c vertical exact: 500.
+			c accountTransformation.].
 		
 points do: [:point|
 
@@ -322,7 +323,7 @@ titelContainer constraintsDo: [ :c |
 		c grid vertical alignCenter.
 		c grid horizontal alignCenter ].
 labelsYContainer := LarContainer new  asElementVertical.
-labelsYContainer constraintsDo: [:c| c vertical fitContent].
+"labelsYContainer constraintsDo: [:c| c vertical fitContent]."
 "labelsYContainer constraintsDo: [:c| c grid vertical alignBottom. ]."
 ticksYContainer := LarContainer new  asElementVertical.
 ticksYContainer layout cellSpacing: 0.
@@ -337,17 +338,18 @@ border: (BlBorder builder
 					build);
 			
 			background: (BlBackground paint: Color white).
-
+graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
 
 axisXContainer := LarContainer new asElement. 
 container := LarContainer new asElementVertical.
+container clipChildren: false.
 containerTickAndLabel :=LarContainer new  asElement.
-containerTickAndLabel constraintsDo: [:c| c vertical fitContent].
+"containerTickAndLabel constraintsDo: [:c| c vertical fitContent]."
 containerTickAndLabel constraintsDo: [:c| c grid vertical alignBottom. ].
-containerTickAndLabel layout cellSpacing: 0.
+"containerTickAndLabel layout cellSpacing: 0."
 containerTickAndLabel addChild: labelsYContainer. 
 containerTickAndLabel addChild: ticksYContainer. 
-
+containerTickAndLabel clipChildren: false.
 
 
 
@@ -359,14 +361,14 @@ axisXContainer constraintsDo: [ :c |
 super initialize. 
 "container addChild: graphElement at: 5."
 "grid := BlGridLayoutImpl new."
-graphElement constraintsDo: [:c| c grid vertical alignBottom. ].
+"graphElement constraintsDo: [:c| c grid vertical alignBottom. ]."
 container layout columnCount: 2.
 container layout rowCount: 4.
 empty := BlElement new. 
 empty_too := BlElement new. 
 empty_other := BlElement new. 
-labelsContainer:= (LarContainer new) asElement.
-labelsContainer constraintsDo: [:c| c horizontal exact: 600].
+labelsContainer:= LarContainer new asElement.
+"labelsContainer constraintsDo: [:c| c horizontal exact: 600]."
 labelsContainer layout cellSpacing: 0.
 
 "containerTickAndLabelX :=LarContainer new  asElement.
@@ -409,10 +411,6 @@ paint: Color white;
 			background: (BlBackground paint: Color white);
 			
 			addChild: scroll. 
-
-
-			
-			
 ]
 
 { #category : #'as yet unclassified' }
@@ -427,7 +425,7 @@ ifFalse:[self addTicksLabelX: plotter addTicksLabelX.
 		self addTicksLabelY: plotter addTicksLabelY].
 self addTitle: plotter title.
 (plotter dict at: 'data' at: 'values') isEmpty 
-ifTrue:[(plotter dict at: 'data') at: 'tick' ifPresent: [self addTicksY: plotter addTicks]]
+ifTrue:[(plotter dict at: 'data') at: 'ticks_two' ifPresent: [self addTicksY: plotter addTicks]]
 ifFalse:[self addTicksY: plotter addTicks]
 ]
 

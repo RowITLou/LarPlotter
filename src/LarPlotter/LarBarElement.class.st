@@ -29,14 +29,14 @@ self
 	    c horizontal exact: (bar width)].
 	    bar subbar isNil
 	    ifTrue:[ self aptitude: (BrGlamorousWithExplicitContextMenuAptitude
-				items: {'Insbect Bar Object' -> [ (bar object) inspect].
-						'Inspect Bar' -> [ bar inspect ].
-						'Bar Value' -> [ (bar value) inspect]})]
+				items: {'Insbect Bar Object' -> [ :event | event phlow spawnObject: bar object].
+						'Inspect Bar' -> [ :event | event phlow spawnObject: bar  ].
+						'Bar Value' -> [ :event | event phlow spawnObject: (bar value) ]})]
 		ifFalse:[self aptitude: (BrGlamorousWithExplicitContextMenuAptitude
-				items: {'Insbect Bar Object' -> [ (bar object) inspect].
-						'Inspect Bar' -> [ bar inspect ].
-						'Inspect Subbars' -> [ (bar subbar) inspect].
-						'Bar Value' -> [ (bar value) inspect]})].
+				items: {'Insbect Bar Object' -> [  :event | event phlow spawnObject: bar object].
+						'Inspect Bar' -> [  :event | event phlow spawnObject: bar ].
+						'Inspect Subbars' -> [ :event | event phlow spawnObject: (bar subbar)].
+						'Bar Value' -> [ :event | event phlow spawnObject: (bar value) ]})].
 		
 	   
 			 ^self

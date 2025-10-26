@@ -222,7 +222,7 @@ LarPlotterBarElement >> addTicksY: ticksY [
 			height := space * scale.
 			tickYContainer
 				constraintsDo: [ :c | 
-					c horizontal exact: height.
+					c horizontal exact: height
 					c vertical fitContent ].
 			tickYContainer layout cellSpacing: 0.
 			tickYContainer addChild: tickY asElementX.
