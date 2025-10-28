@@ -89,23 +89,18 @@ LarPlotterScatter >> addTicks [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addTicksLabelX [
-	| tick amount data int valuesX tickLabelsX |
-	tickLabelsX := OrderedCollection new.
-	data := (dict at: 'data' at: 'values') collect: #values.
-	int := false.
-
-	data first first isString 
-	ifTrue: [ int := true ].
+	| tick amount tickLabelsX|
 	
-	valuesX := data collect: [ :each | int 
-	ifTrue: [ each first asString ] 
-	ifFalse: [ each last asString ] ].
-	1 to: valuesX size
+	tickLabelsX := OrderedCollection new. 
+	
+	amount := dict at: 'data' at: 'tick_one'.
+	1
+		to: amount
 		do: [ :n | 
-			tick := LarTickLabel new initialize: (valuesX at: n).
+			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space_one') * (amount - (n - 1)).
 
 			tickLabelsX add: tick ].
-	amount := dict at: 'data' at: 'tick_two'.
+	self notifyUpdate. 
 	^tickLabelsX
 ]
 

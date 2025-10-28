@@ -82,11 +82,11 @@ LARTickSpecUpdaterRule >> updateDictLineX [
 LARTickSpecUpdaterRule >> updateDictScatterX [
 	| scale max_ticks min_ticks maxSpace idealSpace arr num_ticks num nearest min indexofMin space amount |
 	idealSpace := 70.
-	maxSpace := 500.
+	maxSpace := 600.
 	min_ticks := 4.
 	max_ticks := 8.
 	scale := dict at: 'data' at: 'scale_one'.
-	arr := #(1 2 5 10 50 100 200  1000).
+	arr := #(1 2 5 10 40 50 100 200  1000).
 
 	num_ticks := (maxSpace/scale) / (idealSpace/scale). 
 
@@ -122,7 +122,7 @@ LARTickSpecUpdaterRule >> updateDictScatterY [
 	min_ticks := 4.
 	max_ticks := 8.
 	scale := dict at: 'data' at: 'scale_two'.
-	arr := #(1 2 5 10 50 100 200  1000).
+	arr := #(1 2 5 10 40 50 100 200  1000).
 
 	num_ticks := (maxSpace/scale) / (idealSpace/scale). 
 
