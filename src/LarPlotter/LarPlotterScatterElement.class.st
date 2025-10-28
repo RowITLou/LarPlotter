@@ -14,7 +14,8 @@ Class {
 		'tickYContainer',
 		'containerTickAndLabelX',
 		'tickXContainer',
-		'ticksXContainer'
+		'ticksXContainer',
+		'dict'
 	],
 	#category : #'LarPlotter-Element'
 }
@@ -60,52 +61,60 @@ cont constraintsDo: [ :c |
 
 { #category : #'as yet unclassified' }
 LarPlotterScatterElement >> addPoints: points [
-graphElement constraintsDo: [ :c |
+	graphElement
+		constraintsDo: [ :c | 
 			c horizontal exact: 600.
 			c vertical exact: 500.
-			c accountTransformation.].
-		
-points do: [:point|
+			c accountTransformation ].
 
-graphElement addChildFirst: (point asElement).].
+	points
+		do: [ :point | 
+			| p |
+			p := point asElement.
+			((dict at: 'encoding') includesKey: 'color') 
+			ifTrue:[p background: (Color fromHexString: point color)] .
+			graphElement addChildFirst: p ].
 
-graphElement forceLayout.
-graphElement transform
+	graphElement forceLayout.
+	graphElement transform
 		flipX;
-		apply.
+		apply
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterScatterElement >> addTicksLabelX: labelsX [
-	| tickXcontainer aNumber width |
+	| tickXcontainer aNumber width scale space |
 	aNumber := labelsX size.
 
-	width := 600 / aNumber.
+	scale := plotter dict at: 'data' at: 'scale_one'.
+	space := plotter dict at: 'data' at: 'space_one'.
+	width:= space * scale.
 	labelsX
 		do: [ :tickXLabel | 
-			| frame_s|
-					tickXcontainer := LarContainer new asElement.
-					tickXcontainer
-						constraintsDo: [ :c | 
-							c vertical fitContent.
-							c horizontal exact: width. 
-							c grid horizontal alignCenter.
-							c grid vertical alignCenter].
-					tickXcontainer addChild: tickXLabel asElement.
-					plotter angleX == 0
-						ifFalse: [ tickXcontainer := self angleX: tickXcontainer with: width ].
-					frame_s := LarContainer new asElement.
-					frame_s layout cellSpacing: 0.
-					frame_s
-						constraintsDo: [ :c | 
-							c vertical fitContent.
-							c horizontal exact: width ];
-							clipChildren: false.
-			
-					frame_s addChild: tickXcontainer.
-					
-					labelsContainer clipChildren: false.
-					labelsContainer addChildFirst: frame_s ] 
+			| frame_s |
+			tickXcontainer := LarContainer new asElement.
+			tickXcontainer
+				constraintsDo: [ :c | 
+					c vertical fitContent.
+					c horizontal exact: width.
+					c grid horizontal alignCenter.
+					c grid vertical alignCenter ].
+			tickXcontainer addChild: tickXLabel asElement.
+			plotter angleX == 0
+				ifFalse: [ tickXcontainer := self angleX: tickXcontainer with: width ].
+			frame_s := LarContainer new asElement.
+			frame_s layout cellSpacing: 0.
+			frame_s
+				constraintsDo: [ :c | 
+					c vertical fitContent.
+					c horizontal exact: width ];
+				clipChildren: false.
+
+			frame_s addChild: tickXcontainer.
+
+			labelsContainer clipChildren: false.
+			labelsContainer addChildFirst: frame_s ].
+			self smallAddingWidth: width
 ]
 
 { #category : #'as yet unclassified' }
@@ -160,7 +169,9 @@ LarPlotterScatterElement >> addTicksX: ticksX [
 					c vertical fitContent.
 					c horizontal exact: width ].
 			tickXContainer layout cellSpacing: 0.
+			
 			tickXContainer addChild: tickX asElementX.
+			
 			ticksXContainer addChild: tickXContainer ].
 			"ticksXContainer constraintsDo: [:c| c grid vertical alignBottom. ]."
 ]
@@ -328,7 +339,7 @@ labelsYContainer := LarContainer new  asElementVertical.
 labelsYContainer layout cellSpacing: 0.
 ticksYContainer := LarContainer new  asElementVertical.
 ticksYContainer layout cellSpacing: 0.
-ticksXContainer := LarContainer new  asElementVertical.
+ticksXContainer := LarContainer new  asElement.
 ticksXContainer layout cellSpacing: 0.
 graphElement := BlElement new
 border: (BlBorder builder
@@ -363,12 +374,13 @@ empty_other := BlElement new.
 labelsContainer:= LarContainer new asElement.
 labelsContainer layout cellSpacing: 0.
 
-containerTickAndLabelX :=LarContainer new  asElement.
+containerTickAndLabelX :=LarContainer new  asElementVertical.
 containerTickAndLabelX constraintsDo: [:c| c vertical fitContent].
-containerTickAndLabelX constraintsDo: [:c| c grid vertical alignBottom. ].
+containerTickAndLabelX constraintsDo: [:c| c grid vertical alignTop. ].
 containerTickAndLabelX layout cellSpacing: 0.
 containerTickAndLabelX addChild: labelsContainer. 
-containerTickAndLabelX addChild: ticksXContainer. 
+containerTickAndLabelX addChildFirst: ticksXContainer. 
+containerTickAndLabel layout cellSpacing: 0.
 
 container addChildFirst: empty. 
 container addChild: containerTickAndLabel at: 2.  
@@ -405,6 +417,7 @@ paint: Color white;
 
 { #category : #'as yet unclassified' }
 LarPlotterScatterElement >> initializeFor [
+dict := plotter dict.
 (plotter dict at: 'data' at: 'values') isEmpty 
 ifFalse:[self addPoints: plotter addPoints].
 
@@ -415,8 +428,10 @@ ifFalse:[self addTicksLabelX: plotter addTicksLabelX.
 		self addTicksLabelY: plotter addTicksLabelY].
 self addTitle: plotter title.
 (plotter dict at: 'data' at: 'values') isEmpty 
-ifTrue:[(plotter dict at: 'data') at: 'ticks_two' ifPresent: [self addTicksY: plotter addTicks]]
-ifFalse:[self addTicksY: plotter addTicks]
+ifTrue:[(plotter dict at: 'data') at: 'ticks_two' ifPresent: [self addTicksY: plotter addTicksY.
+self addTicksX: plotter addTicksX]]
+ifFalse:[self addTicksY: plotter addTicksY.
+self addTicksX: plotter addTicksX]
 ]
 
 { #category : #'as yet unclassified' }
@@ -435,4 +450,17 @@ LarPlotterScatterElement >> smallAdding: height [
 						c vertical exact: height / 2 ].
 			spareLabelYContainer layout cellSpacing: 0.
 			labelsYContainer addChild: spareLabelYContainer 
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterElement >> smallAddingWidth: width [
+	| spareLabelYContainer |
+	
+		spareLabelYContainer := LarContainer new initialize
+					asElementVertical
+					constraintsDo: [ :c | 
+						c vertical fitContent.
+						c horizontal exact: width / 2 ].
+			spareLabelYContainer layout cellSpacing: 0.
+			labelsContainer addChildFirst: spareLabelYContainer 
 ]

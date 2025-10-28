@@ -24,6 +24,6 @@ super initialize.
 	constraintsDo: [ :c |
 		
 		c grid vertical alignTop.
-		c grid horizontal alignCenter ]; yourself
+		c grid horizontal alignRight ]; yourself
 
 ]

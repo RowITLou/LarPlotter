@@ -222,7 +222,7 @@ LarPlotterBarElement >> addTicksY: ticksY [
 			height := space * scale.
 			tickYContainer
 				constraintsDo: [ :c | 
-					c horizontal exact: height
+					c horizontal exact: height.
 					c vertical fitContent ].
 			tickYContainer layout cellSpacing: 0.
 			tickYContainer addChild: tickY asElementX.
@@ -312,9 +312,9 @@ LarPlotterBarElement >> angleY: tickXcontainer with: height [
 	tickXcontainer
 		constraintsDo: [ :c | 
 			c accountTransformation.
-			c vertical fitContent	"c grid horizontal alignCenter.
-			c grid vertical alignCenter" ].
-	size := tickXcontainer size x.
+			c vertical fitContent	 ].
+	tickXcontainer forceLayout.
+	size := tickXcontainer bounds width.
 	plotter angleY < 0
 			ifTrue: [ tickXcontainer
 					layout: BlFrameLayout new;
@@ -325,12 +325,7 @@ LarPlotterBarElement >> angleY: tickXcontainer with: height [
 					layout: BlFrameLayout new;
 					constraintsDo: [ :c | 
 						c frame vertical alignTop.
-						c frame horizontal alignRight ] ].	"tickXcontainer layout: BlFrameLayout new;
-			constraintsDo: [ :c | 
-		    c frame vertical alignTop.
-		    
-			c frame horizontal alignRight
-			]."	"clipChildren: false."
+						c frame horizontal alignRight ] ].	
 	tickXcontainer transform
 		rotateBy: plotter angleY;
 		apply.
@@ -338,13 +333,13 @@ LarPlotterBarElement >> angleY: tickXcontainer with: height [
 	frame_t
 		constraintsDo: [ :c | 
 			c horizontal fitContent.
-			c vertical exact: (size * 16 / 5) ];
+			c vertical exact: size*(8/5) ];
 		clipChildren: false.
 	plotter angleY < 0
 		ifTrue: [ frame_t
 				layout: BlFrameLayout new;
 				constraintsDo: [ :c | 
-					c frame vertical alignTop.
+					c frame vertical alignCenter.
 					c frame horizontal alignRight ] ]
 		ifFalse: [ frame_t
 				layout: BlFrameLayout new;

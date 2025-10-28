@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'x',
-		'y'
+		'y',
+		'color'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -11,6 +12,16 @@ Class {
 { #category : #'as yet unclassified' }
 LarPoint >> asElement [
 ^LarPointElement new initialize: self.
+]
+
+{ #category : #accessing }
+LarPoint >> color [
+	^ color
+]
+
+{ #category : #accessing }
+LarPoint >> color: anObject [
+	color := anObject
 ]
 
 { #category : #'as yet unclassified' }

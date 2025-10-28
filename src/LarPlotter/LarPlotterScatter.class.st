@@ -60,13 +60,16 @@ LarPlotterScatter >> addPoints [
 	points := OrderedCollection new. 
 	val_two := self ensureDataHeight.
 	val_one := self ensureDataWidth.
-   " ((dict at: 'encoding') includesKey: 'color') 
+    ((dict at: 'encoding') includesKey: 'color') 
     ifTrue:[colors := self colorPoints ].
-	"
+	
 	1
 		to: val_one size
 		do: [ :n | 
 			point := LarPoint new initialize: (val_one at: n) with: (val_two at: n).
+			((dict at: 'encoding') includesKey: 'color') 
+			ifTrue:[point color: ((dict at: 'data' at: 'colors') at: n)].
+			
 			points add: point ].
 	self notifyUpdate.
 	^points
@@ -122,6 +125,36 @@ LarPlotterScatter >> addTicksLabelY [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatter >> addTicksX [
+	| tickX tickAmount ticksX |
+	ticksX := OrderedCollection new.
+	tickAmount := self ensureAmountTicksX.
+	1
+		to: tickAmount
+		do: [ :n | 
+			tickX := LarTick new initialize: 3 with: 10.
+			ticksX add: tickX ].
+	
+	self notifyUpdate.
+	^ticksX
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> addTicksY [
+	| tickY tickAmount ticksY |
+	ticksY := OrderedCollection new.
+	tickAmount := self ensureAmountTicksY.
+	1
+		to: tickAmount
+		do: [ :n | 
+			tickY := LarTick new initialize: 3 with: 10.
+			ticksY add: tickY ].
+	
+	self notifyUpdate.
+	^ticksY
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatter >> addTitle: aTitle [
 	| title |
 	dict at: 'title' put: aTitle.
@@ -172,11 +205,20 @@ LarPlotterScatter >> borders: anObject [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> colorPoints [
-	| field colors jsonData |
-	field := (dict at: 'encoding') at: 'color' at: 'field'.
+	| field colors jsonData colorList |
+	jsonData := dict at: 'data' at: 'values'.
+	field := ((dict at: 'encoding') at: 'color' at: 'field') copyWithout: $'.
 	colors := OrderedCollection new.
 	jsonData do: [ :d | colors add: (d at: field) ].
-	colors := colors removeDuplicates
+	colors := colors removeDuplicates.
+	colorList := OrderedCollection new.
+	jsonData
+		do: [ :d | 
+			| data index |
+			data := d at: field.
+			index := colors indexOf: data.
+			colorList add: ((self colorsPoints) at: index).  ].
+	dict at: 'data' at: 'colors' put: colorList.
 ]
 
 { #category : #'as yet unclassified' }
@@ -205,8 +247,23 @@ LarPlotterScatter >> ensureAmountTicks [
 	newDict := rule updateDictScatterX.
 	newDict := rule updateDictScatterY.
 	dict := newDict.
-	
-	^ dict at: 'data' at: 'tick'
+	"^ dict at: 'data' at: 'tick_two'"
+	"^ dict at: 'data' at: 'tick'"
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> ensureAmountTicksX [
+	| rule newDict |
+	(dict at: 'data') at: 'set' ifPresent:[
+	(((dict at: 'data') at: 'set') = 1)
+	ifTrue:[
+	^ dict at: 'data' at: 'tick']].
+	rule := LARTickSpecUpdaterRule for: dict.
+	newDict := rule updateDictScatterX.
+	"newDict := rule updateDictScatterY."
+	dict := newDict.
+	^ dict at: 'data' at: 'tick_one'
+	"^ dict at: 'data' at: 'tick'"
 ]
 
 { #category : #'as yet unclassified' }
@@ -217,7 +274,7 @@ LarPlotterScatter >> ensureAmountTicksY [
 	ifTrue:[
 	^ dict at: 'data' at: 'tick']].
 	rule := LARTickSpecUpdaterRule for: dict.
-	newDict := rule updateDictScatterX.
+	"newDict := rule updateDictScatterX."
 	newDict := rule updateDictScatterY.
 	dict := newDict.
 	^ dict at: 'data' at: 'tick_two'
@@ -339,7 +396,8 @@ LarPlotterScatter >> initializeFor [
 	self title. 
 	self addPoints.
 	self addAxisLabel.
-	self addTicks.
+	self addTicksX.
+	self addTicksY.
 	self addTicksLabelX.
 	self addTicksLabelY.
 ]
