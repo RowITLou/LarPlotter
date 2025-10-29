@@ -422,11 +422,10 @@ LarPlotterBar >> angleX [
 
 { #category : #accessing }
 LarPlotterBar >> angleY [
-^45
-	" ((dict at: 'encoding' at: 'y' ) includesKey: 'axis')
+ ((dict at: 'encoding' at: 'y' ) includesKey: 'axis')
 	 ifTrue:[(((dict at: 'encoding' at: 'y' ) at: 'axis') includesKey: 'labelAngle')
 	 ifTrue:[^(((dict at: 'encoding' at: 'y' ) at: 'axis') at: 'labelAngle')]].
-	 ^0"
+	 ^0
 ]
 
 { #category : #accessing }

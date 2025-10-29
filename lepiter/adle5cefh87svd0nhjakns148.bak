@@ -216,7 +216,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-10-28T18:25:46.721+01:00"
+						"dateAndTimeString" : "2025-10-29T09:39:43.054+01:00"
 					}
 				},
 				"uid" : {
@@ -226,7 +226,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "- Layered grammar\r\n- grammar of graphics\r\n- vega li"
 			},
 			{
 				"__type" : "textSnippet",
