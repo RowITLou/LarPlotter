@@ -927,7 +927,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T11:18:38.030544+01:00"
+									"dateAndTimeString" : "2025-10-31T11:18:52.895311+01:00"
 								}
 							},
 							"uid" : {
@@ -937,7 +937,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "You can convert the met"
+							"string" : "You can convert the methodName strings back to compiled method objects like this:"
 						},
 						{
 							"__type" : "pharoSnippet",
