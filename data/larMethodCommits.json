@@ -1,0 +1,2432 @@
+[
+	{
+		"methodName" : "LarPlotterScatter>>#addPoints",
+		"size" : 531,
+		"commits" : 7
+	},
+	{
+		"methodName" : "LARBarSpecUpdaterRule>>#forWidth",
+		"size" : 8,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#value1",
+		"size" : 15,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#setup:",
+		"size" : 1049,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#larPackageClassMethodsBarChart",
+		"size" : 666,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARBarSpecUpdaterRule>>#dict:",
+		"size" : 38,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarLine>>#from:",
+		"size" : 32,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addTicksY:",
+		"size" : 609,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarContainer>>#width",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#xAxis",
+		"size" : 26,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#data",
+		"size" : 12,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBar>>#createSubBar:",
+		"size" : 1639,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarTick>>#length",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaExample1",
+		"size" : 190,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterLine>>#scale",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#graphWithTitel",
+		"size" : 210,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarVegaExamples>>#url",
+		"size" : 105,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addPoints",
+		"size" : 279,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#dict",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#values",
+		"size" : 51,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#Example3",
+		"size" : 194,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarVegaExamples>>#jsonString",
+		"size" : 51,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#title:",
+		"size" : 74,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#points",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineExamples>>#labels",
+		"size" : 42,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARBarSpecUpdaterRule>>#updateDictHeight",
+		"size" : 483,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarContainer>>#initialize:with:",
+		"size" : 94,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#smallAddingWidth:",
+		"size" : 327,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addAxisLabelY:",
+		"size" : 843,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarLabelAxis>>#initialize:",
+		"size" : 49,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterBar>>#turn:",
+		"size" : 32,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTitel>>#setBackground:",
+		"size" : 56,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLine>>#announcer",
+		"size" : 22,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotter>>#labelTicksX:with:with:",
+		"size" : 679,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#graphElement",
+		"size" : 26,
+		"commits" : 1
+	},
+	{
+		"methodName" : "BarPlotter>>#labelAxisX:with:with:",
+		"size" : 696,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTitel>>#setFontSize:",
+		"size" : 58,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarVegaExamples>>#stockData",
+		"size" : 12277,
+		"commits" : 1
+	},
+	{
+		"methodName" : "BarPlotter>>#graphElement:with:",
+		"size" : 356,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#angleY:with:",
+		"size" : 1412,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#graphAndLabels",
+		"size" : 360,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBar>>#object:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#sendBar:andGroup:withSpec:",
+		"size" : 704,
+		"commits" : 3
+	},
+	{
+		"methodName" : "BarPlotter>>#titelGraph:with:with:",
+		"size" : 626,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#graphWithAxisLabel",
+		"size" : 399,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addTicksLabelY",
+		"size" : 319,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addAxisLabel",
+		"size" : 656,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addTicksLabelX",
+		"size" : 513,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBarElement>>#initialize:",
+		"size" : 1032,
+		"commits" : 6
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#yTitle:",
+		"size" : 48,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#getBarData:",
+		"size" : 593,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#smallAdding:",
+		"size" : 619,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBar>>#object",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#ensureAmountTicksY",
+		"size" : 360,
+		"commits" : 6
+	},
+	{
+		"methodName" : "BarPlotterTest>>#relocateX",
+		"size" : 14,
+		"commits" : 1
+	},
+	{
+		"methodName" : "BarPlotterTest>>#labelAxisY",
+		"size" : 735,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addAxisLabelY:",
+		"size" : 847,
+		"commits" : 4
+	},
+	{
+		"methodName" : "GtHome>>#toolsSectionElement",
+		"size" : 176,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarTickLabel>>#setBorderColor:",
+		"size" : 70,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaSpec2",
+		"size" : 311,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#borders",
+		"size" : 18,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#sizeGraph",
+		"size" : 14,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarSubBar>>#data",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#getDataSeparate",
+		"size" : 783,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addTicksY:",
+		"size" : 1073,
+		"commits" : 11
+	},
+	{
+		"methodName" : "LarLine>>#to:",
+		"size" : 28,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#notifyUpdate",
+		"size" : 62,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBar>>#angleX",
+		"size" : 224,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#Example2",
+		"size" : 191,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#collectHomeSectionStencils",
+		"size" : 85,
+		"commits" : 0
+	},
+	{
+		"methodName" : "GtHome>>#spaceGap",
+		"size" : 14,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarContainerElement>>#setBlackBorders",
+		"size" : 191,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#color:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#dict:",
+		"size" : 38,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarContainerElement>>#initializeVertical:",
+		"size" : 402,
+		"commits" : 7
+	},
+	{
+		"methodName" : "LarPlotterBar>>#aggregateDataY",
+		"size" : 650,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#newGraph",
+		"size" : 77,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterLineExamples>>#values",
+		"size" : 43,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARTickSpecUpdaterRule>>#updateDict",
+		"size" : 811,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterBar>>#spec",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addTicksLabelX",
+		"size" : 319,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLine>>#labelAxisX:",
+		"size" : 44,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPoint>>#color",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#graphElement",
+		"size" : 26,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#sendGtBookField:",
+		"size" : 232,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#getDataFromJsonFile",
+		"size" : 502,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#initialize",
+		"size" : 110,
+		"commits" : 9
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#announcer",
+		"size" : 22,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtHome>>#initialize",
+		"size" : 256,
+		"commits" : 0
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#gtChartSend",
+		"size" : 51,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#url",
+		"size" : 49,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#turn",
+		"size" : 12,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#tickLabelsY:",
+		"size" : 46,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#notifyUpdate",
+		"size" : 62,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#spec:",
+		"size" : 60,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTick>>#setBackground:",
+		"size" : 89,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#barChartSpec",
+		"size" : 626,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaExample2",
+		"size" : 198,
+		"commits" : 4
+	},
+	{
+		"methodName" : "GtHome>>#plotterSection",
+		"size" : 82,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARTopicMapDataExamples>>#dataFromFieldsByStyle",
+		"size" : 90,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#aggregation",
+		"size" : 514,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#gtObjectView:",
+		"size" : 148,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarContainerElement>>#initializeHorizontal:",
+		"size" : 399,
+		"commits" : 5
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#colorScale:",
+		"size" : 66,
+		"commits" : 3
+	},
+	{
+		"methodName" : "GtHome>>#updateNotifications",
+		"size" : 93,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addTicksLabelX:",
+		"size" : 1501,
+		"commits" : 11
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#initializeFor",
+		"size" : 419,
+		"commits" : 9
+	},
+	{
+		"methodName" : "LarBar>>#gtSubbarView:",
+		"size" : 495,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBar>>#value:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#createSectionWrapperFor:",
+		"size" : 349,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPoint>>#x:",
+		"size" : 26,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLineExamples>>#newGraph",
+		"size" : 45,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLine>>#initializeDict",
+		"size" : 117,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaSpec5",
+		"size" : 842,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#smallAdding:",
+		"size" : 320,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#createContainer",
+		"size" : 189,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#setBackground:",
+		"size" : 55,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#lines:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARTickSpecUpdaterRule>>#updateDictScatterY",
+		"size" : 797,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarTitel>>#setText:",
+		"size" : 80,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarTitel>>#text:",
+		"size" : 39,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#createContainer",
+		"size" : 189,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#x",
+		"size" : 26,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotter>>#ticksAxisY:with:with:",
+		"size" : 635,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#title",
+		"size" : 207,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#height",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaSpec3",
+		"size" : 493,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#setTicksAmountEx4",
+		"size" : 66,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#graphAndTicksLabel",
+		"size" : 394,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#aggregateColorDataCount:",
+		"size" : 1226,
+		"commits" : 4
+	},
+	{
+		"methodName" : "GtHome>>#oscarSlideshowSection",
+		"size" : 88,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterBar>>#ensureBarsHeight:",
+		"size" : 329,
+		"commits" : 9
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#values",
+		"size" : 45,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addTicksLabelX:",
+		"size" : 1001,
+		"commits" : 6
+	},
+	{
+		"methodName" : "GtHome>>#knowledgeBase",
+		"size" : 30,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterLine>>#labelAxisY:",
+		"size" : 44,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#createVersionLabel",
+		"size" : 786,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addTicksLabelY",
+		"size" : 311,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#gtLiveFor:",
+		"size" : 386,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#colorPoints",
+		"size" : 524,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBar>>#borders",
+		"size" : 18,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#dict",
+		"size" : 12,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ticksY:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPoint>>#initialize:with:",
+		"size" : 54,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ticksX",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#aggregateColorDataSum:with:",
+		"size" : 1299,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterBar>>#announcer:",
+		"size" : 42,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#graphElement",
+		"size" : 26,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarSubBarElement>>#tooltip:",
+		"size" : 38,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#ensureAmountTicksY",
+		"size" : 277,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#createContainer",
+		"size" : 189,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LARTickSpecUpdaterRule>>#dict:",
+		"size" : 38,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPoint>>#color:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#values:andFields:",
+		"size" : 196,
+		"commits" : 4
+	},
+	{
+		"methodName" : "GtHome>>#refreshNotifications",
+		"size" : 188,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterLine>>#asElement",
+		"size" : 54,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPointElement>>#centerOn:",
+		"size" : 64,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#specExample",
+		"size" : 153,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarTick>>#asElementY",
+		"size" : 49,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarBar>>#subbar:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPoint>>#x",
+		"size" : 6,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#xTitle:",
+		"size" : 48,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#gtJsonObjectFor:",
+		"size" : 157,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addBars:",
+		"size" : 552,
+		"commits" : 10
+	},
+	{
+		"methodName" : "LarPlotterLine>>#addLines:",
+		"size" : 397,
+		"commits" : 10
+	},
+	{
+		"methodName" : "BarPlotter>>#labelTicksY:with:with:",
+		"size" : 653,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#totalGraph",
+		"size" : 596,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#aggregation:",
+		"size" : 503,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#relocate",
+		"size" : 13,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#width",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#addLines",
+		"size" : 381,
+		"commits" : 4
+	},
+	{
+		"methodName" : "GtHome>>#oscarSection",
+		"size" : 76,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LARTickSpecUpdaterRule>>#updateDictLineX",
+		"size" : 355,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBar>>#asElement",
+		"size" : 49,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarLabelAxis>>#setBackground:",
+		"size" : 54,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ensureDataWidth:",
+		"size" : 497,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLine>>#points:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarVegaExamples>>#csvToJsonobject",
+		"size" : 114,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarSubBar>>#color",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#gt4llmSection",
+		"size" : 149,
+		"commits" : 0
+	},
+	{
+		"methodName" : "GtHome>>#clearKnowledgeBase",
+		"size" : 40,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarVegaExamples>>#csvToJson",
+		"size" : 102,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARBarSpecUpdaterRule>>#updateDictWidth:",
+		"size" : 115,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#spec:",
+		"size" : 60,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#initializeDict",
+		"size" : 117,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterExamples>>#vegaSpec2",
+		"size" : 631,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#stackedGtBookFieldsByKindBarChartWithChartSend",
+		"size" : 398,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#scale:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#createBars",
+		"size" : 190,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#ensureDataHeight",
+		"size" : 289,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLine>>#addTicks",
+		"size" : 240,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLine>>#dict:",
+		"size" : 32,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addSubBars:with:",
+		"size" : 167,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#url",
+		"size" : 49,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#bookPagesByKind",
+		"size" : 212,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#requestWidgetUpdate",
+		"size" : 90,
+		"commits" : 0
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#gtBookTopicMap",
+		"size" : 57,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#values:",
+		"size" : 248,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#homeSectionCollector",
+		"size" : 178,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaExample4",
+		"size" : 204,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LARTickSpecUpdaterRule>>#updateDictDefault",
+		"size" : 17,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#updateWidget",
+		"size" : 107,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterLineExamples>>#spec",
+		"size" : 65,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARScatterSpecUpdaterRule>>#updateDictHeight",
+		"size" : 427,
+		"commits" : 4
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#containerWithGraphAndBars",
+		"size" : 238,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#tickLablesInitialize",
+		"size" : 96,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaSpec4",
+		"size" : 327,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#colorsSubBar",
+		"size" : 216,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarSubBar>>#height:",
+		"size" : 36,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarLabelAxis>>#setText:",
+		"size" : 71,
+		"commits" : 3
+	},
+	{
+		"methodName" : "BarPlotter>>#ticksAxisX:with:with:",
+		"size" : 644,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#asElement",
+		"size" : 56,
+		"commits" : 5
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#sizeLabel",
+		"size" : 13,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarLabelAxis>>#setBorderColor:",
+		"size" : 71,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#dict",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#asJsonString",
+		"size" : 50,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARScatterSpecUpdaterRule>>#dict:",
+		"size" : 32,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addTicks",
+		"size" : 248,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarPlotterLineExamples>>#addAxisLabel",
+		"size" : 81,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARScatterSpecUpdaterRule>>#updateDictWidth",
+		"size" : 426,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLineExamples>>#addLines",
+		"size" : 59,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBar>>#ensureBarsWidth:",
+		"size" : 497,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#initialize",
+		"size" : 76,
+		"commits" : 7
+	},
+	{
+		"methodName" : "LarContainerElement>>#initializeVertical",
+		"size" : 366,
+		"commits" : 7
+	},
+	{
+		"methodName" : "LarPlotterLine>>#tickLabelsX:",
+		"size" : 46,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#ensureDataWidth",
+		"size" : 288,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#testSpec",
+		"size" : 70,
+		"commits" : 5
+	},
+	{
+		"methodName" : "BarPlotter>>#barElement",
+		"size" : 186,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#initialize:",
+		"size" : 3182,
+		"commits" : 10
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#updateDictHeight:",
+		"size" : 679,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#addTicksLabel:with:",
+		"size" : 442,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#initialize",
+		"size" : 74,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LARScatterSpecUpdaterRule>>#dict",
+		"size" : 12,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addTicks",
+		"size" : 248,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarTitel>>#initialize:",
+		"size" : 50,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarBar>>#height",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#sizeContainer",
+		"size" : 18,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarBarElement>>#initialize:",
+		"size" : 1064,
+		"commits" : 10
+	},
+	{
+		"methodName" : "LarBar>>#setBorderColor:",
+		"size" : 68,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#aggregateDataSum:with:",
+		"size" : 646,
+		"commits" : 3
+	},
+	{
+		"methodName" : "GtHome>>#gtViewHomeSectionsFor:",
+		"size" : 127,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPoint>>#asElement",
+		"size" : 48,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBar>>#initializeFor",
+		"size" : 845,
+		"commits" : 20
+	},
+	{
+		"methodName" : "LarSubBar>>#tooltip",
+		"size" : 18,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addAxisLabel:with:",
+		"size" : 314,
+		"commits" : 10
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#json",
+		"size" : 66,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addTicksLabelY:",
+		"size" : 1626,
+		"commits" : 13
+	},
+	{
+		"methodName" : "LarPlotterScatterExamples>>#newGraph",
+		"size" : 48,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBar>>#aggregateDataCount:",
+		"size" : 611,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#object:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#setTicksAmount",
+		"size" : 63,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#transform:",
+		"size" : 470,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#title",
+		"size" : 208,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarTick>>#initialize:with:",
+		"size" : 88,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarSubBar>>#tooltip:",
+		"size" : 38,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#asElementVertical",
+		"size" : 62,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addTicksLabelX:",
+		"size" : 717,
+		"commits" : 3
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#fields:",
+		"size" : 189,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#spec",
+		"size" : 12,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#data:",
+		"size" : 32,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarBar>>#asElement",
+		"size" : 46,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addTicksY:",
+		"size" : 830,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#noDict",
+		"size" : 373,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARTopicMapDataExamples>>#fieldsByStyle",
+		"size" : 383,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarSubBarElement>>#tooltip",
+		"size" : 18,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPoint>>#y",
+		"size" : 6,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#setBlackBorders",
+		"size" : 50,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterHomeSection>>#defaultPriority",
+		"size" : 21,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#initializePanes",
+		"size" : 1108,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addTitle:",
+		"size" : 64,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#gtJsonStringFor:",
+		"size" : 171,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#borders:",
+		"size" : 38,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarLabelAxis>>#text",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#getStartedSection",
+		"size" : 98,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarSubBar>>#color:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#value:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#sendBarAndGroupExample",
+		"size" : 372,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#stackedFields:",
+		"size" : 200,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#labelAxisY",
+		"size" : 24,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTick>>#width",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarLabelAxis>>#asElement",
+		"size" : 53,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarSubBar>>#width",
+		"size" : 14,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterHomeSection>>#sectionTitle",
+		"size" : 33,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#prepareForRelease",
+		"size" : 93,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterScatterExamples>>#vegaExample2",
+		"size" : 135,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#space",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#knowledgeBase:",
+		"size" : 62,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterBar>>#transform:",
+		"size" : 470,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarTitel>>#gtLiveFor:",
+		"size" : 269,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LARTopicMapDataExamples>>#fieldsByStyleJsonString",
+		"size" : 91,
+		"commits" : 1
+	},
+	{
+		"methodName" : "BarPlotterTest>>#rotation",
+		"size" : 13,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtHome>>#update:",
+		"size" : 117,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarSubBar>>#width:",
+		"size" : 34,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBar>>#notifyUpdate",
+		"size" : 61,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#angleY",
+		"size" : 224,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#stackedGtBookFieldsByKindBarChartWithChartSendBar",
+		"size" : 391,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#width:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#updateFeed",
+		"size" : 47,
+		"commits" : 0
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#beStackedBarChart",
+		"size" : 68,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaColorChart",
+		"size" : 132,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBar>>#data:",
+		"size" : 32,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#toolsSection",
+		"size" : 124,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterLine>>#tickInitialize",
+		"size" : 80,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#url",
+		"size" : 49,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarTickLabel>>#labelText:",
+		"size" : 42,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addTicksY",
+		"size" : 249,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarLine>>#asElement",
+		"size" : 47,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#updateDictWidth",
+		"size" : 147,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#object",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#encoding",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBar>>#value",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#gtBookPagesByKindBarChart",
+		"size" : 571,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLineExamples>>#addTitel",
+		"size" : 64,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ensureAmountTicksY",
+		"size" : 192,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ensureDataHeight",
+		"size" : 276,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTick>>#asElementX",
+		"size" : 50,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterBar>>#angleY",
+		"size" : 224,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addBars",
+		"size" : 2635,
+		"commits" : 9
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#description",
+		"size" : 42,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTitelElement>>#initialize:",
+		"size" : 404,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#data",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addTicksLabelY:",
+		"size" : 997,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addAxisLabel:with:",
+		"size" : 312,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#angleY:with:",
+		"size" : 1211,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterScatterExamples>>#values",
+		"size" : 43,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#labelAngle:",
+		"size" : 154,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#updateToolsSection",
+		"size" : 260,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterHomeSection>>#tocCard",
+		"size" : 230,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaExample5",
+		"size" : 207,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#y",
+		"size" : 26,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#initialize",
+		"size" : 27,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTickLabelElement>>#initialize:",
+		"size" : 410,
+		"commits" : 4
+	},
+	{
+		"methodName" : "BarPlotterTest>>#createBars:",
+		"size" : 333,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#description:",
+		"size" : 60,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarSubBar>>#height",
+		"size" : 16,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarContainer>>#initialize",
+		"size" : 16,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#title",
+		"size" : 12,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLine>>#spec",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#initializeDict",
+		"size" : 92,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterBar>>#spec:",
+		"size" : 60,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addTitle:",
+		"size" : 113,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPointElement>>#initialize:",
+		"size" : 231,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarTitel>>#setBorderColor:",
+		"size" : 70,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarBar>>#width:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#ensureAmountTicks",
+		"size" : 359,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarTickLabel>>#setFontSize:",
+		"size" : 58,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPointElement>>#defaultSize",
+		"size" : 22,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addTicksX",
+		"size" : 249,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotter>>#barsInGraph:with:with:",
+		"size" : 542,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#noDict",
+		"size" : 363,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#setAmountTicks:",
+		"size" : 334,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTitel>>#asElement",
+		"size" : 47,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterLine>>#labelAxisX",
+		"size" : 24,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#resize:with:",
+		"size" : 108,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#graphTwithLabels",
+		"size" : 1332,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatterExamples>>#vegaExample1",
+		"size" : 135,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#resize:with:",
+		"size" : 116,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#lines",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#initializeFor",
+		"size" : 566,
+		"commits" : 12
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#vegaExample3",
+		"size" : 198,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ticksY",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#gtLiveFor:",
+		"size" : 384,
+		"commits" : 4
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#gtChartSend:",
+		"size" : 186,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#noDict",
+		"size" : 129,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#linesDefinition",
+		"size" : 48,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LARTickSpecUpdaterRule>>#updateDictScatterX",
+		"size" : 797,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#setBlackBorders",
+		"size" : 43,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#borders",
+		"size" : 18,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#announcer:",
+		"size" : 42,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTick>>#width:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtHome>>#createSectionsHolder",
+		"size" : 72,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarPlotterLine>>#space:",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARTopicMapDataExamples>>#gtBookTopicMap",
+		"size" : 57,
+		"commits" : 1
+	},
+	{
+		"methodName" : "BarPlotterTest>>#sizeLabel",
+		"size" : 13,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#url",
+		"size" : 49,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#initialize:with:",
+		"size" : 96,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#updateDictHeight",
+		"size" : 678,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#stackedGtBookFieldsByKindBarChart",
+		"size" : 204,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotter>>#containerElement:",
+		"size" : 261,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPoint>>#y:",
+		"size" : 26,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarBar>>#color",
+		"size" : 14,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTickYElement>>#initialize:",
+		"size" : 320,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarVegaExamples>>#download",
+		"size" : 226,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#addAxisLabel:with:",
+		"size" : 150,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#initialize:",
+		"size" : 2837,
+		"commits" : 8
+	},
+	{
+		"methodName" : "LarPlotterBar>>#setAmountTicks:",
+		"size" : 334,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBar>>#aggregateDataX",
+		"size" : 648,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterBar>>#dict:",
+		"size" : 53,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarSubBar>>#initialize:with:",
+		"size" : 96,
+		"commits" : 1
+	},
+	{
+		"methodName" : "BarPlotterTest>>#graphTwithTicks",
+		"size" : 1298,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLine>>#initializeFor",
+		"size" : 329,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarTick>>#setBorderColor:",
+		"size" : 121,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addAxisLabelX:",
+		"size" : 79,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#template",
+		"size" : 20,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LARLineSpecUpdaterRule>>#importData",
+		"size" : 735,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLine>>#tickLabelsX",
+		"size" : 26,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainerElement>>#initializeHorizontal",
+		"size" : 362,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterLine>>#pointsDefinition",
+		"size" : 51,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#dict:",
+		"size" : 32,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#ensureAmountTicksX",
+		"size" : 360,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#gtLiveFor:",
+		"size" : 384,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#containerElement",
+		"size" : 252,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarTick>>#resize:with:",
+		"size" : 159,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#data:",
+		"size" : 32,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#labelAxisX",
+		"size" : 613,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#angleX:with:",
+		"size" : 1230,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterExamples>>#vegaSpec1",
+		"size" : 474,
+		"commits" : 3
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#stackedBarChartTemplateString",
+		"size" : 600,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#colorSpec",
+		"size" : 674,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addTicksLabelY:",
+		"size" : 1129,
+		"commits" : 5
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#gtChartSendBar",
+		"size" : 51,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#angleX",
+		"size" : 224,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarBar>>#height:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#asElement",
+		"size" : 57,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#angleX:with:",
+		"size" : 1230,
+		"commits" : 4
+	},
+	{
+		"methodName" : "BarPlotterTest>>#values",
+		"size" : 51,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#color",
+		"size" : 34,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#setBlackBorders",
+		"size" : 43,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLine>>#tickLabelsY",
+		"size" : 26,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addTitle:",
+		"size" : 64,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addAxisLabelX:",
+		"size" : 116,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#labels",
+		"size" : 42,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarLine>>#initialize:with:",
+		"size" : 66,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addTitle:",
+		"size" : 64,
+		"commits" : 5
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#initializeFor",
+		"size" : 668,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarLine>>#to",
+		"size" : 8,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ensureDataHeight:",
+		"size" : 292,
+		"commits" : 4
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#beBarChart",
+		"size" : 54,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarLine>>#from",
+		"size" : 12,
+		"commits" : 4
+	},
+	{
+		"methodName" : "BarPlotter>>#labelAxisY:with:with:",
+		"size" : 745,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#graphElement",
+		"size" : 366,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#addAxisLabel",
+		"size" : 150,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarTickXElement>>#initialize:",
+		"size" : 297,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarBar>>#subbar",
+		"size" : 16,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#initializeFor",
+		"size" : 565,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTickLabel>>#setText:",
+		"size" : 84,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addObject:",
+		"size" : 384,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTickLabel>>#labelText",
+		"size" : 22,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#relocateY",
+		"size" : 14,
+		"commits" : 1
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#graphAndTicks",
+		"size" : 389,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTickLabel>>#initialize:",
+		"size" : 45,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addObject:with:",
+		"size" : 790,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#gtChartSendBar:",
+		"size" : 186,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#labelAngle",
+		"size" : 41,
+		"commits" : 2
+	},
+	{
+		"methodName" : "BarPlotterTest>>#graphWithBars",
+		"size" : 509,
+		"commits" : 1
+	},
+	{
+		"methodName" : "GtHome>>#updateSections",
+		"size" : 327,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarLineElement>>#initialize:",
+		"size" : 218,
+		"commits" : 0
+	},
+	{
+		"methodName" : "LarContainerElement>>#setBlackBorders:",
+		"size" : 214,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarLabelAxis>>#setFontSize:",
+		"size" : 59,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarVegaExamples>>#stockCSV",
+		"size" : 94,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LARBarSpecUpdaterRule>>#updateDictHeight:",
+		"size" : 386,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarVegaExamples>>#specEx",
+		"size" : 373,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#addAxisLabel",
+		"size" : 656,
+		"commits" : 3
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#sendGtBookField:andKind:",
+		"size" : 269,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#borders:",
+		"size" : 38,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#colorsPoints",
+		"size" : 216,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarElement>>#addAxisLabelX:",
+		"size" : 77,
+		"commits" : 5
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#barChartTemplateString",
+		"size" : 484,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#initialize:",
+		"size" : 2734,
+		"commits" : 11
+	},
+	{
+		"methodName" : "BarPlotterTest>>#sizeGraph",
+		"size" : 14,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterBar>>#announcer",
+		"size" : 22,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addTicksX:",
+		"size" : 606,
+		"commits" : 4
+	},
+	{
+		"methodName" : "LarTickLabel>>#asElement",
+		"size" : 52,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#announcer:",
+		"size" : 42,
+		"commits" : 1
+	},
+	{
+		"methodName" : "LarPlotterLineElement>>#addLines:",
+		"size" : 363,
+		"commits" : 8
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addPoints:",
+		"size" : 418,
+		"commits" : 6
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#Example1",
+		"size" : 63,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#addPoints:with:",
+		"size" : 196,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBar>>#asElement",
+		"size" : 53,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpecExamples>>#stackedGtBookFieldsByKindBarChart",
+		"size" : 777,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarLabelAxis>>#text:",
+		"size" : 31,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarTitel>>#text",
+		"size" : 12,
+		"commits" : 2
+	},
+	{
+		"methodName" : "GtBarChartSpec>>#template:",
+		"size" : 76,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBar>>#borders:",
+		"size" : 38,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#addTitel",
+		"size" : 67,
+		"commits" : 6
+	},
+	{
+		"methodName" : "BarPlotterExamples>>#graphTotal",
+		"size" : 1217,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterLine>>#ticksX:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#setBorderColor:",
+		"size" : 69,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatter>>#addTitle:",
+		"size" : 113,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarTickLabel>>#setBackground:",
+		"size" : 53,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarPlotterScatterElement>>#addAxisLabelY:",
+		"size" : 844,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBarExamples>>#values",
+		"size" : 43,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarPlotterBar>>#getDataFromJsonFile",
+		"size" : 503,
+		"commits" : 3
+	},
+	{
+		"methodName" : "LarTick>>#length:",
+		"size" : 36,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarLabelAxisElement>>#initialize:",
+		"size" : 438,
+		"commits" : 2
+	},
+	{
+		"methodName" : "LarContainer>>#height:",
+		"size" : 36,
+		"commits" : 2
+	}
+]

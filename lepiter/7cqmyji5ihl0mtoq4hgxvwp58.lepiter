@@ -572,82 +572,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T09:06:46.921327+01:00"
+									"dateAndTimeString" : "2025-10-31T10:43:22.541851+01:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "FDh3k9H+DQC8BZzMCUs3fA=="
 							},
-							"code" : "aPackage := #LarPlotter asPackage.\rrepo := IceRepository registry\r\t\tdetect: [ :each | each includesPackageNamed: aPackage name ].\rmethods := (aPackage classes flatCollect: #methods) asOrderedCollection."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T09:00:24.511367+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T09:06:30.213089+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "9OGyftH+DQC3mGQ0CUs3fA=="
-							},
-							"code" : "repo log historyOfMethod: methods first"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T09:05:51.739016+01:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T09:05:51.739016+01:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "0fozktH+DQC7w5MKCUs3fA=="
-							},
-							"code" : ""
+							"code" : "aPackage := #LarPlotter asPackage.\rrepo := IceRepository registry\r\t\tdetect: [ :each | each includesPackageNamed: aPackage name ].\rmethods := (aPackage classes flatCollect: #methods) asOrderedCollection.\rtimeToRun := [ histories := (aPackage classes flatCollect: #methods)\r\t\t\tcollect: [ :m | repo log historyOfMethod: m ] ] timeToRun.\rhistories"
 						},
 						{
 							"__type" : "textSnippet",
@@ -674,7 +606,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T08:56:31.217125+01:00"
+									"dateAndTimeString" : "2025-10-31T10:56:39.926987+01:00"
 								}
 							},
 							"uid" : {
@@ -684,7 +616,41 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "For  some reason it fails with {{gtMethod:name=LarLineElement>>#initialize:}}, so we have to handle errors. Since it's slow, we run it in a background process."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T10:50:24.031437+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T10:56:59.046818+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "6ZIPCNP+DQCYLJFtAG+L2A=="
+							},
+							"code" : "aPackage := #LarPlotter asPackage.\rrepo := IceRepository registry\r\t\tdetect: [ :each | each includesPackageNamed: aPackage name ].\rmethods := (aPackage classes flatCollect: #methods) asOrderedCollection.\rtask := [ UIManager default\r\t\tinformUser: 'Compiling histories'\r\t\tduring: [ timeToRun := [ histories := (aPackage classes flatCollect: #methods)\r\t\t\t\t\t\tcollect: [ :m | [ m -> (repo log historyOfMethod: m) ] onErrorDo: [ m -> {} ] ] ]\r\t\t\t\t\ttimeToRun ] ] fork.\r"
 						},
 						{
 							"__type" : "textSnippet",
@@ -711,7 +677,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T08:56:31.46144+01:00"
+									"dateAndTimeString" : "2025-10-31T11:06:56.818943+01:00"
 								}
 							},
 							"uid" : {
@@ -721,7 +687,183 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "This takes 3m4s for 486 methods!\nBut now we can generate a JSON."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:02:47.655929+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:06:32.999457+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "E2JiNNP+DQCddChGAG+L2A=="
+							},
+							"code" : "jsonObject := (histories\r\t\tcollect: [ :kv | \r\t\t\t| m |\r\t\t\tm := kv key.\r\t\t\t{'methodName' -> m printString.\r\t\t\t\t'size' -> m sourceCode size.\r\t\t\t\t'commits' -> kv value size} asDictionary ]) asArray.\rjsonObject asGtJson"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:07:51.240779+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:08:10.35427+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "bbh6RtP+DQCkFYaUAG+L2A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Since it's a nuisance to run this again, we save the JSON to a file:"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:08:23.25864+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:11:51.807094+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "NkRjSNP+DQClekwXAG+L2A=="
+							},
+							"code" : "jsonFile := FileLocator gtResource / 'RowITLou' / 'LarPlotter' / 'data'\r\t\t/ 'larMethodCommits.json'.\rjsonFile\r\twriteStreamDo: [ :aStream | STON put: jsonObject asJsonOnStreamPretty: aStream ].\rjsonFile"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:12:03.897706+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:12:18.206142+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "1+6JVdP+DQCoPzQ5AG+L2A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Now we can simply recover the data from this file:"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:12:19.669945+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:14:41.776003+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "0p96VtP+DQCpbi9dAG+L2A=="
+							},
+							"code" : "jsonFile := FileLocator gtResource / 'RowITLou' / 'LarPlotter' / 'data'\r\t\t/ 'larMethodCommits.json'.\rjsonFromFile := jsonFile readStreamDo: [ :aStream | STON fromStream: aStream ].\rjsonFromFile asGtJson"
 						},
 						{
 							"__type" : "textSnippet",
@@ -748,7 +890,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-31T08:49:53.679397+01:00"
+									"dateAndTimeString" : "2025-10-31T11:15:39.644371+01:00"
 								}
 							},
 							"uid" : {
@@ -758,7 +900,78 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : ""
+							"string" : "To do (as before): \n- rewrite the data to a JSON for VegaLite\n- compare the VegaLite and LAR visualizations\n- add hover text for the nodes, and click to inspect the method (you need to convert the method name to the actual method object)"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:18:29.489901+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:18:52.895311+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "aJ6FbNP+DQCx/DF5AG+L2A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "You can convert the methodName strings back to compiled method objects like this:"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:17:56.857504+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-31T11:18:15.307137+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "Za+TatP+DQCxwDbbAG+L2A=="
+							},
+							"code" : "jsonFromFile\r\tcollect: [ :d | \r\t\t| methodParts |\r\t\tmethodParts := '>>#' split: (d at: 'methodName').\r\t\tmethodParts first asClass >> methodParts second asSymbol ]"
 						}
 					]
 				},
