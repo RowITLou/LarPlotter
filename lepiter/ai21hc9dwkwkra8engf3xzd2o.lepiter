@@ -335,7 +335,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2025-10-20T09:34:03.3708+02:00"
+												"dateAndTimeString" : "2025-10-31T08:32:09.564072+01:00"
 											}
 										},
 										"uid" : {
@@ -346,6 +346,43 @@
 											"__type" : "textStyle"
 										},
 										"string" : "[[Possible stacked bar chart examples to explore]] "
+									},
+									{
+										"__type" : "textSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-10-31T08:32:10.026706+01:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2025-10-31T08:32:17.832577+01:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "HBezGdH+DQCTHMN9CUs3fA=="
+										},
+										"paragraphStyle" : {
+											"__type" : "textStyle"
+										},
+										"string" : "[[Some ideas for scatter plots]]"
 									}
 								]
 							},
