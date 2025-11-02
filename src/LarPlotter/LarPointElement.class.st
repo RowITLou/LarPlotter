@@ -2,28 +2,54 @@ Class {
 	#name : #LarPointElement,
 	#superclass : #BlElement,
 	#instVars : [
-		'point'
+		'point',
+		'sizePoint'
 	],
 	#category : #'LarPlotter-Element'
 }
 
 { #category : #'as yet unclassified' }
 LarPointElement >> centerOn: aPoint [
-	self relocate: aPoint - (self defaultSize / 2)
+	self relocate: aPoint - ((self defaultSize +self sizePoint) / 2)
 ]
 
 { #category : #'as yet unclassified' }
 LarPointElement >> defaultSize [
-	^ 20 @ 20
+	^ 7 @ 7
 ]
 
 { #category : #'as yet unclassified' }
 LarPointElement >> initialize: aPoint [
+	| aMouseOverHandler aMouseOutHandler |
+	self sizePoint: 0 @ 0.
 	super initialize.
 	point := aPoint.
+
+
+	aMouseOverHandler := BlEventHandler
+			on: BlMouseOverEvent
+			do: [ :anEvent "anEvent currentTarget background: Color veryVeryLightGray." | anEvent currentTarget border: (BlBorder paint: Color red width: 2) ].
+	aMouseOutHandler := BlEventHandler
+			on: BlMouseOutEvent
+			do: [ :anEvent "anEvent currentTarget background: Color white." | anEvent currentTarget border: (BlBorder paint: Color black) ].
 	^ self
 		size: self defaultSize;
 		geometry: BlCircleGeometry new;
-		centerOn: (aPoint x @ aPoint y);
-		background: Color lightGray	"relocate: aPoint x @ aPoint y - 100@100;"
+		centerOn: aPoint x @ aPoint y;
+		background: Color lightGray;
+		when: BlClickEvent
+			do: [ :event | event currentTarget phlow spawnObject: point object ];
+		addEventHandler: aMouseOverHandler;
+		addEventHandler: aMouseOutHandler;
+		yourself	"relocate: aPoint x @ aPoint y - 100@100;"
+]
+
+{ #category : #accessing }
+LarPointElement >> sizePoint [
+	^ sizePoint
+]
+
+{ #category : #accessing }
+LarPointElement >> sizePoint: anObject [
+	sizePoint := anObject
 ]

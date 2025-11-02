@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'x',
 		'y',
-		'color'
+		'color',
+		'object',
+		'data'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -24,11 +26,31 @@ LarPoint >> color: anObject [
 	color := anObject
 ]
 
+{ #category : #accessing }
+LarPoint >> data [
+	^ data
+]
+
+{ #category : #accessing }
+LarPoint >> data: anObject [
+	data := anObject
+]
+
 { #category : #'as yet unclassified' }
 LarPoint >> initialize: xPos with: yPos [
 x:= xPos.
 y:= yPos. 
 ^self
+]
+
+{ #category : #accessing }
+LarPoint >> object [
+	^ object
+]
+
+{ #category : #accessing }
+LarPoint >> object: anObject [
+	object := anObject
 ]
 
 { #category : #accessing }

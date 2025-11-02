@@ -5,6 +5,26 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> Example1 [
+<gtExample>
+	| plotter dict |
+	dict := GtScatterChartSpecExamples new
+			gtBookPagesByKindBarChart asJsonString.
+	plotter := LarPlotterScatter new.
+	^ plotter spec: dict
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> Example2 [
+<gtExample>
+	| plotter dict |
+	dict := GtScatterChartSpecExamples new
+			gtPagesFromDatabase asJsonString.
+	plotter := LarPlotterScatter new.
+	^ plotter spec: dict
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatterExamples >> newGraph [
 <gtExample>
 
@@ -33,6 +53,16 @@ LarPlotterScatterExamples >> vegaExample2 [
 <gtExample>
 	| spec plotter |
 	spec := self vegaSpec2.
+	plotter := LarPlotterScatter  new.
+	plotter spec: spec.
+	^ plotter
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> vegaExample3 [
+<gtExample>
+	| spec plotter |
+	spec := self vegaSpec3.
 	plotter := LarPlotterScatter  new.
 	plotter spec: spec.
 	^ plotter
@@ -81,4 +111,21 @@ LarPlotterScatterExamples >> vegaSpec2 [
   }
 }'.
 ^jsonString
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> vegaSpec3 [
+	| jsonString |
+	jsonString := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "A bubbleplot showing horsepower on x, miles per gallons on y, and binned acceleration on size.",
+  "data": {"url": "data/cars.json"},
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Horsepower", "type": "quantitative"},
+    "y": {"field": "Miles_per_Gallon", "type": "quantitative"},
+    "size": {"field": "Acceleration", "type": "quantitative"}
+  }
+}'.
+	^ jsonString
 ]

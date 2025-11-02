@@ -68,12 +68,24 @@ LarPlotterScatterElement >> addPoints: points [
 			c accountTransformation ].
 
 	points
-		do: [ :point | 
-			| p |
+		doWithIndex: [ :point :i | 
+			| p  |
 			p := point asElement.
-			((dict at: 'encoding') includesKey: 'color') 
-			ifTrue:[p background: (Color fromHexString: point color)] .
+			((dict at: 'encoding') includesKey: 'color')
+				ifTrue: [ p background: (Color fromHexString: point color) ].
+			((dict at: 'encoding') includesKey: 'size')
+				ifTrue: [ | values |
+					values := dict
+							at: 'data'
+							at: 'size'. 
+							p sizePoint: (values at: i).
+					p size: ((p defaultSize) + (values at: i)). 
+					p centerOn: (point x @ point y) ].
+
+
 			graphElement addChildFirst: p ].
+
+
 
 	graphElement forceLayout.
 	graphElement transform

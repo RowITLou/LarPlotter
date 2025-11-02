@@ -31,7 +31,7 @@ LARScatterSpecUpdaterRule >> updateDictHeight [
 	info_two := dict
 		at: 'data'
 		at: 'values_two_non'. 
-	max_two := info_two max.
+	max_two := info_two max +50.
 	scale := 500 / max_two.
 	dict
 		at: 'data'
@@ -49,13 +49,33 @@ LARScatterSpecUpdaterRule >> updateDictHeight [
 ]
 
 { #category : #'as yet unclassified' }
+LARScatterSpecUpdaterRule >> updateDictSize [
+	| size min_size modifiedSize jsonData field |
+	jsonData := dict at: 'data' at: 'values'.
+	field := ((dict at: 'encoding') at: 'size' at: 'field') copyWithout: $'.
+	size := OrderedCollection new.
+	jsonData do: [ :d | size add: (d at: field) ].
+	min_size := size min.
+	modifiedSize := OrderedCollection new.
+	size
+		do: [ :each | 
+			| diff |
+			diff := (each - min_size) abs.
+			modifiedSize add: diff ].
+			dict
+		at: 'data'
+		at: 'size'
+		put: modifiedSize.
+]
+
+{ #category : #'as yet unclassified' }
 LARScatterSpecUpdaterRule >> updateDictWidth [
 	| max_one scale modifiedData_one info_one|
 	"self importData."
 	info_one := dict
 		at: 'data'
 		at: 'values_one_non'. 
-	max_one := info_one max.
+	max_one := info_one max +50.
 	scale := 600 / max_one.
 	dict
 		at: 'data'

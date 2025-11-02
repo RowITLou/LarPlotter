@@ -560,8 +560,8 @@ LarPlotterBar >> ensureBarsWidth: aNumber [
 LarPlotterBar >> getBarData: point [
 	
 	(((dict at: 'encoding') at: 'x') includesKey: 'field')
-		ifTrue: [ ^(point includesKey: (((dict at: 'encoding') at: 'x') at: 'field'))
-				ifTrue: [ (point at: (((dict at: 'encoding') at: 'x') at: 'field')) ] ].
+		ifTrue: [ (point includesKey: (((dict at: 'encoding') at: 'x') at: 'field'))
+				ifTrue: [ ^(point at: (((dict at: 'encoding') at: 'x') at: 'field')) ] ].
 	(((dict at: 'encoding') at: 'y') includesKey: 'field')
 		ifTrue: [ (point includesKey: (((dict at: 'encoding') at: 'y') at: 'field'))
 				ifTrue: [ ^(point at: (((dict at: 'encoding') at: 'y') at: 'field')) ] ].

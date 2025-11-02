@@ -55,6 +55,19 @@ LarPlotterScatter >> addAxisLabel: textX with: textY [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatter >> addObject: barValue [
+	| jsonSpec aClassSymbol aMethodSelector result |
+	(dict includesKey: 'gtChartSendObject') ifFalse: [ ^ nil ].
+	jsonSpec := dict at: 'gtChartSendObject'.
+	aClassSymbol := (jsonSpec at: 'class') asSymbol.
+	aMethodSelector := (jsonSpec at: 'selector') asSymbol.
+	result := aClassSymbol asClass new
+			perform: aMethodSelector
+			withArguments: {barValue}.
+			^result
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatter >> addPoints [
 	| point val_one val_two points colors |
 	points := OrderedCollection new. 
@@ -62,14 +75,17 @@ LarPlotterScatter >> addPoints [
 	val_one := self ensureDataWidth.
     ((dict at: 'encoding') includesKey: 'color') 
     ifTrue:[colors := self colorPoints ].
-	
+	((dict at: 'encoding') includesKey: 'size') 
+    ifTrue:[colors := self getSize ].
 	1
 		to: val_one size
 		do: [ :n | 
 			point := LarPoint new initialize: (val_one at: n) with: (val_two at: n).
 			((dict at: 'encoding') includesKey: 'color') 
-			ifTrue:[point color: ((dict at: 'data' at: 'colors') at: n)].
-			
+			ifTrue:[point color: (((dict at: 'data') at: 'colors') at: n)].
+			 ((dict at: 'data') includesKey: 'objects')
+			 ifTrue:[point data: ((dict at: 'data' at: 'objects')at: n).
+			 point object: (self addObject: (point data))].
 			points add: point ].
 	self notifyUpdate.
 	^points
@@ -325,16 +341,29 @@ LarPlotterScatter >> getDataFromJsonFile [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> getDataSeparate [
-	| info_one jsonData info_two filter_one filter_two data |
+	| info_one jsonData info_two filter_one filter_two data info_object |
 	jsonData := dict at: 'data' at: 'values'.
 	info_one := OrderedCollection new.
 	info_two := OrderedCollection new.
+	info_object := OrderedCollection new.
 	filter_one := ((dict at: 'encoding') at: 'x' at: 'field') copyWithout: $'.
 	filter_two := ((dict at: 'encoding') at: 'y' at: 'field') copyWithout: $'.
+
 	data := jsonData asOrderedCollection.
 	jsonData do: [ :d | (d at: filter_one) isNil ifTrue: [ data remove: d ] ].
 	jsonData := data asArray.
 	jsonData do: [ :d | (d at: filter_two) isNil ifTrue: [ data remove: d ] ].
+
+	((dict at: 'encoding' at: 'object') includesKey: 'field')
+		ifTrue: [ | filterObject |
+			filterObject := ((dict at: 'encoding') at: 'object' at: 'field')
+					copyWithout: $'.
+			data do: [ :d | info_object add: (d at: filterObject) ].
+
+			dict
+				at: 'data'
+				at: 'objects'
+				put: info_object ].
 	data do: [ :d | info_one add: (d at: filter_one) ].
 	data do: [ :d | info_two add: (d at: filter_two) ].
 	dict
@@ -344,7 +373,17 @@ LarPlotterScatter >> getDataSeparate [
 	dict
 		at: 'data'
 		at: 'values_two_non'
-		put: info_two.
+		put: info_two
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatter >> getSize [
+	| rule  |
+	
+
+	rule := LARScatterSpecUpdaterRule for: dict.
+	 rule updateDictSize.
+	
 ]
 
 { #category : #'as yet unclassified' }
