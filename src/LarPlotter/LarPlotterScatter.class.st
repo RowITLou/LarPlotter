@@ -85,7 +85,8 @@ LarPlotterScatter >> addPoints [
 			ifTrue:[point color: (((dict at: 'data') at: 'colors') at: n)].
 			 ((dict at: 'data') includesKey: 'objects')
 			 ifTrue:[point data: ((dict at: 'data' at: 'objects')at: n).
-			 point object: (self addObject: (point data))].
+			 point object: (self addObject: (point data))]
+			 ifFalse:[point object: (val_one at: n) @ (val_two at: n)].
 			points add: point ].
 	self notifyUpdate.
 	^points
@@ -354,7 +355,9 @@ LarPlotterScatter >> getDataSeparate [
 	jsonData := data asArray.
 	jsonData do: [ :d | (d at: filter_two) isNil ifTrue: [ data remove: d ] ].
 
-	((dict at: 'encoding' at: 'object') includesKey: 'field')
+	((dict at: 'encoding') includesKey: 'object') 
+	
+	ifTrue:[((dict at: 'encoding' at: 'object') includesKey: 'field')
 		ifTrue: [ | filterObject |
 			filterObject := ((dict at: 'encoding') at: 'object' at: 'field')
 					copyWithout: $'.
@@ -363,7 +366,8 @@ LarPlotterScatter >> getDataSeparate [
 			dict
 				at: 'data'
 				at: 'objects'
-				put: info_object ].
+				put: info_object ]].
+	
 	data do: [ :d | info_one add: (d at: filter_one) ].
 	data do: [ :d | info_two add: (d at: filter_two) ].
 	dict

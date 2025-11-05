@@ -972,6 +972,40 @@
 								"uidString" : "Za+TatP+DQCxwDbbAG+L2A=="
 							},
 							"code" : "jsonFromFile\r\tcollect: [ :d | \r\t\t| methodParts |\r\t\tmethodParts := '>>#' split: (d at: 'methodName').\r\t\tmethodParts first asClass >> methodParts second asSymbol ]"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-05T09:33:11.484+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-11-05T09:33:13.633+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "YGIliTb/DQC+n9SvBF7Psw=="
+							},
+							"code" : "jsonFromFile\r\tcollect: [ :d | \r\t\t| methodParts |\r\t\tmethodParts := '>>#' split: (d at: 'methodName').\r\t\tmethodParts first asClass >> methodParts second asSymbol ]"
 						}
 					]
 				},

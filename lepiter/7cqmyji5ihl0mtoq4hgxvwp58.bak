@@ -994,7 +994,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-10-31T09:05:43.449512+01:00"
+						"dateAndTimeString" : "2025-10-31T11:21:36.899489+01:00"
 					}
 				},
 				"uid" : {
@@ -1004,7 +1004,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "# Correlating method size and commits (in progress)"
+				"string" : "# Correlating method size and commits"
 			}
 		]
 	},
