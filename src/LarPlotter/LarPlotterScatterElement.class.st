@@ -73,8 +73,8 @@ LarPlotterScatterElement >> addPoints: points [
 		doWithIndex: [ :point :i | 
 			| p |
 			p := point asElement.
-			((dict at: 'encoding') includesKey: 'color')
-				ifTrue: [ p background: (Color fromHexString: point color) ].
+			point color isNil
+				ifFalse: [ p background: (Color fromHexString: point color) ].
 			((dict at: 'encoding') includesKey: 'size')
 				ifTrue: [ | values |
 					values := dict at: 'data' at: 'size'.

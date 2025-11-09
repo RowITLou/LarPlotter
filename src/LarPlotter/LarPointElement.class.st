@@ -14,6 +14,26 @@ LarPointElement >> centerOn: aPoint [
 ]
 
 { #category : #'as yet unclassified' }
+LarPointElement >> changeColorToBlue [
+ self  background: (Color fromHexString: '#0000ff')
+]
+
+{ #category : #'as yet unclassified' }
+LarPointElement >> changeColorToGreen [
+ self  background: (Color fromHexString: '#0B6623')
+]
+
+{ #category : #'as yet unclassified' }
+LarPointElement >> changeColorToRed [
+ self  background: (Color fromHexString: '#d30000')
+]
+
+{ #category : #'as yet unclassified' }
+LarPointElement >> changeColorToYellow [
+ self  background: (Color fromHexString: '#ffff00')
+]
+
+{ #category : #'as yet unclassified' }
 LarPointElement >> defaultSize [
 	^ 7 @ 7
 ]
@@ -51,7 +71,15 @@ LarPointElement >> initialize: aPoint [
 			do: [ :event | event currentTarget phlow spawnObject: point object ];
 		addEventHandler: aMouseOverHandler;
 		addEventHandler: aMouseOutHandler;
-		yourself	"relocate: aPoint x @ aPoint y - 100@100;"
+		aptitude: (BrGlamorousWithExplicitContextMenuAptitude
+				items: {'Inspect Point Object' -> [  :event | event phlow spawnObject: point object].
+						'Inspect Point' -> [  :event | event phlow spawnObject: point ].
+						'Increase Size' -> [ self increaseSize].
+						'Change Color to Blue' -> [ self changeColorToBlue ].
+						'Change Color to Red' -> [ self changeColorToRed ].
+						'Change Color to Green' -> [ self changeColorToGreen ].
+						'Change Color to Yellow' -> [ self changeColorToYellow ]});
+		yourself	
 ]
 
 { #category : #accessing }

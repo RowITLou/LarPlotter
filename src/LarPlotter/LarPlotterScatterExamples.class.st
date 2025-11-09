@@ -25,6 +25,26 @@ LarPlotterScatterExamples >> Example2 [
 ]
 
 { #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> Example3 [
+<gtExample>
+| plotter dict |
+	dict := GtScatterChartSpecExamples new
+			CorrelatingMethodSizeSndCommits asJsonString.
+	plotter := LarPlotterScatter new.
+	^ plotter spec: dict
+]
+
+{ #category : #'as yet unclassified' }
+LarPlotterScatterExamples >> Example4 [
+<gtExample>
+| plotter dict |
+	dict := GtScatterChartSpecExamples new
+			CorrelatingMethodSizeSndCommitsObject asJsonString.
+	plotter := LarPlotterScatter new.
+	^ plotter spec: dict
+]
+
+{ #category : #'as yet unclassified' }
 LarPlotterScatterExamples >> newGraph [
 <gtExample>
 

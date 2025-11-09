@@ -75,7 +75,7 @@ LarPlotterScatter >> addPoints [
 	val_one := self ensureDataWidth.
 	((dict at: 'encoding') includesKey: 'color')
 		ifTrue: [ colors := self colorPoints ].
-	((dict at: 'encoding') includesKey: 'size') ifTrue: [ colors := self getSize ].
+	((dict at: 'encoding') includesKey: 'size') ifTrue: [ self getSize ].
 	info_one := dict at: 'data' at: 'values_one_non'.
 	info_two := dict at: 'data' at: 'values_two_non'.
 
