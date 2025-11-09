@@ -69,27 +69,31 @@ LarPlotterScatter >> addObject: barValue [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addPoints [
-	| point val_one val_two points colors |
-	points := OrderedCollection new. 
+	| point val_one val_two points colors info_two info_one |
+	points := OrderedCollection new.
 	val_two := self ensureDataHeight.
 	val_one := self ensureDataWidth.
-    ((dict at: 'encoding') includesKey: 'color') 
-    ifTrue:[colors := self colorPoints ].
-	((dict at: 'encoding') includesKey: 'size') 
-    ifTrue:[colors := self getSize ].
+	((dict at: 'encoding') includesKey: 'color')
+		ifTrue: [ colors := self colorPoints ].
+	((dict at: 'encoding') includesKey: 'size') ifTrue: [ colors := self getSize ].
+	info_one := dict at: 'data' at: 'values_one_non'.
+	info_two := dict at: 'data' at: 'values_two_non'.
+
 	1
 		to: val_one size
 		do: [ :n | 
 			point := LarPoint new initialize: (val_one at: n) with: (val_two at: n).
-			((dict at: 'encoding') includesKey: 'color') 
-			ifTrue:[point color: (((dict at: 'data') at: 'colors') at: n)].
-			 ((dict at: 'data') includesKey: 'objects')
-			 ifTrue:[point data: ((dict at: 'data' at: 'objects')at: n).
-			 point object: (self addObject: (point data))]
-			 ifFalse:[point object: (val_one at: n) @ (val_two at: n)].
+			((dict at: 'encoding') includesKey: 'color')
+				ifTrue: [ point color: (((dict at: 'data') at: 'colors') at: n) ].
+			((dict at: 'data') includesKey: 'objects')
+				ifTrue: [ point data: ((dict at: 'data' at: 'objects') at: n).
+					point object: (self addObject: point data).
+					point tooltip: point data ]
+				ifFalse: [ point object: (val_one at: n) @ (val_two at: n).
+					point tooltip: ((info_one at: n) @ (info_two at: n)) asRopedText ].
 			points add: point ].
 	self notifyUpdate.
-	^points
+	^ points
 ]
 
 { #category : #'as yet unclassified' }
@@ -109,32 +113,38 @@ LarPlotterScatter >> addTicks [
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addTicksLabelX [
-	| tick amount tickLabelsX|
-	
-	tickLabelsX := OrderedCollection new. 
-	
+	| tick amount tickLabelsX beginning |
+	tickLabelsX := OrderedCollection new.
+
 	amount := dict at: 'data' at: 'tick_one'.
+	beginning := 0.
+	((dict at: 'data') includesKey: 'min_one')
+		ifTrue: [ beginning := dict at: 'data' at: 'min_one' ].
 	1
 		to: amount
 		do: [ :n | 
-			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space_one') * (amount - (n - 1)).
+			tick := LarTickLabel new
+					initialize: (dict at: 'data' at: 'space_one') * (amount - (n - 1)) + beginning.
 
 			tickLabelsX add: tick ].
-	self notifyUpdate. 
-	^tickLabelsX
+	self notifyUpdate.
+	^ tickLabelsX
 ]
 
 { #category : #'as yet unclassified' }
 LarPlotterScatter >> addTicksLabelY [
-	| tick amount tickLabelsY|
+	| tick amount tickLabelsY beginning|
 	
 	tickLabelsY := OrderedCollection new. 
 	
 	amount := dict at: 'data' at: 'tick_two'.
+	beginning := 0.
+	((dict at:'data') includesKey: 'min_two')
+	ifTrue:[beginning := dict at: 'data' at: 'min_two'].
 	1
 		to: amount
 		do: [ :n | 
-			tick := LarTickLabel new initialize: (dict at: 'data' at: 'space_two') * (amount - (n - 1)).
+			tick := LarTickLabel new initialize: (((dict at: 'data' at: 'space_two') * (amount - (n - 1))) + beginning).
 
 			tickLabelsY add: tick ].
 	self notifyUpdate. 
@@ -403,6 +413,7 @@ LarPlotterScatter >> gtLiveFor: aView [
 				whenUncheckedDo: [   self borders: false  ];
 				whenCheckedDo: [   self borders: true  ]];
 		actionUpdateButton;
+		
 		updateWhen: LarLinePlotterUpdate in: self announcer.
 		
 ]

@@ -40,13 +40,3 @@ LarSubBarElement >> initialize: aBar [
 		addEventHandler: aMouseOutHandler;
 		yourself	"layout: BlFrameLayout new;"
 ]
-
-{ #category : #accessing }
-LarSubBarElement >> tooltip [
-	^ tooltip
-]
-
-{ #category : #accessing }
-LarSubBarElement >> tooltip: anObject [
-	tooltip := anObject
-]

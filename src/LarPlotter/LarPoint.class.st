@@ -6,7 +6,8 @@ Class {
 		'y',
 		'color',
 		'object',
-		'data'
+		'data',
+		'tooltip'
 	],
 	#category : #'LarPlotter-Model'
 }
@@ -51,6 +52,16 @@ LarPoint >> object [
 { #category : #accessing }
 LarPoint >> object: anObject [
 	object := anObject
+]
+
+{ #category : #accessing }
+LarPoint >> tooltip [
+	^ tooltip
+]
+
+{ #category : #accessing }
+LarPoint >> tooltip: anObject [
+	tooltip := anObject
 ]
 
 { #category : #accessing }

@@ -19,6 +19,15 @@ LarPointElement >> defaultSize [
 ]
 
 { #category : #'as yet unclassified' }
+LarPointElement >> increaseSize [
+self sizePoint: sizePoint + 1.
+
+self
+size:  (self defaultSize + self sizePoint);
+centerOn: (point x @ point y).
+]
+
+{ #category : #'as yet unclassified' }
 LarPointElement >> initialize: aPoint [
 	| aMouseOverHandler aMouseOutHandler |
 	self sizePoint: 0 @ 0.
@@ -34,6 +43,7 @@ LarPointElement >> initialize: aPoint [
 			do: [ :anEvent "anEvent currentTarget background: Color white." | anEvent currentTarget border: (BlBorder paint: Color black) ].
 	^ self
 		size: self defaultSize;
+		aptitude: (BrGlamorousWithExplicitTooltipAptitude text: point tooltip);
 		geometry: BlCircleGeometry new;
 		centerOn: aPoint x @ aPoint y;
 		background: Color lightGray;

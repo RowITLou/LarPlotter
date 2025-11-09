@@ -126,11 +126,6 @@ LarBar >> subbar: anObject [
 ]
 
 { #category : #accessing }
-LarBar >> value1 [
-	^ value
-]
-
-{ #category : #accessing }
 LarBar >> value: anObject [
 	value := anObject
 ]
