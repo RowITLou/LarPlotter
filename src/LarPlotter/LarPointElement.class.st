@@ -63,7 +63,7 @@ LarPointElement >> initialize: aPoint [
 			do: [ :anEvent "anEvent currentTarget background: Color white." | anEvent currentTarget border: (BlBorder paint: Color black) ].
 	^ self
 		size: self defaultSize;
-		aptitude: (BrGlamorousWithExplicitTooltipAptitude text: point tooltip);
+		
 		geometry: BlCircleGeometry new;
 		centerOn: aPoint x @ aPoint y;
 		background: Color lightGray;
@@ -79,6 +79,7 @@ LarPointElement >> initialize: aPoint [
 						'Change Color to Red' -> [ self changeColorToRed ].
 						'Change Color to Green' -> [ self changeColorToGreen ].
 						'Change Color to Yellow' -> [ self changeColorToYellow ]});
+		aptitude: (BrGlamorousWithExplicitTooltipAptitude text: point tooltip);
 		yourself	
 ]
 
