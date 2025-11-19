@@ -84,7 +84,7 @@ LARScatterSpecUpdaterRule >> updateDictSize [
 
 { #category : #'as yet unclassified' }
 LARScatterSpecUpdaterRule >> updateDictWidth [
-	| max_one scale modifiedData_one info_one arr beginning_one nearest min beginning |
+	| max_one scale modifiedData_one info_one arr beginning_one nearest min beginning scale_new |
 	"self importData."
 	arr := #(0 1 2 5 10 20 40 50 100 200 500 1000).
 	info_one := dict at: 'data' at: 'values_one_non'.
@@ -99,13 +99,19 @@ LARScatterSpecUpdaterRule >> updateDictWidth [
 	min := nearest values min.
 	beginning := nearest keyAtValue: min.
 	max_one := info_one max.
-	scale := 600 / (max_one - beginning).
+	scale := 600 / max_one.
+	scale_new := 600 / (max_one - beginning).
 	dict
 		at: 'data'
 		at: 'scale_one'
 		put: scale.
+	dict
+		at: 'data'
+		at: 'scale_one_new'
+		put: scale_new.
 	modifiedData_one := Dictionary new.
-	info_one doWithIndex: [ :each :i | modifiedData_one at: i put: (each-beginning) * scale ].
+	info_one
+		doWithIndex: [ :each :i | modifiedData_one at: i put: (each - beginning) * scale ].
 	dict
 		at: 'data'
 		at: 'min_one'

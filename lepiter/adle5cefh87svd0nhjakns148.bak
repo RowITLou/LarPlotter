@@ -216,7 +216,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-10-29T09:39:43.054+01:00"
+						"dateAndTimeString" : "2025-10-29T09:39:44.618+01:00"
 					}
 				},
 				"uid" : {
@@ -226,7 +226,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "- Layered grammar\r\n- grammar of graphics\r\n- vega li"
+				"string" : "- Layered grammar\r\n- grammar of graphics\r\n- vega lite"
 			},
 			{
 				"__type" : "textSnippet",
@@ -452,6 +452,43 @@
 					"__type" : "textStyle"
 				},
 				"string" : "Conclusions and Future Work"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-12T13:54:36.986+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-11-12T13:54:36.986+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kMb2AMf/DQCm76PaCIYP2A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
