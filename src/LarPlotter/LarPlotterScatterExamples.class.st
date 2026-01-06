@@ -1,50 +1,56 @@
 Class {
-	#name : #LarPlotterScatterExamples,
-	#superclass : #Object,
-	#category : #'LarPlotter-Examples'
+	#name : 'LarPlotterScatterExamples',
+	#superclass : 'Object',
+	#category : 'LarPlotter-Examples',
+	#package : 'LarPlotter',
+	#tag : 'Examples'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> Example1 [
 <gtExample>
 	| plotter dict |
 	dict := GtScatterChartSpecExamples new
 			gtBookPagesByKindBarChart asJsonString.
 	plotter := LarPlotterScatter new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> Example2 [
 <gtExample>
 	| plotter dict |
 	dict := GtScatterChartSpecExamples new
 			gtPagesFromDatabase asJsonString.
 	plotter := LarPlotterScatter new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> Example3 [
 <gtExample>
 | plotter dict |
 	dict := GtScatterChartSpecExamples new
 			CorrelatingMethodSizeSndCommits asJsonString.
 	plotter := LarPlotterScatter new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> Example4 [
 <gtExample>
 | plotter dict |
 	dict := GtScatterChartSpecExamples new
 			CorrelatingMethodSizeSndCommitsObject asJsonString.
 	plotter := LarPlotterScatter new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> newGraph [
 <gtExample>
 
@@ -52,43 +58,43 @@ LarPlotterScatterExamples >> newGraph [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> values [
 ^ #(20 40 60 80 10 90 70 50 30 10).
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> vegaExample1 [
 <gtExample>
 	| spec plotter |
 	spec := self vegaSpec1.
 	plotter := LarPlotterScatter  new.
 	plotter spec: spec.
-	^ plotter
+	^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> vegaExample2 [
 <gtExample>
 	| spec plotter |
 	spec := self vegaSpec2.
 	plotter := LarPlotterScatter  new.
 	plotter spec: spec.
-	^ plotter
+^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> vegaExample3 [
 <gtExample>
 	| spec plotter |
 	spec := self vegaSpec3.
 	plotter := LarPlotterScatter  new.
 	plotter spec: spec.
-	^ plotter
+	^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> vegaSpec1 [
 	| jsonString |
 	"https://vega.github.io/vega-lite/examples/point_2d.html"
@@ -105,7 +111,7 @@ LarPlotterScatterExamples >> vegaSpec1 [
 	^ jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> vegaSpec2 [
 	| jsonString |
 	jsonString := '{
@@ -133,7 +139,7 @@ LarPlotterScatterExamples >> vegaSpec2 [
 ^jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterExamples >> vegaSpec3 [
 	| jsonString |
 	jsonString := '{

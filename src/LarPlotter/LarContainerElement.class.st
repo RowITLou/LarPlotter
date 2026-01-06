@@ -2,15 +2,17 @@
 This class creates the container element
 "
 Class {
-	#name : #LarContainerElement,
-	#superclass : #BlElement,
+	#name : 'LarContainerElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'container'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarContainerElement >> initializeHorizontal [
 
 super initialize.
@@ -31,7 +33,7 @@ super initialize.
 			^self yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarContainerElement >> initializeHorizontal: aContainer [
 container := aContainer. 
 super initialize.
@@ -52,7 +54,7 @@ super initialize.
 			^self yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarContainerElement >> initializeVertical [
 
 super initialize.
@@ -75,7 +77,7 @@ super initialize.
 			^self yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarContainerElement >> initializeVertical: aContainer [
 container := aContainer.
 super initialize.
@@ -98,7 +100,7 @@ super initialize.
 			^self yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarContainerElement >> setBlackBorders [
 self  childrenDo: [:child| child class == LarContainerElement
 ifTrue:[child setBlackBorders]].
@@ -110,7 +112,7 @@ paint: Color black;
 					build).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarContainerElement >> setBlackBorders: aContainer [
 aContainer childrenDo: [:child| child class == LarContainerElement
 ifTrue:[child setBlackBorders]].

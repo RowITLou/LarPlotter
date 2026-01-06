@@ -1,6 +1,6 @@
 Class {
-	#name : #LarPlotterScatterElement,
-	#superclass : #BlElement,
+	#name : 'LarPlotterScatterElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'plotter',
 		'titelContainer',
@@ -17,17 +17,19 @@ Class {
 		'ticksXContainer',
 		'dict'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addAxisLabelX: elementX [ 
 	
 	
     axisXContainer addChild: (elementX asElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addAxisLabelY:  labelY [
 | elementY  frame cont |
 cont := LarContainer new asElement. 
@@ -59,7 +61,7 @@ cont constraintsDo: [ :c |
 	containerTickAndLabel forceLayout. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addPoints: points [
 	| aCanvassableElement |
 	
@@ -75,7 +77,7 @@ LarPlotterScatterElement >> addPoints: points [
 			p := point asElement.
 			point color isNil
 				ifFalse: [ p background: (Color fromHexString: point color) ].
-			((dict at: 'encoding') includesKey: 'size')
+			(((dict) at: 'encoding') includesKey: 'size')
 				ifTrue: [ | values |
 					values := dict at: 'data' at: 'size'.
 					p sizePoint: (values at: i).
@@ -92,7 +94,7 @@ LarPlotterScatterElement >> addPoints: points [
 		apply
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addTicksLabelX: labelsX [
 	| tickXcontainer aNumber width scale space |
 	aNumber := labelsX size.
@@ -128,7 +130,7 @@ LarPlotterScatterElement >> addTicksLabelX: labelsX [
 			self smallAddingWidth: width
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addTicksLabelY: labelsY [
 	| tickYcontainer scale space height |
 	scale := plotter dict at: 'data' at: 'scale_two'.
@@ -164,7 +166,7 @@ LarPlotterScatterElement >> addTicksLabelY: labelsY [
 	self smallAdding: height
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addTicksX: ticksX [
 | scale space width |
 	scale := plotter dict at: 'data' at: 'scale_one'.
@@ -187,7 +189,7 @@ LarPlotterScatterElement >> addTicksX: ticksX [
 			"ticksXContainer constraintsDo: [:c| c grid vertical alignBottom. ]."
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addTicksY: ticksY [
 	| scale space height |
 	scale := plotter dict at: 'data' at: 'scale_two'.
@@ -208,12 +210,12 @@ LarPlotterScatterElement >> addTicksY: ticksY [
 			ticksYContainer constraintsDo: [:c| c grid vertical alignBottom. ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> addTitle: element [
 	titelContainer addChild: (element asElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> angleX: tickXcontainer with: width [
 	| frame_t |
 	tickXcontainer
@@ -267,7 +269,7 @@ LarPlotterScatterElement >> angleX: tickXcontainer with: width [
 	^frame_t
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> angleY: tickXcontainer with: height [
 	| frame_t size |
 	tickXcontainer
@@ -318,7 +320,7 @@ LarPlotterScatterElement >> angleY: tickXcontainer with: height [
 	^ frame_t
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> createContainer [
 | containerC |
 	containerC := (LarContainer new asElement).
@@ -331,12 +333,12 @@ containerC border: (BlBorder builder
 ^containerC
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> graphElement [
 ^graphElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> initialize: aPlotter [
 	| empty empty_too scroll empty_other aCanvassableElement |
 	plotter := aPlotter.
@@ -402,7 +404,8 @@ LarPlotterScatterElement >> initialize: aPlotter [
 	container addChild: containerTickAndLabelX at: 7.
 	container addChild: axisXContainer at: 8.
 
-	self initializeFor.
+	"self initializeFor."
+	dict := plotter dict.
 
 	scroll := BlScalableElement new.
 	scroll
@@ -430,9 +433,8 @@ LarPlotterScatterElement >> initialize: aPlotter [
 		addChild: scroll
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> initializeFor [
-dict := plotter dict.
 (plotter dict at: 'data' at: 'values') isEmpty 
 ifFalse:[self addPoints: plotter addPoints].
 
@@ -449,12 +451,12 @@ ifFalse:[self addTicksY: plotter addTicksY.
 self addTicksX: plotter addTicksX]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> setBlackBorders [
 container setBlackBorders. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> smallAdding: height [
 	| spareLabelYContainer |
 	
@@ -467,7 +469,7 @@ LarPlotterScatterElement >> smallAdding: height [
 			labelsYContainer addChild: spareLabelYContainer 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> smallAddingWidth: width [
 	| spareLabelYContainer |
 	

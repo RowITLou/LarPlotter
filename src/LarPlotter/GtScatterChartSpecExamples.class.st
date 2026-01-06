@@ -1,10 +1,12 @@
 Class {
-	#name : #GtScatterChartSpecExamples,
-	#superclass : #Object,
-	#category : #'LarPlotter-Examples'
+	#name : 'GtScatterChartSpecExamples',
+	#superclass : 'Object',
+	#category : 'LarPlotter-Examples',
+	#package : 'LarPlotter',
+	#tag : 'Examples'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpecExamples >> CorrelatingMethodSizeSndCommits [
 	<gtExample>
 	| scatterChart jsonFile jsonFromFile |
@@ -27,7 +29,7 @@ GtScatterChartSpecExamples >> CorrelatingMethodSizeSndCommits [
 	^ scatterChart
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpecExamples >> CorrelatingMethodSizeSndCommitsObject [
 <gtExample>
 	| scatterChart |
@@ -37,7 +39,7 @@ GtScatterChartSpecExamples >> CorrelatingMethodSizeSndCommitsObject [
 			^scatterChart
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpecExamples >> gertPageFromDatabase: pageName [
 	"An example of a dedicated method to define from the bar and stacked element the object to send to."
 
@@ -46,7 +48,7 @@ GtScatterChartSpecExamples >> gertPageFromDatabase: pageName [
 	^LeDatabase gtBook pageNamed: pageName.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpecExamples >> getMethod: d [
 <gtChartSend>
 	| methodParts |
@@ -54,7 +56,7 @@ GtScatterChartSpecExamples >> getMethod: d [
 	methodParts first asClass >> methodParts second asSymbol
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpecExamples >> gtBookPagesByKindBarChart [
 	<gtExample>
 	|  scatterChart |
@@ -78,7 +80,7 @@ GtScatterChartSpecExamples >> gtBookPagesByKindBarChart [
 	^ scatterChart
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpecExamples >> gtPagesFromDatabase [
 <gtExample>
 	| scatterChart |

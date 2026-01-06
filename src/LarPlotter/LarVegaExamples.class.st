@@ -1,10 +1,12 @@
 Class {
-	#name : #LarVegaExamples,
-	#superclass : #Object,
-	#category : #'LarPlotter-Examples'
+	#name : 'LarVegaExamples',
+	#superclass : 'Object',
+	#category : 'LarPlotter-Examples',
+	#package : 'LarPlotter',
+	#tag : 'Examples'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> csvToJson [
 <gtExample>
 	<return: #GtJson>
@@ -13,7 +15,7 @@ LarVegaExamples >> csvToJson [
 	^json
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> csvToJsonobject [
 <gtExample>
 	<return: #GtJson>
@@ -22,7 +24,7 @@ LarVegaExamples >> csvToJsonobject [
 	^json
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> download [
 <gtExample>
 (FileLocator downloads/ 'stocks.csv' ) ensureDelete.
@@ -32,13 +34,13 @@ LarVegaExamples >> download [
 				downloadTo: (FileLocator downloads  ).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> jsonString [
 <gtExample>
 ^self csvToJson asJsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> specEx [
 <gtExample>
 ^'{
@@ -53,14 +55,14 @@ LarVegaExamples >> specEx [
   }}'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> stockCSV [
 <gtExample>
 <return: #ByteString>
 	^ (FileLocator downloads  / 'stocks.csv') contents
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> stockData [
 | data |
 	data := '
@@ -627,7 +629,7 @@ AAPL,Feb 1 2010,204.62
 AAPL,Mar 1 2010,223.02'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarVegaExamples >> url [
 <gtExample>
 ^ZnClient new url: 'https://vega.github.io/vega-lite/examples/data/stocks.csv'; contents

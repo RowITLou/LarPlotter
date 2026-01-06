@@ -2,20 +2,22 @@
 This is the model class for the title of a graph. By using the following method a title can be added and changed for a graph {{gtMethod:name=LarPlotterBar>>titel:}}.   
 "
 Class {
-	#name : #LarTitel,
-	#superclass : #Object,
+	#name : 'LarTitel',
+	#superclass : 'Object',
 	#instVars : [
 		'text'
 	],
-	#category : #'LarPlotter-Model'
+	#category : 'LarPlotter-Model',
+	#package : 'LarPlotter',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> asElement [
 ^LarTitelElement new initialize: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> gtLiveFor: aView [
 	<gtView>
 	^aView explicit
@@ -29,39 +31,39 @@ LarTitel >> gtLiveFor: aView [
 	"^view"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> initialize: textTitle [
 self text: textTitle.
 ^self.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> setBackground: color [
 self  asElement background: (color)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> setBorderColor: color [
 self asElement border: (BlBorder paint: color). 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> setFontSize: number [
 self asElement defaultFontSize: number
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> setText: textTitle [
 self asElement text: textTitle asRopedText.
 text:= textTitle.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarTitel >> text [
 	^ text
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTitel >> text: textTitle [
 text:= textTitle.
 ^text

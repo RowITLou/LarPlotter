@@ -1,6 +1,6 @@
-Extension { #name : #GtHome }
+Extension { #name : 'GtHome' }
 
-{ #category : #'*LarPlotter' }
+{ #category : '*LarPlotter' }
 GtHome >> plotterSection [
 <gtHomeSection>
 	<gtExample>

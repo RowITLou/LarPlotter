@@ -2,16 +2,18 @@
 This creates the elements for bars in a bargraph
 "
 Class {
-	#name : #LarBarElement,
-	#superclass : #BlElement,
+	#name : 'LarBarElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'bar',
 		'subbar'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarBarElement >> initialize: aBar [
 super initialize.
 bar := aBar.

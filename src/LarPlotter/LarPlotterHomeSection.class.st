@@ -1,20 +1,22 @@
 Class {
-	#name : #LarPlotterHomeSection,
-	#superclass : #GtHomeMultiCardSection,
-	#category : #'LarPlotter-HomeSection'
+	#name : 'LarPlotterHomeSection',
+	#superclass : 'GtHomeMultiCardSection',
+	#category : 'LarPlotter-HomeSection',
+	#package : 'LarPlotter',
+	#tag : 'HomeSection'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LarPlotterHomeSection >> defaultPriority [
 	^ 20
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 LarPlotterHomeSection >> sectionTitle [
 	^ 'LAR MSc project'
 ]
 
-{ #category : #card }
+{ #category : 'card' }
 LarPlotterHomeSection >> tocCard [
 <gtSectionCard>
 	<gtExample>

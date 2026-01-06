@@ -2,12 +2,14 @@
 To visualize the examples, go to the `JSON String` view, or send `asJsonString` to an example, and copy-paste the JSON into the [Vega-Lite editor](https://vega.github.io/editor/). 
 "
 Class {
-	#name : #GtBarChartSpecExamples,
-	#superclass : #Object,
-	#category : #'LarPlotter-Examples'
+	#name : 'GtBarChartSpecExamples',
+	#superclass : 'Object',
+	#category : 'LarPlotter-Examples',
+	#package : 'LarPlotter',
+	#tag : 'Examples'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> gtBookPagesByKindBarChart [
 	<gtExample>
 	| barChart |
@@ -28,13 +30,13 @@ GtBarChartSpecExamples >> gtBookPagesByKindBarChart [
 	^ barChart
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> gtBookTopicMap [
 	<gtExample>
 	^ LeDatabase gtBook topicMap
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> larPackageClassMethodsBarChart [
 	<gtExample>
 	| barChart |
@@ -55,7 +57,7 @@ GtBarChartSpecExamples >> larPackageClassMethodsBarChart [
 	^ barChart
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpecExamples >> sendBar: aBarValue andGroup: aGroupValue withSpec: aJson [
 <gtExample>
 	"An example of how the gtChartSend spec can be interpreted."
@@ -78,7 +80,7 @@ GtBarChartSpecExamples >> sendBar: aBarValue andGroup: aGroupValue withSpec: aJs
 				aGroupValue}
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBarChartSpecExamples >> sendBarAndGroupExample [
 	<gtExample>
 	| aField aKind aJson result |
@@ -94,7 +96,7 @@ GtBarChartSpecExamples >> sendBarAndGroupExample [
 	^ result
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBarChartSpecExamples >> sendGtBookField: aField [
 	"An example of a dedicated method to define from the bar and stacked element the object to send to."
 	<gtChartSend>
@@ -103,7 +105,7 @@ GtBarChartSpecExamples >> sendGtBookField: aField [
 	^ (topicMap fieldNodeNamed: aField)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpecExamples >> sendGtBookField: aField andKind: aKind [
 	"An example of a dedicated method to define from the bar and stacked element the object to send to."
 
@@ -113,7 +115,7 @@ GtBarChartSpecExamples >> sendGtBookField: aField andKind: aKind [
 	^ (topicMap fieldNodeNamed: aField) kindNodeNamed: aKind
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChart [
 	<gtExample>
 	| barChart tm |
@@ -142,7 +144,7 @@ GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChart [
 	^ barChart
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSend [
 	<gtExample>
 	| barChart |
@@ -158,7 +160,7 @@ GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSend [
 	^ barChart
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSendBar [
 	| barChart |
 	barChart := self stackedGtBookFieldsByKindBarChartWithChartSend

@@ -2,16 +2,18 @@
 This class creates the label element for each tick in a graph
 "
 Class {
-	#name : #LarTickLabelElement,
-	#superclass : #BlTextElement,
+	#name : 'LarTickLabelElement',
+	#superclass : 'BlTextElement',
 	#instVars : [
 		'textLabel',
 		'label'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabelElement >> initialize: aLabel [
 label := aLabel.
 super initialize.

@@ -1,6 +1,6 @@
 Class {
-	#name : #LarPoint,
-	#superclass : #Object,
+	#name : 'LarPoint',
+	#superclass : 'Object',
 	#instVars : [
 		'x',
 		'y',
@@ -9,77 +9,79 @@ Class {
 		'data',
 		'tooltip'
 	],
-	#category : #'LarPlotter-Model'
+	#category : 'LarPlotter-Model',
+	#package : 'LarPlotter',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPoint >> asElement [
 ^LarPointElement new initialize: self.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> color [
 	^ color
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> color: anObject [
 	color := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> data [
 	^ data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> data: anObject [
 	data := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPoint >> initialize: xPos with: yPos [
 x:= xPos.
 y:= yPos. 
 ^self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> object [
 	^ object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> tooltip [
 	^ tooltip
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> tooltip: anObject [
 	tooltip := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> x [
 	^ x
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> x: anObject [
 	x := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> y [
 	^ y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPoint >> y: anObject [
 	y := anObject
 ]

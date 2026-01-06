@@ -1,16 +1,18 @@
 Class {
-	#name : #LARTopicMapDataExamples,
-	#superclass : #Object,
-	#category : #'LarPlotter-Data Providers'
+	#name : 'LARTopicMapDataExamples',
+	#superclass : 'Object',
+	#category : 'LarPlotter-Data Providers',
+	#package : 'LarPlotter',
+	#tag : 'Data Providers'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 LARTopicMapDataExamples >> dataFromFieldsByStyle [
 	<gtExample>
 	^ self fieldsByStyle collect: [ :d | d at: 'element' ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 LARTopicMapDataExamples >> fieldsByStyle [
 	<gtExample>
 	| topicMap fields json |
@@ -26,13 +28,13 @@ LARTopicMapDataExamples >> fieldsByStyle [
 	^ json
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 LARTopicMapDataExamples >> fieldsByStyleJsonString [
 	<gtExample>
 	^ STONJSON toStringPretty: self dataFromFieldsByStyle
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 LARTopicMapDataExamples >> gtBookTopicMap [
 	<gtExample>
 	^ LeDatabase gtBook topicMap

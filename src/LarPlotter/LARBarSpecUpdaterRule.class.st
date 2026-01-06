@@ -1,29 +1,30 @@
 Class {
-	#name : #LARBarSpecUpdaterRule,
-	#superclass : #Object,
+	#name : 'LARBarSpecUpdaterRule',
+	#superclass : 'Object',
 	#instVars : [
 		'dict'
 	],
-	#category : #LarPlotter
+	#category : 'LarPlotter',
+	#package : 'LarPlotter'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARBarSpecUpdaterRule class >> for: aDictionary [
 ^ self new
 	dict: aDictionary;
 	yourself 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARBarSpecUpdaterRule >> dict: aDictionary [ 
 dict:= aDictionary 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARBarSpecUpdaterRule >> forWidth [
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARBarSpecUpdaterRule >> updateDictHeight [
 	| ele data max scale modifiedData i |
 	ele := dict at: 'data' at: 'values'.	"collect: #values"
@@ -45,7 +46,7 @@ LARBarSpecUpdaterRule >> updateDictHeight [
 	^ dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARBarSpecUpdaterRule >> updateDictHeight: data [
 	|  max scale modifiedData i |
 	max := data max.
@@ -65,7 +66,7 @@ LARBarSpecUpdaterRule >> updateDictHeight: data [
 	^ dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARBarSpecUpdaterRule >> updateDictWidth: aNumber [
 	|  width |
 	

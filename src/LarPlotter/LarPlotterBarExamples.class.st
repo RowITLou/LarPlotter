@@ -2,38 +2,42 @@
 Here are some examples what you could do with the plotter
 "
 Class {
-	#name : #LarPlotterBarExamples,
-	#superclass : #Object,
-	#category : #'LarPlotter-Examples'
+	#name : 'LarPlotterBarExamples',
+	#superclass : 'Object',
+	#category : 'LarPlotter-Examples',
+	#package : 'LarPlotter',
+	#tag : 'Examples'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> Example1 [
 	<gtExample>
 	^ self stackedGtBookFieldsByKindBarChart
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> Example2 [
 <gtExample>
 	| plotter dict |
 	dict := GtBarChartSpecExamples new
 			stackedGtBookFieldsByKindBarChartWithChartSend asJsonString.
 	plotter := LarPlotterBar new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> Example3 [
 <gtExample>
 	| plotter dict |
 	dict := GtBarChartSpecExamples new
 			stackedGtBookFieldsByKindBarChartWithChartSendBar asJsonString.
 	plotter := LarPlotterBar new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> addAxisLabel [
 <gtExample>
 | plotter |
@@ -42,7 +46,7 @@ LarPlotterBarExamples >> addAxisLabel [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> addTitel [
 <gtExample>
 
@@ -50,7 +54,7 @@ LarPlotterBarExamples >> addTitel [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> barChartSpec [
 	<gtExample>
 	| jsonString |
@@ -74,16 +78,17 @@ LarPlotterBarExamples >> barChartSpec [
 	^jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> bookPagesByKind [
 <gtExample>
 	| dict plotter |
 	dict := GtBarChartSpecExamples new gtBookPagesByKindBarChart asJsonString.	"dict := STONJSON fromString: dict. "
 	plotter := LarPlotterBar new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> colorSpec [
 	| jsonString |
 	jsonString := '{
@@ -125,12 +130,12 @@ LarPlotterBarExamples >> colorSpec [
 ^jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> labels [
 ^ #(#A #B  #C #D #E #F #G #H #I #J)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> newGraph [
 	<gtExample>
 	| plotter |
@@ -138,19 +143,26 @@ LarPlotterBarExamples >> newGraph [
 	 ^plotter
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> setTicksAmount [
 <gtExample>
 ^self addAxisLabel setAmountTicks: 5
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> setTicksAmountEx4 [
 <gtExample>
-^self vegaExample4 setAmountTicks: 7
+	<gtExample>
+	|  plotter spec |
+	
+	spec := self vegaSpec4.	
+	plotter := LarPlotterBar new.
+	plotter spec: spec.
+plotter setAmountTicks: 7.
+^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> specExample [
 	| jsonString  |
 	jsonString := '{
@@ -165,17 +177,18 @@ LarPlotterBarExamples >> specExample [
 	^ jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> stackedGtBookFieldsByKindBarChart [
 	<gtExample>
 	| plotter dict |
 	dict := GtBarChartSpecExamples new stackedGtBookFieldsByKindBarChart
 			asJsonString.
 	plotter := LarPlotterBar new.
-	^ plotter spec: dict
+	plotter spec: dict.
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> testSpec [
 	<gtExample>
 	|  |
@@ -183,28 +196,28 @@ LarPlotterBarExamples >> testSpec [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> url [
 ^'https://vega.github.io/vega-lite/examples/'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> values [
 ^ #(20 40 60 80 10 90 70 50 30 10).
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaColorChart [
 <gtExample>
 	| spec plotter |
 	spec := self colorSpec.
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
-	^ plotter
+	^ plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample1 [
 	<gtExample>
 	"https://vega.github.io/vega-lite/examples/bar.html"
@@ -212,10 +225,10 @@ LarPlotterBarExamples >> vegaExample1 [
 	spec := self barChartSpec.
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
-	^ plotter
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample2 [
 "https://vega.github.io/vega-lite/examples/stacked_bar_h.html"
 	<gtExample>
@@ -224,10 +237,10 @@ LarPlotterBarExamples >> vegaExample2 [
 	spec := self vegaSpec2.	
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
-	^ plotter
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample3 [
 "https://vega.github.io/vega-lite/examples/bar_aggregate.html"
 	<gtExample>
@@ -236,10 +249,10 @@ LarPlotterBarExamples >> vegaExample3 [
 	spec := self vegaSpec3.	
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
-	^ plotter
+  ^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample4 [
 "https://vega.github.io/vega-lite/examples/bar_size_responsive.html"
 	<gtExample>
@@ -248,10 +261,10 @@ LarPlotterBarExamples >> vegaExample4 [
 	spec := self vegaSpec4.	
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
-	^ plotter
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaExample5 [
 "https://vega.github.io/vega-lite/examples/bar_layered_transparent.html"
 <gtExample>
@@ -260,10 +273,10 @@ LarPlotterBarExamples >> vegaExample5 [
 	spec := self vegaSpec5.	
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
-	^ plotter
+	^plotter initializeBuild
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaSpec2 [
 	| jsonString |
 	jsonString := '{
@@ -279,7 +292,7 @@ LarPlotterBarExamples >> vegaSpec2 [
 ^ jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaSpec3 [
 	| jsonString |
 	jsonString := '{
@@ -301,7 +314,7 @@ LarPlotterBarExamples >> vegaSpec3 [
 ^jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaSpec4 [
 	| jsonString |
 	jsonString := '{
@@ -318,7 +331,7 @@ LarPlotterBarExamples >> vegaSpec4 [
 ^jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaSpec5 [
 	| jsonString |
 	"smal change in the field of the color. can not handle changes fo the field in the json"

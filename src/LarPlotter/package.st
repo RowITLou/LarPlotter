@@ -1,1 +1,1 @@
-Package { #name : #LarPlotter }
+Package { #name : 'LarPlotter' }

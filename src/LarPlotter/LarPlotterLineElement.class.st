@@ -1,6 +1,6 @@
 Class {
-	#name : #LarPlotterLineElement,
-	#superclass : #BlElement,
+	#name : 'LarPlotterLineElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'plotter',
 		'titelContainer',
@@ -13,17 +13,19 @@ Class {
 		'labelsContainer',
 		'tickYContainer'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addAxisLabelX: elementX [ 
 	
 	"containerTickAndLabel forceLayout. "
     axisXContainer addChild: (elementX asElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addAxisLabelY:  labelY [
 | elementY cont frame |
 "cont := LarContainer new asElement. 
@@ -55,7 +57,7 @@ cont constraintsDo: [ :c |
 	containerTickAndLabel forceLayout. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addLines: lines [
 
 "graphElement layout cellSpacing: 0."
@@ -82,7 +84,7 @@ graphElement transform
 self addPoints.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addPoints [
 	"NB: The point element knows how to position itself"
 
@@ -96,7 +98,7 @@ LarPlotterLineElement >> addPoints [
 			graphElement forceLayout ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addTicksLabelX: labelsX [
 	| tickXcontainer aNumber width |
 	aNumber := labelsX size.
@@ -124,7 +126,7 @@ LarPlotterLineElement >> addTicksLabelX: labelsX [
 labelsContainer addChild: tickXcontainer.]."
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addTicksLabelY: labelsY [
 | tickYcontainer scale space height spareLabelYContainer |
 	scale := plotter scale.
@@ -166,7 +168,7 @@ tickYcontainer constraintsDo: [ :c |
  labelsYContainer addChildFirst: tickYcontainer.]"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addTicksY: ticksY [
 | scale space height |
 	scale := plotter scale.
@@ -199,12 +201,12 @@ tickYContainer addChild: tickY asElementY.
 ticksYContainer addChild: tickYContainer.]"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> addTitle: element [
 	titelContainer addChild: (element asElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> createContainer [
 | containerC |
 	containerC := (LarContainer new asElement).
@@ -217,12 +219,12 @@ containerC border: (BlBorder builder
 ^containerC
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> graphElement [
 ^graphElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> initialize: aPlotter [
 | empty empty_too  scroll empty_other |
 plotter := aPlotter.
@@ -312,7 +314,7 @@ paint: Color white;
 			
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> initializeFor [
 plotter labelAxisX isNil
 ifFalse:[self addAxisLabelX: plotter labelAxisX].
@@ -332,7 +334,7 @@ plotter ticksY isNil
 ifFalse:[self addTicksY: plotter ticksY].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLineElement >> setBlackBorders [
 container setBlackBorders. 
 ]

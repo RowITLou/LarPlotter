@@ -1,22 +1,23 @@
 Class {
-	#name : #LARLineSpecUpdaterRule,
-	#superclass : #Object,
+	#name : 'LARLineSpecUpdaterRule',
+	#superclass : 'Object',
 	#instVars : [
 		'dict',
 		'data',
 		'amountX'
 	],
-	#category : #LarPlotter
+	#category : 'LarPlotter',
+	#package : 'LarPlotter'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule class >> for: aDictionary [
 ^ self new
 	dict: aDictionary;
 	yourself 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> aggregation [
 	| collectTime timeData dataPoints  |
 	self importData.
@@ -37,7 +38,7 @@ LARLineSpecUpdaterRule >> aggregation [
 	^dataPoints
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> aggregation: values [
 	| collectTime timeData dataPoints  |
 	
@@ -58,22 +59,22 @@ LARLineSpecUpdaterRule >> aggregation: values [
 	^dataPoints
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LARLineSpecUpdaterRule >> data [
 	^ data
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LARLineSpecUpdaterRule >> data: anObject [
 	data := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> dict: aDictionary [ 
 dict:= aDictionary 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> importData [
 	| urlNew segments fileName file jsonData filter transformation |
 	urlNew := ((dict at: 'data') at: 'url') addedToZnUrl: self url asZnUrl.
@@ -95,7 +96,7 @@ LARLineSpecUpdaterRule >> importData [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> setup: importedData [
 | time firstDate lastDate dataPoint timespan months years days arr num_ticks maxSpace idealSpace min_ticks max_ticks nearest min indexofMin timeArr timeData   |
 
@@ -139,7 +140,7 @@ LARLineSpecUpdaterRule >> setup: importedData [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> updateDictHeight [
 	| dataPoint max scale modifiedData min minus dictionary |
 	
@@ -180,7 +181,7 @@ LARLineSpecUpdaterRule >> updateDictHeight [
 	^ dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> updateDictHeight: values [
 	| max scale modifiedData min minus dictionary |
 	
@@ -221,7 +222,7 @@ LARLineSpecUpdaterRule >> updateDictHeight: values [
 	^ dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> updateDictWidth [
 	| amount width |
 	amount := self aggregation size.
@@ -234,7 +235,7 @@ LARLineSpecUpdaterRule >> updateDictWidth [
 	^ dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARLineSpecUpdaterRule >> url [
 ^'https://vega.github.io/vega-lite/examples/'
 ]

@@ -2,16 +2,18 @@
 This class creates the elements for the axis labels
 "
 Class {
-	#name : #LarLabelAxisElement,
-	#superclass : #BlTextElement,
+	#name : 'LarLabelAxisElement',
+	#superclass : 'BlTextElement',
 	#instVars : [
 		'textLabel',
 		'label'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarLabelAxisElement >> initialize: aLabel [
 label := aLabel.
 super initialize.

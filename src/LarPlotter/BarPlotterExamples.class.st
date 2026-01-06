@@ -1,10 +1,12 @@
 Class {
-	#name : #BarPlotterExamples,
-	#superclass : #Object,
-	#category : #'LarPlotter-Other'
+	#name : 'BarPlotterExamples',
+	#superclass : 'Object',
+	#category : 'LarPlotter-Other',
+	#package : 'LarPlotter',
+	#tag : 'Other'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> containerWithGraphAndBars [
 <gtExample>
 | graph container |
@@ -14,7 +16,7 @@ container := BarPlotter new containerElement: 700.
 ^container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> graphAndLabels [
 <gtExample>
 | graph labelAxisX labelAxisY |
@@ -29,7 +31,7 @@ graph addChild: labelAxisY.
 ^graph
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> graphAndTicks [
 <gtExample>
 | graph ticksX ticksY |
@@ -42,7 +44,7 @@ ticksY:= BarPlotter new ticksAxisY: self values size with: self sizeGraph with: 
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> graphAndTicksLabel [
 <gtExample>
 | labelsX graph labelsY |
@@ -56,7 +58,7 @@ self values size with: self sizeGraph with: self relocate.
 ^graph
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> graphTotal [
 <gtExample>
 | labelAxisX graph labelAxisY ticksX ticksY labelsX labelsY titel|
@@ -89,7 +91,7 @@ graph addChild: titel.
 ^graph
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> graphWithTitel [
 <gtExample>
 | graph titel |
@@ -99,22 +101,22 @@ graph addChild: titel.
 ^graph
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> relocate [
 ^100
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> sizeGraph [
 ^500
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> sizeLabel [
 ^50
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterExamples >> values [
 ^#(0.2 0.4 0.6 0.8 1.0 0.9 0.7 0.5 0.3 0.1).
 ]

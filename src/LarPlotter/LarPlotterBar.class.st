@@ -1,24 +1,27 @@
 Class {
-	#name : #LarPlotterBar,
-	#superclass : #Object,
+	#name : 'LarPlotterBar',
+	#superclass : 'Object',
 	#instVars : [
 		'spec',
 		'dict',
 		'announcer',
 		'borders',
-		'turn'
+		'turn',
+		'product'
 	],
-	#category : #'LarPlotter-Plotter'
+	#category : 'LarPlotter-Plotter',
+	#package : 'LarPlotter',
+	#tag : 'Plotter'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar class >> withSpec: aSpec [
 	 ^ self new
 	 	spec: aSpec;
 	 	yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addAxisLabel [
 	| axisX axisy total labelAxisX labelAxisY |
 	
@@ -42,7 +45,7 @@ LarPlotterBar >> addAxisLabel [
 	^ total
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addAxisLabel: textX with: textY [
 	|  axisX axisy  labelAxisX labelAxisY  |
 	((dict at: 'encoding') at: 'x') at: 'field' put: textX.
@@ -55,7 +58,7 @@ LarPlotterBar >> addAxisLabel: textX with: textY [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addBars [
 	| bar val width int values bars data point colors some domain|
 	int := false.
@@ -142,7 +145,7 @@ LarPlotterBar >> addBars [
 	^ bars
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addObject: barValue [
 	| jsonSpec aClassSymbol aMethodSelector result |
 	(dict includesKey: 'gtChartSendObject') ifFalse: [ ^ nil ].
@@ -155,7 +158,7 @@ LarPlotterBar >> addObject: barValue [
 			^result
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addObject: barValue with: subbars [
 	| aClassSymbol  subbar jsonSpec aMethodSelector |
 	(dict includesKey: 'gtChartSendSubobject') ifFalse: [ ^ nil ].
@@ -180,7 +183,7 @@ LarPlotterBar >> addObject: barValue with: subbars [
 			 ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addTicks [
 	| tickY tickAmount ticksY |
 	ticksY := OrderedCollection new.
@@ -195,7 +198,7 @@ LarPlotterBar >> addTicks [
 	^ticksY
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addTicksLabelX [
 	| tick amount data int valuesX tickLabelsX |
 	tickLabelsX := OrderedCollection new.
@@ -217,7 +220,7 @@ LarPlotterBar >> addTicksLabelX [
 	^tickLabelsX
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addTicksLabelY [
 	| tick amount tickLabelsY|
 	
@@ -234,14 +237,14 @@ LarPlotterBar >> addTicksLabelY [
 	^tickLabelsY
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> addTitle: aTitle [
 	| title |
 	dict at: 'title' put: aTitle.
 	title := LarTitel new initialize: (dict at: 'title').
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> aggregateColorDataCount: aField [
 	| transformation json jsonData fieldTwo transformation_two temp_1 temp_2 |
 	transformation := OrderedCollection new.
@@ -286,7 +289,7 @@ LarPlotterBar >> aggregateColorDataCount: aField [
 		put: json asArray.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> aggregateColorDataSum: fieldTwo with: fieldOne [
 	| transformation json jsonData transformation_two temp_1 temp_2 fieldThree |
 	transformation := OrderedCollection new.
@@ -328,7 +331,7 @@ LarPlotterBar >> aggregateColorDataSum: fieldTwo with: fieldOne [
 		put: json asArray
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> aggregateDataCount: fieldOne [ 
 | transformation json jsonData |
 	transformation := OrderedCollection new.
@@ -353,7 +356,7 @@ LarPlotterBar >> aggregateDataCount: fieldOne [
   (dict at: 'data' at: 'values' put: (json asArray)).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> aggregateDataSum: fieldOne with: fieldTwo [
 | transformation json jsonData |
 	transformation := OrderedCollection new.
@@ -378,7 +381,7 @@ LarPlotterBar >> aggregateDataSum: fieldOne with: fieldTwo [
   (dict at: 'data' at: 'values' put: (json asArray)).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> aggregateDataX [
 	((dict at: 'encoding') includesKey: 'color')
 	ifTrue:[(((dict at: 'encoding' at: 'x') at: 'aggregate') = 'sum')
@@ -394,7 +397,7 @@ LarPlotterBar >> aggregateDataX [
   
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> aggregateDataY [
 	
 	((dict at: 'encoding') includesKey: 'color')
@@ -411,7 +414,7 @@ LarPlotterBar >> aggregateDataY [
   
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> angleX [
 
 ((dict at: 'encoding' at: 'x' ) includesKey: 'axis')
@@ -420,7 +423,7 @@ LarPlotterBar >> angleX [
 	 ^0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> angleY [
  ((dict at: 'encoding' at: 'y' ) includesKey: 'axis')
 	 ifTrue:[(((dict at: 'encoding' at: 'y' ) at: 'axis') includesKey: 'labelAngle')
@@ -428,37 +431,38 @@ LarPlotterBar >> angleY [
 	 ^0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> announcer [
 	^ announcer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> announcer: anObject [
 	announcer := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> asElement [
-^LarPlotterBarElement new initialize: self.
+product :=LarPlotterBarElement new initialize: self.
+^product 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> borders [
 	^ borders
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> borders: anObject [
 	borders := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> colorsSubBar [
 ^#('#1f77b4' '#ff7f0e' '#2ca02c' '#d62728' '#9467bd' '#8c564b' '#e377c2' '#7f7f7f' '#bcbd22' '#17becf' '#aec7e8' '#ffbb78' '#98df8a' '#ff9896' '#c5b0d5' '#c49c94' '#f7b6d2' '#c7c7c7' '#dbdb8d' '#9edae5')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> createSubBar: index [
 	| subBar point val sub|
 	((dict at: 'encoding') includesKey: 'color') 
@@ -499,18 +503,18 @@ LarPlotterBar >> createSubBar: index [
  ifFalse:[^nil]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> dict [
 	^ dict
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> dict: anObject [
 	dict := anObject.
 	self initializeFor
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> ensureAmountTicksY [
 	| rule newDict |
 	(dict at: 'data') at: 'set' ifPresent:[
@@ -523,7 +527,7 @@ LarPlotterBar >> ensureAmountTicksY [
 	^ dict at: 'data' at: 'tick'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> ensureBarsHeight: values [
 	| max rule newDict val data|
 	values size = 1
@@ -539,7 +543,7 @@ LarPlotterBar >> ensureBarsHeight: values [
 	^ data
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> ensureBarsWidth: aNumber [
 	| width rule newDict |
 	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARBarSpecUpdaterRule for: dict.
@@ -556,7 +560,7 @@ LarPlotterBar >> ensureBarsWidth: aNumber [
 	^ dict at: 'data' at: 'width'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> getBarData: point [
 	
 	(((dict at: 'encoding') at: 'x') includesKey: 'field')
@@ -569,7 +573,7 @@ LarPlotterBar >> getBarData: point [
 		ifTrue: [^(point at: (((dict at: 'encoding') at: 'color') at: 'field')) ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> getDataFromJsonFile [
 	| urlNew segments fileName file jsonData |
 	urlNew := (dict at: 'data' at: 'url') addedToZnUrl: self url asZnUrl.
@@ -586,9 +590,9 @@ LarPlotterBar >> getDataFromJsonFile [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> gtLiveFor: aView [
-	<gtView>
+	"<gtView>"
 	^aView explicit
 		title: 'Live';
 		priority: 10;
@@ -604,7 +608,7 @@ LarPlotterBar >> gtLiveFor: aView [
 		
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> initialize [
 	<brainstorming>
 announcer := Announcer new.
@@ -613,14 +617,21 @@ announcer := Announcer new.
 self turn: false.
 ]
 
-{ #category : #accessing }
+{ #category : 'as yet unclassified' }
+LarPlotterBar >> initializeBuild [
+self asElement.
+self initializeForProduct. 
+^self product asScalableElement
+]
+
+{ #category : 'accessing' }
 LarPlotterBar >> initializeDict [
 	<brainstorming>
 	dict := STONJSON fromString: self spec.
 	self initializeFor
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> initializeFor [
 	|   int |
 	((dict at: 'data') includesKey: 'url') ifTrue: [ self getDataFromJsonFile ].
@@ -653,7 +664,23 @@ LarPlotterBar >> initializeFor [
 	self addTicksLabelY.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
+LarPlotterBar >> initializeForProduct [
+(self dict at: 'data' at: 'values') isEmpty 
+ifFalse:[product addBars: self addBars].
+
+product addAxisLabelX: (self addAxisLabel) first.
+product addAxisLabelY: (self addAxisLabel) last.
+(self dict at: 'data' at: 'values') isEmpty 
+ifFalse:[product addTicksLabelX: self addTicksLabelX.
+		product addTicksLabelY: self addTicksLabelY].
+self addTitle: self title.
+(self dict at: 'data' at: 'values') isEmpty 
+ifTrue:[(self dict at: 'data') at: 'tick' ifPresent: [product addTicksY: self addTicks]]
+ifFalse:[product addTicksY: self addTicks]
+]
+
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> noDict [
 	| jsonString |
 	jsonString :=  '{
@@ -677,12 +704,22 @@ LarPlotterBar >> noDict [
 	dict := STONJSON fromString: jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> notifyUpdate [
 self announcer announce: LarBarPlotterUpdate new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'accessing' }
+LarPlotterBar >> product [
+	^ product
+]
+
+{ #category : 'accessing' }
+LarPlotterBar >> product: anObject [
+	product := anObject
+]
+
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> setAmountTicks: anInteger [
 	| space scale |
 	(dict at: 'data') at: 'tick' put: anInteger.
@@ -698,18 +735,18 @@ LarPlotterBar >> setAmountTicks: anInteger [
 		put: 1
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> spec [
 	^ spec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> spec: aJSONString [
 	spec := aJSONString.
 	self initializeDict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> title [
 	| title |
 	(dict includesKey: 'title')
@@ -719,7 +756,7 @@ LarPlotterBar >> title [
 	^title
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> transform: anObject [
 	| segment key jsonData json value newValue |
 	segment := (anObject findTokens: '==') first.
@@ -736,17 +773,17 @@ LarPlotterBar >> transform: anObject [
 	dict at: 'data' at: 'values' put: json. 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> turn [
 	^ turn
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterBar >> turn: anObject [
 	turn := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBar >> url [
 ^'https://vega.github.io/vega-lite/examples/'
 ]

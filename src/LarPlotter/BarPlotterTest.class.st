@@ -1,10 +1,12 @@
 Class {
-	#name : #BarPlotterTest,
-	#superclass : #BarPlotter,
-	#category : #'LarPlotter-Other'
+	#name : 'BarPlotterTest',
+	#superclass : 'BarPlotter',
+	#category : 'LarPlotter-Other',
+	#package : 'LarPlotter',
+	#tag : 'Other'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> containerElement [
 <gtExample>
 | aContainer |
@@ -16,7 +18,7 @@ BarPlotterTest >> containerElement [
 ^aContainer
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> createBars [
 | child |
 	child := BlElement new
@@ -29,7 +31,7 @@ BarPlotterTest >> createBars [
 ^child
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> createBars: height [
 | child |
 	child := BlElement new
@@ -47,7 +49,7 @@ BarPlotterTest >> createBars: height [
 ^child
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> graphElement [
 <gtExample>
 | parentNew |
@@ -64,7 +66,7 @@ parentNew relocate: self relocateX @ self relocateY.
 ^parentNew
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> graphTwithLabels [
 <gtExample>
 | number tickY containerTick aContainer containerTickX tickX |
@@ -111,7 +113,7 @@ aContainer addChild: containerTickX.].
 ^aContainer
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> graphTwithTicks [
 <gtExample>
 | number tickY containerTick aContainer containerTickX tickX |
@@ -156,7 +158,7 @@ aContainer addChild: containerTickX.].
 ^aContainer
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> graphWithAxisLabel [
 <gtExample>
 | labelAxisX aContainer labelAxisY |
@@ -179,7 +181,7 @@ aContainer := self graphWithBars.
 		
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> graphWithBars [
 <gtExample>
 | graphElement number child container |
@@ -204,7 +206,7 @@ container addChild: graphElement.
 ^container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> labelAxisX [
 <gtExample>
 | labelAxisX labelAxisXTest |
@@ -230,7 +232,7 @@ labelAxisX addChild: labelAxisXTest.
 ^labelAxisX
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> labelAxisY [
 <gtExample>
 | labelAxisY labelAxisYTest |
@@ -261,37 +263,37 @@ labelAxisY addChild: labelAxisYTest.
 ^labelAxisY
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> relocateX [
 ^100
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> relocateY [
 ^100
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> rotation [
 ^180
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> sizeContainer [
 ^800
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> sizeGraph [
 ^500
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> sizeLabel [
 ^50
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> totalGraph [
 <gtExample>
 | container titel titelContainer |
@@ -318,7 +320,7 @@ container addChild: titelContainer.
  
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotterTest >> values [
 ^#(0.2 0.4 0.6 0.8 1.0 0.9 0.7 0.5 0.3 0.1).
 ]

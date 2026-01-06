@@ -1,10 +1,12 @@
 Class {
-	#name : #BarPlotter,
-	#superclass : #BlElement,
-	#category : #'LarPlotter-Other'
+	#name : 'BarPlotter',
+	#superclass : 'BlElement',
+	#category : 'LarPlotter-Other',
+	#package : 'LarPlotter',
+	#tag : 'Other'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> barElement [
 | child |
 	child := BlElement new
@@ -16,7 +18,7 @@ BarPlotter >> barElement [
 ^child
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> barsInGraph: values with: sizeGraph with: relocate [
 | graphElement number child |
 graphElement:= self graphElement: sizeGraph with: relocate.
@@ -40,7 +42,7 @@ child layout: BlFrameLayout new;
 ^graphElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> containerElement: sizeContainer [ 
 <gtExample>
 	| aContainer |
@@ -52,7 +54,7 @@ BarPlotter >> containerElement: sizeContainer [
 ^aContainer
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> graphElement: sizeGraph with: relocate [
 | parentNew |
 	parentNew := BlElement new
@@ -68,7 +70,7 @@ parentNew relocate: relocate@relocate.
 ^parentNew
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> labelAxisX: sizeGraph with: sizeLabel with: relocate [
 | labelAxisX labelAxisXTest |
 	labelAxisX := BlElement new
@@ -94,7 +96,7 @@ labelAxisX addChild: labelAxisXTest.
 ^labelAxisX
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> labelAxisY: sizeGraph with: sizeLabel with: relocate [
 | labelAxisY labelAxisYTest |
 	labelAxisY := BlElement new
@@ -124,7 +126,7 @@ labelAxisY addChild: labelAxisYTest.
 ^labelAxisY
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> labelTicksX: number with: sizeGraph with: relocate [
 | containerTickX tickX collection |
 collection := OrderedCollection new.
@@ -148,7 +150,7 @@ collection add: containerTickX.].
 ^collection
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> labelTicksY: number with: sizeGraph with: relocate [
 | containerTick tickY collection |
 collection := OrderedCollection new.
@@ -172,7 +174,7 @@ collection add: containerTick.].
 ^collection
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> ticksAxisX: number with: sizeGraph with: relocate [
 | container containerTickX tickX |
 	container := OrderedCollection new.
@@ -195,7 +197,7 @@ container add: containerTickX.].
 ^container
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> ticksAxisY: number with: sizeGraph with: relocate [
 | collection containerTick tickY |
 	collection := OrderedCollection new.
@@ -218,7 +220,7 @@ collection add: containerTick.].
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BarPlotter >> titelGraph: sizeGraph with: sizeLabel with: relocate [
 | titel titelText |
 	titel := BlElement new

@@ -4,51 +4,53 @@ See the following example {{gtMethod:name=LarPlotterBarExamples>>graphWithTickLa
 
 "
 Class {
-	#name : #LarTickLabel,
-	#superclass : #Object,
+	#name : 'LarTickLabel',
+	#superclass : 'Object',
 	#instVars : [
 		'labelText'
 	],
-	#category : #'LarPlotter-Model'
+	#category : 'LarPlotter-Model',
+	#package : 'LarPlotter',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabel >> asElement [
 ^LarTickLabelElement new initialize: self.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabel >> initialize: text [
 self labelText: text.
 ^self.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarTickLabel >> labelText [
 	^ labelText
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabel >> labelText: anObject [
 	labelText := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabel >> setBackground: color [
 self asElement background: color
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabel >> setBorderColor: color [
 self asElement border: (BlBorder paint: color). 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabel >> setFontSize: number [
 self asElement defaultFontSize: number
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickLabel >> setText: textlabel [
 self asElement text: textlabel.
 labelText:= textlabel.

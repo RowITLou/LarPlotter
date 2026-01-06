@@ -1,49 +1,51 @@
 Class {
-	#name : #GtScatterChartSpec,
-	#superclass : #Object,
+	#name : 'GtScatterChartSpec',
+	#superclass : 'Object',
 	#instVars : [
 		'json',
 		'template'
 	],
-	#category : #'LarPlotter-Spec'
+	#category : 'LarPlotter-Spec',
+	#package : 'LarPlotter',
+	#tag : 'Spec'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> asJsonString [
 	^ STONJSON toStringPretty: self json
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> beScatterChart [
 	self template: self scatterChartTemplateString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> color [
 	^ self encoding at: 'color'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> colorScale: aColorScale [
 	^ self color at: 'scale' put: aColorScale
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> description [
 	^ self json at: 'description'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> description: aText [
 	^ self json at: 'description' put: aText
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> encoding [
 	^ self json at: 'encoding'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> fields: aFieldsArray [
 	self assert: aFieldsArray isArray.
 	self assert: aFieldsArray size equals: 2.
@@ -51,12 +53,12 @@ GtScatterChartSpec >> fields: aFieldsArray [
 	self y at: 'field' put: aFieldsArray second
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> gtChartSendPoint [
 	^ self json at: 'gtChartSendObject'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> gtChartSendPoint: specMethod [
 	self json
 		at: 'gtChartSendObject'
@@ -65,7 +67,7 @@ GtScatterChartSpec >> gtChartSendPoint: specMethod [
 	^ self json
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> gtJsonObjectFor: aView [
 	<gtView>
 	^ aView forward
@@ -75,7 +77,7 @@ GtScatterChartSpec >> gtJsonObjectFor: aView [
 		view: #gtJsonObjectFor:context:
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> gtJsonStringFor: aView [
 	<gtView>
 	^ aView forward
@@ -86,22 +88,22 @@ GtScatterChartSpec >> gtJsonStringFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> initialize [
 	self beScatterChart
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> json [
 	^ json ifNil: [ json := STONJSON fromString: self template ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> labelAngle [
 	^ self xAxis at: 'labelAngle'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> labelAngle: aNumber [
 	self assert: aNumber isNumber.
 	self assert: aNumber <= 360.
@@ -109,12 +111,12 @@ GtScatterChartSpec >> labelAngle: aNumber [
 	self xAxis at: 'labelAngle' put: aNumber
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> object: field [
 (self encoding at: 'object') at: 'field' put: field. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> scatterChartTemplateString [
 	"Basic template for a bar chart with data and fields to be rewritten."
 	^ '{
@@ -143,7 +145,7 @@ GtScatterChartSpec >> scatterChartTemplateString [
 }'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> stackedFields: aFieldsArray [
 	self assert: aFieldsArray isArray.
 	self assert: aFieldsArray size equals: 2.
@@ -151,23 +153,23 @@ GtScatterChartSpec >> stackedFields: aFieldsArray [
 	self color at: 'field' put: aFieldsArray second
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> template [
 	^ template
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> template: aJsonTemplateString [
 	template := aJsonTemplateString.
 	json := nil
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> values [
 	^ (self json at: 'data') at: 'values'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> values: aValuesArray [
 	self assert: aValuesArray isArray.
 	self assert: aValuesArray isNotEmpty.
@@ -176,7 +178,7 @@ GtScatterChartSpec >> values: aValuesArray [
 	(self json at: 'data') at: 'values' put: aValuesArray
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> values: aValuesArray andFields: aFieldsArray [
 	self
 		deprecated: 'Send values: and fields: or stackedFields: seperately as cascaded messages.'.
@@ -185,27 +187,27 @@ GtScatterChartSpec >> values: aValuesArray andFields: aFieldsArray [
 		fields: aFieldsArray
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> x [
 	^ self encoding at: 'x'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> xAxis [
 	^ self x at: 'axis'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> xTitle: aTitle [
 	^ self x at: 'title' put: aTitle
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> y [
 	^ self encoding at: 'y'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtScatterChartSpec >> yTitle: aTitle [
 	^ self y at: 'title' put: aTitle
 ]

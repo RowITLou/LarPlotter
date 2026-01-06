@@ -1,6 +1,6 @@
 Class {
-	#name : #LarPlotterLine,
-	#superclass : #Object,
+	#name : 'LarPlotterLine',
+	#superclass : 'Object',
 	#instVars : [
 		'labelAxisX',
 		'labelAxisY',
@@ -18,24 +18,26 @@ Class {
 		'points',
 		'borders'
 	],
-	#category : #'LarPlotter-Plotter'
+	#category : 'LarPlotter-Plotter',
+	#package : 'LarPlotter',
+	#tag : 'Plotter'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine class >> withSpec: aSpec [
 	 ^ self new
 	 	spec: aSpec;
 	 	yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> addAxisLabel: textX with: textY [
 labelAxisX := LarLabelAxis new initialize: textX. 
 labelAxisY := LarLabelAxis new initialize: textY.
 self notifyUpdate
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> addLines [
 	| line width val |
 	self linesDefinition.
@@ -53,7 +55,7 @@ LarPlotterLine >> addLines [
 	self notifyUpdate
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> addLines: values [
 	| line width val |
 	self linesDefinition.
@@ -71,7 +73,7 @@ LarPlotterLine >> addLines: values [
 	self notifyUpdate
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> addPoints: values with: width [
 self pointsDefinition.
 	1 to: values size
@@ -81,7 +83,7 @@ self pointsDefinition.
 			points add: point ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> addTicks [
 	| tickY tickAmount |
 	self tickInitialize.
@@ -97,7 +99,7 @@ LarPlotterLine >> addTicks [
 	self notifyUpdate
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> addTicksLabel: valuesX with: valuesY [
 | tick amount |
 self tickLablesInitialize.
@@ -121,42 +123,42 @@ amount := dict at: 'data' at: 'tick'.
 	self notifyUpdate
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> announcer [
 	^ announcer
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> announcer: anObject [
 	announcer := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> asElement [
 ^LarPlotterLineElement new initialize: self.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> borders [
 	^ borders
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> borders: anObject [
 	borders := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> dict [
 	^ dict
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> dict: anObject [
 	dict := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> ensureAmountTicksY [
 	| rule newDict |
 	rule := LARTickSpecUpdaterRule for: dict.
@@ -167,7 +169,7 @@ LarPlotterLine >> ensureAmountTicksY [
 	^ dict at: 'data' at: 'tick'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> ensureDataHeight [
 | rule newDict val data|
 	rule := LARLineSpecUpdaterRule for: dict.
@@ -180,7 +182,7 @@ LarPlotterLine >> ensureDataHeight [
 	^ data
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> ensureDataHeight: values [
 | rule newDict val data|
 	rule := LARLineSpecUpdaterRule for: dict.
@@ -193,7 +195,7 @@ LarPlotterLine >> ensureDataHeight: values [
 	^ data
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> ensureDataWidth: aNumber [
 	| width rule newDict |
 	((dict at: 'data') includesKey: 'width') ifFalse: [ rule := LARBarSpecUpdaterRule for: dict.
@@ -210,7 +212,7 @@ LarPlotterLine >> ensureDataWidth: aNumber [
 	^ dict at: 'data' at: 'width'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> gtLiveFor: aView [
 	<gtView>
 	^aView explicit
@@ -227,7 +229,7 @@ LarPlotterLine >> gtLiveFor: aView [
 		
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> initialize [
 announcer := Announcer new.
 self borders: false.
@@ -237,7 +239,7 @@ self noDict.
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> initializeDict [
 	<brainstorming>
 
@@ -246,7 +248,7 @@ LarPlotterLine >> initializeDict [
 	self initializeFor
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> initializeFor [
 	| axisX axisy |
 	axisX := (self dict at: 'encoding' at: 'x')at: 'field'. 
@@ -259,42 +261,42 @@ LarPlotterLine >> initializeFor [
 	self addTicksLabel: (self dict at: 'data' at: 'timeData') with: self space. 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> labelAxisX [
 	^ labelAxisX
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> labelAxisX: anObject [
 	labelAxisX := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> labelAxisY [
 	^ labelAxisY
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> labelAxisY: anObject [
 	labelAxisY := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> lines [
 	^ lines
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> lines: anObject [
 	lines := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> linesDefinition [
 lines:=  OrderedCollection new. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> noDict [
 	| jsonString |
 	jsonString := '{
@@ -308,115 +310,115 @@ LarPlotterLine >> noDict [
 	dict := STONJSON fromString: jsonString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> notifyUpdate [
 self announcer announce: LarLinePlotterUpdate new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> points [
 	^ points
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> points: anObject [
 	points := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> pointsDefinition [
 points :=  OrderedCollection new. 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> scale [
 	^ scale
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> scale: anObject [
 	scale := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> space [
 	^ space
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> space: anObject [
 	space := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> spec [
 	^ spec
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> spec: aJSONString [
 	spec := aJSONString.
 	self initializeDict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> tickInitialize [
 ticksX:= OrderedCollection new. 
 ticksY := OrderedCollection new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> tickLabelsX [
 	^ tickLabelsX
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> tickLabelsX: anObject [
 	tickLabelsX := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> tickLabelsY [
 	^ tickLabelsY
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> tickLabelsY: anObject [
 	tickLabelsY := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> tickLablesInitialize [
 tickLabelsX:= OrderedCollection new. 
 tickLabelsY := OrderedCollection new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> ticksX [
 	^ ticksX
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> ticksX: anObject [
 	ticksX := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> ticksY [
 	^ ticksY
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPlotterLine >> ticksY: anObject [
 	ticksY := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> title [
 ^title
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterLine >> title: text [
 	title := LarTitel new initialize: text. 
 	self notifyUpdate

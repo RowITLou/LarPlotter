@@ -2,21 +2,23 @@
 I can generate a Vega-Lite compatible JSON spec for very simple bar charts.
 "
 Class {
-	#name : #GtBarChartSpec,
-	#superclass : #Object,
+	#name : 'GtBarChartSpec',
+	#superclass : 'Object',
 	#instVars : [
 		'json',
 		'template'
 	],
-	#category : #'LarPlotter-Spec'
+	#category : 'LarPlotter-Spec',
+	#package : 'LarPlotter',
+	#tag : 'Spec'
 }
 
-{ #category : #converting }
+{ #category : 'converting' }
 GtBarChartSpec >> asJsonString [
 	^ STONJSON toStringPretty: self json
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 GtBarChartSpec >> barChartTemplateString [
 	"Basic template for a bar chart with data and fields to be rewritten."
 	^ '{
@@ -42,42 +44,42 @@ GtBarChartSpec >> barChartTemplateString [
 }'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> beBarChart [
 	self template: self barChartTemplateString
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> beStackedBarChart [
 	self template: self stackedBarChartTemplateString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> color [
 	^ self encoding at: 'color'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> colorScale: aColorScale [
 	^ self color at: 'scale' put: aColorScale
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> description [
 	^ self json at: 'description'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> description: aText [
 	^ self json at: 'description' put: aText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> encoding [
 	^ self json at: 'encoding'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> fields: aFieldsArray [
 	self assert: aFieldsArray isArray.
 	self assert: aFieldsArray size equals: 2.
@@ -85,12 +87,12 @@ GtBarChartSpec >> fields: aFieldsArray [
 	self y at: 'field' put: aFieldsArray second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> gtChartSend [
 	^ self json at: 'gtChartSendSubobject'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> gtChartSend: specMethod [
 	self json
 		at: 'gtChartSendSubobject'
@@ -99,12 +101,12 @@ GtBarChartSpec >> gtChartSend: specMethod [
 	^ self json
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBarChartSpec >> gtChartSendBar [
 	^ self json at: 'gtChartSendObject'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBarChartSpec >> gtChartSendBar: specMethod [
 	self json
 		at: 'gtChartSendObject'
@@ -113,7 +115,7 @@ GtBarChartSpec >> gtChartSendBar: specMethod [
 	^ self json
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtBarChartSpec >> gtJsonObjectFor: aView [
 	<gtView>
 	^ aView forward
@@ -123,7 +125,7 @@ GtBarChartSpec >> gtJsonObjectFor: aView [
 		view: #gtJsonObjectFor:context:
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtBarChartSpec >> gtJsonStringFor: aView [
 	<gtView>
 	^ aView forward
@@ -134,22 +136,22 @@ GtBarChartSpec >> gtJsonStringFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> initialize [
 	self beBarChart
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> json [
 	^ json ifNil: [ json := STONJSON fromString: self template ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> labelAngle [
 	^ self xAxis at: 'labelAngle'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> labelAngle: aNumber [
 	self assert: aNumber isNumber.
 	self assert: aNumber <= 360.
@@ -157,7 +159,7 @@ GtBarChartSpec >> labelAngle: aNumber [
 	self xAxis at: 'labelAngle' put: aNumber
 ]
 
-{ #category : #constants }
+{ #category : 'constants' }
 GtBarChartSpec >> stackedBarChartTemplateString [
 	"Basic template for a stacked bar chart with data and fields to be rewritten."
 	"
@@ -192,7 +194,7 @@ GtBarChartSpec >> stackedBarChartTemplateString [
 }'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> stackedFields: aFieldsArray [
 	self assert: aFieldsArray isArray.
 	self assert: aFieldsArray size equals: 2.
@@ -200,23 +202,23 @@ GtBarChartSpec >> stackedFields: aFieldsArray [
 	self color at: 'field' put: aFieldsArray second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> template [
 	^ template
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> template: aJsonTemplateString [
 	template := aJsonTemplateString.
 	json := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> values [
 	^ (self json at: 'data') at: 'values'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> values: aValuesArray [
 	self assert: aValuesArray isArray.
 	self assert: aValuesArray isNotEmpty.
@@ -225,7 +227,7 @@ GtBarChartSpec >> values: aValuesArray [
 	(self json at: 'data') at: 'values' put: aValuesArray
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> values: aValuesArray andFields: aFieldsArray [
 	self
 		deprecated: 'Send values: and fields: or stackedFields: seperately as cascaded messages.'.
@@ -234,27 +236,27 @@ GtBarChartSpec >> values: aValuesArray andFields: aFieldsArray [
 		fields: aFieldsArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> x [
 	^ self encoding at: 'x'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> xAxis [
 	^ self x at: 'axis'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> xTitle: aTitle [
 	^ self x at: 'title' put: aTitle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBarChartSpec >> y [
 	^ self encoding at: 'y'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBarChartSpec >> yTitle: aTitle [
 	^ self y at: 'title' put: aTitle
 ]

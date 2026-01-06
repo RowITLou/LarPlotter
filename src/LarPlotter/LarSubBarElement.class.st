@@ -1,13 +1,15 @@
 Class {
-	#name : #LarSubBarElement,
-	#superclass : #BlElement,
+	#name : 'LarSubBarElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'subbar'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarSubBarElement >> initialize: aBar [
 	| aMouseOverHandler aMouseOutHandler |
 	super initialize.

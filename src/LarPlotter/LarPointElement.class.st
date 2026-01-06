@@ -1,44 +1,46 @@
 Class {
-	#name : #LarPointElement,
-	#superclass : #BlElement,
+	#name : 'LarPointElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'point',
 		'sizePoint'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> centerOn: aPoint [
 	self relocate: aPoint - ((self defaultSize +self sizePoint) / 2)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> changeColorToBlue [
  self  background: (Color fromHexString: '#0000ff')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> changeColorToGreen [
  self  background: (Color fromHexString: '#0B6623')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> changeColorToRed [
  self  background: (Color fromHexString: '#d30000')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> changeColorToYellow [
  self  background: (Color fromHexString: '#ffff00')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> defaultSize [
 	^ 7 @ 7
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> increaseSize [
 self sizePoint: sizePoint + 1.
 
@@ -47,7 +49,7 @@ size:  (self defaultSize + self sizePoint);
 centerOn: (point x @ point y).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPointElement >> initialize: aPoint [
 	| aMouseOverHandler aMouseOutHandler |
 	self sizePoint: 0 @ 0.
@@ -83,12 +85,12 @@ LarPointElement >> initialize: aPoint [
 		yourself	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPointElement >> sizePoint [
 	^ sizePoint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LarPointElement >> sizePoint: anObject [
 	sizePoint := anObject
 ]

@@ -2,8 +2,8 @@
 This class is responsible to plot the entire graph
 "
 Class {
-	#name : #LarPlotterBarElement,
-	#superclass : #BlElement,
+	#name : 'LarPlotterBarElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'graphElement',
 		'container',
@@ -16,16 +16,18 @@ Class {
 		'titelContainer',
 		'axisXContainer'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addAxisLabelX: elementX [ 
 	
     axisXContainer addChild: (elementX asElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addAxisLabelY:  labelY [
 | elementY cont frame |
 cont := LarContainer new asElement. 
@@ -57,7 +59,7 @@ cont constraintsDo: [ :c |
 	containerTickAndLabel forceLayout. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addBars: bars [
 | barE |
 bars do: [:bar|
@@ -87,7 +89,7 @@ ifTrue:[graphElement  transform
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addSubBars: bar with: barE [
 	bar subbar
 		do: [ :b | 
@@ -98,7 +100,7 @@ LarPlotterBarElement >> addSubBars: bar with: barE [
 			barE addChild: bel ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelX: labelsX [
 	| tickXcontainer aNumber width |
 	aNumber := labelsX size.
@@ -150,7 +152,7 @@ LarPlotterBarElement >> addTicksLabelX: labelsX [
 					labelsContainer addChild: frame_s ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addTicksLabelY: labelsY [
 	| tickYcontainer scale space height |
 	scale := plotter dict at: 'data' at: 'scale'.
@@ -207,7 +209,7 @@ LarPlotterBarElement >> addTicksLabelY: labelsY [
 	self smallAdding: height
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addTicksY: ticksY [
 	| scale space height |
 	scale := plotter dict at: 'data' at: 'scale'.
@@ -247,12 +249,12 @@ LarPlotterBarElement >> addTicksY: ticksY [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> addTitle: element [
 	titelContainer addChild: (element asElement).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> angleX: tickXcontainer with: width [
 	| frame_t |
 	tickXcontainer
@@ -306,7 +308,7 @@ LarPlotterBarElement >> angleX: tickXcontainer with: width [
 	^frame_t
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> angleY: tickXcontainer with: height [
 	| frame_t size |
 	tickXcontainer
@@ -352,7 +354,7 @@ LarPlotterBarElement >> angleY: tickXcontainer with: height [
 	^ frame_t
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> createContainer [
 | containerC |
 	containerC := (LarContainer new asElement).
@@ -365,12 +367,12 @@ containerC border: (BlBorder builder
 ^containerC
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> graphElement [
 ^graphElement
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> initialize: aPlotter [
 	| empty empty_too scroll empty_other overallContainer|
 	plotter := aPlotter.
@@ -454,7 +456,7 @@ LarPlotterBarElement >> initialize: aPlotter [
 			container addChild: axisXContainer at: 8 ].
 
 
-	self initializeFor.
+"	self initializeFor."
 
 	scroll := BlScalableElement new.
 	scroll
@@ -478,7 +480,7 @@ LarPlotterBarElement >> initialize: aPlotter [
 		addChild: scroll
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> initializeFor [
 (plotter dict at: 'data' at: 'values') isEmpty 
 ifFalse:[self addBars: plotter addBars].
@@ -495,14 +497,14 @@ ifFalse:[self addTicksY: plotter addTicks]
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> setBlackBorders [
 container setBlackBorders. 
 
 					
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarPlotterBarElement >> smallAdding: height [
 	| spareLabelYContainer |
 	plotter turn

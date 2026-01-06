@@ -1,30 +1,31 @@
 Class {
-	#name : #LARScatterSpecUpdaterRule,
-	#superclass : #Object,
+	#name : 'LARScatterSpecUpdaterRule',
+	#superclass : 'Object',
 	#instVars : [
 		'dict'
 	],
-	#category : #LarPlotter
+	#category : 'LarPlotter',
+	#package : 'LarPlotter'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARScatterSpecUpdaterRule class >> for: aDictionary [
 ^ self new
 	dict: aDictionary;
 	yourself 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LARScatterSpecUpdaterRule >> dict [
 	^ dict
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LARScatterSpecUpdaterRule >> dict: anObject [
 	dict := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARScatterSpecUpdaterRule >> updateDictHeight [
 	| scale max_two modifiedData_two info_two arr beginning_two nearest min beginning |
 	"	self importData."
@@ -62,7 +63,7 @@ LARScatterSpecUpdaterRule >> updateDictHeight [
 	^ dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARScatterSpecUpdaterRule >> updateDictSize [
 	| size min_size modifiedSize jsonData field |
 	jsonData := dict at: 'data' at: 'values'.
@@ -82,7 +83,7 @@ LARScatterSpecUpdaterRule >> updateDictSize [
 		put: modifiedSize.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARScatterSpecUpdaterRule >> updateDictWidth [
 	| max_one scale modifiedData_one info_one arr beginning_one nearest min beginning scale_new |
 	"self importData."

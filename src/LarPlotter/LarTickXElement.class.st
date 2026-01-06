@@ -2,17 +2,19 @@
 This class creates the element for ticks on the x axis for a graph
 "
 Class {
-	#name : #LarTickXElement,
-	#superclass : #BlElement,
+	#name : 'LarTickXElement',
+	#superclass : 'BlElement',
 	#instVars : [
 		'width',
 		'length',
 		'tick'
 	],
-	#category : #'LarPlotter-Element'
+	#category : 'LarPlotter-Element',
+	#package : 'LarPlotter',
+	#tag : 'Element'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LarTickXElement >> initialize: aTick [
 super initialize.
     tick := aTick.

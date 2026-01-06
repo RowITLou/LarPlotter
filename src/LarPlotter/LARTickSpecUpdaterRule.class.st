@@ -1,25 +1,27 @@
 Class {
-	#name : #LARTickSpecUpdaterRule,
-	#superclass : #Object,
+	#name : 'LARTickSpecUpdaterRule',
+	#superclass : 'Object',
 	#instVars : [
 		'dict'
 	],
-	#category : #'LarPlotter-Plotter'
+	#category : 'LarPlotter-Plotter',
+	#package : 'LarPlotter',
+	#tag : 'Plotter'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LARTickSpecUpdaterRule class >> for: aDictionary [
 ^ self new
 	dict: aDictionary;
 	yourself 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 LARTickSpecUpdaterRule >> dict: aDictionary [ 
 dict:= aDictionary 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARTickSpecUpdaterRule >> updateDict [
 	| scale max_ticks min_ticks maxSpace idealSpace arr num_ticks num nearest min indexofMin space amount |
 	idealSpace := 70.
@@ -55,11 +57,11 @@ amount := amount roundDownTo: 1.
  ^dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARTickSpecUpdaterRule >> updateDictDefault [
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARTickSpecUpdaterRule >> updateDictLineX [
 	|  lineRules timeData dictionary |
 	lineRules := LARLineSpecUpdaterRule new.
@@ -78,7 +80,7 @@ LARTickSpecUpdaterRule >> updateDictLineX [
 	^ dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARTickSpecUpdaterRule >> updateDictScatterX [
 	| scale max_ticks min_ticks maxSpace idealSpace arr num_ticks num nearest min indexofMin space amount |
 	idealSpace := 70.
@@ -114,7 +116,7 @@ amount := amount roundDownTo: 1.
  ^dict
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 LARTickSpecUpdaterRule >> updateDictScatterY [
 	| scale max_ticks min_ticks maxSpace idealSpace arr num_ticks num nearest min indexofMin space amount |
 	idealSpace := 70.
