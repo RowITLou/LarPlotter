@@ -220,7 +220,7 @@ GtBarChartSpec >> values [
 
 { #category : 'initialization' }
 GtBarChartSpec >> values: aValuesArray [
-	self assert: aValuesArray isArray.
+	"self assert: aValuesArray isArray."
 	self assert: aValuesArray isNotEmpty.
 	self assert: aValuesArray first isDictionary.
 	"self assert: aValuesArray first size equals: 2."

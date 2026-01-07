@@ -31,7 +31,7 @@ LARTopicMapDataExamples >> fieldsByStyle [
 { #category : 'examples' }
 LARTopicMapDataExamples >> fieldsByStyleJsonString [
 	<gtExample>
-	^ STONJSON toStringPretty: self dataFromFieldsByStyle
+	^ STONJSON toStringPretty: self dataFromFieldsByStyle asArray
 ]
 
 { #category : 'examples' }

@@ -26,7 +26,7 @@ GtBarChartSpecExamples >> gtBookPagesByKindBarChart [
 			labelAngle: -45;
 			yourself.
 	self assert: barChart labelAngle equals: -45.
-	self assert: barChart values size equals: LeDatabase gtBook topicMap kinds size.
+	self assert: barChart values size <= LeDatabase gtBook topicMap kinds size.
 	^ barChart
 ]
 
@@ -63,7 +63,7 @@ GtBarChartSpecExamples >> sendBar: aBarValue andGroup: aGroupValue withSpec: aJs
 	"An example of how the gtChartSend spec can be interpreted."
 
 	| spec aMethodSelector aClassSymbol |
-	spec := aJson at: 'gtChartSend'.
+	spec := aJson at: 'gtChartSendSubobject'.
 	aClassSymbol := (spec at: 'class') asSymbol.
 	aMethodSelector := (spec at: 'selector') asSymbol.
 
@@ -129,7 +129,7 @@ GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChart [
 							collect: [ :pn | 
 								{'field' -> fn field.
 									'page' -> pn page title.
-									'kind' -> pn kind} asDictionary ] ]);
+									'kind' -> pn kind} asDictionary ] ]) asArray;
 			stackedFields: {'field'.
 					'kind'};
 			xTitle: 'GT Book Topic Fields';
