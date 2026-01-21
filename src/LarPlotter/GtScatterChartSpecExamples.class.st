@@ -70,7 +70,7 @@ GtScatterChartSpecExamples >> gtBookPagesByKindBarChart [
 							asDictionary ]) asArray;
 		fields: {'textSnippets'.
 				'codeSnippets'};
-		object: 'pageTitle';
+		"object: 'pageTitle';"
 		xTitle: 'Text snippet size';
 		yTitle: 'Code snippet size';
 		labelAngle: -45;
