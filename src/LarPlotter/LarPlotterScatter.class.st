@@ -433,7 +433,7 @@ self noDict.
 LarPlotterScatter >> initializeBuild [
 self asElement.
 self initializeForProduct. 
-^self product asScalableElement
+^self product "asScalableElement"
 ]
 
 { #category : 'as yet unclassified' }

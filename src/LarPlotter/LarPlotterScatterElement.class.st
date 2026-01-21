@@ -339,6 +339,34 @@ LarPlotterScatterElement >> graphElement [
 ]
 
 { #category : 'as yet unclassified' }
+LarPlotterScatterElement >> gtLiveFor: aView [
+	<gtView>
+	^aView explicit
+		title: 'Live';
+		priority: 1;
+		stencil: [ self asScalableElement  ];
+		"actionStencil: [ 
+			BrCheckbox new 
+				aptitude: BrGlamorousCheckboxAptitude;
+				whenUncheckedDo: [   self borders: false  ];
+				whenCheckedDo: [   self borders: true  ]];"
+		actionUpdateButton.
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterScatterElement >> gtOverviewFor: aView [
+	<gtView>
+
+	^ aView explicit
+		title: 'Overview';
+		priority: 2;
+		stencil: [ GtInspectorElementOverview new
+			margin: (BlInsets all: 5);	
+			element: self ];
+		actionUpdateButton
+]
+
+{ #category : 'as yet unclassified' }
 LarPlotterScatterElement >> initialize: aPlotter [
 	| empty empty_too scroll empty_other aCanvassableElement |
 	plotter := aPlotter.

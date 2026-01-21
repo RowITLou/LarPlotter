@@ -129,6 +129,7 @@ LarPlotterBar >> addBars [
 		do: [ :n | 
 			bar := LarBar new initialize: (val at: n) with: width.
 			bar value: (values at: n).
+			bar object: (values at: n).
 			some
 			ifTrue:[bar color: (colors at: n).
 			bar data: (colors at: n)]
@@ -138,7 +139,8 @@ LarPlotterBar >> addBars [
 			ifTrue:[bar data: (domain at: n)].
 			bar subbar isNotNil 
 			ifTrue:[ self addObject: bar data  with: bar subbar].
-			bar object: (self addObject: (bar data)).
+			(dict includesKey: 'gtChartSendObject') 
+			ifTrue:[bar object: (self addObject: (bar data))].
 			bars add: bar ].
 
 	self notifyUpdate.
@@ -148,7 +150,7 @@ LarPlotterBar >> addBars [
 { #category : 'as yet unclassified' }
 LarPlotterBar >> addObject: barValue [
 	| jsonSpec aClassSymbol aMethodSelector result |
-	(dict includesKey: 'gtChartSendObject') ifFalse: [ ^ nil ].
+	"(dict includesKey: 'gtChartSendObject') ifFalse: [ ^ nil ]."
 	jsonSpec := dict at: 'gtChartSendObject'.
 	aClassSymbol := (jsonSpec at: 'class') asSymbol.
 	aMethodSelector := (jsonSpec at: 'selector') asSymbol.
@@ -485,6 +487,7 @@ LarPlotterBar >> createSubBar: index [
 	[:p :i| val := p at: 'count'.
 	sub := LarSubBar new initialize: (val * (dict at: 'data' at: 'scale')) with: (dict at: 'data' at: 'width').
 	sub value: val. 
+	sub object: val.
 	(((dict at: 'encoding') at: 'x') includesKey: 'field')
 	ifTrue:[(p includesKey: (((dict at: 'encoding') at: 'x') at: 'field'))
 	ifTrue:[sub tooltip: (p at: (((dict at: 'encoding') at: 'x') at: 'field'))]].
@@ -621,7 +624,7 @@ self turn: false.
 LarPlotterBar >> initializeBuild [
 self asElement.
 self initializeForProduct. 
-^self product asScalableElement
+^self product "asScalableElement"
 ]
 
 { #category : 'accessing' }

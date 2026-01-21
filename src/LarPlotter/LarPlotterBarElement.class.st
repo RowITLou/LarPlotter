@@ -229,7 +229,7 @@ LarPlotterBarElement >> addTicksY: ticksY [
 			tickYContainer layout cellSpacing: 0.
 			tickYContainer addChild: tickY asElementX.
 			ticksYContainer addChild: tickYContainer ].
-			ticksYContainer constraintsDo: [:c| c grid horizontal alignRight. ]
+			ticksYContainer constraintsDo: [:c| c grid horizontal alignLeft. ]
 	]
 	
 	ifFalse:[ticksY
@@ -370,6 +370,35 @@ containerC border: (BlBorder builder
 { #category : 'as yet unclassified' }
 LarPlotterBarElement >> graphElement [
 ^graphElement
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterBarElement >> gtLiveFor: aView [
+	<gtView>
+	^aView explicit
+		title: 'Live';
+		priority: 1;
+		stencil: [ self asScalableElement  ];
+		"actionStencil: [ 
+			BrCheckbox new 
+				aptitude:" "BrGlamorousCheckboxAptitude;
+				whenUncheckedDo: [   self borders: false  ];
+				whenCheckedDo: [   self borders: true  ]];"
+		actionUpdateButton.
+		"updateWhen: LarBarPlotterUpdate in: self announcer."
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterBarElement >> gtOverviewFor: aView [
+	<gtView>
+
+	^ aView explicit
+		title: 'Overview';
+		priority: 2;
+		stencil: [ GtInspectorElementOverview new
+			margin: (BlInsets all: 5);	
+			element: self ];
+		actionUpdateButton
 ]
 
 { #category : 'as yet unclassified' }

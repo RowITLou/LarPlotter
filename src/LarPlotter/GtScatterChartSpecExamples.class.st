@@ -85,6 +85,7 @@ GtScatterChartSpecExamples >> gtPagesFromDatabase [
 <gtExample>
 	| scatterChart |
 	scatterChart := self gtBookPagesByKindBarChart
+	object: 'pageTitle';
 			gtChartSendPoint: GtScatterChartSpecExamples >> #gertPageFromDatabase:;
 			yourself.
 			^scatterChart
