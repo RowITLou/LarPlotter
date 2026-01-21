@@ -73,7 +73,7 @@ LarPointElement >> initialize: aPoint [
 			do: [ :event | event currentTarget phlow spawnObject: point object ];
 		addEventHandler: aMouseOverHandler;
 		addEventHandler: aMouseOutHandler;
-		aptitude: (BrGlamorousWithExplicitContextMenuAptitude
+		aptitude: (BrGlamorousWithExplicitTooltipAptitude text: point tooltip)+(BrGlamorousWithExplicitContextMenuAptitude
 				items: {'Inspect Point Object' -> [  :event | event phlow spawnObject: point object].
 						'Inspect Point' -> [  :event | event phlow spawnObject: point ].
 						'Increase Size' -> [ self increaseSize].
@@ -81,7 +81,6 @@ LarPointElement >> initialize: aPoint [
 						'Change Color to Red' -> [ self changeColorToRed ].
 						'Change Color to Green' -> [ self changeColorToGreen ].
 						'Change Color to Yellow' -> [ self changeColorToYellow ]});
-		aptitude: (BrGlamorousWithExplicitTooltipAptitude text: point tooltip);
 		yourself	
 ]
 

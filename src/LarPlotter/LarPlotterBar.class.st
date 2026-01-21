@@ -672,12 +672,13 @@ ifFalse:[product addBars: self addBars].
 product addAxisLabelX: (self addAxisLabel) first.
 product addAxisLabelY: (self addAxisLabel) last.
 (self dict at: 'data' at: 'values') isEmpty 
+ifTrue:[(self dict at: 'data') at: 'tick' ifPresent: [product addTicksY: self addTicks]]
+ifFalse:[product addTicksY: self addTicks].
+
+(self dict at: 'data' at: 'values') isEmpty 
 ifFalse:[product addTicksLabelX: self addTicksLabelX.
 		product addTicksLabelY: self addTicksLabelY].
 self addTitle: self title.
-(self dict at: 'data' at: 'values') isEmpty 
-ifTrue:[(self dict at: 'data') at: 'tick' ifPresent: [product addTicksY: self addTicks]]
-ifFalse:[product addTicksY: self addTicks]
 ]
 
 { #category : 'as yet unclassified' }
