@@ -92,8 +92,12 @@ LarPlotterScatter >> addPoints [
 				ifTrue: [ point data: ((dict at: 'data' at: 'objects') at: n).
 					point object: (self addObject: point data).
 					point tooltip: point data ]
-				ifFalse: [ point object: (val_one at: n) @ (val_two at: n).
+				ifFalse: [ point object: (info_one at: n) @ (info_two at: n).
 					point tooltip: ((info_one at: n) @ (info_two at: n)) asRopedText ].
+					(((dict) at: 'encoding') includesKey: 'size')
+					ifTrue:[| values |
+					values := dict at: 'data' at: 'size'.
+					point object: (values at: n)].
 			points add: point ].
 	self notifyUpdate.
 	^ points
