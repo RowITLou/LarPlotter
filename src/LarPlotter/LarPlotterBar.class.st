@@ -681,7 +681,7 @@ ifFalse:[product addTicksY: self addTicks].
 (self dict at: 'data' at: 'values') isEmpty 
 ifFalse:[product addTicksLabelX: self addTicksLabelX.
 		product addTicksLabelY: self addTicksLabelY].
-self addTitle: self title.
+product addTitle: self title.
 ]
 
 { #category : 'as yet unclassified' }
@@ -737,6 +737,11 @@ LarPlotterBar >> setAmountTicks: anInteger [
 		at: 'data'
 		at: 'set'
 		put: 1
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterBar >> setData: data [
+(dict at: 'data' at: 'values' put: (data)).
 ]
 
 { #category : 'accessing' }

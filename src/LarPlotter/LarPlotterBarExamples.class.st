@@ -38,23 +38,6 @@ LarPlotterBarExamples >> Example3 [
 ]
 
 { #category : 'as yet unclassified' }
-LarPlotterBarExamples >> addAxisLabel [
-<gtExample>
-| plotter |
-	"plotter:= LarPlotterBar new initialize: 500 with: 500."
-	^self addTitel addAxisLabel: 'AxisX' with: 'AxisY'. 
-	
-]
-
-{ #category : 'as yet unclassified' }
-LarPlotterBarExamples >> addTitel [
-<gtExample>
-
-^self newGraph addTitle: 'This is a title'. 
-
-]
-
-{ #category : 'as yet unclassified' }
 LarPlotterBarExamples >> barChartSpec [
 	<gtExample>
 	| jsonString |
@@ -140,13 +123,13 @@ LarPlotterBarExamples >> newGraph [
 	<gtExample>
 	| plotter |
 	 plotter := LarPlotterBar new.
-	 ^plotter
-]
-
-{ #category : 'as yet unclassified' }
-LarPlotterBarExamples >> setTicksAmount [
-<gtExample>
-^self addAxisLabel setAmountTicks: 5
+	  plotter setData: '[{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
+      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
+      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]'.
+	 plotter addTitle: 'This is a title'.
+	 plotter addAxisLabel: 'a' with: 'b'. 
+	 plotter setAmountTicks: 5.
+	 ^ plotter initializeBuild
 ]
 
 { #category : 'as yet unclassified' }
@@ -191,9 +174,59 @@ LarPlotterBarExamples >> stackedGtBookFieldsByKindBarChart [
 { #category : 'as yet unclassified' }
 LarPlotterBarExamples >> testSpec [
 	<gtExample>
-	|  |
-	^self newGraph spec: self barChartSpec.
+
+		| spec plotter |
+	spec := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "title": "A new title",
+  "data": {
+    "values": [
+      {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
+      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
+      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+}'.
 	
+	plotter := LarPlotterBar new.
+	plotter spec: spec.
+	^ plotter initializeBuild
+	
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterBarExamples >> testSpecOverwrite [
+	<gtExample>
+
+		| spec plotter |
+	spec := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "title": "A new title",
+  "data": {
+    "values": [
+      {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
+      {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
+      {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+}'.
+	
+	plotter := LarPlotterBar new.
+	plotter spec: spec.
+	plotter setAmountTicks: 7.
+	^ plotter initializeBuild
 ]
 
 { #category : 'as yet unclassified' }
