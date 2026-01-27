@@ -223,7 +223,7 @@ LarPlotterSlideshow >> extraSlide6: aSlide [
 		newTextWithFormat: (self asTitle: 'Visualizations');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'vega_layers.png') ]
+						resourceAtPath: self path / 'vega_layers.png') ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -237,6 +237,11 @@ LarPlotterSlideshow >> extraSlide7: aSlide [
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
 						resourceAtPath: self picturesDirectoryPath / 'layered_spec.png') ]
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterSlideshow >> path [ 
+^Path *'iceberg' / 'RowITLou' / 'LarPlotter' / 'images'
 ]
 
 { #category : 'as yet unclassified' }
