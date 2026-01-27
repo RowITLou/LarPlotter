@@ -21,13 +21,13 @@ LarPlotterSlideshow >> conclusion: aSlide [
 		subtitleWithFormat: (self asSubtitle: 'Conclusion');
 		paragraphWithFormat: (self
 				asText: '
-• I implemented a proof of concept for an interactive layered Grammar of Graphics in GT.
+• Implemented a proof of concept for an interactive layered Grammar of Graphics in GT.
 				
-• Package can be extended easily with other kinds of charts.
+• Easily extensible to support other kinds of charts.
 
-• Could not implement the layerd functionality. 
+• Could not implement the layered functionality. 
 
-• More interactions, contextual views could be added and more specifiactions could be implemented in the future.
+• More interactions, contextual views and specifications could be added.
 
 ')
 ]
@@ -102,7 +102,7 @@ LarPlotterSlideshow >> example_over: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> example_scatterEx: aSlide [
 	<gtSlide>
-	<text: 'Example of a scatter plot from Vega-Lite. Difference in the spec. what does it depcit explain. Show interaction.'>
+	<text: 'Example of a scatter plot from Vega-Lite. Difference in the spec. What does it depict? Explain. Show interaction.'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Example of a scatter plot from Vega-Lite';
@@ -114,7 +114,7 @@ LarPlotterSlideshow >> example_scatterEx: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> example_scatterExGt: aSlide [
 	<gtSlide>
-	<text: 'Example with data from GT. What does it dipict. Show interactions'>
+	<text: 'Example with data from GT. What does it depict? Show interactions'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'Example of a scatter plot with data from GT';
@@ -138,7 +138,7 @@ LarPlotterSlideshow >> example_specex4: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> example_specexGt: aSlide [
 	<gtSlide>
-	<text: 'A psec with gt data. Have a class to wite these spec. To have interactivity with GT objects added new keys in the spec that do not existe in the vega-Lite spec.'>
+	<text: 'A spec with GT data. Have a class to write these specs. To have interactivity with GT objects added new keys in the spec that do not exist in the Vega-Lite spec.'>
 	^ aSlide labelAndElement
 		setPriority;
 		newFadedText: 'A spec for a graph generated with GT data';
@@ -162,7 +162,7 @@ LarPlotterSlideshow >> extraSlide1: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> extraSlide2: aSlide [
 	<gtSlide>
-	<text: 'Picture of hof the classes interact with each other'>
+	<text: 'Sequence diagram of how the classes interact with each other'>
 	^ aSlide textAndElement
 		elementWeight: 1;
 		setPriority;
@@ -190,7 +190,7 @@ LarPlotterSlideshow >> extraSlide3: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> extraSlide4: aSlide [
 	<gtSlide>
-<text: 'Picture of a graph  with more defeined specs'>
+<text: 'Picture of a graph  with more defined specs'>
 	^ aSlide textAndElement
 		elementWeight: 1;
 		setPriority;
@@ -203,7 +203,7 @@ LarPlotterSlideshow >> extraSlide4: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> extraSlide5: aSlide [
 	<gtSlide>
-<text: 'Picture of a spec  with more defeined specs'>
+<text: 'Picture of a spec  with more defined specs'>
 	^ aSlide textAndElement
 		elementWeight: 1;
 		setPriority;
@@ -240,27 +240,24 @@ LarPlotterSlideshow >> extraSlide7: aSlide [
 ]
 
 { #category : 'as yet unclassified' }
-LarPlotterSlideshow >> path [ 
-^Path *'iceberg' / 'RowITLou' / 'LarPlotter' / 'images'
+LarPlotterSlideshow >> path [
+	^ Path * 'RowITLou' / 'LarPlotter' / 'images'
 ]
 
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> researchQuestion: aSlide [
 	<gtSlide>
-	<text: 'These where my objectives for my presentation. Difference of gog and layered gog: graphical elements are combined in layers to form a complete visualization. Why GT? Layered grammas is always emedded in an existing language. Helps users to inspect virtually any aspect of a system. In addition, it provides strong
-support for customizing visualizations and integrating interaction mechanisms. Does not have a declarative approach to generate graphics yet. '>
+	<text: 'These were my objectives for my presentation. Difference of gog and layered gog: graphical elements are combined in layers to form a complete visualization. Why GT? Layered grammas is always emedded in an existing language. Helps users to inspect virtually any aspect of a system. In addition, it provides strong support for customizing visualizations and integrating interaction mechanisms. Does not have a declarative approach to generate graphics yet. '>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Objectives of my thesis');
 		paragraphWithFormat: (self
 				asText: '
 • To develop a comprehensive understanding of layered grammars of graphics.
-				
-• To design and implement a proof of concept of a layered grammar of graphics in Glamorous Toolkit
-based on Vega-Lite.
 
-• To evaluate the use of a layered grammar of graphics in Glamorous Toolkit and to add an interactive
-layer to the visual display for the user.
+• To design and implement a proof of concept of a layered grammar of graphics in Glamorous Toolkit based on Vega-Lite.
+
+• To evaluate the use of a layered grammar of graphics in GT and to add an interactive layer to the display.
 ')
 ]
 
@@ -278,8 +275,9 @@ LarPlotterSlideshow >> titleSlide: aSlide [
 	<text: 'A title slide with multiple, centered texts.'>
 	^ (aSlide titleWithFooters)
 		setPriority;
-		titleWithFormat: (self asTitle: 'A Layered Grammar of Graphics for Interactive Graphic Displays');
-		subtitleWithFormat: (self asSubtitle: 'A Prove of Concept in Glamorous Toolkit');
+		titleWithFormat: (self asTitle: 'A Layered Grammar of Graphics ');
+		subtitleWithFormat: (self asTitle: 'for Interactive Graphic Displays');
+		newFooterWithFormat: (self asSubtitle: 'A Proof of Concept in Glamorous Toolkit');
 		newFooterWithFormat: (self asBigText: 'A Master Thesis by') underline;
 		newFooterWithFormat: (self asBigText: 'Lou-Anne Robert');
 		newFooterWithFormat: (self asBigText: '    ');
@@ -290,12 +288,13 @@ LarPlotterSlideshow >> titleSlide: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> visualization1: aSlide [
 	<gtSlide>
-	<text: 'Viszualizations are importatnt to get more insight into datasets. Explain the concept of Anscombes Quartett. other dimensions could help'>
+	<text: 'Viszualizations are important to get more insight into datasets.
+Explain the concept of Anscombes Quartet. Other dimensions could help'>
 	^ aSlide textAndElement
 		elementWeight: 0.60;
 		setPriority;
 		newTextWithFormat: (self asTitle: 'Visualizations');
-		newTextWithFormat: (self asText: 'Visualizations are importatnt to get more insight into datasets.');
+		newTextWithFormat: (self asText: 'Visualizations are important to get more insight into datasets.');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
 						resourceAtPath: self path / 'ascomb_zus.png') ]
@@ -304,9 +303,7 @@ LarPlotterSlideshow >> visualization1: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> visualization_ex: aSlide [
 	<gtSlide>
-	<text: 'How to display grphs? To systematically construct visualizations, a grammar of graphics provides a declarative approach for
-defining graphs in a uniform, consistent, and reproducible manner. This approach improves transparency
-by clearly describing how a visualization is composed. Vega-Lite '>
+	<text: 'How to display graphs? To systematically construct visualizations, a grammar of graphics provides a declarative approach for defining graphs in a uniform, consistent, and reproducible manner. This approach improves transparency by clearly describing how a visualization is composed. Vega-Lite '>
 	^ aSlide textAndElement
 		elementWeight: 0.60;
 		setPriority;
@@ -319,10 +316,11 @@ by clearly describing how a visualization is composed. Vega-Lite '>
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> visualization_vega: aSlide [
 	<gtSlide>
-	<text: 'Since pages can also be differentiated by field would be nicecto see this what pages go under which kind and or field. Some interactivity could be nice.'>
+	<text: 'Since pages can also be differentiated by field, it would be nice to see this.
+What pages go under which kind and or field? Some interactivity could be nice.'>
 	^ aSlide textAndElement
 		elementWeight: 1;
 		setPriority;
-		newTextWithFormat: (self asText: 'Viszualizations are importatnt to get more insight into datasets.');
+		newTextWithFormat: (self asText: 'Viszualizations are important to get more insight into datasets.');
 		element: [ LarPlotterBarExamples new bookPagesByKind].
 ]

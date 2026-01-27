@@ -329,6 +329,7 @@ LarPlotterBarExamples >> vegaExample5 [
 
 { #category : 'as yet unclassified' }
 LarPlotterBarExamples >> vegaSpec2 [
+	<gtExample>
 	| jsonString |
 	jsonString := '{
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
