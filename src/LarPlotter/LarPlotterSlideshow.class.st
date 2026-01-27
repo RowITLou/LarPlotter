@@ -13,6 +13,45 @@ LarPlotterSlideshow class >> show [
 ]
 
 { #category : 'as yet unclassified' }
+LarPlotterSlideshow >> conclusion: aSlide [
+	<gtSlide>
+	<text: 'I have implemented a grammar of graphics in GT. Sowed that I could do it by implementing examples from vega-Lite and with data from GT. These examples are interactive. Package can be extended by changing the geometric object. Replace the bars or dots by lines for a line graph. all other elements are the same. Had no time to implement the layered finctionality, but the grammar is made for this so if I implement the corresponding plotter this can work. How would this look like? Could add more intercations in the future like zooming. and more specs could be implemented'>
+	^ aSlide paragraph
+		setPriority;
+		subtitleWithFormat: (self asSubtitle: 'Conclusion');
+		paragraphWithFormat: (self
+				asText: '
+• I implemented a proof of concept for an interactive layered Grammar of Graphics in GT.
+				
+• Package can be extended easily with other kinds of charts.
+
+• Could not implement the layerd functionality. 
+
+• More interactions, contextual views could be added and more specifiactions could be implemented in the future.
+
+')
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterSlideshow >> discussion: aSlide [
+	<gtSlide>
+	<text: ' '>
+	^ aSlide paragraph
+		setPriority;
+		subtitleWithFormat: (self asSubtitle: 'Objectives of my thesis');
+		paragraphWithFormat: (self
+				asText: '
+• Can extend the package easily with other charts
+				
+• To design and implement a proof of concept of a layered grammar of graphics in Glamorous Toolkit
+based on Vega-Lite.
+
+• To evaluate the use of a layered grammar of graphics in Glamorous Toolkit and to add an interactive
+layer to the visual display for the user.
+')
+]
+
+{ #category : 'as yet unclassified' }
 LarPlotterSlideshow >> example_ex4: aSlide [
 	<gtSlide>
 	<text: 'A coder on a method'>
@@ -137,7 +176,7 @@ LarPlotterSlideshow >> extraSlide2: aSlide [
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> extraSlide3: aSlide [
 	<gtSlide>
-	<text: 'Picture of hof the classes interact with each other'>
+	<text: 'Picture of how the classes interact with each other'>
 	^ aSlide textAndElement
 		elementWeight: 1;
 		setPriority;
@@ -149,10 +188,62 @@ LarPlotterSlideshow >> extraSlide3: aSlide [
 ]
 
 { #category : 'as yet unclassified' }
+LarPlotterSlideshow >> extraSlide4: aSlide [
+	<gtSlide>
+<text: 'Picture of a graph  with more defeined specs'>
+	^ aSlide textAndElement
+		elementWeight: 1;
+		setPriority;
+		newTextWithFormat: (self asTitle: 'Visualizations');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'IMDB.png') ]
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterSlideshow >> extraSlide5: aSlide [
+	<gtSlide>
+<text: 'Picture of a spec  with more defeined specs'>
+	^ aSlide textAndElement
+		elementWeight: 1;
+		setPriority;
+		newTextWithFormat: (self asTitle: 'Visualizations');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'IMDB_spec.png') ]
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterSlideshow >> extraSlide6: aSlide [
+	<gtSlide>
+<text: 'Picture of layered graph'>
+	^ aSlide textAndElement
+		elementWeight: 1;
+		setPriority;
+		newTextWithFormat: (self asTitle: 'Visualizations');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'vega_layers.png') ]
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterSlideshow >> extraSlide7: aSlide [
+	<gtSlide>
+<text: 'Picture of spec for layered graph'>
+	^ aSlide textAndElement
+		elementWeight: 1;
+		setPriority;
+		newTextWithFormat: (self asTitle: 'Visualizations');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self picturesDirectoryPath / 'layered_spec.png') ]
+]
+
+{ #category : 'as yet unclassified' }
 LarPlotterSlideshow >> researchQuestion: aSlide [
 	<gtSlide>
 	<text: 'These where my objectives for my presentation. Difference of gog and layered gog: graphical elements are combined in layers to form a complete visualization. Why GT? Layered grammas is always emedded in an existing language. Helps users to inspect virtually any aspect of a system. In addition, it provides strong
-support for customizing visualizations and integrating interaction mechanisms'>
+support for customizing visualizations and integrating interaction mechanisms. Does not have a declarative approach to generate graphics yet. '>
 	^ aSlide paragraph
 		setPriority;
 		subtitleWithFormat: (self asSubtitle: 'Objectives of my thesis');
@@ -173,7 +264,7 @@ LarPlotterSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>
 	<noTest>
-	^ #(titleSlide:), #(visualization1:), #(visualization_vega:), #(visualization_ex:), #(researchQuestion:), #(example_graph:), #(example_over:)," #(example_specex4:)," "#(example_ex4:)," #(example_specexGt:), #(example_exGt:), #(example_scatterEx:), #(example_scatterExGt:)
+	^ #(titleSlide:), #(visualization1:), #(visualization_vega:), #(visualization_ex:), #(researchQuestion:), #(example_graph:), #(example_over:)," #(example_specex4:)," "#(example_ex4:)," #(example_specexGt:), #(example_exGt:), #(example_scatterEx:), #(example_scatterExGt:), #(conclusion:), #(extraSlide1:), #(extraSlide2:), #(extraSlide3:), #(extraSlide4:), #(extraSlide5:), #(extraSlide6:), #(extraSlide7:)
 ]
 
 { #category : 'as yet unclassified' }
