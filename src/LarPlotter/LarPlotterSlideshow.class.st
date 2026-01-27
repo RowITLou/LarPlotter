@@ -170,7 +170,7 @@ LarPlotterSlideshow >> extraSlide2: aSlide [
 		
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'interaction_final.png') ]
+						resourceAtPath: self path / 'interaction_final.png') ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -184,7 +184,7 @@ LarPlotterSlideshow >> extraSlide3: aSlide [
 		
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'pipeline.png') ]
+						resourceAtPath: self path / 'pipeline.png') ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -197,7 +197,7 @@ LarPlotterSlideshow >> extraSlide4: aSlide [
 		newTextWithFormat: (self asTitle: 'Visualizations');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'IMDB.png') ]
+						resourceAtPath: self path / 'IMDB.png') ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -210,7 +210,7 @@ LarPlotterSlideshow >> extraSlide5: aSlide [
 		newTextWithFormat: (self asTitle: 'Visualizations');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'IMDB_spec.png') ]
+						resourceAtPath: self path / 'IMDB_spec.png') ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -236,7 +236,7 @@ LarPlotterSlideshow >> extraSlide7: aSlide [
 		newTextWithFormat: (self asTitle: 'Visualizations');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'layered_spec.png') ]
+						resourceAtPath: self path / 'layered_spec.png') ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -298,7 +298,7 @@ LarPlotterSlideshow >> visualization1: aSlide [
 		newTextWithFormat: (self asText: 'Visualizations are importatnt to get more insight into datasets.');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'ascomb_zus.png') ]
+						resourceAtPath: self path / 'ascomb_zus.png') ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -313,7 +313,7 @@ by clearly describing how a visualization is composed. Vega-Lite '>
 		newTextWithFormat: (self asText: 'A grammar of graphics provides a declarative approach for defining graphs in a uniform, consistent, and reproducible manner.');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
-						resourceAtPath: self picturesDirectoryPath / 'vega_screen.png') ]
+						resourceAtPath: self path / 'vega_screen.png') ]
 ]
 
 { #category : 'as yet unclassified' }
