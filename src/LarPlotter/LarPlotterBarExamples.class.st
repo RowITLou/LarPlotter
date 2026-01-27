@@ -30,8 +30,7 @@ LarPlotterBarExamples >> Example2 [
 LarPlotterBarExamples >> Example3 [
 <gtExample>
 	| plotter dict |
-	dict := GtBarChartSpecExamples new
-			stackedGtBookFieldsByKindBarChartWithChartSendBar asJsonString.
+	dict := GtBarChartSpecExamples new fullSpec asJsonString.
 	plotter := LarPlotterBar new.
 	plotter spec: dict.
 	^plotter initializeBuild
@@ -66,6 +65,16 @@ LarPlotterBarExamples >> bookPagesByKind [
 <gtExample>
 	| dict plotter |
 	dict := GtBarChartSpecExamples new gtBookPagesByKindBarChart asJsonString.	"dict := STONJSON fromString: dict. "
+	plotter := LarPlotterBar new.
+	plotter spec: dict.
+	^plotter initializeBuild
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterBarExamples >> bookPagesByKindEx [
+<gtExample>
+	| dict plotter |
+	dict := GtBarChartSpecExamples new gtBookPagesByKindBarChartExpand asJsonString.	"dict := STONJSON fromString: dict. "
 	plotter := LarPlotterBar new.
 	plotter spec: dict.
 	^plotter initializeBuild
@@ -266,8 +275,17 @@ LarPlotterBarExamples >> vegaExample2 [
 "https://vega.github.io/vega-lite/examples/stacked_bar_h.html"
 	<gtExample>
 	|  plotter spec |
-	
-	spec := self vegaSpec2.	
+		spec := '{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "data/barley.json"},
+  "mark": "bar",
+  "encoding": {
+    "x": {"aggregate": "sum", "field": "yield"},
+    "y": {"field": "variety"},
+    "color": {"field": "site"}
+  }
+}'.
+
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
 	^plotter initializeBuild

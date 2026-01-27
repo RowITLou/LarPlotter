@@ -150,7 +150,6 @@ LarPlotterBar >> addBars [
 { #category : 'as yet unclassified' }
 LarPlotterBar >> addObject: barValue [
 	| jsonSpec aClassSymbol aMethodSelector result |
-	"(dict includesKey: 'gtChartSendObject') ifFalse: [ ^ nil ]."
 	jsonSpec := dict at: 'gtChartSendObject'.
 	aClassSymbol := (jsonSpec at: 'class') asSymbol.
 	aMethodSelector := (jsonSpec at: 'selector') asSymbol.

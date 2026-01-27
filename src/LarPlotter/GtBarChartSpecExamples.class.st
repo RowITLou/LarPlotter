@@ -9,6 +9,39 @@ Class {
 	#tag : 'Examples'
 }
 
+{ #category : 'as yet unclassified' }
+GtBarChartSpecExamples >> fullSpec [
+<gtExample>
+	| barChart tm|
+tm := self gtBookTopicMap.
+	barChart := GtBarChartSpec new
+			description: 'GT Book fields showing numbers of kinds of pages per field.';
+			beStackedBarChart;
+			values: (tm fieldNodes
+					flatCollect: [ :fn | 
+						fn pageNodes
+							collect: [ :pn | 
+								{'field' -> fn field.
+									'page' -> pn page title.
+									'kind' -> pn kind} asDictionary ] ]) asArray;
+			stackedFields: {'field'.
+					'kind'};
+			xTitle: 'GT Book Topic Fields';
+			yTitle: 'Kinds of pages per field';
+			colorScale: {'domain' -> tm kindsStandardOrder.
+					'range'
+						-> (tm kindsStandardOrder
+								collect: [ :k | '#' , (tm kindPalette at: k) asHexString ])}
+					asDictionary;
+			labelAngle: -45;
+		
+			gtChartSend: GtBarChartSpecExamples >> #sendGtBookField:andKind:;
+			gtChartSendBar: GtBarChartSpecExamples >> #sendGtBookField:;
+			yourself.
+	
+	^ barChart
+]
+
 { #category : 'examples' }
 GtBarChartSpecExamples >> gtBookPagesByKindBarChart [
 	<gtExample>
@@ -27,6 +60,27 @@ GtBarChartSpecExamples >> gtBookPagesByKindBarChart [
 			yourself.
 	self assert: barChart labelAngle equals: -45.
 	self assert: barChart values size <= LeDatabase gtBook topicMap kinds size.
+	^ barChart
+]
+
+{ #category : 'as yet unclassified' }
+GtBarChartSpecExamples >> gtBookPagesByKindBarChartExpand [
+	<gtExample>
+	| barChart |
+	barChart := GtBarChartSpec new
+			description: 'GT Book pages by kind.';
+			values: (self gtBookTopicMap kind2Pages associations
+					collect: [ :kv | 
+						{'kind' -> kv key.
+							'page-count' -> kv value size} asDictionary ]);
+			fields: {'kind'.
+					'page-count'};
+			xTitle: 'Kinds of GT Book pages';
+			yTitle: '# Pages of this Kind';
+			gtChartSendBar: GtBarChartSpecExamples >> #sendGtBookKind:;
+			labelAngle: -45;
+			yourself.
+	
 	^ barChart
 ]
 
@@ -115,6 +169,16 @@ GtBarChartSpecExamples >> sendGtBookField: aField andKind: aKind [
 	^ (topicMap fieldNodeNamed: aField) kindNodeNamed: aKind
 ]
 
+{ #category : 'as yet unclassified' }
+GtBarChartSpecExamples >> sendGtBookKind: aKind [
+	"An example of a dedicated method to define from the bar and stacked element the object to send to."
+
+	<gtChartSend>
+	| topicMap |
+	topicMap := LeDatabase gtBook topicMap.
+	^ (topicMap kindNodeNamed: aKind)
+]
+
 { #category : 'examples' }
 GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChart [
 	<gtExample>
@@ -163,6 +227,7 @@ GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSend [
 { #category : 'as yet unclassified' }
 GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSendBar [
 	| barChart |
+	<gtExample>
 	barChart := self stackedGtBookFieldsByKindBarChartWithChartSend
 			gtChartSendBar: GtBarChartSpecExamples >> #sendGtBookField:;
 			yourself.

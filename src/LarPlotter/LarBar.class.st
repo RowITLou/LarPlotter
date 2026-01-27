@@ -20,7 +20,10 @@ Class {
 
 { #category : 'as yet unclassified' }
 LarBar >> asElement [
-^LarBarElement new initialize: self.
+subbar isNil
+ifTrue:[^LarBarElement new initializeClick: self]
+ifFalse:[^LarBarElement new initialize: self.]
+
 ]
 
 { #category : 'accessing' }
