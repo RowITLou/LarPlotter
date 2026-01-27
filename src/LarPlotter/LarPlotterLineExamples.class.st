@@ -6,7 +6,7 @@ Class {
 	#tag : 'Examples'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterLineExamples >> addAxisLabel [
 <gtExample>
 
@@ -14,14 +14,14 @@ LarPlotterLineExamples >> addAxisLabel [
 	
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterLineExamples >> addLines [
 <gtExample>
 
 ^self newGraph addLines: self values.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterLineExamples >> addTitel [
 <gtExample>
 
@@ -34,7 +34,7 @@ LarPlotterLineExamples >> labels [
 ^ #(#A #B  #C #D #E #F #G #H #I #J)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterLineExamples >> newGraph [
 <gtExample>
 

@@ -261,7 +261,7 @@ LarPlotterSlideshow >> researchQuestion: aSlide [
 ')
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>

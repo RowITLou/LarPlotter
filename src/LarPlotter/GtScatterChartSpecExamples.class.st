@@ -6,7 +6,7 @@ Class {
 	#tag : 'Examples'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtScatterChartSpecExamples >> CorrelatingMethodSizeSndCommits [
 	<gtExample>
 	| scatterChart jsonFile jsonFromFile |
@@ -29,7 +29,7 @@ GtScatterChartSpecExamples >> CorrelatingMethodSizeSndCommits [
 	^ scatterChart
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtScatterChartSpecExamples >> CorrelatingMethodSizeSndCommitsObject [
 <gtExample>
 	| scatterChart |
@@ -56,7 +56,7 @@ GtScatterChartSpecExamples >> getMethod: d [
 	methodParts first asClass >> methodParts second asSymbol
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtScatterChartSpecExamples >> gtBookPagesByKindBarChart [
 	<gtExample>
 	|  scatterChart |
@@ -80,7 +80,7 @@ GtScatterChartSpecExamples >> gtBookPagesByKindBarChart [
 	^ scatterChart
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtScatterChartSpecExamples >> gtPagesFromDatabase [
 <gtExample>
 	| scatterChart |

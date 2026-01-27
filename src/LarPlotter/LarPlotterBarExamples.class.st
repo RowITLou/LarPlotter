@@ -9,13 +9,13 @@ Class {
 	#tag : 'Examples'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> Example1 [
 	<gtExample>
 	^ self stackedGtBookFieldsByKindBarChart
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> Example2 [
 <gtExample>
 	| plotter dict |
@@ -26,7 +26,7 @@ LarPlotterBarExamples >> Example2 [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> Example3 [
 <gtExample>
 	| plotter dict |
@@ -36,7 +36,7 @@ LarPlotterBarExamples >> Example3 [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> barChartSpec [
 	<gtExample>
 	| jsonString |
@@ -60,7 +60,7 @@ LarPlotterBarExamples >> barChartSpec [
 	^jsonString
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> bookPagesByKind [
 <gtExample>
 	| dict plotter |
@@ -70,7 +70,7 @@ LarPlotterBarExamples >> bookPagesByKind [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> bookPagesByKindEx [
 <gtExample>
 	| dict plotter |
@@ -127,7 +127,7 @@ LarPlotterBarExamples >> labels [
 ^ #(#A #B  #C #D #E #F #G #H #I #J)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> newGraph [
 	<gtExample>
 	| plotter |
@@ -141,7 +141,7 @@ LarPlotterBarExamples >> newGraph [
 	 ^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> setTicksAmountEx4 [
 <gtExample>
 	<gtExample>
@@ -169,7 +169,7 @@ LarPlotterBarExamples >> specExample [
 	^ jsonString
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> stackedGtBookFieldsByKindBarChart [
 	<gtExample>
 	| plotter dict |
@@ -180,7 +180,7 @@ LarPlotterBarExamples >> stackedGtBookFieldsByKindBarChart [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> testSpec [
 	<gtExample>
 
@@ -209,7 +209,7 @@ LarPlotterBarExamples >> testSpec [
 	
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> testSpecOverwrite [
 	<gtExample>
 
@@ -249,7 +249,7 @@ LarPlotterBarExamples >> values [
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> vegaColorChart [
 <gtExample>
 	| spec plotter |
@@ -259,7 +259,7 @@ LarPlotterBarExamples >> vegaColorChart [
 	^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> vegaExample1 [
 	<gtExample>
 	"https://vega.github.io/vega-lite/examples/bar.html"
@@ -270,7 +270,7 @@ LarPlotterBarExamples >> vegaExample1 [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> vegaExample2 [
 "https://vega.github.io/vega-lite/examples/stacked_bar_h.html"
 	<gtExample>
@@ -291,7 +291,7 @@ LarPlotterBarExamples >> vegaExample2 [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> vegaExample3 [
 "https://vega.github.io/vega-lite/examples/bar_aggregate.html"
 	<gtExample>
@@ -303,7 +303,7 @@ LarPlotterBarExamples >> vegaExample3 [
   ^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> vegaExample4 [
 "https://vega.github.io/vega-lite/examples/bar_size_responsive.html"
 	<gtExample>
@@ -315,7 +315,7 @@ LarPlotterBarExamples >> vegaExample4 [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> vegaExample5 [
 "https://vega.github.io/vega-lite/examples/bar_layered_transparent.html"
 <gtExample>
@@ -327,7 +327,7 @@ LarPlotterBarExamples >> vegaExample5 [
 	^plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterBarExamples >> vegaSpec2 [
 	<gtExample>
 	| jsonString |

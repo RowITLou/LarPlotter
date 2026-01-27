@@ -42,7 +42,7 @@ child layout: BlFrameLayout new;
 ^graphElement
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 BarPlotter >> containerElement: sizeContainer [ 
 <gtExample>
 	| aContainer |

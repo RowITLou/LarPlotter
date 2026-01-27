@@ -6,7 +6,7 @@ Class {
 	#tag : 'Other'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 BarPlotterExamples >> containerWithGraphAndBars [
 <gtExample>
 | graph container |
@@ -16,7 +16,7 @@ container := BarPlotter new containerElement: 700.
 ^container
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 BarPlotterExamples >> graphAndLabels [
 <gtExample>
 | graph labelAxisX labelAxisY |
@@ -31,7 +31,7 @@ graph addChild: labelAxisY.
 ^graph
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 BarPlotterExamples >> graphAndTicks [
 <gtExample>
 | graph ticksX ticksY |
@@ -44,7 +44,7 @@ ticksY:= BarPlotter new ticksAxisY: self values size with: self sizeGraph with: 
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 BarPlotterExamples >> graphAndTicksLabel [
 <gtExample>
 | labelsX graph labelsY |
@@ -58,7 +58,7 @@ self values size with: self sizeGraph with: self relocate.
 ^graph
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 BarPlotterExamples >> graphTotal [
 <gtExample>
 | labelAxisX graph labelAxisY ticksX ticksY labelsX labelsY titel|
@@ -91,7 +91,7 @@ graph addChild: titel.
 ^graph
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 BarPlotterExamples >> graphWithTitel [
 <gtExample>
 | graph titel |

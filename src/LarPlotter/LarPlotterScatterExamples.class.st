@@ -6,7 +6,7 @@ Class {
 	#tag : 'Examples'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> Example1 [
 <gtExample>
 	| plotter dict |
@@ -17,7 +17,7 @@ LarPlotterScatterExamples >> Example1 [
 	^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> Example2 [
 <gtExample>
 	| plotter dict |
@@ -28,7 +28,7 @@ LarPlotterScatterExamples >> Example2 [
 	^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> Example3 [
 <gtExample>
 | plotter dict |
@@ -39,7 +39,7 @@ LarPlotterScatterExamples >> Example3 [
 	^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> Example4 [
 <gtExample>
 | plotter dict |
@@ -50,7 +50,7 @@ LarPlotterScatterExamples >> Example4 [
 	^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> newGraph [
 <gtExample>
 
@@ -64,7 +64,7 @@ LarPlotterScatterExamples >> values [
 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> vegaExample1 [
 <gtExample>
 	| spec plotter |
@@ -74,7 +74,7 @@ LarPlotterScatterExamples >> vegaExample1 [
 	^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> vegaExample2 [
 <gtExample>
 	| spec plotter |
@@ -84,7 +84,7 @@ LarPlotterScatterExamples >> vegaExample2 [
 ^ plotter initializeBuild
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 LarPlotterScatterExamples >> vegaExample3 [
 <gtExample>
 	| spec plotter |

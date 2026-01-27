@@ -9,7 +9,7 @@ Class {
 	#tag : 'Examples'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> fullSpec [
 <gtExample>
 	| barChart tm|
@@ -63,7 +63,7 @@ GtBarChartSpecExamples >> gtBookPagesByKindBarChart [
 	^ barChart
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> gtBookPagesByKindBarChartExpand [
 	<gtExample>
 	| barChart |
@@ -134,7 +134,7 @@ GtBarChartSpecExamples >> sendBar: aBarValue andGroup: aGroupValue withSpec: aJs
 				aGroupValue}
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> sendBarAndGroupExample [
 	<gtExample>
 	| aField aKind aJson result |
@@ -224,7 +224,7 @@ GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSend [
 	^ barChart
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'examples' }
 GtBarChartSpecExamples >> stackedGtBookFieldsByKindBarChartWithChartSendBar [
 	| barChart |
 	<gtExample>
