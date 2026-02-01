@@ -29,10 +29,10 @@ LarPlotterBarExamples >> Example2 [
 { #category : 'examples' }
 LarPlotterBarExamples >> Example3 [
 <gtExample>
-	| plotter dict |
-	dict := GtBarChartSpecExamples new fullSpec asJsonString.
+	| plotter spec |
+	spec := GtBarChartSpecExamples new fullSpec asJsonString.
 	plotter := LarPlotterBar new.
-	plotter spec: dict.
+	plotter spec: spec.
 	^plotter initializeBuild
 ]
 

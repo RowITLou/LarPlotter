@@ -71,8 +71,8 @@ GtScatterChartSpecExamples >> gtBookPagesByKindBarChart [
 		fields: {'textSnippets'.
 				'codeSnippets'};
 		"object: 'pageTitle';"
-		xTitle: 'Text snippet size';
-		yTitle: 'Code snippet size';
+		xTitle: 'Text snippet amount';
+		yTitle: 'Code snippet amount';
 		labelAngle: -45;
 		yourself.
 	self assert: scatterChart labelAngle equals: -45.

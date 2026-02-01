@@ -240,6 +240,18 @@ LarPlotterSlideshow >> extraSlide7: aSlide [
 ]
 
 { #category : 'as yet unclassified' }
+LarPlotterSlideshow >> extraSlide8: aSlide [
+	<gtSlide>
+	<text: 'Method to add objects to bars'>
+	^ aSlide labelAndElement
+		setPriority;
+		newFadedText: 'Method to add objects to bars';
+		element: [ GtPagerSettings usedPager
+				createWrappedOn: (GtPharoMethodCoder forMethod: LarPlotterBar >> #addObject:)
+						asExpandedOnlyElement vFitContentLimited ]
+]
+
+{ #category : 'as yet unclassified' }
 LarPlotterSlideshow >> path [
 	^ Path * 'RowITLou' / 'LarPlotter' / 'images'
 ]
@@ -266,7 +278,7 @@ LarPlotterSlideshow >> slidePriorities [
 	"Instead of manually setting priorities, just list the slides in order here."
 	<gtExample>
 	<noTest>
-	^ #(titleSlide:), #(visualization1:), #(visualization_vega:), #(visualization_ex:), #(researchQuestion:), #(example_graph:), #(example_over:)," #(example_specex4:)," "#(example_ex4:)," #(example_specexGt:), #(example_exGt:), #(example_scatterEx:), #(example_scatterExGt:), #(conclusion:), #(extraSlide1:), #(extraSlide2:), #(extraSlide3:), #(extraSlide4:), #(extraSlide5:), #(extraSlide6:), #(extraSlide7:)
+	^ #(titleSlide:), #(visualization1:), #(visualization_vega:), #(visualization_ex:), #(visualization_layer:), #(visualization_ve:) , #(researchQuestion:), #(example_graph:), #(example_over:)," #(example_specex4:)," "#(example_ex4:)," #(example_exGt:), #(example_specexGt:), #(example_scatterEx:), #(example_scatterExGt:), #(conclusion:), #(extraSlide1:), #(extraSlide2:), #(extraSlide3:), #(extraSlide4:), #(extraSlide5:), #(extraSlide6:), #(extraSlide7:)
 ]
 
 { #category : 'as yet unclassified' }
@@ -303,11 +315,46 @@ Explain the concept of Anscombes Quartet. Other dimensions could help'>
 { #category : 'as yet unclassified' }
 LarPlotterSlideshow >> visualization_ex: aSlide [
 	<gtSlide>
-	<text: 'How to display graphs? To systematically construct visualizations, a grammar of graphics provides a declarative approach for defining graphs in a uniform, consistent, and reproducible manner. This approach improves transparency by clearly describing how a visualization is composed. Vega-Lite '>
+	<text: 'How to display graphs? To systematically construct visualizations, a grammar of graphics provides a declarative approach for defining graphs in a uniform, consistent, and reproducible manner. This approach improves transparency by clearly describing how a visualization is composed'>
 	^ aSlide textAndElement
 		elementWeight: 0.60;
 		setPriority;
+		newTextWithFormat: (self asTitle: 'Grammar of Graphics');
 		newTextWithFormat: (self asText: 'A grammar of graphics provides a declarative approach for defining graphs in a uniform, consistent, and reproducible manner.');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self path / 'vega_vs_ex.png') ]
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterSlideshow >> visualization_layer: aSlide [
+	<gtSlide>
+	<text: 'What is the difference between layered grammar of graphics and gog? Parametrization of components, hierarchy and is embedded in other programming language. Can be a constraint. '  >
+	^ aSlide textAndElement
+		elementWeight: 0.60;
+		setPriority;
+		newTextWithFormat: (self asTitle: 'Layered Grammar of Graphics');
+		newTextWithFormat: (self asText: ' 
+		Builds on the work the grammar of graphics but has a layered approach
+		
+		• Defaults
+		
+		• Embedded within an existing programming language. ');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self path / 'vega_layers.png') ]
+]
+
+{ #category : 'as yet unclassified' }
+LarPlotterSlideshow >> visualization_ve: aSlide [
+	<gtSlide>
+	<text: 'What is the difference between layered grammar of graphics and gog? Parametrization of components, hierarchy and is embedded in other programming language. Can be a constraint. '  >
+	^ aSlide textAndElement
+		elementWeight: 0.60;
+		setPriority;
+		newTextWithFormat: (self asTitle: 'Vega-Lite');
+		newTextWithFormat: (self asText: ' 
+		Supports interaction by allowing user input through code and enabling modifications according to user needs in a JSON syntax. ');
 		element: [ GtFilePictureLiveSlide new
 				fileReference: (GtResourcesUtility
 						resourceAtPath: self path / 'vega_screen.png') ]
