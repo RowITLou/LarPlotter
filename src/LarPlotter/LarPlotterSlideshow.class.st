@@ -252,6 +252,19 @@ LarPlotterSlideshow >> extraSlide8: aSlide [
 ]
 
 { #category : 'as yet unclassified' }
+LarPlotterSlideshow >> extraSlide9: aSlide [
+	<gtSlide>
+<text: 'Picture of spec for layered graph'>
+	^ aSlide textAndElement
+		elementWeight: 1;
+		setPriority;
+		newTextWithFormat: (self asTitle: 'Pipeline for Visualization');
+		element: [ GtFilePictureLiveSlide new
+				fileReference: (GtResourcesUtility
+						resourceAtPath: self path / 'flowchart_gog.png') ]
+]
+
+{ #category : 'as yet unclassified' }
 LarPlotterSlideshow >> path [
 	^ Path * 'RowITLou' / 'LarPlotter' / 'images'
 ]
@@ -335,7 +348,7 @@ LarPlotterSlideshow >> visualization_layer: aSlide [
 		setPriority;
 		newTextWithFormat: (self asTitle: 'Layered Grammar of Graphics');
 		newTextWithFormat: (self asText: ' 
-		Builds on the work the grammar of graphics but has a layered approach
+		Builds on the work of the grammar of graphics but has a layered approach
 		
 		• Defaults
 		

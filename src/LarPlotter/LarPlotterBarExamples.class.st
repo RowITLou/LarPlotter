@@ -234,7 +234,7 @@ LarPlotterBarExamples >> testSpecOverwrite [
 	
 	plotter := LarPlotterBar new.
 	plotter spec: spec.
-	plotter setAmountTicks: 7.
+	plotter setAmountTicks: 4.
 	^ plotter initializeBuild
 ]
 
